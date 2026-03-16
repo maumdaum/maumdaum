@@ -39,6 +39,19 @@ nav.scrolled{border-bottom-color:var(--light);}
 .hero-scroll-line{width:0.5px;height:60px;background:var(--off-white);animation:scrollLine 2s ease-in-out infinite;}
 @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
 .sec-label{font-size:10px;letter-spacing:0.5em;color:var(--gray);margin-bottom:16px;}
+.after-hero{padding:80px 0;background:#111;border-top:0.5px solid #1a1816;}
+.ah-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1a1816;}
+.ah-card{background:#111;padding:36px 32px;display:flex;flex-direction:column;gap:12px;}
+.ah-icon{font-size:11px;letter-spacing:0.3em;color:var(--red);font-weight:500;}
+.ah-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:var(--off-white);line-height:1.5;letter-spacing:0.02em;}
+.ah-desc{font-size:13px;color:#555;line-height:1.9;letter-spacing:0.04em;}
+.voice-strip{padding:80px 0;background:var(--black);}
+.vs-label{font-size:10px;letter-spacing:0.5em;color:#444;margin-bottom:40px;text-align:center;}
+.vs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.vs-card{background:#111;padding:32px 28px;display:flex;flex-direction:column;gap:16px;}
+.vs-quote{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:300;color:#888;line-height:2;letter-spacing:0.04em;font-style:italic;flex:1;}
+.vs-quote em{font-style:normal;color:var(--off-white);}
+.vs-meta{font-size:11px;color:#444;letter-spacing:0.15em;}
 .sec-title{font-family:'Noto Serif KR',serif;font-size:clamp(26px,4vw,44px);font-weight:200;color:var(--black);line-height:1.5;letter-spacing:0.01em;margin-bottom:56px;}
 .sec-title em{font-style:normal;color:var(--red);}
 .limits{padding:140px 0;background:var(--warm);}
@@ -196,6 +209,29 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
   </div>
 </section>
 
+<!-- 결과 선명하게 -->
+<section class="after-hero">
+  <div class="container">
+    <div class="ah-grid">
+      <div class="ah-card">
+        <span class="ah-icon">AFTER 6H</span>
+        <h3 class="ah-title">"아, 이게 내 감각이었구나"</h3>
+        <p class="ah-desc">말로 설명하지 않아도 손이 먼저 알아요. 6시간 동안 이미지로 꺼낸 것들이 지금 내가 뭘 느끼는지를 보여줘요.</p>
+      </div>
+      <div class="ah-card">
+        <span class="ah-icon">AFTER 6H</span>
+        <h3 class="ah-title">"여기 오길 잘했다"</h3>
+        <p class="ah-desc">억지로 말하지 않아도, 잘 그리지 않아도 괜찮은 공간. 그 안에서 처음으로 긴장이 풀리는 경험을 해요.</p>
+      </div>
+      <div class="ah-card">
+        <span class="ah-icon">AFTER 6H</span>
+        <h3 class="ah-title">손으로 남긴 나의 자화상</h3>
+        <p class="ah-desc">Work Memory — 10×10 캔버스 위에 오늘의 내가 남아요. 작품이 아니에요. 지금 이 순간의 나예요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 2단계: 일반 해결책의 한계 -->
 <section class="limits" id="limits">
   <div class="container">
@@ -346,6 +382,7 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
           <div class="svc-row"><span class="svc-key">시간</span><span class="svc-val">6시간+@</span></div>
           <div class="svc-row"><span class="svc-key">비용</span><span class="svc-val">1인 10만원</span></div>
         </div>
+        <p style="font-size:13px;color:var(--gray);line-height:1.8;letter-spacing:0.04em;padding:16px 0;border-top:0.5px solid var(--light);font-style:italic;">"말 한마디 안 했는데 뭔가 다 꺼낸 느낌이었어요." — 30대 직장인</p>
         <a href="#contact" class="svc-link">신청하기</a>
       </div>
       <div class="svc-card">
@@ -357,6 +394,7 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
           <div class="svc-row"><span class="svc-key">시간</span><span class="svc-val">2~3시간</span></div>
           <div class="svc-row"><span class="svc-key">비용</span><span class="svc-val">10~15만원</span></div>
         </div>
+        <p style="font-size:13px;color:var(--gray);line-height:1.8;letter-spacing:0.04em;padding:16px 0;border-top:0.5px solid var(--light);font-style:italic;">"상담보다 훨씬 많이 꺼낸 것 같아요. 신기했어요." — 40대 여성</p>
         <a href="#contact" class="svc-link">문의하기</a>
       </div>
       <div class="svc-card">
@@ -369,6 +407,27 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
           <div class="svc-row"><span class="svc-key">포함</span><span class="svc-val">세션·워크숍 포함</span></div>
         </div>
         <a href="#contact" class="svc-link">더 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 참가자 목소리 -->
+<section class="voice-strip">
+  <div class="container">
+    <p class="vs-label">PARTICIPANTS · 참가자 이야기</p>
+    <div class="vs-grid">
+      <div class="vs-card">
+        <p class="vs-quote">"그림 못 그리는 나한테도 뭔가 나왔어요. <em>처음으로 내가 뭘 느끼는지 알게 된 날이었어요.</em>"</p>
+        <p class="vs-meta">워크숍 참가자 · 30대 직장인</p>
+      </div>
+      <div class="vs-card">
+        <p class="vs-quote">"말로 하는 상담은 늘 머리로 했는데 여기선 <em>몸이 먼저 반응했어요.</em> 그게 너무 신기했고 울컥했어요."</p>
+        <p class="vs-meta">개인 세션 참가자 · 40대 여성</p>
+      </div>
+      <div class="vs-card">
+        <p class="vs-quote">"6시간이 어떻게 갔는지 몰랐어요. <em>오면서 긴장했는데 돌아갈 때 뭔가 가벼워진 느낌.</em>"</p>
+        <p class="vs-meta">워크숍 참가자 · 20대 대학원생</p>
       </div>
     </div>
   </div>
