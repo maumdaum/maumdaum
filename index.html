@@ -6,982 +6,375 @@
 <title>마음다움 — 마음이 마음다워지는 곳</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ── 리셋 & 변수 ── */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-:root {
-  --black: #0c0b0a;
-  --off-white: #f4f0e8;
-  --warm: #faf7f2;
-  --red: #c8392b;
-  --gray: #8a8480;
-  --light: #e0dbd2;
-  --dark: #2a2826;
-  --cream: #f0ebe0;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--warm);
-  color: var(--black);
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-}
-
-/* ── 네비 ── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 48px;
-  background: rgba(250,247,242,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 0.5px solid transparent;
-  transition: border-color 0.3s;
-}
-
-nav.scrolled { border-bottom-color: var(--light); }
-
-.nav-logo {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--black);
-  letter-spacing: 0.05em;
-  text-decoration: none;
-}
-
-.nav-logo span { color: var(--red); }
-
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  color: var(--gray);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover { color: var(--black); }
-
-.nav-cta {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--off-white);
-  background: var(--black);
-  padding: 10px 24px;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.nav-cta:hover { background: var(--dark); }
-
-/* ── 섹션 공통 ── */
-section { position: relative; }
-
-.container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 48px;
-}
-
-/* ── 히어로 ── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 80px;
-  background: var(--black);
-  position: relative;
-  overflow: hidden;
-}
-
-/* 배경 추상 — Work Memory 무드 */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  opacity: 0.06;
-}
-
-.hero-bg circle, .hero-bg ellipse, .hero-bg rect {
-  animation: float 8s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 48px;
-}
-
-.hero-label {
-  font-size: 10px;
-  letter-spacing: 0.6em;
-  color: #444;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.hero-label::before {
-  content: '';
-  width: 32px;
-  height: 0.5px;
-  background: #444;
-}
-
-.hero-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: clamp(40px, 7vw, 88px);
-  font-weight: 200;
-  color: var(--off-white);
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin-bottom: 40px;
-}
-
-.hero-title em {
-  font-style: normal;
-  color: var(--red);
-}
-
-.hero-sub {
-  font-size: clamp(14px, 2vw, 18px);
-  font-weight: 300;
-  color: #666;
-  line-height: 2;
-  letter-spacing: 0.06em;
-  max-width: 560px;
-  margin-bottom: 56px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--black);
-  background: var(--off-white);
-  padding: 16px 40px;
-  text-decoration: none;
-  transition: all 0.2s;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-
-.btn-primary:hover { background: white; }
-
-.btn-ghost {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: #555;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: color 0.2s;
-}
-
-.btn-ghost:hover { color: var(--off-white); }
-
-.btn-ghost::after {
-  content: '';
-  width: 24px;
-  height: 0.5px;
-  background: currentColor;
-  transition: width 0.2s;
-}
-
-.btn-ghost:hover::after { width: 40px; }
-
-.hero-scroll {
-  position: absolute;
-  bottom: 40px;
-  right: 48px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0.3;
-}
-
-.hero-scroll span {
-  font-size: 9px;
-  letter-spacing: 0.4em;
-  color: var(--off-white);
-  writing-mode: vertical-rl;
-}
-
-.hero-scroll-line {
-  width: 0.5px;
-  height: 60px;
-  background: var(--off-white);
-  animation: scrollLine 2s ease-in-out infinite;
-}
-
-@keyframes scrollLine {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
-
-/* ── 존재 선언 ── */
-.declaration {
-  padding: 140px 0;
-  background: var(--warm);
-}
-
-.decl-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.decl-left {}
-
-.decl-label {
-  font-size: 10px;
-  letter-spacing: 0.5em;
-  color: var(--gray);
-  margin-bottom: 32px;
-}
-
-.decl-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 200;
-  color: var(--black);
-  line-height: 1.5;
-  letter-spacing: 0.01em;
-  margin-bottom: 32px;
-}
-
-.decl-title em {
-  font-style: normal;
-  color: var(--red);
-}
-
-.decl-body {
-  font-size: 15px;
-  color: var(--gray);
-  line-height: 2.2;
-  letter-spacing: 0.05em;
-  margin-bottom: 40px;
-}
-
-.decl-quote {
-  padding: 24px 0 24px 24px;
-  border-left: 2px solid var(--red);
-  font-family: 'Noto Serif KR', serif;
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--dark);
-  line-height: 2;
-  letter-spacing: 0.04em;
-}
-
-.decl-right {}
-
-.decl-contrast {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 0.5px solid var(--light);
-}
-
-.dc-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.dc-col-label {
-  padding: 16px 24px;
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  font-weight: 500;
-}
-
-.dc-col-label.old {
-  background: #f0ece4;
-  color: var(--gray);
-  border-right: 0.5px solid var(--light);
-}
-
-.dc-col-label.new {
-  background: var(--black);
-  color: var(--off-white);
-}
-
-.dc-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 0.5px solid var(--light);
-}
-
-.dc-cell {
-  padding: 16px 24px;
-  font-size: 13px;
-  line-height: 1.7;
-  letter-spacing: 0.03em;
-}
-
-.dc-cell.old {
-  color: #bbb;
-  background: #f8f5ef;
-  border-right: 0.5px solid var(--light);
-  text-decoration: line-through;
-  text-decoration-color: #ddd;
-}
-
-.dc-cell.new {
-  color: var(--dark);
-  background: white;
-  font-weight: 400;
-}
-
-/* ── 철학 뿌리 ── */
-.philosophy {
-  padding: 120px 0;
-  background: var(--black);
-}
-
-.phil-label {
-  font-size: 10px;
-  letter-spacing: 0.5em;
-  color: #444;
-  margin-bottom: 60px;
-}
-
-.phil-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: #1a1816;
-}
-
-.phil-card {
-  background: #0e0d0c;
-  padding: 40px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  transition: background 0.2s;
-}
-
-.phil-card:hover { background: #151412; }
-
-.phil-num {
-  font-size: 32px;
-  font-weight: 200;
-  color: #222;
-  font-family: 'Noto Serif KR', serif;
-  line-height: 1;
-}
-
-.phil-name {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--red);
-  font-weight: 500;
-}
-
-.phil-author {
-  font-size: 12px;
-  color: #555;
-  letter-spacing: 0.1em;
-}
-
-.phil-desc {
-  font-size: 13px;
-  color: #444;
-  line-height: 1.9;
-  letter-spacing: 0.04em;
-  flex: 1;
-}
-
-.phil-keyword {
-  font-size: 11px;
-  color: #333;
-  letter-spacing: 0.15em;
-  padding-top: 16px;
-  border-top: 0.5px solid #1a1816;
-}
-
-/* ── 서비스 ── */
-.services {
-  padding: 140px 0;
-  background: var(--cream);
-}
-
-.svc-label {
-  font-size: 10px;
-  letter-spacing: 0.5em;
-  color: var(--gray);
-  margin-bottom: 16px;
-}
-
-.svc-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 200;
-  color: var(--black);
-  line-height: 1.4;
-  margin-bottom: 80px;
-  letter-spacing: 0.01em;
-}
-
-.svc-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2px;
-}
-
-.svc-card {
-  background: white;
-  padding: 48px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s;
-}
-
-.svc-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 3px;
-  height: 0;
-  background: var(--red);
-  transition: height 0.4s ease;
-}
-
-.svc-card:hover::before { height: 100%; }
-.svc-card:hover { transform: translateY(-4px); }
-
-.svc-card-num {
-  font-size: 48px;
-  font-weight: 200;
-  color: #f0ece4;
-  font-family: 'Noto Serif KR', serif;
-  line-height: 1;
-}
-
-.svc-card-name {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 22px;
-  font-weight: 300;
-  color: var(--black);
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-}
-
-.svc-card-desc {
-  font-size: 13px;
-  color: var(--gray);
-  line-height: 2;
-  letter-spacing: 0.04em;
-  flex: 1;
-}
-
-.svc-card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-top: 20px;
-  border-top: 0.5px solid var(--light);
-}
-
-.svc-info-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.svc-info-key {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: #bbb;
-}
-
-.svc-info-val {
-  font-size: 13px;
-  color: var(--dark);
-  letter-spacing: 0.04em;
-}
-
-.svc-card-link {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--red);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  transition: gap 0.2s;
-}
-
-.svc-card-link:hover { gap: 14px; }
-.svc-card-link::after { content: '→'; }
-
-/* ── Work Memory ── */
-.work-memory {
-  padding: 140px 0;
-  background: var(--warm);
-}
-
-.wm-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: end;
-  margin-bottom: 64px;
-}
-
-.wm-label {
-  font-size: 10px;
-  letter-spacing: 0.5em;
-  color: var(--gray);
-  margin-bottom: 16px;
-}
-
-.wm-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: clamp(24px, 3.5vw, 40px);
-  font-weight: 200;
-  color: var(--black);
-  line-height: 1.5;
-  letter-spacing: 0.01em;
-}
-
-.wm-title em { font-style: normal; color: var(--red); }
-
-.wm-desc {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 2.2;
-  letter-spacing: 0.05em;
-  align-self: end;
-}
-
-/* Work Memory 그리드 시뮬레이션 */
-.wm-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 3px;
-}
-
-.wm-cell {
-  aspect-ratio: 1;
-  background: white;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.wm-cell::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-  transition: background 0.3s;
-}
-
-.wm-cell:hover::after { background: rgba(0,0,0,0.1); }
-
-.wm-caption {
-  margin-top: 24px;
-  font-size: 12px;
-  color: var(--gray);
-  letter-spacing: 0.1em;
-  text-align: center;
-}
-
-/* ── 창업자 스토리 ── */
-.founders {
-  padding: 140px 0;
-  background: var(--black);
-}
-
-.founders-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
-
-.founder-card {
-  background: #111;
-  padding: 56px 48px;
-}
-
-.fc-role {
-  font-size: 10px;
-  letter-spacing: 0.4em;
-  color: #444;
-  margin-bottom: 24px;
-}
-
-.fc-name {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 28px;
-  font-weight: 300;
-  color: var(--off-white);
-  margin-bottom: 8px;
-  letter-spacing: 0.02em;
-}
-
-.fc-sub {
-  font-size: 12px;
-  color: var(--red);
-  letter-spacing: 0.15em;
-  margin-bottom: 12px;
-}
-
-.fc-story {
-  font-size: 14px;
-  color: #555;
-  line-height: 2.2;
-  letter-spacing: 0.05em;
-}
-
-.fc-story strong {
-  color: #888;
-  font-weight: 400;
-}
-
-/* ── 문의 & 예약 ── */
-.contact {
-  padding: 140px 0;
-  background: var(--off-white);
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-}
-
-.contact-left {}
-
-.contact-label {
-  font-size: 10px;
-  letter-spacing: 0.5em;
-  color: var(--gray);
-  margin-bottom: 24px;
-}
-
-.contact-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 200;
-  color: var(--black);
-  line-height: 1.5;
-  letter-spacing: 0.01em;
-  margin-bottom: 32px;
-}
-
-.contact-title em { font-style: normal; color: var(--red); }
-
-.contact-body {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 2.2;
-  letter-spacing: 0.05em;
-  margin-bottom: 48px;
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.ci-row {
-  display: flex;
-  gap: 24px;
-  align-items: baseline;
-  padding-bottom: 16px;
-  border-bottom: 0.5px solid var(--light);
-}
-
-.ci-key {
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  color: var(--gray);
-  width: 60px;
-  flex-shrink: 0;
-}
-
-.ci-val {
-  font-size: 14px;
-  color: var(--dark);
-  letter-spacing: 0.05em;
-  line-height: 1.6;
-}
-
-/* 문의 폼 */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-label {
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  color: var(--gray);
-}
-
-.form-input, .form-select, .form-textarea {
-  background: white;
-  border: 0.5px solid var(--light);
-  padding: 14px 18px;
-  font-size: 14px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 300;
-  color: var(--dark);
-  letter-spacing: 0.04em;
-  outline: none;
-  transition: border-color 0.2s;
-  appearance: none;
-  width: 100%;
-}
-
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--dark);
-}
-
-.form-textarea {
-  height: 120px;
-  resize: none;
-  line-height: 1.8;
-}
-
-.form-select {
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8480' stroke-width='1' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  padding-right: 40px;
-}
-
-.form-submit {
-  background: var(--black);
-  color: var(--off-white);
-  border: none;
-  padding: 18px 40px;
-  font-size: 12px;
-  letter-spacing: 0.25em;
-  font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
-  transition: background 0.2s;
-  align-self: flex-start;
-}
-
-.form-submit:hover { background: var(--dark); }
-
-.form-note {
-  font-size: 11px;
-  color: #bbb;
-  letter-spacing: 0.08em;
-  line-height: 1.8;
-}
-
-/* ── 푸터 ── */
-footer {
-  background: var(--black);
-  padding: 60px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 0.5px solid #1a1816;
-}
-
-.footer-logo {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 20px;
-  font-weight: 300;
-  color: var(--off-white);
-  letter-spacing: 0.05em;
-}
-
-.footer-logo span { color: var(--red); }
-
-.footer-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: #444;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover { color: #888; }
-
-.footer-copy {
-  font-size: 11px;
-  color: #333;
-  letter-spacing: 0.1em;
-}
-
-/* ── 반응형 ── */
-@media (max-width: 768px) {
-  nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .hero-content { padding: 0 24px; }
-  .container { padding: 0 24px; }
-  .decl-grid, .wm-header, .founders-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  .phil-grid { grid-template-columns: 1fr 1fr; }
-  .svc-grid { grid-template-columns: 1fr; }
-  .wm-grid { grid-template-columns: repeat(3, 1fr); }
-  footer { flex-direction: column; gap: 24px; text-align: center; }
-  .footer-links { flex-wrap: wrap; justify-content: center; }
-}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--black:#0c0b0a;--off-white:#f4f0e8;--warm:#faf7f2;--red:#c8392b;--gray:#8a8480;--light:#e0dbd2;--dark:#2a2826;--cream:#f0ebe0;--blue:#4a7ab5;}
+html{scroll-behavior:smooth;}
+body{background:var(--warm);color:var(--black);font-family:'Noto Sans KR',sans-serif;font-weight:300;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(250,247,242,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid transparent;transition:border-color 0.3s;}
+nav.scrolled{border-bottom-color:var(--light);}
+.nav-logo{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:var(--black);letter-spacing:0.05em;text-decoration:none;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:12px;letter-spacing:0.15em;color:var(--gray);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--black);}
+.nav-cta{font-size:11px;letter-spacing:0.2em;color:var(--off-white);background:var(--black);padding:10px 24px;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--dark);}
+.container{max-width:1120px;margin:0 auto;padding:0 48px;}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:80px;background:var(--black);position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;opacity:0.05;}
+.hero-content{position:relative;z-index:2;padding:0 48px;}
+.hero-label{font-size:10px;letter-spacing:0.6em;color:#444;margin-bottom:40px;display:flex;align-items:center;gap:16px;}
+.hero-label::before{content:'';width:32px;height:0.5px;background:#444;}
+.hero-title{font-family:'Noto Serif KR',serif;font-size:clamp(32px,6vw,72px);font-weight:200;color:var(--off-white);line-height:1.4;letter-spacing:-0.01em;margin-bottom:40px;}
+.hero-title em{font-style:normal;color:var(--red);}
+.hero-sub{font-size:clamp(14px,1.8vw,17px);font-weight:300;color:#666;line-height:2.2;letter-spacing:0.06em;max-width:500px;margin-bottom:56px;}
+.hero-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+.btn-primary{font-size:12px;letter-spacing:0.2em;color:var(--black);background:var(--off-white);padding:16px 40px;text-decoration:none;transition:all 0.2s;}
+.btn-primary:hover{background:white;}
+.btn-ghost{font-size:12px;letter-spacing:0.2em;color:#555;text-decoration:none;display:flex;align-items:center;gap:10px;transition:color 0.2s;}
+.btn-ghost:hover{color:var(--off-white);}
+.btn-ghost::after{content:'→';}
+.hero-scroll{position:absolute;bottom:40px;right:48px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.3;}
+.hero-scroll span{font-size:9px;letter-spacing:0.4em;color:var(--off-white);writing-mode:vertical-rl;}
+.hero-scroll-line{width:0.5px;height:60px;background:var(--off-white);animation:scrollLine 2s ease-in-out infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+.sec-label{font-size:10px;letter-spacing:0.5em;color:var(--gray);margin-bottom:16px;}
+.sec-title{font-family:'Noto Serif KR',serif;font-size:clamp(26px,4vw,44px);font-weight:200;color:var(--black);line-height:1.5;letter-spacing:0.01em;margin-bottom:56px;}
+.sec-title em{font-style:normal;color:var(--red);}
+.limits{padding:140px 0;background:var(--warm);}
+.limits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.limit-card{background:white;padding:40px 36px;display:flex;flex-direction:column;gap:20px;}
+.limit-num{font-size:48px;font-weight:200;color:#f0ece4;font-family:'Noto Serif KR',serif;line-height:1;}
+.limit-method{font-size:13px;letter-spacing:0.2em;color:var(--gray);font-weight:500;padding-bottom:16px;border-bottom:0.5px solid var(--light);}
+.limit-text{font-size:14px;color:var(--dark);line-height:2;letter-spacing:0.04em;flex:1;}
+.limit-pain{font-size:13px;color:var(--red);letter-spacing:0.05em;line-height:1.8;padding-top:16px;border-top:0.5px solid var(--light);font-style:italic;}
+.method{padding:140px 0;background:var(--black);}
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.method-label{font-size:10px;letter-spacing:0.5em;color:#444;margin-bottom:24px;}
+.method-title{font-family:'Noto Serif KR',serif;font-size:clamp(26px,4vw,44px);font-weight:200;color:var(--off-white);line-height:1.5;letter-spacing:0.01em;margin-bottom:32px;}
+.method-title em{font-style:normal;color:var(--red);}
+.method-body{font-size:15px;color:#666;line-height:2.2;letter-spacing:0.05em;margin-bottom:40px;}
+.method-quote{padding:24px 0 24px 24px;border-left:2px solid var(--red);font-family:'Noto Serif KR',serif;font-size:15px;font-weight:300;color:#888;line-height:2;letter-spacing:0.04em;}
+.method-right{display:flex;flex-direction:column;gap:2px;}
+.method-step{background:#111;padding:28px 32px;display:flex;gap:24px;align-items:flex-start;transition:background 0.2s;}
+.method-step:hover{background:#161412;}
+.ms-num{font-size:11px;letter-spacing:0.3em;color:var(--red);flex-shrink:0;padding-top:3px;width:28px;}
+.ms-title{font-size:15px;font-weight:400;color:var(--off-white);margin-bottom:8px;letter-spacing:0.04em;}
+.ms-desc{font-size:13px;color:#555;line-height:1.9;letter-spacing:0.04em;}
+.honest{padding:120px 0;background:#f5f0e8;}
+.honest-inner{max-width:720px;margin:0 auto;text-align:center;}
+.honest-label{font-size:10px;letter-spacing:0.5em;color:var(--gray);margin-bottom:24px;}
+.honest-title{font-family:'Noto Serif KR',serif;font-size:clamp(24px,4vw,40px);font-weight:200;color:var(--black);line-height:1.6;letter-spacing:0.01em;margin-bottom:48px;}
+.honest-title em{font-style:normal;color:var(--red);}
+.honest-cards{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:48px;text-align:left;}
+.hc-card{background:white;padding:32px 28px;}
+.hc-q{font-size:13px;color:var(--gray);line-height:1.9;letter-spacing:0.04em;margin-bottom:16px;padding-bottom:16px;border-bottom:0.5px solid var(--light);font-style:italic;}
+.hc-a{font-size:14px;color:var(--dark);line-height:2;letter-spacing:0.04em;font-weight:400;}
+.honest-bottom{font-size:14px;color:var(--gray);line-height:2.2;letter-spacing:0.05em;}
+.difference{padding:140px 0;background:var(--warm);}
+.diff-table{width:100%;border-collapse:collapse;margin-top:64px;}
+.diff-table th{padding:16px 28px;font-size:10px;letter-spacing:0.3em;font-weight:500;font-family:'Noto Sans KR',sans-serif;text-align:left;}
+.diff-table th:first-child{background:#e8e2d8;color:var(--gray);width:20%;}
+.diff-table th:nth-child(2){background:#f0ece4;color:var(--gray);width:40%;}
+.diff-table th:last-child{background:var(--black);color:var(--off-white);width:40%;}
+.diff-table td{padding:20px 28px;font-size:14px;line-height:1.8;letter-spacing:0.03em;border-bottom:0.5px solid var(--light);vertical-align:top;}
+.diff-table td:first-child{color:var(--gray);background:#f8f4ee;font-size:11px;letter-spacing:0.15em;font-weight:500;}
+.diff-table td:nth-child(2){color:#bbb;background:white;text-decoration:line-through;text-decoration-color:#ddd;}
+.diff-table td:last-child{color:var(--dark);background:white;font-weight:400;}
+.founders{padding:140px 0;background:var(--black);}
+.founders-header{margin-bottom:64px;}
+.founders-label{font-size:10px;letter-spacing:0.5em;color:#444;margin-bottom:16px;}
+.founders-title{font-family:'Noto Serif KR',serif;font-size:clamp(24px,3.5vw,40px);font-weight:200;color:var(--off-white);line-height:1.5;letter-spacing:0.01em;}
+.founders-title em{font-style:normal;color:var(--red);}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.founder-card{background:#111;padding:56px 48px;}
+.fc-role{font-size:10px;letter-spacing:0.4em;color:#444;margin-bottom:20px;}
+.fc-name{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:300;color:var(--off-white);margin-bottom:6px;letter-spacing:0.02em;}
+.fc-sub{font-size:12px;color:var(--red);letter-spacing:0.15em;margin-bottom:8px;}
+.fc-academic{font-size:11px;color:var(--blue);letter-spacing:0.1em;margin-bottom:36px;line-height:1.9;}
+.fc-story{font-size:14px;color:#555;line-height:2.2;letter-spacing:0.05em;}
+.fc-story strong{color:#888;font-weight:400;}
+.services{padding:140px 0;background:var(--cream);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;}
+.svc-card{background:white;padding:48px 40px;display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;transition:transform 0.3s;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--red);transition:height 0.4s ease;}
+.svc-card:hover::before{height:100%;}
+.svc-card:hover{transform:translateY(-4px);}
+.svc-num{font-size:48px;font-weight:200;color:#f0ece4;font-family:'Noto Serif KR',serif;line-height:1;}
+.svc-name{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:300;color:var(--black);line-height:1.4;letter-spacing:0.02em;}
+.svc-ko{font-size:13px;color:var(--red);letter-spacing:0.08em;margin-top:6px;}
+.svc-desc{font-size:13px;color:var(--gray);line-height:2;letter-spacing:0.04em;flex:1;}
+.svc-info{display:flex;flex-direction:column;gap:8px;padding-top:20px;border-top:0.5px solid var(--light);}
+.svc-row{display:flex;justify-content:space-between;align-items:baseline;}
+.svc-key{font-size:10px;letter-spacing:0.2em;color:#bbb;}
+.svc-val{font-size:13px;color:var(--dark);letter-spacing:0.04em;}
+.svc-link{font-size:11px;letter-spacing:0.2em;color:var(--red);text-decoration:none;display:flex;align-items:center;gap:8px;margin-top:8px;transition:gap 0.2s;}
+.svc-link:hover{gap:14px;}
+.svc-link::after{content:'→';}
+.philosophy{padding:100px 0;background:var(--black);}
+.phil-label{font-size:10px;letter-spacing:0.5em;color:#444;margin-bottom:40px;}
+.phil-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1a1816;}
+.phil-card{background:#0e0d0c;padding:32px 28px;display:flex;flex-direction:column;gap:14px;}
+.phil-num{font-size:28px;font-weight:200;color:#1a1816;font-family:'Noto Serif KR',serif;line-height:1;}
+.phil-name{font-size:11px;letter-spacing:0.2em;color:var(--red);font-weight:500;}
+.phil-author{font-size:11px;color:#444;letter-spacing:0.1em;}
+.phil-desc{font-size:12px;color:#3a3836;line-height:1.9;letter-spacing:0.04em;flex:1;}
+.phil-keyword{font-size:10px;color:#2a2826;letter-spacing:0.15em;padding-top:14px;border-top:0.5px solid #1a1816;}
+.contact{padding:140px 0;background:var(--off-white);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.contact-label{font-size:10px;letter-spacing:0.5em;color:var(--gray);margin-bottom:24px;}
+.contact-title{font-family:'Noto Serif KR',serif;font-size:clamp(26px,4vw,44px);font-weight:200;color:var(--black);line-height:1.5;letter-spacing:0.01em;margin-bottom:28px;}
+.contact-title em{font-style:normal;color:var(--red);}
+.contact-body{font-size:14px;color:var(--gray);line-height:2.2;letter-spacing:0.05em;margin-bottom:48px;}
+.ci-row{display:flex;gap:24px;align-items:baseline;padding-bottom:16px;border-bottom:0.5px solid var(--light);}
+.ci-row+.ci-row{margin-top:16px;}
+.ci-key{font-size:10px;letter-spacing:0.3em;color:var(--gray);width:60px;flex-shrink:0;}
+.ci-val{font-size:14px;color:var(--dark);letter-spacing:0.05em;line-height:1.6;}
+.contact-form{display:flex;flex-direction:column;gap:20px;}
+.form-group{display:flex;flex-direction:column;gap:8px;}
+.form-label{font-size:10px;letter-spacing:0.3em;color:var(--gray);}
+.form-input,.form-select,.form-textarea{background:white;border:0.5px solid var(--light);padding:14px 18px;font-size:14px;font-family:'Noto Sans KR',sans-serif;font-weight:300;color:var(--dark);letter-spacing:0.04em;outline:none;transition:border-color 0.2s;appearance:none;width:100%;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--dark);}
+.form-textarea{height:120px;resize:none;line-height:1.8;}
+.form-select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8480' stroke-width='1' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;}
+.form-submit{background:var(--black);color:var(--off-white);border:none;padding:18px 40px;font-size:12px;letter-spacing:0.25em;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:background 0.2s;align-self:flex-start;}
+.form-submit:hover{background:var(--dark);}
+.form-note{font-size:11px;color:#bbb;letter-spacing:0.08em;line-height:1.8;}
+footer{background:var(--black);padding:60px 48px;display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid #1a1816;}
+.footer-logo{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:300;color:var(--off-white);letter-spacing:0.05em;}
+.footer-logo span{color:var(--red);}
+.footer-links{display:flex;gap:32px;list-style:none;}
+.footer-links a{font-size:11px;letter-spacing:0.2em;color:#444;text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:#888;}
+.footer-copy{font-size:11px;color:#333;letter-spacing:0.1em;}
+@media(max-width:768px){nav{padding:16px 24px;}.nav-links{display:none;}.hero-content,.container{padding-left:24px;padding-right:24px;}.method-grid,.contact-grid,.founders-grid,.honest-cards{grid-template-columns:1fr;gap:24px;}.phil-grid,.svc-grid,.limits-grid{grid-template-columns:1fr;}.diff-table{font-size:12px;}.diff-table th,.diff-table td{padding:12px 16px;}footer{flex-direction:column;gap:24px;text-align:center;}.footer-links{flex-wrap:wrap;justify-content:center;}}
 </style>
 </head>
 <body>
 
-<!-- ── 네비게이션 ── -->
 <nav id="nav">
   <a href="#" class="nav-logo">마음<span>다움</span></a>
   <ul class="nav-links">
-    <li><a href="#about">존재 이유</a></li>
+    <li><a href="#limits">이런 분들</a></li>
+    <li><a href="#method">우리의 방법</a></li>
     <li><a href="#services">서비스</a></li>
     <li><a href="#founders">우리는</a></li>
   </ul>
   <a href="#contact" class="nav-cta">문의하기</a>
 </nav>
 
-<!-- ── 히어로 ── -->
+<!-- 1단계: 고객 문제 -->
 <section class="hero" id="top">
   <svg class="hero-bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-    <ellipse cx="200" cy="200" rx="180" ry="120" fill="#c8392b" style="animation-delay:0s"/>
-    <circle cx="800" cy="150" r="140" fill="#1e3a5f" style="animation-delay:1s"/>
-    <rect x="900" y="400" width="200" height="120" rx="8" fill="#d4a017" transform="rotate(15,1000,460)" style="animation-delay:2s"/>
-    <ellipse cx="300" cy="600" rx="120" ry="160" fill="#2b6b4f" style="animation-delay:0.5s"/>
-    <circle cx="600" cy="500" r="100" fill="#111110" style="animation-delay:1.5s"/>
-    <ellipse cx="1100" cy="650" rx="150" ry="90" fill="#c8392b" style="animation-delay:2.5s"/>
+    <ellipse cx="200" cy="200" rx="180" ry="120" fill="#c8392b"/>
+    <circle cx="800" cy="150" r="140" fill="#1e3a5f"/>
+    <rect x="900" y="400" width="200" height="120" rx="8" fill="#d4a017" transform="rotate(15,1000,460)"/>
+    <ellipse cx="300" cy="600" rx="120" ry="160" fill="#2b6b4f"/>
+    <circle cx="600" cy="500" r="100" fill="#111110"/>
   </svg>
-
   <div class="hero-content">
-    <p class="hero-label">MAUMDAUM · 마음다움 · 2022</p>
+    <p class="hero-label">MAUMDAUM · 마음다움</p>
     <h1 class="hero-title">
-      마음이<br>
-      <em>마음다워지는</em><br>
-      곳.
+      열심히 살고 있는데<br>
+      왜 이렇게<br>
+      <em>텅 빈 느낌</em>이지?
     </h1>
     <p class="hero-sub">
-      말로, 진단으로, 전문가 의존으로<br>
-      해결하려는 문화에서 벗어나.<br>
-      손으로 무언가를 만들며<br>
-      지금 이 순간의 나를 꺼내는 곳.
+      병원 갈 정도는 아닌 것 같은데,<br>
+      그렇다고 괜찮지도 않은 상태.<br>
+      그게 생활 우울이에요.<br>
+      잘못된 게 아니에요.
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">세션 문의하기</a>
-      <a href="#about" class="btn-ghost">마음다움이란</a>
+      <a href="#method" class="btn-primary">마음다움이란</a>
+      <a href="#contact" class="btn-ghost">문의하기</a>
     </div>
   </div>
-
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
     <span>SCROLL</span>
   </div>
 </section>
 
-<!-- ── 존재 선언 ── -->
-<section class="declaration" id="about">
+<!-- 2단계: 일반 해결책의 한계 -->
+<section class="limits" id="limits">
   <div class="container">
-    <div class="decl-grid">
-      <div class="decl-left">
-        <p class="decl-label">WHY MAUMDAUM · 존재 이유</p>
-        <h2 class="decl-title">
-          테라피 문화가<br>
-          <em>놓친 것</em>을<br>
-          해요.
-        </h2>
-        <p class="decl-body">
-          우리는 말로, 진단으로, 전문가 의존으로<br>
-          해결하려는 문화에 저항해요.<br><br>
-          인간은 본디 손으로 무언가를 만들고,<br>
-          감각으로 느끼고, 스스로 회복하는<br>
-          본능을 가지고 태어났어요.<br>
-          마음다움은 그 본능을 함께 되찾는 곳이에요.
-        </p>
-        <blockquote class="decl-quote">
-          4만 년 전부터 인간은 손으로 무언가를 만들며<br>
-          자신을 표현해왔어요.<br>
-          재능이 있어서가 아니라, 살아있기 때문에.
-        </blockquote>
+    <p class="sec-label">이런 경험 있지 않으신가요?</p>
+    <h2 class="sec-title">시도해봤는데<br><em>여전히 안 풀리는 느낌.</em></h2>
+    <div class="limits-grid">
+      <div class="limit-card">
+        <span class="limit-num">01</span>
+        <p class="limit-method">심리상담</p>
+        <p class="limit-text">말로는 다 했어요. 감정도 설명했고, 과거도 꺼냈어요. 상담사도 좋은 분이었어요.</p>
+        <p class="limit-pain">"근데 정작 내가 뭘 느끼는지는 여전히 모르겠어요."</p>
       </div>
+      <div class="limit-card">
+        <span class="limit-num">02</span>
+        <p class="limit-method">약물치료</p>
+        <p class="limit-text">불안이 줄고 잠은 잘 잤어요. 증상은 나아졌는데 뭔가 감각이 사라진 느낌.</p>
+        <p class="limit-pain">"괜찮아졌는데, 내가 뭘 원하는지 모르겠어요."</p>
+      </div>
+      <div class="limit-card">
+        <span class="limit-num">03</span>
+        <p class="limit-method">자기계발 · 명상</p>
+        <p class="limit-text">더 나아지려고 책 읽고, 명상하고, 운동도 해봤어요. 근데 해야 할 것만 늘어났어요.</p>
+        <p class="limit-pain">"노력하는데 왜 여전히 이런 느낌이지?"</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="decl-right">
-        <div class="decl-contrast">
-          <div class="dc-header">
-            <div class="dc-col-label old">기존 테라피 문화</div>
-            <div class="dc-col-label new">마음다움</div>
-          </div>
-          <div class="dc-row">
-            <div class="dc-cell old">전문가가 당신을 분석한다</div>
-            <div class="dc-cell new">당신이 직접 손을 움직인다</div>
-          </div>
-          <div class="dc-row">
-            <div class="dc-cell old">말로 설명하고 언어화한다</div>
-            <div class="dc-cell new">설명하지 않아도 된다</div>
-          </div>
-          <div class="dc-row">
-            <div class="dc-cell old">증상에 진단명을 붙인다</div>
-            <div class="dc-cell new">진단명이 당신의 전부가 아니다</div>
-          </div>
-          <div class="dc-row">
-            <div class="dc-cell old">더 나은 나로 최적화한다</div>
-            <div class="dc-cell new">지금 이 순간의 나를 꺼낸다</div>
-          </div>
-          <div class="dc-row">
-            <div class="dc-cell old">전문가에게 의존하게 된다</div>
-            <div class="dc-cell new">스스로 할 수 있게 된다</div>
-          </div>
+<!-- 3단계: 마음다움의 방법 -->
+<section class="method" id="method">
+  <div class="container">
+    <div class="method-grid">
+      <div class="method-left">
+        <p class="method-label">THE MAUMDAUM WAY · 우리의 방법</p>
+        <h2 class="method-title">말로 풀기 전에,<br><em>감각으로</em><br>먼저 가요.</h2>
+        <p class="method-body">인간은 4만 년 전부터 손으로 무언가를 만들며 자신을 표현해왔어요. 재능이 있어서가 아니라, 살아있기 때문에. 그게 예술의 기원이에요.<br><br>생활 우울은 그 본능이 잠시 멈춰있는 상태예요. 고장난 게 아니에요. 아직 살아있는 거예요.</p>
+        <blockquote class="method-quote">잘 그리지 않아도 돼요.<br>설명하지 않아도 돼요.<br>지금 이 순간의 나를 꺼내는 것으로 충분해요.</blockquote>
+      </div>
+      <div class="method-right">
+        <div class="method-step">
+          <span class="ms-num">01</span>
+          <div><p class="ms-title">언어 이전으로</p><p class="ms-desc">말이 닿기 전의 감각으로 먼저 가요. 이미지, 색, 형태가 언어보다 먼저 도착해요.</p></div>
+        </div>
+        <div class="method-step">
+          <span class="ms-num">02</span>
+          <div><p class="ms-title">손으로 직접</p><p class="ms-desc">분석하지 않아요. 설명하지 않아요. 손을 움직여 무언가를 만드는 것으로 시작해요.</p></div>
+        </div>
+        <div class="method-step">
+          <span class="ms-num">03</span>
+          <div><p class="ms-title">안전한 공간에서</p><p class="ms-desc">잘해야 한다는 압박 없이. 진단명이나 분석 없이. 그냥 지금 이 순간의 나로.</p></div>
+        </div>
+        <div class="method-step">
+          <span class="ms-num">04</span>
+          <div><p class="ms-title">스스로 할 수 있게</p><p class="ms-desc">마음다움의 궁극적 목표는 의존이 아니라 회복이에요. 당신 혼자서도 할 수 있게 되는 것.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── 철학 뿌리 ── -->
+<!-- 4단계: 솔직한 한계 인정 -->
+<section class="honest" id="honest">
+  <div class="container">
+    <div class="honest-inner">
+      <p class="honest-label">솔직하게 말할게요</p>
+      <h2 class="honest-title">이런 분들은<br><em>망설여질 수 있어요.</em></h2>
+      <div class="honest-cards">
+        <div class="hc-card">
+          <p class="hc-q">"나는 그림을 전혀 못 그리는데요."</p>
+          <p class="hc-a">잘 그릴 필요 없어요. 마음다움에서 하는 건 예술 작품 만들기가 아니에요. 지금 내가 느끼는 걸 손으로 꺼내는 거예요.</p>
+        </div>
+        <div class="hc-card">
+          <p class="hc-q">"저는 심각하지 않아서요."</p>
+          <p class="hc-a">오히려 딱 맞아요. 병원 갈 정도가 아닌데 뭔가 안 풀리는 느낌, 그 자리에 있는 분들을 가장 많이 만나요.</p>
+        </div>
+        <div class="hc-card">
+          <p class="hc-q">"효과가 있을까요? 증거가 있나요?"</p>
+          <p class="hc-a">수치로 된 데이터는 없어요. 대신 15회 워크숍을 마친 참가자들이 직접 손으로 남긴 Work Memory가 있어요.</p>
+        </div>
+        <div class="hc-card">
+          <p class="hc-q">"혼자 가도 괜찮을까요?"</p>
+          <p class="hc-a">그룹 워크숍도 1:1 세션도, 처음 오시는 분들이 대부분이에요. 아는 사람 한 명 없어도 괜찮아요.</p>
+        </div>
+      </div>
+      <p class="honest-bottom">그래도 망설여진다면 — 부담 없이 먼저 물어봐요.<br>서영 010-5588-8415</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5단계: 차별점 -->
+<section class="difference" id="difference">
+  <div class="container">
+    <p class="sec-label">WHY MAUMDAUM · 왜 마음다움인가</p>
+    <h2 class="sec-title">테라피 문화가<br><em>놓친 것</em>을 해요.</h2>
+    <table class="diff-table">
+      <thead>
+        <tr><th>구분</th><th>기존 테라피 문화</th><th>마음다움</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>주체</td><td>전문가가 당신을 분석한다</td><td>당신이 직접 손을 움직인다</td></tr>
+        <tr><td>언어</td><td>말로 설명하고 언어화한다</td><td>설명하지 않아도 된다</td></tr>
+        <tr><td>진단</td><td>증상에 진단명을 붙인다</td><td>진단명이 당신의 전부가 아니다</td></tr>
+        <tr><td>목표</td><td>더 나은 나로 최적화한다</td><td>지금 이 순간의 나를 꺼낸다</td></tr>
+        <tr><td>결과</td><td>전문가에게 의존하게 된다</td><td>스스로 할 수 있게 된다</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 창업자 스토리 -->
+<section class="founders" id="founders">
+  <div class="container">
+    <div class="founders-header">
+      <p class="founders-label">OUR STORY · 우리 이야기</p>
+      <h2 class="founders-title">저도 그랬어요.<br><em>그래서 이 일을 해요.</em></h2>
+    </div>
+    <div class="founders-grid">
+      <div class="founder-card">
+        <p class="fc-role">RESEARCH · PHILOSOPHY</p>
+        <h3 class="fc-name">조현우</h3>
+        <p class="fc-sub">예술치료사 · 통합예술심리상담사</p>
+        <p class="fc-academic">한양대학교 상담심리대학원 상담심리학 석사<br>(예술치료교육 및 상담 전공)</p>
+        <p class="fc-story">교과서 여백에 그림을 그리던 아이였어요.<br><br>상담을 받아봤어요. 말로는 다 했는데 여전히 안 풀리는 느낌이 있었어요.<br><br>그때 처음으로 <strong>손을 움직여 무언가를 만들었어요.</strong> 설명하지 않아도 됐어요. 근데 울컥했어요.<br><br>진단명이 사람을 규정할 때 무언가 중요한 게 사라진다는 걸, 가장 가까운 자리에서 봤어요.<br><br>그게 마음다움을 시작한 이유예요.</p>
+      </div>
+      <div class="founder-card">
+        <p class="fc-role">HOSPITALITY · CONNECTION</p>
+        <h3 class="fc-name">황서영</h3>
+        <p class="fc-sub">예술치료사 · 통합예술심리상담사</p>
+        <p class="fc-academic">한양대학교 상담심리대학원 상담심리학 석사<br>(예술치료교육 및 상담 전공)</p>
+        <p class="fc-story">사람이 편안해지는 공간을 만드는 게 저한테 자연스러운 일이에요.<br><br>처음 오는 분들이 긴장하지 않도록, <strong>문이 낮고 따뜻한 곳</strong>이 되고 싶었어요.<br><br>마음다움에서 만나는 모든 순간이 그 사람만의 자화상이 된다고 믿어요.<br><br>저는 그 옆에서 함께 있는 사람이에요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 서비스 -->
+<section class="services" id="services">
+  <div class="container">
+    <p class="sec-label">SERVICES · 서비스</p>
+    <h2 class="sec-title">말로 안 풀릴 때,<br>다른 방법으로 만나요.</h2>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <span class="svc-num">01</span>
+        <div><h3 class="svc-name">GROUP<br>WORK+SHOP</h3><p class="svc-ko">집단 작업 프로그램</p></div>
+        <p class="svc-desc">소그룹이 함께 이미지로 먼저 만나요. 말하지 않아도 되는 시간. 지금 이 계절의 감각을 함께 꺼내요.</p>
+        <div class="svc-info">
+          <div class="svc-row"><span class="svc-key">인원</span><span class="svc-val">회당 최대 8명</span></div>
+          <div class="svc-row"><span class="svc-key">시간</span><span class="svc-val">6시간+@</span></div>
+          <div class="svc-row"><span class="svc-key">비용</span><span class="svc-val">1인 10만원</span></div>
+        </div>
+        <a href="#contact" class="svc-link">신청하기</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">02</span>
+        <div><h3 class="svc-name">PERSONAL<br>WORK+SHOP</h3><p class="svc-ko">개인 작업 프로그램</p></div>
+        <p class="svc-desc">말로도, 약으로도 다 안 될 때. 단둘이 만나요. 설명하지 않아도 되고, 잘 그리지 않아도 돼요.</p>
+        <div class="svc-info">
+          <div class="svc-row"><span class="svc-key">형태</span><span class="svc-val">1:1 집중</span></div>
+          <div class="svc-row"><span class="svc-key">시간</span><span class="svc-val">2~3시간</span></div>
+          <div class="svc-row"><span class="svc-key">비용</span><span class="svc-val">10~15만원</span></div>
+        </div>
+        <a href="#contact" class="svc-link">문의하기</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">+@</span>
+        <div><h3 class="svc-name">MAUMDAUM<br>WORK+MEMORY</h3><p class="svc-ko">마음다움 작업 기억 아카이빙</p></div>
+        <p class="svc-desc">워크숍·세션을 마치며 남기는 10×10 미니 캔버스 드로잉. 작품이 아니에요. 지금 이 순간의 자화상이에요.</p>
+        <div class="svc-info">
+          <div class="svc-row"><span class="svc-key">형태</span><span class="svc-val">10×10 캔버스</span></div>
+          <div class="svc-row"><span class="svc-key">색상</span><span class="svc-val">마음다움 컬러(파,노,초,빨,검)</span></div>
+          <div class="svc-row"><span class="svc-key">포함</span><span class="svc-val">세션·워크숍 포함</span></div>
+        </div>
+        <a href="#contact" class="svc-link">더 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 철학 뿌리 -->
 <section class="philosophy">
   <div class="container">
     <p class="phil-label">PHILOSOPHICAL ROOTS · 철학적 뿌리</p>
@@ -1004,7 +397,7 @@ footer {
         <span class="phil-num">03</span>
         <span class="phil-name">공적 우울</span>
         <span class="phil-author">앤 츠베트코비치</span>
-        <p class="phil-desc">우울은 개인의 병리가 아니다. 이 시대를 감각적으로 살아가는 사람들의 집단적, 정직한 반응이다.</p>
+        <p class="phil-desc">우울은 개인의 병리가 아니다. 이 시대를 감각적으로 살아가는 사람들의 집단적이고 정직한 반응이다.</p>
         <span class="phil-keyword">사회적 맥락</span>
       </div>
       <div class="phil-card">
@@ -1018,196 +411,58 @@ footer {
   </div>
 </section>
 
-<!-- ── 서비스 ── -->
-<section class="services" id="services">
-  <div class="container">
-    <p class="svc-label">SERVICES · 서비스</p>
-    <h2 class="svc-title">
-      말로 안 풀릴 때,<br>
-      다른 방법으로 만나요.
-    </h2>
-    <div class="svc-grid">
-      <div class="svc-card">
-        <span class="svc-card-num">01</span>
-        <h3 class="svc-card-name" style="line-height:1.3;">GROUP<br>WORK+SHOP<br><span style="font-size:13px; font-weight:300; color:var(--red); font-family:'Noto Sans KR',sans-serif; letter-spacing:0.05em;">집단 작업 프로그램</span></h3>
-        <p class="svc-card-desc">소그룹이 함께 이미지로 먼저 만나요. 말하지 않아도 되는 6시간. 지금 이 계절의 감각을 함께 꺼내는 시간이에요.</p>
-        <div class="svc-card-info">
-          <div class="svc-info-row">
-            <span class="svc-info-key">인원</span>
-            <span class="svc-info-val">회당 최대 8명</span>
-          </div>
-          <div class="svc-info-row">
-            <span class="svc-info-key">시간</span>
-            <span class="svc-info-val">6시간+@</span>
-          </div>
-          <div class="svc-info-row">
-            <span class="svc-info-key">비용</span>
-            <span class="svc-info-val">1인 10만원</span>
-          </div>
-        </div>
-        <a href="#contact" class="svc-card-link">신청하기</a>
-      </div>
-
-      <div class="svc-card">
-        <span class="svc-card-num">02</span>
-        <h3 class="svc-card-name" style="line-height:1.3;">PERSONAL<br>WORK+SHOP<br><span style="font-size:13px; font-weight:300; color:var(--red); font-family:'Noto Sans KR',sans-serif; letter-spacing:0.05em;">개인 작업 프로그램</span></h3>
-        <p class="svc-card-desc">말로도, 약으로도 다 안 될 때. 단둘이 만나요. 설명하지 않아도 되고, 잘 그리지 않아도 돼요. 지금 이 순간의 나를 꺼내는 시간이에요.</p>
-        <div class="svc-card-info">
-          <div class="svc-info-row">
-            <span class="svc-info-key">형태</span>
-            <span class="svc-info-val">1:1 집중</span>
-          </div>
-          <div class="svc-info-row">
-            <span class="svc-info-key">시간</span>
-            <span class="svc-info-val">2~3시간</span>
-          </div>
-          <div class="svc-info-row">
-            <span class="svc-info-key">비용</span>
-            <span class="svc-info-val">10~15만원</span>
-          </div>
-        </div>
-        <a href="#contact" class="svc-card-link">문의하기</a>
-      </div>
-
-      <div class="svc-card">
-        <span class="svc-card-num">+@</span>
-        <h3 class="svc-card-name" style="line-height:1.3;">MAUMDAUM<br>WORK+MEMORY<br><span style="font-size:13px; font-weight:300; color:var(--red); font-family:'Noto Sans KR',sans-serif; letter-spacing:0.05em;">마음다움 작업 기억 아카이빙</span></h3>
-        <p class="svc-card-desc">워크숍·세션을 마치며 남기는 10×10 미니 캔버스 드로잉. 작품이 아니에요. 지금 이 순간의 자화상이에요. 마음다움 컬러로, 손으로 직접.</p>
-        <div class="svc-card-info">
-          <div class="svc-info-row">
-            <span class="svc-info-key">형태</span>
-            <span class="svc-info-val">10×10 캔버스</span>
-          </div>
-          <div class="svc-info-row">
-            <span class="svc-info-key">색상</span>
-            <span class="svc-info-val">마음다움 컬러(파, 노, 초, 빨, 검)</span>
-          </div>
-          <div class="svc-info-row">
-            <span class="svc-info-key">포함</span>
-            <span class="svc-info-val">세션·워크숍 포함</span>
-          </div>
-        </div>
-        <a href="#contact" class="svc-card-link">문의하기</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 창업자 ── -->
-<section class="founders" id="founders">
-  <div class="container">
-    <p class="phil-label" style="margin-bottom:40px;">WHO WE ARE · 우리는</p>
-    <div class="founders-grid">
-      <div class="founder-card">
-        <p class="fc-role">RESEARCH · PHILOSOPHY</p>
-        <h3 class="fc-name">조현우</h3>
-        <p class="fc-sub">예술치료사 · 통합예술심리상담사</p>
-        <p style="font-size:11px; color:#4a7ab5; letter-spacing:0.1em; margin-top:6px; margin-bottom:28px; line-height:1.9;">한양대학교 상담심리대학원 상담심리학 석사<br>(예술치료교육 및 상담 전공)</p>
-        <p class="fc-story">
-          교과서 여백에 그림을 그리던 아이였어요.<br><br>
-          상담을 받아봤어요. 말로는 다 했는데<br>
-          여전히 안 풀리는 느낌이 있었어요.<br><br>
-          그때 처음으로 <strong>손을 움직여 무언가를 만들었어요.</strong><br>
-          설명하지 않아도 됐어요. 근데 울컥했어요.<br><br>
-          진단명이 사람을 규정할 때 무언가 중요한 게<br>
-          사라진다는 걸, 가장 가까운 자리에서 봤어요.<br><br>
-          그게 마음다움을 시작한 이유예요.
-        </p>
-      </div>
-      <div class="founder-card">
-        <p class="fc-role">HOSPITALITY · CONNECTION</p>
-        <h3 class="fc-name">황서영</h3>
-        <p class="fc-sub">예술치료사 · 통합예술심리상담사</p>
-        <p style="font-size:11px; color:#4a7ab5; letter-spacing:0.1em; margin-top:6px; margin-bottom:28px; line-height:1.9;">한양대학교 상담심리대학원 상담심리학 석사<br>(예술치료교육 및 상담 전공)</p>
-        <p class="fc-story">
-          사람이 편안해지는 공간을 만드는 게<br>
-          저한테 자연스러운 일이에요.<br><br>
-          처음 오는 분들이 긴장하지 않도록,<br>
-          <strong>문이 낮고 따뜻한 곳</strong>이 되고 싶었어요.<br><br>
-          마음다움에서 만나는 모든 순간이<br>
-          그 사람만의 자화상이 된다고 믿어요.<br><br>
-          저는 그 옆에서 함께 있는 사람이에요.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 문의 & 예약 ── -->
+<!-- 문의 -->
 <section class="contact" id="contact">
   <div class="container">
     <div class="contact-grid">
-      <div class="contact-left">
+      <div>
         <p class="contact-label">CONTACT · 문의 & 예약</p>
-        <h2 class="contact-title">
-          부담 없이<br>
-          <em>먼저 물어봐도</em><br>
-          돼요.
-        </h2>
-        <p class="contact-body">
-          어떤 서비스인지, 나한테 맞는지,<br>
-          아무것도 몰라도 괜찮아요.<br>
-          궁금한 것 먼저 물어봐요.<br>
-          서영이 답할게요.
-        </p>
-        <div class="contact-info">
-          <div class="ci-row">
-            <span class="ci-key">전화·문자</span>
-            <span class="ci-val">010-5588-8415 (서영)</span>
-          </div>
-          <div class="ci-row">
-            <span class="ci-key">인스타</span>
-            <span class="ci-val">@maumdaum_official</span>
-          </div>
-          <div class="ci-row">
-            <span class="ci-key">장소</span>
-            <span class="ci-val">서울 은평구 (오프라인) + ZOOM (온라인)</span>
-          </div>
-          <div class="ci-row">
-            <span class="ci-key">운영</span>
-            <span class="ci-val">예약제 운영</span>
-          </div>
+        <h2 class="contact-title">부담 없이<br><em>먼저 물어봐도</em><br>돼요.</h2>
+        <p class="contact-body">어떤 서비스인지, 나한테 맞는지,<br>아무것도 몰라도 괜찮아요.<br>궁금한 것 먼저 물어봐요.<br>서영이 답할게요.</p>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div class="ci-row"><span class="ci-key">전화·문자</span><span class="ci-val">010-5588-8415 (서영)</span></div>
+          <div class="ci-row"><span class="ci-key">인스타</span><span class="ci-val">@maumdaum_official</span></div>
+          <div class="ci-row"><span class="ci-key">장소</span><span class="ci-val">서울 은평구 (오프라인) + ZOOM (온라인)</span></div>
+          <div class="ci-row"><span class="ci-key">운영</span><span class="ci-val">예약제 운영</span></div>
         </div>
       </div>
-
-      <div>
-        <form class="contact-form" action="https://formspree.io/f/xgonnzyd" method="POST" onsubmit="handleSubmit(event)">
-          <input type="hidden" name="_subject" value="마음다움 홈페이지 문의가 왔어요">
-          <div class="form-group">
-            <label class="form-label">이름</label>
-            <input class="form-input" type="text" name="이름" placeholder="이름을 입력해주세요" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">연락처</label>
-            <input class="form-input" type="text" name="연락처" placeholder="전화번호 또는 인스타 아이디" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">관심 서비스</label>
-            <select class="form-select" name="관심서비스">
-              <option value="">선택해주세요</option>
-              <option>그룹 워크숍</option>
-              <option>1:1 개인 세션</option>
-              <option>4월 워크숍 16회</option>
-              <option>기타 문의</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">전하고 싶은 말 (선택)</label>
-            <textarea class="form-textarea" name="메시지" placeholder="어떤 계기로 오셨는지, 궁금한 점이 있으신지 편하게 적어주세요."></textarea>
-          </div>
-          <button type="submit" class="form-submit">문의 보내기</button>
-          <p class="form-note">문의 후 1~2일 내로 서영이 연락드릴게요.<br>부담 없이 먼저 여쭤봐도 돼요.</p>
-        </form>
-      </div>
+      <form class="contact-form" action="https://formspree.io/f/xgonnzyd" method="POST" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="_subject" value="마음다움 홈페이지 문의가 왔어요">
+        <div class="form-group">
+          <label class="form-label">이름</label>
+          <input class="form-input" type="text" name="이름" placeholder="이름을 입력해주세요" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">연락처</label>
+          <input class="form-input" type="text" name="연락처" placeholder="전화번호 또는 인스타 아이디" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">관심 서비스</label>
+          <select class="form-select" name="관심서비스">
+            <option value="">선택해주세요</option>
+            <option>GROUP WORK+SHOP (집단 작업)</option>
+            <option>PERSONAL WORK+SHOP (개인 작업)</option>
+            <option>4월 워크숍 16회</option>
+            <option>기타 문의</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">전하고 싶은 말 (선택)</label>
+          <textarea class="form-textarea" name="메시지" placeholder="어떤 계기로 오셨는지, 궁금한 점이 있으신지 편하게 적어주세요."></textarea>
+        </div>
+        <button type="submit" class="form-submit">문의 보내기</button>
+        <p class="form-note">문의 후 1~2일 내로 서영이 연락드릴게요.<br>부담 없이 먼저 여쭤봐도 돼요.</p>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- ── 푸터 ── -->
 <footer>
   <div class="footer-logo">마음<span>다움</span></div>
   <ul class="footer-links">
-    <li><a href="#about">존재 이유</a></li>
+    <li><a href="#limits">이런 분들</a></li>
+    <li><a href="#method">우리의 방법</a></li>
+    <li><a href="#difference">왜 다른가</a></li>
     <li><a href="#services">서비스</a></li>
     <li><a href="#founders">우리는</a></li>
     <li><a href="#contact">문의</a></li>
@@ -1216,41 +471,18 @@ footer {
 </footer>
 
 <script>
-  // 네비 스크롤 효과
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('nav');
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  // 폼 제출
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = '전송됐어요 ✓';
-    btn.style.background = '#2b6b4f';
-    setTimeout(() => {
-      btn.textContent = '문의 보내기';
-      btn.style.background = '';
-      e.target.reset();
-    }, 3000);
-  }
-
-  // 스크롤 애니메이션
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) {
-        el.target.style.opacity = '1';
-        el.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.svc-card, .phil-card, .founder-card, .dc-row').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.form-submit');
+  btn.textContent='전송됐어요 ✓';
+  btn.style.background='#2b6b4f';
+  fetch(e.target.action,{method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}})
+  .then(res=>{if(res.ok){setTimeout(()=>{btn.textContent='문의 보내기';btn.style.background='';e.target.reset();},3000);}})
+  .catch(()=>{btn.textContent='문의 보내기';btn.style.background='';});
+}
+const obs=new IntersectionObserver((entries)=>{entries.forEach(el=>{if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='translateY(0)';}});},{threshold:0.1});
+document.querySelectorAll('.limit-card,.svc-card,.phil-card,.founder-card,.hc-card,.method-step').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';obs.observe(el);});
 </script>
 </body>
 </html>
