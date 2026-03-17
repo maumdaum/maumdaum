@@ -160,13 +160,14 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
 .footer-links a{font-size:11px;letter-spacing:0.2em;color:#444;text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:#888;}
 .footer-copy{font-size:11px;color:#333;letter-spacing:0.1em;}
-@media(max-width:768px){nav{padding:16px 24px;}.nav-links{display:none;}.hero-content,.container{padding-left:24px;padding-right:24px;}.method-grid,.contact-grid,.founders-grid,.honest-cards{grid-template-columns:1fr;gap:24px;}.phil-grid,.svc-grid,.limits-grid{grid-template-columns:1fr;}.diff-table{font-size:12px;}.diff-table th,.diff-table td{padding:12px 16px;}.ah-grid,.vs-grid{grid-template-columns:1fr;}footer{flex-direction:column;gap:24px;text-align:center;}.footer-links{flex-wrap:wrap;justify-content:center;}}
+@media(max-width:768px){nav{padding:16px 24px;}.nav-links{display:none;}.hero-content,.container{padding-left:24px;padding-right:24px;}.method-grid,.contact-grid,.founders-grid,.honest-cards{grid-template-columns:1fr;gap:24px;}.phil-grid,.svc-grid,.limits-grid{grid-template-columns:1fr;}.diff-table{font-size:12px;}.diff-table th,.diff-table td{padding:12px 16px;}.ah-grid,.vs-grid{grid-template-columns:1fr;}footer{flex-direction:column;gap:24px;text-align:center;}div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}.footer-links{flex-wrap:wrap;justify-content:center;}}
 </style>
 </head>
 <body>
 
 <nav id="nav">
   <a href="#" class="nav-logo">마음<span>다움</span></a>
+  <span style="font-size:10px;letter-spacing:0.25em;color:#aaa;display:none;" id="nav-tag">Non-Linear · 마음, 다채롭게 움직이다</span>
   <ul class="nav-links">
     <li><a href="#limits">이런 분들</a></li>
     <li><a href="#method">우리의 방법</a></li>
@@ -198,6 +199,7 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
       그게 생활 우울이에요.<br>
       잘못된 게 아니에요.
     </p>
+    <p style="font-size:11px;letter-spacing:0.35em;color:#333;margin-bottom:40px;margin-top:-20px;">Non-Linear · 마음, 다채롭게 움직이다</p>
     <div class="hero-actions">
       <a href="#method" class="btn-primary">마음다움이란</a>
       <a href="#contact" class="btn-ghost">문의하기</a>
@@ -292,6 +294,42 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
   </div>
 </section>
 
+<!-- Non-Linear 철학 -->
+<section style="padding:120px 0;background:#0e0d0c;">
+  <div class="container">
+    <p style="font-size:10px;letter-spacing:0.5em;color:#444;margin-bottom:24px;">PHILOSOPHY · 철학</p>
+    <h2 style="font-family:'Noto Serif KR',serif;font-size:clamp(24px,4vw,44px);font-weight:200;color:#f4f0e8;line-height:1.5;letter-spacing:0.01em;margin-bottom:64px;">마음은 본디<br><span style="color:#c8392b;">다채롭게 움직인다.</span></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+      <div style="background:#111;padding:48px 40px;">
+        <p style="font-size:11px;letter-spacing:0.3em;color:#555;margin-bottom:20px;font-weight:500;">LINEAR — 지금 시대의 문법</p>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <p style="font-size:14px;color:#444;line-height:1.8;letter-spacing:0.04em;padding-left:16px;border-left:2px solid #2a2826;">성장, 최적화, 효율 — 하나의 경로만 허용된다</p>
+          <p style="font-size:14px;color:#444;line-height:1.8;letter-spacing:0.04em;padding-left:16px;border-left:2px solid #2a2826;">외적 기준이 동기를 만든다</p>
+          <p style="font-size:14px;color:#444;line-height:1.8;letter-spacing:0.04em;padding-left:16px;border-left:2px solid #2a2826;">언어와 논리로만 자신을 설명한다</p>
+          <p style="font-size:14px;color:#444;line-height:1.8;letter-spacing:0.04em;padding-left:16px;border-left:2px solid #2a2826;">마음이 최적화되어야 한다고 믿는다</p>
+        </div>
+        <p style="font-size:13px;color:#333;margin-top:32px;line-height:1.9;letter-spacing:0.04em;font-style:italic;">→ 그 결과가 생활 우울이에요.</p>
+      </div>
+
+      <div style="background:#161412;padding:48px 40px;">
+        <p style="font-size:11px;letter-spacing:0.3em;color:#c8392b;margin-bottom:20px;font-weight:500;">NON-LINEAR — 마음다움의 제안</p>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <p style="font-size:14px;color:#888;line-height:1.8;letter-spacing:0.04em;padding-left:16px;border-left:2px solid #c8392b;">다양한 방향이 모두 유효하다</p>
+          <p style="font-size:14px;color:#888;line-height:1.8;letter-spacing:0.04em;padding-left:16px;border-left:2px solid #c8392b;">내적 동기를 함께 발견한다</p>
+          <p style="font-size:14px;color:#888;line-height:1.8;letter-spacing:0.04em;padding-left:16px;border-left:2px solid #c8392b;">은유와 이미지로 먼저 만난다</p>
+          <p style="font-size:14px;color:#888;line-height:1.8;letter-spacing:0.04em;padding-left:16px;border-left:2px solid #c8392b;">마음은 원래 다채롭게 움직인다</p>
+        </div>
+        <p style="font-size:13px;color:#555;margin-top:32px;line-height:1.9;letter-spacing:0.04em;font-style:italic;">→ 마음다움이 그 회복을 함께 해요.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2px;background:#111;padding:40px;text-align:center;">
+      <p style="font-family:'Noto Serif KR',serif;font-size:clamp(16px,2.5vw,22px);font-weight:300;color:#f4f0e8;line-height:2;letter-spacing:0.05em;">마음다움은 예술치료 서비스가 아니에요.<br><span style="color:#c8392b;">Linear 시대에 Non-Linear한 삶의 방식을 제안하는 문화 브랜드예요.</span></p>
+    </div>
+  </div>
+</section>
+
 <!-- 4단계: 솔직한 한계 인정 -->
 <section class="honest" id="honest">
   <div class="container">
@@ -350,11 +388,11 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
     </div>
     <div class="founders-grid">
       <div class="founder-card">
-        <p class="fc-role">RESEARCH · PHILOSOPHY</p>
+        <p class="fc-role">RESEARCH · PHILOSOPHY · CAREER EDUCATION</p>
         <h3 class="fc-name">조현우</h3>
         <p class="fc-sub">예술치료사 · 통합예술심리상담사</p>
         <p class="fc-academic">한양대학교 상담심리대학원 상담심리학 석사<br>(예술치료교육 및 상담 전공)</p>
-        <p class="fc-story">교과서 여백에 그림을 그리던 아이였어요.<br><br>상담을 받아봤어요. 말로는 다 했는데 여전히 안 풀리는 느낌이 있었어요.<br><br>그때 처음으로 <strong>손을 움직여 무언가를 만들었어요.</strong> 설명하지 않아도 됐어요. 근데 울컥했어요.<br><br>진단명이 사람을 규정할 때 무언가 중요한 게 사라진다는 걸, 가장 가까운 자리에서 봤어요.<br><br>그게 마음다움을 시작한 이유예요.</p>
+        <p class="fc-story">청소년 진로 강사로 8년 넘게 일했어요. 수백 명의 아이들이 "내가 뭘 원하는지 모르겠어요"라고 말했어요. Linear 교육이 만들어낸 말이에요.<br><br>교과서 여백에 그림을 그리던 아이였어요.<br><br>상담을 받아봤어요. 말로는 다 했는데 여전히 안 풀리는 느낌이 있었어요.<br><br>그때 처음으로 <strong>손을 움직여 무언가를 만들었어요.</strong> 설명하지 않아도 됐어요. 근데 울컥했어요.<br><br>진단명이 사람을 규정할 때 무언가 중요한 게 사라진다는 걸, 가장 가까운 자리에서 봤어요.<br><br>그게 마음다움을 시작한 이유예요.</p>
       </div>
       <div class="founder-card">
         <p class="fc-role">HOSPITALITY · CONNECTION</p>
@@ -408,6 +446,15 @@ footer{background:var(--black);padding:60px 48px;display:flex;align-items:center
         </div>
         <a href="#contact" class="svc-link">더 보기</a>
       </div>
+    </div>
+
+    <div style="margin-top:2px;background:#f8f4ee;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+      <div>
+        <p style="font-size:10px;letter-spacing:0.4em;color:#aaa;margin-bottom:8px;">COMING SOON</p>
+        <p style="font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:#2a2826;letter-spacing:0.04em;">청소년 Non-Linear 진로 탐색 프로그램</p>
+        <p style="font-size:13px;color:#aaa;margin-top:6px;letter-spacing:0.05em;">은유와 이미지로 먼저 자기를 만나는 진로 교육 — 준비 중</p>
+      </div>
+      <a href="#contact" style="font-size:11px;letter-spacing:0.2em;color:#c8392b;text-decoration:none;">사전 문의하기 →</a>
     </div>
   </div>
 </section>
