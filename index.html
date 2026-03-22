@@ -88,8 +88,9 @@ nav.scrolled{background:rgba(250,247,242,0.96);backdrop-filter:blur(16px);border
 .banner-16-btn{font-size:11px;letter-spacing:0.2em;background:var(--black);color:var(--yellow);padding:12px 28px;text-decoration:none;transition:background 0.2s;font-weight:500;white-space:nowrap;}
 .banner-16-btn:hover{background:#2a2826;}
 @media(max-width:768px){
-  .banner-16-inner{padding:16px 24px;flex-direction:column;align-items:flex-start;gap:16px;}
+  .banner-16-inner{padding:16px 24px !important;flex-direction:column;align-items:flex-start;gap:14px;}
   .banner-16-right{width:100%;justify-content:space-between;}
+  .personal-banner-inner{padding:14px 24px !important;flex-wrap:nowrap !important;}
 }
 
 /* ══ PHILOSOPHY — DARK ══ */
@@ -395,17 +396,22 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
 
 <!-- ══ 개인 세션 상시 배너 ══ -->
 <div style="background:var(--off);border-top:1px solid var(--light);">
-  <div style="max-width:1100px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:20px;">
-      <span style="font-size:9px;letter-spacing:0.4em;background:var(--black);color:var(--white);padding:5px 12px;font-weight:500;white-space:nowrap;">ALWAYS AVAILABLE</span>
-      <div>
-        <p style="font-family:'Noto Serif KR',serif;font-size:15px;font-weight:400;color:var(--black);">개인 세션 <em style="font-style:normal;font-weight:600;">7가지 상시 운영 중</em></p>
-        <p style="font-size:12px;color:var(--gray);margin-top:2px;">일상 · 자화상 · 나다움 · 사계 · 길 · 행복 · 꿈 · 온/오프라인 · 1인 10~15만원</p>
+  <div style="max-width:1100px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;">
+    <div style="display:flex;align-items:center;gap:16px;min-width:0;">
+      <span style="font-size:9px;letter-spacing:0.4em;background:var(--black);color:var(--white);padding:5px 12px;font-weight:500;white-space:nowrap;flex-shrink:0;">ONGOING</span>
+      <div style="min-width:0;">
+        <p style="font-family:'Noto Serif KR',serif;font-size:15px;font-weight:400;color:var(--black);white-space:nowrap;">개인 세션 <em style="font-style:normal;font-weight:600;">7가지 상시 운영 중</em></p>
+        <p style="font-size:11px;color:var(--gray);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">일상 · 자화상 · 나다움 · 사계 · 길 · 행복 · 꿈 &nbsp;|&nbsp; 온/오프라인 · 10~15만원</p>
       </div>
     </div>
     <a href="#services" onclick="setTimeout(()=>switchTab('personal',document.querySelectorAll('.session-tab')[1]),300)" style="font-size:11px;letter-spacing:0.2em;color:var(--black);border:1px solid var(--black);padding:11px 24px;text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)'" onmouseout="this.style.background='';this.style.color='var(--black)'">세션 고르기 →</a>
   </div>
 </div>
+<style>
+@media(max-width:768px){
+  .personal-banner-inner{padding:14px 24px !important;flex-wrap:nowrap !important;}
+}
+</style>
 
 <!-- ══ PHILOSOPHY ══ -->
 <section class="sec sec-phil" id="philosophy">
