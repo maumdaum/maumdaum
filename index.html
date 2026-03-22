@@ -88,9 +88,8 @@ nav.scrolled{background:rgba(250,247,242,0.96);backdrop-filter:blur(16px);border
 .banner-16-btn{font-size:11px;letter-spacing:0.2em;background:var(--black);color:var(--yellow);padding:12px 28px;text-decoration:none;transition:background 0.2s;font-weight:500;white-space:nowrap;}
 .banner-16-btn:hover{background:#2a2826;}
 @media(max-width:768px){
-  .banner-16-inner{padding:16px 24px !important;flex-direction:column;align-items:flex-start;gap:14px;}
+  .banner-16-inner{padding:16px 24px;flex-direction:column;align-items:flex-start;gap:14px;}
   .banner-16-right{width:100%;justify-content:space-between;}
-  .personal-banner-inner{padding:14px 24px !important;flex-wrap:nowrap !important;}
 }
 
 /* ══ PHILOSOPHY — DARK ══ */
@@ -184,6 +183,20 @@ nav.scrolled{background:rgba(250,247,242,0.96);backdrop-filter:blur(16px);border
 .diff-table td:nth-child(2){color:var(--dim);text-decoration:line-through;width:40%;}
 .diff-table td:nth-child(3){color:var(--black);width:45%;}
 .diff-table tr:hover td{background:var(--off);}
+
+.banner-personal{background:var(--off);border-top:1px solid var(--light);}
+.banner-personal-inner{max-width:1100px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;}
+.banner-personal-left{display:flex;align-items:center;gap:16px;}
+.banner-personal-tag{font-size:9px;letter-spacing:0.4em;background:var(--black);color:var(--white);padding:5px 12px;font-weight:500;white-space:nowrap;flex-shrink:0;}
+.banner-personal-text{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:400;color:var(--black);}
+.banner-personal-text em{font-style:normal;font-weight:600;}
+.banner-personal-meta{font-size:11px;color:var(--gray);margin-top:2px;}
+.banner-personal-btn{font-size:11px;letter-spacing:0.2em;color:var(--black);border:1px solid var(--black);padding:11px 24px;text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
+.banner-personal-btn:hover{background:var(--black);color:var(--white);}
+@media(max-width:768px){
+  .banner-personal-inner{padding:16px 24px;flex-direction:column;align-items:flex-start;gap:12px;}
+  .banner-personal-btn{width:100%;text-align:center;padding:12px;}
+}
 
 /* ══ SESSION SELECTOR ══ */
 .session-tabs{display:flex;gap:3px;margin-bottom:3px;}
@@ -395,23 +408,18 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
 </div>
 
 <!-- ══ 개인 세션 상시 배너 ══ -->
-<div style="background:var(--off);border-top:1px solid var(--light);">
-  <div style="max-width:1100px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;">
-    <div style="display:flex;align-items:center;gap:16px;min-width:0;">
-      <span style="font-size:9px;letter-spacing:0.4em;background:var(--black);color:var(--white);padding:5px 12px;font-weight:500;white-space:nowrap;flex-shrink:0;">ONGOING</span>
-      <div style="min-width:0;">
-        <p style="font-family:'Noto Serif KR',serif;font-size:15px;font-weight:400;color:var(--black);white-space:nowrap;">개인 세션 <em style="font-style:normal;font-weight:600;">7가지 상시 운영 중</em></p>
-        <p style="font-size:11px;color:var(--gray);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">일상 · 자화상 · 나다움 · 사계 · 길 · 행복 · 꿈 &nbsp;|&nbsp; 온/오프라인 · 10~15만원</p>
+<div class="banner-personal">
+  <div class="banner-personal-inner">
+    <div class="banner-personal-left">
+      <span class="banner-personal-tag">ONGOING</span>
+      <div>
+        <p class="banner-personal-text">개인 세션 <em>7가지 상시 운영 중</em></p>
+        <p class="banner-personal-meta">일상 · 자화상 · 나다움 · 사계 · 길 · 행복 · 꿈</p>
       </div>
     </div>
-    <a href="#services" onclick="setTimeout(()=>switchTab('personal',document.querySelectorAll('.session-tab')[1]),300)" style="font-size:11px;letter-spacing:0.2em;color:var(--black);border:1px solid var(--black);padding:11px 24px;text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)'" onmouseout="this.style.background='';this.style.color='var(--black)'">세션 고르기 →</a>
+    <a href="#services" class="banner-personal-btn" onclick="setTimeout(()=>switchTab('personal',document.querySelectorAll('.session-tab')[1]),300)">세션 고르기 →</a>
   </div>
 </div>
-<style>
-@media(max-width:768px){
-  .personal-banner-inner{padding:14px 24px !important;flex-wrap:nowrap !important;}
-}
-</style>
 
 <!-- ══ PHILOSOPHY ══ -->
 <section class="sec sec-phil" id="philosophy">
