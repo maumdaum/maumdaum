@@ -74,6 +74,24 @@ nav.scrolled{background:rgba(250,247,242,0.96);backdrop-filter:blur(16px);border
   .container{padding:0 24px;}
 }
 
+/* ══ NO.16 BANNER ══ */
+.banner-16{background:var(--yellow);padding:0;}
+.banner-16-inner{max-width:1100px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;}
+.banner-16-left{display:flex;align-items:center;gap:20px;}
+.banner-16-tag{font-size:9px;letter-spacing:0.4em;background:var(--black);color:var(--yellow);padding:5px 12px;font-weight:500;white-space:nowrap;}
+.banner-16-text{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:400;color:var(--black);}
+.banner-16-text em{font-style:normal;font-weight:600;}
+.banner-16-meta{font-size:12px;color:rgba(12,11,10,0.55);margin-top:2px;}
+.banner-16-right{display:flex;align-items:center;gap:20px;flex-shrink:0;}
+.banner-16-seats{font-size:12px;color:var(--black);display:flex;align-items:center;gap:6px;}
+.banner-16-seats strong{font-size:18px;font-weight:600;color:var(--red);}
+.banner-16-btn{font-size:11px;letter-spacing:0.2em;background:var(--black);color:var(--yellow);padding:12px 28px;text-decoration:none;transition:background 0.2s;font-weight:500;white-space:nowrap;}
+.banner-16-btn:hover{background:#2a2826;}
+@media(max-width:768px){
+  .banner-16-inner{padding:16px 24px;flex-direction:column;align-items:flex-start;gap:16px;}
+  .banner-16-right{width:100%;justify-content:space-between;}
+}
+
 /* ══ PHILOSOPHY — DARK ══ */
 .sec-phil{background:var(--black);}
 .sec-phil .sec-label{color:#6a6560;}
@@ -165,6 +183,82 @@ nav.scrolled{background:rgba(250,247,242,0.96);backdrop-filter:blur(16px);border
 .diff-table td:nth-child(2){color:var(--dim);text-decoration:line-through;width:40%;}
 .diff-table td:nth-child(3){color:var(--black);width:45%;}
 .diff-table tr:hover td{background:var(--off);}
+
+/* ══ SESSION SELECTOR ══ */
+.session-tabs{display:flex;gap:3px;margin-bottom:3px;}
+.session-tab{flex:1;padding:16px 20px;background:var(--off);border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--gray);transition:all 0.2s;text-align:center;}
+.session-tab.active{background:var(--black);color:var(--yellow);}
+.session-tab:hover:not(.active){background:var(--light);}
+
+.session-panel{display:none;}
+.session-panel.active{display:block;}
+
+/* 그룹 패널 */
+.group-panel-inner{background:var(--off);padding:56px;}
+.group-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:40px;}
+.group-panel-info{flex:1;}
+.group-panel-badge{font-size:9px;letter-spacing:0.4em;background:var(--yellow);color:var(--black);padding:5px 12px;display:inline-block;margin-bottom:16px;font-weight:500;}
+.group-panel-title{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:300;color:var(--black);margin-bottom:12px;line-height:1.4;}
+.group-panel-title em{color:var(--red);font-style:normal;}
+.group-panel-desc{font-size:14px;line-height:1.9;color:var(--gray);}
+.group-panel-meta{flex-shrink:0;background:var(--white);padding:28px 32px;min-width:200px;}
+.group-panel-meta-row{margin-bottom:14px;}
+.group-panel-meta-row:last-child{margin-bottom:0;}
+.group-panel-meta-label{font-size:9px;letter-spacing:0.3em;color:var(--gray);margin-bottom:4px;}
+.group-panel-meta-value{font-size:14px;color:var(--black);font-weight:400;}
+.group-panel-meta-value strong{color:var(--red);}
+.group-panel-cta{margin-top:32px;display:flex;align-items:center;gap:20px;}
+.group-panel-quote{font-size:13px;font-style:italic;color:var(--dim);flex:1;}
+
+/* 개인 세션 패널 */
+.personal-intro{margin-bottom:32px;}
+.personal-intro p{font-size:14px;line-height:1.9;color:var(--gray);}
+.session-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px;}
+.session-card{background:var(--off);padding:32px 28px;cursor:pointer;transition:all 0.25s;position:relative;border:2px solid transparent;}
+.session-card:hover{background:var(--white);border-color:var(--black);}
+.session-card.selected{background:var(--black);border-color:var(--black);}
+.session-card-num{font-size:10px;letter-spacing:0.3em;color:var(--light);margin-bottom:12px;display:block;}
+.session-card.selected .session-card-num{color:rgba(250,247,242,0.3);}
+.session-card-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:var(--black);margin-bottom:6px;}
+.session-card.selected .session-card-title{color:var(--yellow);}
+.session-card-en{font-size:10px;letter-spacing:0.15em;color:var(--gray);margin-bottom:16px;}
+.session-card.selected .session-card-en{color:rgba(250,247,242,0.3);}
+.session-card-quote{font-size:12px;line-height:1.7;color:var(--dim);font-style:italic;}
+.session-card.selected .session-card-quote{color:rgba(250,247,242,0.5);}
+.session-card-check{position:absolute;top:16px;right:16px;width:20px;height:20px;border-radius:50%;background:var(--yellow);display:none;align-items:center;justify-content:center;font-size:10px;color:var(--black);font-weight:600;}
+.session-card.selected .session-card-check{display:flex;}
+
+/* Epilogue 카드 */
+.session-epilogue{background:var(--dark);padding:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:32px;}
+.session-epilogue-left p:first-child{font-size:9px;letter-spacing:0.4em;color:#4a4540;margin-bottom:8px;}
+.session-epilogue-left p:nth-child(2){font-family:'Noto Serif KR',serif;font-size:16px;color:var(--white);font-weight:300;}
+.session-epilogue-left p:last-child{font-size:12px;color:var(--dim);margin-top:6px;line-height:1.6;}
+
+/* 선택 요약 + CTA */
+.session-summary{background:var(--black);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.session-summary.visible{opacity:1;pointer-events:auto;}
+.session-summary-left p:first-child{font-size:10px;letter-spacing:0.3em;color:#4a4540;margin-bottom:6px;}
+.session-summary-left p:nth-child(2){font-family:'Noto Serif KR',serif;font-size:18px;color:var(--white);font-weight:300;}
+.session-summary-left p:nth-child(2) em{color:var(--yellow);font-style:normal;}
+.session-summary-left p:last-child{font-size:12px;color:var(--dim);margin-top:4px;}
+.session-summary-btns{display:flex;gap:12px;flex-shrink:0;}
+.btn-session-contact{font-size:11px;letter-spacing:0.2em;color:var(--black);background:var(--yellow);padding:14px 28px;text-decoration:none;transition:all 0.2s;font-weight:500;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;}
+.btn-session-contact:hover{background:var(--white);}
+.btn-session-reset{font-size:11px;letter-spacing:0.1em;color:var(--dim);background:transparent;padding:14px 20px;border:1px solid #2a2826;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all 0.2s;}
+.btn-session-reset:hover{color:var(--white);border-color:var(--gray);}
+
+@media(max-width:768px){
+  .session-tabs{flex-wrap:wrap;}
+  .session-tab{flex:1;min-width:120px;}
+  .session-grid{grid-template-columns:repeat(2,1fr);}
+  .group-panel-head{flex-direction:column;}
+  .group-panel-meta{width:100%;}
+  .group-panel-inner{padding:32px 24px;}
+  .session-epilogue{flex-direction:column;align-items:flex-start;}
+  .session-summary{flex-direction:column;align-items:flex-start;}
+  .session-summary-btns{width:100%;}
+  .btn-session-contact{flex:1;text-align:center;}
+}
 
 /* ══ SERVICES ══ */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
@@ -282,66 +376,83 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
   </div>
 </section>
 
+<!-- ══ NO.16 BANNER ══ -->
+<div class="banner-16">
+  <div class="banner-16-inner">
+    <div class="banner-16-left">
+      <span class="banner-16-tag">NOW OPEN</span>
+      <div>
+        <p class="banner-16-text">집단 워크숍 <em>No.16 — 우울을 바라, '봄'</em></p>
+        <p class="banner-16-meta">2026년 4월 11~12일 · 서울 은평구 · 최대 8명</p>
+      </div>
+    </div>
+    <div class="banner-16-right">
+      <p class="banner-16-seats">잔여 <strong>4</strong>석</p>
+      <a href="#contact" class="banner-16-btn">신청하기 →</a>
+    </div>
+  </div>
+</div>
+
 <!-- ══ PHILOSOPHY ══ -->
 <section class="sec sec-phil" id="philosophy">
   <div class="container">
-    <p class="sec-label">PHILOSOPHICAL ROOTS · 철학적 뿌리</p>
+    <p class="sec-label">WHY MAUMDAUM · 마음다움이 다른 이유</p>
     <h2 class="sec-title">
-      심리학은 뇌에서 출발하지 않는다.<br>
-      <span style="color:var(--yellow);">상상imagination의 과정에서 출발한다.</span>
+      마음은 말로 풀리지 않아요.<br>
+      <span style="color:var(--yellow);">이미지로 먼저 가야 합니다.</span>
     </h2>
     <p class="sec-desc">
-      마음다움은 뇌과학적 최적화나 행동 분석이 아니라,<br>
-      이미지와 상상력이라는 인간의 본성에서 출발합니다.
+      감정은 언어보다 먼저 존재해요. 마음다움은 그 순서를 지킵니다.<br>
+      손을 움직이는 것이 왜 말보다 먼저인지, 그 이유를 설명할게요.
     </p>
 
-    <!-- 힐먼 — 중심 -->
+    <!-- 핵심 — 대중 언어 -->
     <div class="phil-core reveal">
-      <p class="phil-core-badge">CORE FOUNDATION · 철학적 토대</p>
-      <p class="phil-core-author">James Hillman — Re-Visioning Psychology</p>
-      <h3 class="phil-core-title">이미지의 심리학 · Psychology of Image</h3>
+      <p class="phil-core-badge">CORE · 마음다움의 출발점</p>
+      <p class="phil-core-author">기반: James Hillman의 이미지 심리학 · Re-Visioning Psychology</p>
+      <h3 class="phil-core-title">마음은 이미지로 이루어져 있다</h3>
       <p class="phil-core-text">
-        모든 감정과 지각은 먼저 <strong>환상-이미지fantasy-image</strong>를 형성함으로써 심리적 사건으로 발생한다. 이미지는 심리의 원재료이자 완성품 — 외부에서 주어지는 것이 아니라 자기 발생적이다. <strong>마음의 시적 기반poetic basis of mind</strong>이 마음다움의 출발점이다.
+        우리가 어떤 감정을 느끼기 전에, 마음은 먼저 <strong>하나의 이미지</strong>를 만들어요. 슬픔도, 불안도, 텅 빈 느낌도 — 전부 어떤 이미지로 먼저 존재하다가 그 다음에 말이 됩니다. 그래서 말로 아무리 설명해도 안 풀리는 것들이 있어요. 언어가 닿기 전, 이미지가 있는 곳으로 먼저 가야 해요.
       </p>
       <p class="phil-core-apply">
-        마음다움의 적용: 예술은 치료 도구가 아니다. 이미지를 생성하는 행위 그 자체가 심리적 삶의 회복이다. Work Memory가 작품이 아니라 자화상인 이유.
+        마음다움의 적용: 그래서 우리는 그림을 그려요. 잘 그리려는 게 아니에요. 지금 내 마음이 어떤 이미지로 있는지 — 그걸 손으로 꺼내는 거예요.
       </p>
     </div>
 
-    <!-- 3층위 -->
+    <!-- 3층위 — 대중 언어 -->
     <div class="phil-grid">
       <div class="phil-card red reveal">
-        <p class="phil-card-badge">NEUROSCIENCE · 신경과학</p>
-        <p class="phil-card-author">Antonio Damasio</p>
-        <h4 class="phil-card-title">이미지의 선행성</h4>
-        <p class="phil-card-text">의식과 자아는 신체가 생성하는 이미지들의 흐름에서 발생한다. 이미지가 언어보다 먼저 도착한다. 힐먼의 철학을 신경과학적으로 증명한다.</p>
+        <p class="phil-card-badge">과학이 말하는 것</p>
+        <p class="phil-card-author">신경과학자 Antonio Damasio</p>
+        <h4 class="phil-card-title">감각이 생각보다 먼저다</h4>
+        <p class="phil-card-text">우리 뇌는 몸의 감각을 이미지로 먼저 처리한 다음, 그걸 언어로 바꿔요. 즉 몸과 감각이 먼저고, 말은 나중이에요. "몸이 먼저 반응했어요"라고 느끼는 게 착각이 아니에요.</p>
         <p class="phil-card-apply">말보다 감각이 먼저다.</p>
       </div>
       <div class="phil-card blue reveal">
-        <p class="phil-card-badge">DEVELOPMENTAL · 발달</p>
-        <p class="phil-card-author">Gerald Hüther</p>
-        <h4 class="phil-card-title">구상의 경직과 갱신</h4>
-        <p class="phil-card-text">뇌는 내적 구상Vorstellung을 형성하고, 이 구상이 모든 지각을 조직한다. 경직된 구상이 마음을 병들게 한다. 새로운 이미지 생성이 그것을 푼다.</p>
+        <p class="phil-card-badge">왜 막히는가</p>
+        <p class="phil-card-author">뇌과학자 Gerald Hüther</p>
+        <h4 class="phil-card-title">굳은 이미지가 마음을 막는다</h4>
+        <p class="phil-card-text">뇌는 반복된 경험을 통해 "세상은 이런 곳이야"라는 내면의 그림을 만들어요. 그 그림이 굳어버리면 새로운 감각이 들어오지 못해요. 마음이 막히는 건 의지의 문제가 아니라, 굳어버린 이미지의 문제예요.</p>
         <p class="phil-card-apply">막힌 것을 다시 흐르게 한다.</p>
       </div>
       <div class="phil-card green reveal">
-        <p class="phil-card-badge">BIOLOGY · 생물학</p>
-        <p class="phil-card-author">Ellen Dissanayake</p>
-        <h4 class="phil-card-title">Making Special</h4>
-        <p class="phil-card-text">인간은 중요한 것을 특별하게 만들려는 생물학적 본능을 가지고 태어난다. 예술은 재능이 아니라 살아있음의 증거다.</p>
+        <p class="phil-card-badge">인간의 본능</p>
+        <p class="phil-card-author">예술인류학자 Ellen Dissanayake</p>
+        <h4 class="phil-card-title">만드는 것은 살아있음의 증거다</h4>
+        <p class="phil-card-text">인간은 4만 년 전부터 손으로 무언가를 만들었어요. 재능이 있어서가 아니에요. 살아있기 때문에. 무언가를 만들고 싶은 충동이 사라진 게 아니에요 — 잠시 막혀있을 뿐이에요.</p>
         <p class="phil-card-apply">살아있기에 만든다.</p>
       </div>
     </div>
 
-    <!-- 보조 -->
+    <!-- 보조 — 간소화 -->
     <div class="phil-sub">
       <div class="phil-sub-card reveal">
-        <p class="phil-sub-card-title">나카자와 신이치 · 유동적 지성</p>
-        <p class="phil-sub-card-text">인지혁명 이후 인간은 경계를 넘나드는 유동적 지성을 갖게 됐다. 이미지·은유·상상이 그 지성의 산물이다. 생활 우울 상태에서 이 유동성이 굳는다.</p>
+        <p class="phil-sub-card-title">우울은 고장이 아니에요</p>
+        <p class="phil-sub-card-text">앤 츠베트코비치의 공적 우울 개념에 따르면, 우울은 개인의 결함이 아니라 이 시대를 감각적으로 살아가는 사람들의 정직한 반응이에요. 진단명이 당신의 전부가 아닙니다.</p>
       </div>
       <div class="phil-sub-card reveal">
-        <p class="phil-sub-card-title">앤 츠베트코비치 · 공적 우울</p>
-        <p class="phil-sub-card-text">우울은 개인의 병리가 아니다. 이 시대를 감각적으로 살아가는 사람들의 집단적이고 정직한 반응이다. 진단명이 당신의 전부가 아니다.</p>
+        <p class="phil-sub-card-title">상상력은 없어진 게 아니에요</p>
+        <p class="phil-sub-card-text">나카자와 신이치의 유동적 지성 개념에 따르면, 인간은 본래 이미지·은유·상상으로 세계를 이해해요. 지금 그 능력이 굳어있을 뿐이에요. 마음다움은 그걸 다시 흐르게 합니다.</p>
       </div>
     </div>
 
@@ -349,10 +460,9 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
     <div class="phil-position reveal">
       <div class="phil-position-line"></div>
       <p class="phil-position-text">
-        뇌과학·정신의학이 마음을 <em class="w">최적화와 정상화의 대상</em>으로 환원할 때,<br>
-        마음다움은 그 문법에 동의하지 않는다.<br>
-        마음다움이 자연과학적 근거를 활용하는 것은 —<br>
-        이미지와 상상력이라는 <em class="y">인간의 본성을 지지하기 위해서</em>다.
+        마음다움은 마음을 <em class="w">고쳐야 할 것, 최적화해야 할 것</em>으로 보지 않아요.<br>
+        마음은 원래 움직이고 싶어하고, 만들고 싶어하고, 흐르고 싶어해요.<br>
+        그게 잠시 막혀있는 것 — <em class="y">마음다움은 그 흐름을 함께 다시 만들어가는 곳이에요.</em>
       </p>
     </div>
   </div>
@@ -463,44 +573,147 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
   <div class="container">
     <p class="sec-label">SERVICES · 서비스</p>
     <h2 class="sec-title">말로 안 풀릴 때,<br>다른 방법으로 만나요.</h2>
-    <div class="svc-grid">
-      <div class="svc-card reveal">
-        <span class="svc-badge">GROUP WORK+SHOP</span>
-        <h3 class="svc-title">집단 작업 프로그램</h3>
-        <p class="svc-text">소그룹이 함께 이미지로 먼저 만나요. 말하지 않아도 되는 시간. 지금 이 계절의 감각을 함께 꺼내요.</p>
-        <p class="svc-meta">
-          인원 <span>회당 최대 8명</span><br>
-          시간 <span>6시간 + @</span><br>
-          비용 <span>1인 10만원</span>
-        </p>
-        <p class="svc-quote">"말 한마디 안 했는데 뭔가 다 꺼낸 느낌이었어요." — 30대 직장인</p>
-        <a href="#contact" class="svc-btn">신청하기</a>
-      </div>
-      <div class="svc-card reveal">
-        <span class="svc-badge">PERSONAL WORK+SHOP</span>
-        <h3 class="svc-title">개인 작업 프로그램</h3>
-        <p class="svc-text">말로도, 약으로도 다 안 될 때. 단둘이 만나요. 설명하지 않아도 되고, 잘 그리지 않아도 돼요.</p>
-        <p class="svc-meta">
-          형태 <span>1:1 집중</span><br>
-          시간 <span>2~3시간</span><br>
-          비용 <span>10~15만원</span>
-        </p>
-        <p class="svc-quote">"상담보다 훨씬 많이 꺼낸 것 같아요. 신기했어요." — 40대 여성</p>
-        <a href="#contact" class="svc-btn">문의하기</a>
-      </div>
-      <div class="svc-card reveal">
-        <span class="svc-badge">WORK+MEMORY</span>
-        <h3 class="svc-title">마음다움 작업 기억</h3>
-        <p class="svc-text">워크숍·세션을 마치며 남기는 10×10 미니 캔버스 드로잉. 작품이 아니에요. 지금 이 순간의 자화상이에요.</p>
-        <p class="svc-meta">
-          형태 <span>10×10 캔버스</span><br>
-          색상 <span>마음다움 오방색</span><br>
-          포함 <span>세션·워크숍 포함</span>
-        </p>
-        <p class="svc-quote">가장 정직한 셀피는 손으로 그린다.</p>
-        <a href="#contact" class="svc-btn">더 보기</a>
+
+    <!-- 탭 -->
+    <div class="session-tabs">
+      <button class="session-tab active" onclick="switchTab('group',this)">GROUP WORK+SHOP · 집단 워크숍</button>
+      <button class="session-tab" onclick="switchTab('personal',this)">PERSONAL WORK+SHOP · 개인 세션</button>
+    </div>
+
+    <!-- 집단 워크숍 패널 -->
+    <div class="session-panel active" id="panel-group">
+      <div class="group-panel-inner">
+        <div class="group-panel-head">
+          <div class="group-panel-info">
+            <span class="group-panel-badge">NOW OPEN · 모집 중</span>
+            <h3 class="group-panel-title">집단 워크숍 No.16<br><em>우울을 바라, '봄'</em></h3>
+            <p class="group-panel-desc">
+              소그룹이 함께 이미지로 먼저 만나요. 말하지 않아도 되는 시간.<br>
+              이 계절의 감각을 함께 꺼내는 6시간.
+            </p>
+          </div>
+          <div class="group-panel-meta">
+            <div class="group-panel-meta-row">
+              <p class="group-panel-meta-label">일정</p>
+              <p class="group-panel-meta-value">2026년 4월 11~12일</p>
+            </div>
+            <div class="group-panel-meta-row">
+              <p class="group-panel-meta-label">장소</p>
+              <p class="group-panel-meta-value">서울 은평구 (오프라인)</p>
+            </div>
+            <div class="group-panel-meta-row">
+              <p class="group-panel-meta-label">인원</p>
+              <p class="group-panel-meta-value">최대 8명 · 잔여 <strong>4석</strong></p>
+            </div>
+            <div class="group-panel-meta-row">
+              <p class="group-panel-meta-label">시간</p>
+              <p class="group-panel-meta-value">6시간 + @</p>
+            </div>
+            <div class="group-panel-meta-row">
+              <p class="group-panel-meta-label">비용</p>
+              <p class="group-panel-meta-value">1인 10만원</p>
+            </div>
+          </div>
+        </div>
+        <div class="group-panel-cta">
+          <p class="group-panel-quote">"말 한마디 안 했는데 뭔가 다 꺼낸 느낌이었어요." — 30대 직장인</p>
+          <a href="#contact" class="btn-primary">신청하기 →</a>
+        </div>
       </div>
     </div>
+
+    <!-- 개인 세션 패널 -->
+    <div class="session-panel" id="panel-personal">
+      <div class="personal-intro">
+        <p style="font-size:13px;color:var(--gray);line-height:1.8;padding:20px 0 4px;">
+          단둘이 만나요. 설명하지 않아도 되고, 잘 그리지 않아도 돼요.<br>
+          어떤 주제로 만날지 먼저 골라보세요 — 서영이 맞춤으로 준비할게요.
+        </p>
+        <p style="font-size:12px;color:var(--dim);padding-bottom:24px;">2~3시간 · 1인 10~15만원 · 온/오프라인</p>
+      </div>
+
+      <!-- 7가지 세션 카드 -->
+      <div class="session-grid">
+        <div class="session-card reveal" onclick="selectSession(this,'#01. 일상','The Aesthetics of Everyday Life')">
+          <div class="session-card-check">✓</div>
+          <span class="session-card-num">#01</span>
+          <h4 class="session-card-title">일상</h4>
+          <p class="session-card-en">The Aesthetics of Everyday Life</p>
+          <p class="session-card-quote">"순간의 조각이 모여,<br>삶은 예술이 된다."</p>
+        </div>
+        <div class="session-card reveal" onclick="selectSession(this,'#02. 자화상','The Integrated Self-Portraits')">
+          <div class="session-card-check">✓</div>
+          <span class="session-card-num">#02</span>
+          <h4 class="session-card-title">자화상</h4>
+          <p class="session-card-en">The Integrated Self-Portraits</p>
+          <p class="session-card-quote">"빛과 그림자의 교차점에서<br>피어난 나."</p>
+        </div>
+        <div class="session-card reveal" onclick="selectSession(this,'#03. 나다움','The Layered Personality')">
+          <div class="session-card-check">✓</div>
+          <span class="session-card-num">#03</span>
+          <h4 class="session-card-title">나다움</h4>
+          <p class="session-card-en">The Layered Personality</p>
+          <p class="session-card-quote">"나는 존재하지 않는다,<br>다만 욕망 뿐."</p>
+        </div>
+        <div class="session-card reveal" onclick="selectSession(this,'#04. 사계','The Perceptual Four Seasons')">
+          <div class="session-card-check">✓</div>
+          <span class="session-card-num">#04</span>
+          <h4 class="session-card-title">사계</h4>
+          <p class="session-card-en">The Perceptual Four Seasons</p>
+          <p class="session-card-quote">"각자의 계절 따라<br>흘러가는 당신에게."</p>
+        </div>
+        <div class="session-card reveal" onclick="selectSession(this,'#05. 길','The Road of Life')">
+          <div class="session-card-check">✓</div>
+          <span class="session-card-num">#05</span>
+          <h4 class="session-card-title">길</h4>
+          <p class="session-card-en">The Road of Life</p>
+          <p class="session-card-quote">"걸어왔고, 또 걸어갈<br>여정에 잠시 멈추어."</p>
+        </div>
+        <div class="session-card reveal" onclick="selectSession(this,'#06. 행복','The Happiness')">
+          <div class="session-card-check">✓</div>
+          <span class="session-card-num">#06</span>
+          <h4 class="session-card-title">행복</h4>
+          <p class="session-card-en">The Happiness</p>
+          <p class="session-card-quote">"나침반이 있었다,<br>행복이란 이름의."</p>
+        </div>
+        <div class="session-card reveal" onclick="selectSession(this,'#07. 꿈','The Dreams on Icons')">
+          <div class="session-card-check">✓</div>
+          <span class="session-card-num">#07</span>
+          <h4 class="session-card-title">꿈</h4>
+          <p class="session-card-en">The Dreams on Icons</p>
+          <p class="session-card-quote">"그려보지 않은 꿈은,<br>단지 신기루겠지."</p>
+        </div>
+        <div class="session-card reveal" style="background:#f0ede6;cursor:default;opacity:0.6;">
+          <span class="session-card-num" style="color:var(--light);">아직 못 고르겠어요</span>
+          <h4 class="session-card-title" style="font-size:15px;color:var(--dim);">뭐가 맞을지<br>모르겠어요</h4>
+          <p class="session-card-quote" style="margin-top:12px;">괜찮아요. 서영이 먼저 이야기 들어볼게요.</p>
+          <a href="#contact" class="svc-btn" style="margin-top:16px;display:inline-block;font-size:10px;padding:10px 18px;">문의하기</a>
+        </div>
+      </div>
+
+      <!-- Epilogue -->
+      <div class="session-epilogue reveal">
+        <div class="session-epilogue-left">
+          <p>모든 세션의 공동 작업</p>
+          <p>#. Epilogue — Work+Memory Drawing</p>
+          <p>"신이 허락한 인간의 유일한 자유 의지" · 세션을 마치며 남기는 10×10 캔버스 드로잉. 모든 세션에 포함됩니다.</p>
+        </div>
+      </div>
+
+      <!-- 선택 요약 -->
+      <div class="session-summary" id="sessionSummary">
+        <div class="session-summary-left">
+          <p>선택한 세션</p>
+          <p id="summaryTitle">—</p>
+          <p id="summaryDesc">2~3시간 · 1인 10~15만원 · 온/오프라인</p>
+        </div>
+        <div class="session-summary-btns">
+          <button class="btn-session-reset" onclick="resetSession()">다시 선택</button>
+          <button class="btn-session-contact" onclick="goToContact()">이 세션 신청하기 →</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -617,10 +830,22 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
           <label class="form-label">관심 서비스</label>
           <select class="form-select" name="service">
             <option value="">선택해주세요</option>
-            <option>GROUP WORK+SHOP (집단 작업)</option>
-            <option>PERSONAL WORK+SHOP (개인 작업)</option>
-            <option>워크숍 No.16 (4월)</option>
-            <option>기타 문의</option>
+            <optgroup label="GROUP WORK+SHOP">
+              <option>집단 워크숍 No.16 — 우울을 바라, '봄' (4월)</option>
+            </optgroup>
+            <optgroup label="PERSONAL WORK+SHOP">
+              <option>개인 세션 #01. 일상</option>
+              <option>개인 세션 #02. 자화상</option>
+              <option>개인 세션 #03. 나다움</option>
+              <option>개인 세션 #04. 사계</option>
+              <option>개인 세션 #05. 길</option>
+              <option>개인 세션 #06. 행복</option>
+              <option>개인 세션 #07. 꿈</option>
+              <option>개인 세션 — 아직 못 고르겠어요 (상담 후 결정)</option>
+            </optgroup>
+            <optgroup label="기타">
+              <option>기타 문의</option>
+            </optgroup>
           </select>
         </div>
         <div class="form-group">
@@ -676,6 +901,46 @@ function handleSubmit(e){
       if(r.ok){setTimeout(()=>{btn.textContent='문의 보내기';btn.style.background='';btn.style.color='';e.target.reset();},3000);}
     })
     .catch(()=>{btn.textContent='문의 보내기';btn.style.background='';btn.style.color='';});
+}
+
+/* 서비스 탭 전환 */
+function switchTab(panel, btn){
+  document.querySelectorAll('.session-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.session-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+panel).classList.add('active');
+}
+
+/* 개인 세션 선택 */
+let selectedSession = null;
+function selectSession(card, title, desc){
+  document.querySelectorAll('.session-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedSession = {title, desc};
+  const summary = document.getElementById('sessionSummary');
+  document.getElementById('summaryTitle').innerHTML = '<em>'+title+'</em>';
+  document.getElementById('summaryDesc').textContent = desc + ' · 2~3시간 · 10~15만원';
+  summary.classList.add('visible');
+  summary.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+function resetSession(){
+  document.querySelectorAll('.session-card').forEach(c=>c.classList.remove('selected'));
+  selectedSession = null;
+  document.getElementById('sessionSummary').classList.remove('visible');
+}
+function goToContact(){
+  if(selectedSession){
+    const sel = document.querySelector('select[name="service"]');
+    if(sel){
+      // 선택된 세션을 문의 폼 옵션에 반영
+      const opt = document.createElement('option');
+      opt.value = selectedSession.title;
+      opt.text = 'PERSONAL — ' + selectedSession.title;
+      opt.selected = true;
+      sel.appendChild(opt);
+    }
+  }
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
 }
 
 /* 스크롤 리빌 */
