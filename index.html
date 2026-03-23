@@ -167,7 +167,7 @@ nav.scrolled{background:rgba(250,247,242,0.96);backdrop-filter:blur(16px);border
 /* ══ AFTER — LIGHT ══ */
 .after-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;}
 .after-card{padding:40px 32px;background:var(--off);position:relative;overflow:hidden;}
-.after-card::before{content:'AFTER 6H';position:absolute;top:20px;right:24px;font-size:9px;letter-spacing:0.3em;color:var(--light);}
+.after-card::before{content:'AFTER WORK+SHOP';position:absolute;top:20px;right:24px;font-size:9px;letter-spacing:0.3em;color:var(--light);}
 .after-card-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;line-height:1.5;margin-bottom:16px;color:var(--black);}
 .after-card-title em{color:var(--red);font-style:normal;}
 .after-card-text{font-size:13px;line-height:1.8;color:var(--gray);}
@@ -364,15 +364,47 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
 .footer-copy{font-size:11px;color:#3a3835;letter-spacing:0.1em;}
 @media(max-width:768px){footer{padding:32px 24px;flex-direction:column;gap:16px;}}
 
+/* ══ VISIT SECTION ══ */
+.visit-row{display:flex;gap:3px;margin-bottom:3px;}
+.visit-half{flex:1;background:#1c1a17;padding:28px 24px;}
+.visit-badge{font-size:9px;letter-spacing:0.35em;margin-bottom:10px;}
+.visit-half-text{font-size:13px;color:#5a5550;line-height:1.8;}
+.visit-row-label{font-size:10px;letter-spacing:0.4em;color:#4a4540;padding:16px 24px;background:#0e0d0b;margin-bottom:3px;}
+.visit-effect-row{display:flex;flex-direction:column;gap:3px;}
+.visit-effect-item{background:#111009;padding:20px 24px;display:flex;align-items:baseline;gap:16px;}
+.visit-effect-badge{font-size:10px;letter-spacing:0.3em;white-space:nowrap;flex-shrink:0;min-width:140px;}
+.visit-effect-text{font-size:13px;color:#5a5550;line-height:1.8;}
+.visit-ref-row{display:flex;flex-direction:column;gap:3px;}
+.visit-ref-item{background:#111009;padding:20px 24px;display:flex;align-items:baseline;gap:16px;}
+.visit-ref-label{font-size:9px;letter-spacing:0.35em;white-space:nowrap;flex-shrink:0;min-width:130px;}
+.visit-ref-text{font-size:12px;color:#5a5550;line-height:1.8;}
+.visit-voices{display:flex;flex-direction:column;gap:14px;}
+.visit-voice{font-family:'Noto Serif KR',serif;font-size:14px;color:rgba(250,247,242,0.55);line-height:1.8;font-weight:300;padding-left:16px;border-left:1px solid #2a2826;}
+.visit-process{display:flex;align-items:flex-start;gap:0;margin-top:3px;}
+.visit-process-item{flex:1;background:#1c1a17;padding:24px 20px;}
+.visit-process-arrow{color:#2a2826;font-size:18px;padding:24px 8px;background:#161412;display:flex;align-items:center;}
+.visit-process-num{font-size:24px;font-weight:200;color:#2a2826;font-family:'Noto Serif KR',serif;margin-bottom:8px;}
+.visit-process-title{font-size:13px;color:var(--white);font-weight:400;margin-bottom:6px;}
+.visit-process-text{font-size:11px;color:#4a4540;line-height:1.7;}
+.visit-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+@media(max-width:768px){
+  .visit-row{flex-direction:column;}
+  .visit-effect-item{flex-direction:column;gap:6px;}
+  .visit-effect-badge{min-width:unset;}
+  .visit-ref-item{flex-direction:column;gap:6px;}
+  .visit-ref-label{min-width:unset;}
+  .visit-process{flex-direction:column;}
+  .visit-process-arrow{display:none;}
+  .visit-process-item{width:100%;}
+  .visit-cta{flex-direction:column;align-items:flex-start;}
+  .visit-cta a{width:100%;text-align:center;}
+}
+
 /* ══ SCROLL ANIMATION ══ */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 @media(max-width:768px){
   .ongoing-inner{padding:12px 20px !important;}
-  #visit .container > div[style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr) !important;}
-  #visit .container > div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr !important;}
-  #visit .container > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
-  #visit .container > div[style*="grid-template-columns:repeat(2"]{grid-template-columns:1fr !important;}
 }
 </style>
 </head>
@@ -404,8 +436,8 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
       <em>몰랐어요.</em>
     </h1>
     <p class="hero-sub">
-      마음을 고치러 오는 곳이 아니에요.<br>
-      분석 없이, 추궁 없이 — <strong style="color:rgba(250,247,242,0.85);">있는 그대로 꺼내도 되는 시간과 공간.</strong>
+      마음을 고치지 않습니다. 마음을 마음답게 합니다.<br>
+      분석 없이, 평가 없이 — <strong style="color:rgba(250,247,242,0.85);">마음이 다시, 다채롭게 움직이는 예술치료 기반 심리 워크숍.</strong>
     </p>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">워크숍 신청하기</a>
@@ -507,7 +539,7 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
   </div>
 </section>
 
-<!-- ══ AFTER 6H ══ -->
+<!-- ══ AFTER WORK+SHOP ══ -->
 <section class="sec" id="after">
   <div class="container">
     <p class="sec-label">AFTER WORK+SHOP · 참가자들이 말했어요</p>
@@ -704,140 +736,103 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
     <h2 class="sec-title" style="color:var(--white);">마음다움이<br><em style="font-style:normal;color:var(--yellow);">찾아갑니다.</em></h2>
     <p class="sec-desc" style="color:#6a6560;max-width:600px;">학교, 기관, 기업의 특성과 목적에 맞게 설계하여 찾아가요.<br>평가 없이, 구조화된 예술 활동으로 — 자연스럽게 작동합니다.</p>
 
-    <!-- 찾아오는 vs 찾아가는 비교 -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:48px;" class="reveal">
-      <div style="background:#1c1a17;padding:36px 32px;border-top:2px solid var(--yellow);">
-        <p style="font-size:10px;letter-spacing:0.4em;color:var(--yellow);margin-bottom:16px;">COMING TO US</p>
-        <p style="font-family:'Noto Serif KR',serif;font-size:18px;color:var(--white);font-weight:300;margin-bottom:12px;">찾아오는 워크숍</p>
-        <p style="font-size:13px;color:#5a5550;line-height:1.8;">개인이 마음다움 스튜디오로 옵니다.<br>집단 워크숍 · 개인 세션 7종</p>
+    <!-- 찾아오는 vs 찾아가는 -->
+    <div class="visit-row reveal" style="margin-bottom:3px;">
+      <div class="visit-half" style="border-top:2px solid var(--yellow);">
+        <p class="visit-badge" style="color:var(--yellow);">COMING TO US · 찾아오는 워크숍</p>
+        <p class="visit-half-text">개인이 마음다움 스튜디오로 옵니다.<br>집단 워크숍 · 개인 세션 7종</p>
       </div>
-      <div style="background:#1c1a17;padding:36px 32px;border-top:2px solid var(--white);">
-        <p style="font-size:10px;letter-spacing:0.4em;color:rgba(250,247,242,0.6);margin-bottom:16px;">GOING TO YOU</p>
-        <p style="font-family:'Noto Serif KR',serif;font-size:18px;color:var(--white);font-weight:300;margin-bottom:12px;">찾아가는 워크숍</p>
-        <p style="font-size:13px;color:#5a5550;line-height:1.8;">마음다움이 현장으로 찾아갑니다.<br>학교 · 기관 · 기업 · 대학 맞춤 설계</p>
+      <div class="visit-half" style="border-top:2px solid rgba(250,247,242,0.3);">
+        <p class="visit-badge" style="color:rgba(250,247,242,0.5);">GOING TO YOU · 찾아가는 워크숍</p>
+        <p class="visit-half-text">마음다움이 현장으로 찾아갑니다.<br>학교 · 기관 · 기업 · 대학 맞춤 설계</p>
       </div>
     </div>
 
-    <!-- 효과 -->
-    <div style="margin-bottom:48px;" class="reveal">
-      <p style="font-size:10px;letter-spacing:0.4em;color:#4a4540;margin-bottom:24px;">WHAT HAPPENS · 무엇이 달라지는가</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
-        <div style="background:#111009;padding:32px 28px;">
-          <p style="font-size:11px;letter-spacing:0.3em;color:var(--red);margin-bottom:14px;">INDIVIDUAL</p>
-          <p style="font-family:'Noto Serif KR',serif;font-size:15px;color:var(--white);font-weight:300;margin-bottom:12px;">개인 차원</p>
-          <p style="font-size:13px;color:#5a5550;line-height:1.9;">스트레스 감소<br>자기 이해 증진<br>감정 표현 능력<br>창의적 사고 확장</p>
+    <!-- 효과 — 행 구조 -->
+    <div class="reveal" style="margin-bottom:3px;">
+      <div class="visit-row-label">WHAT HAPPENS · 무엇이 달라지는가</div>
+      <div class="visit-effect-row">
+        <div class="visit-effect-item">
+          <p class="visit-effect-badge" style="color:var(--red);">INDIVIDUAL · 개인</p>
+          <p class="visit-effect-text">스트레스 감소 · 자기 이해 증진 · 감정 표현 능력 · 창의적 사고 확장</p>
         </div>
-        <div style="background:#111009;padding:32px 28px;">
-          <p style="font-size:11px;letter-spacing:0.3em;color:var(--blue);margin-bottom:14px;">GROUP</p>
-          <p style="font-family:'Noto Serif KR',serif;font-size:15px;color:var(--white);font-weight:300;margin-bottom:12px;">집단 차원</p>
-          <p style="font-size:13px;color:#5a5550;line-height:1.9;">타인 이해<br>사회적 기술 증진<br>팀 응집력<br>관계 회복</p>
+        <div class="visit-effect-item">
+          <p class="visit-effect-badge" style="color:var(--blue);">GROUP · 집단</p>
+          <p class="visit-effect-text">타인 이해 · 사회적 기술 증진 · 팀 응집력 · 관계 회복</p>
         </div>
-        <div style="background:#111009;padding:32px 28px;">
-          <p style="font-size:11px;letter-spacing:0.3em;color:var(--green);margin-bottom:14px;">DIFFERENCE</p>
-          <p style="font-family:'Noto Serif KR',serif;font-size:15px;color:var(--white);font-weight:300;margin-bottom:12px;">기존 집단상담과 다른 점</p>
-          <p style="font-size:13px;color:#5a5550;line-height:1.9;">평가·진단 없음<br>구조화된 예술 활동<br>자연스러운 참여<br>신선하다는 반응</p>
+        <div class="visit-effect-item">
+          <p class="visit-effect-badge" style="color:var(--green);">DIFFERENCE · 기존과 다른 점</p>
+          <p class="visit-effect-text">평가·진단 없음 · 구조화된 예술 활동 · 자연스러운 참여 · 신선하다는 반응</p>
         </div>
       </div>
     </div>
 
-    <!-- 레퍼런스 -->
-    <div class="reveal" style="margin-bottom:48px;">
-      <p style="font-size:10px;letter-spacing:0.4em;color:#4a4540;margin-bottom:24px;">REFERENCES · 함께한 곳들</p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;">
-
-        <!-- 학교 -->
-        <div style="background:#111009;padding:28px 24px;">
-          <p style="font-size:9px;letter-spacing:0.35em;color:var(--yellow);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #1e1c18;">SCHOOL · 학교</p>
-          <p style="font-size:12px;color:#5a5550;line-height:2.2;">
-            경일초 · 동호초 · 응봉초 · 포곡초<br>
-            마장중 · 세화여중 · 한대부중<br>
-            금곡고 · 연수여고 · 한대부고
-          </p>
+    <!-- 레퍼런스 — 행 구조 -->
+    <div class="reveal" style="margin-bottom:3px;">
+      <div class="visit-row-label">REFERENCES · 함께한 곳들</div>
+      <div class="visit-ref-row">
+        <div class="visit-ref-item">
+          <p class="visit-ref-label" style="color:var(--yellow);">SCHOOL · 학교</p>
+          <p class="visit-ref-text">경일초 · 동호초 · 응봉초 · 포곡초 · 마장중 · 세화여중 · 한대부중 · 금곡고 · 연수여고 · 한대부고</p>
         </div>
-
-        <!-- 대학 -->
-        <div style="background:#111009;padding:28px 24px;">
-          <p style="font-size:9px;letter-spacing:0.35em;color:var(--red);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #1e1c18;">UNIVERSITY · 대학</p>
-          <p style="font-size:12px;color:#5a5550;line-height:2.2;">
-            명지대학교<br>
-            삼육대학교<br>
-            성신여자대학교<br>
-            한양대학교 ERICA<br>
-            <span style="font-size:11px;color:#3a3835;">(5년 연속 출강)</span>
-          </p>
+        <div class="visit-ref-item">
+          <p class="visit-ref-label" style="color:var(--red);">UNIVERSITY · 대학</p>
+          <p class="visit-ref-text">명지대학교 · 삼육대학교 · 성신여자대학교 · 한양대학교 ERICA <span style="color:#3a3835;">(5년 연속)</span></p>
         </div>
-
-        <!-- 복지기관 -->
-        <div style="background:#111009;padding:28px 24px;">
-          <p style="font-size:9px;letter-spacing:0.35em;color:var(--blue);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #1e1c18;">WELFARE · 복지기관</p>
-          <p style="font-size:12px;color:#5a5550;line-height:2.2;">
-            서울 청년센터 강동·창동오랑<br>
-            기흥장애인복지관<br>
-            서울노인복지센터<br>
-            서대문노인종합복지관<br>
-            서초구·양천구 가족센터<br>
-            성동구청소년상담복지센터<br>
-            성동경찰서 · 은평구청소년문화의집<br>
-            신나는에프터센터
-          </p>
+        <div class="visit-ref-item">
+          <p class="visit-ref-label" style="color:var(--blue);">WELFARE · 복지기관</p>
+          <p class="visit-ref-text">서울청년센터 강동·창동오랑 · 기흥장애인복지관 · 서울노인복지센터 · 서대문노인종합복지관 · 서초구·양천구 가족센터 · 성동구청소년상담복지센터 · 성동경찰서 · 은평구청소년문화의집 · 신나는에프터센터</p>
         </div>
-
-        <!-- 기타 -->
-        <div style="background:#111009;padding:28px 24px;">
-          <p style="font-size:9px;letter-spacing:0.35em;color:var(--green);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #1e1c18;">ETC · 기타</p>
-          <p style="font-size:12px;color:#5a5550;line-height:2.2;">
-            세광교회<br>
-            창업가 특강<br>
-            진로 특강
-          </p>
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid #1e1c18;">
-            <p style="font-size:11px;color:#3a3835;line-height:1.8;">학교 · 대학 · 복지기관 · 기업 등 대상과 목적에 맞게 설계합니다.</p>
-          </div>
+        <div class="visit-ref-item">
+          <p class="visit-ref-label" style="color:var(--green);">ETC · 기타</p>
+          <p class="visit-ref-text">세광교회 · 창업가 특강 · 진로 특강</p>
         </div>
-
       </div>
     </div>
 
     <!-- 담당자 목소리 -->
-    <div style="background:#111009;padding:40px;margin-bottom:48px;border-left:3px solid var(--yellow);" class="reveal">
-      <p style="font-size:10px;letter-spacing:0.4em;color:#4a4540;margin-bottom:24px;">WHAT THEY SAY · 담당자들의 말</p>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
-        <p style="font-family:'Noto Serif KR',serif;font-size:15px;color:rgba(250,247,242,0.6);line-height:1.8;font-weight:300;">"신선하다. 기존 집단 상담과 확실히 달랐다."</p>
-        <p style="font-family:'Noto Serif KR',serif;font-size:15px;color:rgba(250,247,242,0.6);line-height:1.8;font-weight:300;">"평가적이지 않아서 학생들이 부담 없이 참여했다."</p>
-        <p style="font-family:'Noto Serif KR',serif;font-size:15px;color:rgba(250,247,242,0.6);line-height:1.8;font-weight:300;">"학생들이 너무 재밌어했다. 다음에도 꼭 또 오셨으면 한다."</p>
-        <p style="font-family:'Noto Serif KR',serif;font-size:15px;color:rgba(250,247,242,0.6);line-height:1.8;font-weight:300;">"집단 상담에서 보기 힘든 자발적 참여가 일어났다."</p>
+    <div style="background:#111009;padding:32px;margin-bottom:3px;border-left:3px solid var(--yellow);" class="reveal">
+      <p class="visit-row-label" style="margin-bottom:20px;">WHAT THEY SAY · 담당자들의 말</p>
+      <div class="visit-voices">
+        <p class="visit-voice">"신선하다. 기존 집단 상담과 확실히 달랐다."</p>
+        <p class="visit-voice">"평가적이지 않아서 학생들이 부담 없이 참여했다."</p>
+        <p class="visit-voice">"학생들이 너무 재밌어했다. 다음에도 꼭 오셨으면 한다."</p>
+        <p class="visit-voice">"집단 상담에서 보기 힘든 자발적 참여가 일어났다."</p>
       </div>
     </div>
 
-    <!-- 프로세스 -->
-    <div style="margin-bottom:48px;" class="reveal">
-      <p style="font-size:10px;letter-spacing:0.4em;color:#4a4540;margin-bottom:24px;">PROCESS · 이렇게 진행돼요</p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;">
-        <div style="background:#1c1a17;padding:28px 24px;position:relative;">
-          <p style="font-size:28px;font-weight:200;color:#2a2826;font-family:'Noto Serif KR',serif;margin-bottom:12px;">01</p>
-          <p style="font-size:13px;color:var(--white);font-weight:400;margin-bottom:8px;">문의 · 상담</p>
-          <p style="font-size:12px;color:#4a4540;line-height:1.7;">대상, 인원, 목적, 시간을 먼저 파악해요.</p>
+    <!-- 프로세스 — 행 구조 -->
+    <div class="reveal" style="margin-bottom:48px;">
+      <div class="visit-row-label">PROCESS · 이렇게 진행돼요</div>
+      <div class="visit-process">
+        <div class="visit-process-item">
+          <p class="visit-process-num">01</p>
+          <p class="visit-process-title">문의 · 상담</p>
+          <p class="visit-process-text">대상, 인원, 목적, 시간을 먼저 파악해요.</p>
         </div>
-        <div style="background:#1c1a17;padding:28px 24px;">
-          <p style="font-size:28px;font-weight:200;color:#2a2826;font-family:'Noto Serif KR',serif;margin-bottom:12px;">02</p>
-          <p style="font-size:13px;color:var(--white);font-weight:400;margin-bottom:8px;">맞춤 설계</p>
-          <p style="font-size:12px;color:#4a4540;line-height:1.7;">집단 특성에 맞는 프로그램을 설계해요.</p>
+        <div class="visit-process-arrow">→</div>
+        <div class="visit-process-item">
+          <p class="visit-process-num">02</p>
+          <p class="visit-process-title">맞춤 설계</p>
+          <p class="visit-process-text">집단 특성에 맞는 프로그램을 설계해요.</p>
         </div>
-        <div style="background:#1c1a17;padding:28px 24px;">
-          <p style="font-size:28px;font-weight:200;color:#2a2826;font-family:'Noto Serif KR',serif;margin-bottom:12px;">03</p>
-          <p style="font-size:13px;color:var(--white);font-weight:400;margin-bottom:8px;">현장 진행</p>
-          <p style="font-size:12px;color:#4a4540;line-height:1.7;">현우·서영이 직접 찾아가서 진행해요.</p>
+        <div class="visit-process-arrow">→</div>
+        <div class="visit-process-item">
+          <p class="visit-process-num">03</p>
+          <p class="visit-process-title">현장 진행</p>
+          <p class="visit-process-text">현우·서영이 직접 찾아가서 진행해요.</p>
         </div>
-        <div style="background:#1c1a17;padding:28px 24px;">
-          <p style="font-size:28px;font-weight:200;color:#2a2826;font-family:'Noto Serif KR',serif;margin-bottom:12px;">04</p>
-          <p style="font-size:13px;color:var(--white);font-weight:400;margin-bottom:8px;">결과 공유</p>
-          <p style="font-size:12px;color:#4a4540;line-height:1.7;">필요시 진행 결과와 참여자 반응을 정리해드려요.</p>
+        <div class="visit-process-arrow">→</div>
+        <div class="visit-process-item">
+          <p class="visit-process-num">04</p>
+          <p class="visit-process-title">결과 공유</p>
+          <p class="visit-process-text">필요시 진행 결과와 참여자 반응을 정리해드려요.</p>
         </div>
       </div>
     </div>
 
     <!-- CTA -->
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;" class="reveal">
+    <div class="visit-cta reveal">
       <div>
         <p style="font-family:'Noto Serif KR',serif;font-size:18px;color:var(--white);font-weight:300;margin-bottom:8px;">출강 문의는 부담 없이 먼저 연락주세요.</p>
         <p style="font-size:13px;color:#4a4540;">기관명, 대상, 인원, 목적을 알려주시면 맞춤으로 안내드려요.</p>
