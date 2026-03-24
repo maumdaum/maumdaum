@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>마음다움 — 마음이 마음다워지는 곳</title>
-<meta name="description" content="막힌 상상력을 다시 흐르게 하는 예술 워크숍. 생활 우울, 말로 안 풀릴 때 — 이미지로 먼저 만나요.">
+<title>마음다움 — 말로 안 풀릴 때 오는 곳</title>
+<meta name="description" content="그림 못 그려도 됩니다. 말로 안 풀릴 때 오는 곳. 예술치료 기반 심리 워크숍 — 마음다움.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ══ RESET & BASE ══ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --black:#0c0b0a;
@@ -33,48 +32,35 @@ body{background:var(--white);color:var(--black);font-family:'Noto Sans KR',sans-
 /* ══ NAV ══ */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;transition:all 0.4s;}
 nav.scrolled{background:rgba(250,247,242,0.96);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--light);}
-.nav-logo{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:var(--black);letter-spacing:0.05em;text-decoration:none;}
-.nav-logo em{color:var(--black);font-style:normal;}
-.nav-links{display:flex;gap:36px;list-style:none;}
-.nav-links a{font-size:11px;letter-spacing:0.15em;color:var(--gray);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--red);}
-.nav-cta{font-size:11px;letter-spacing:0.2em;color:var(--white);background:var(--black);padding:11px 26px;text-decoration:none;transition:background 0.2s;font-weight:400;}
-.nav-cta:hover{background:var(--red);}
-@media(max-width:768px){
-  nav{padding:16px 24px;}
-  .nav-links{display:none;}
-}
+.nav-logo{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:var(--white);letter-spacing:0.05em;text-decoration:none;transition:color 0.4s;}
+nav.scrolled .nav-logo{color:var(--black);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:0.15em;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+nav.scrolled .nav-links a{color:var(--gray);}
+.nav-links a:hover{color:var(--yellow) !important;}
+.nav-cta{font-size:11px;letter-spacing:0.2em;color:var(--black);background:var(--yellow);padding:11px 26px;text-decoration:none;transition:background 0.2s;font-weight:500;}
+.nav-cta:hover{background:var(--white);}
+@media(max-width:768px){nav{padding:16px 20px;} .nav-links{display:none;}}
 
 /* ══ HERO ══ */
 .hero{min-height:100vh;background:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:120px 56px 80px;}
-.hero-canvas{position:absolute;inset:0;opacity:0.6;}
-.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:760px;}
 .hero-label{font-size:10px;letter-spacing:0.55em;color:var(--gray);margin-bottom:32px;}
 .hero-title{font-family:'Noto Serif KR',serif;font-size:clamp(22px,4.5vw,65px);font-weight:200;color:var(--white);line-height:1.4;margin-bottom:28px;}
 .hero-title em{color:var(--yellow);font-style:normal;}
-.hero-sub{font-size:15px;line-height:1.9;color:rgba(250,247,242,0.5);margin-bottom:52px;letter-spacing:0.02em;}
-.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.hero-sub{font-size:15px;line-height:2;color:rgba(250,247,242,0.5);margin-bottom:48px;}
+.hero-sub strong{color:rgba(250,247,242,0.85);}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 .btn-primary{font-size:12px;letter-spacing:0.2em;color:var(--black);background:var(--yellow);padding:14px 36px;text-decoration:none;transition:all 0.2s;font-weight:500;}
 .btn-primary:hover{background:var(--white);}
 .btn-ghost{font-size:12px;letter-spacing:0.2em;color:rgba(250,247,242,0.6);border:1px solid rgba(250,247,242,0.2);padding:14px 36px;text-decoration:none;transition:all 0.2s;}
 .btn-ghost:hover{color:var(--white);border-color:rgba(250,247,242,0.5);}
 .hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;}
 .hero-scroll span{font-size:9px;letter-spacing:0.4em;color:var(--dim);}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--dim),transparent);animation:scrollLine 2s ease infinite;}
-@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--dim),transparent);animation:scrollAnim 2s ease infinite;}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
 
-/* ══ SECTION COMMON ══ */
-.sec{padding:120px 0;}
-.container{max-width:1100px;margin:0 auto;padding:0 56px;}
-.sec-label{font-size:10px;letter-spacing:0.5em;color:var(--gray);margin-bottom:14px;}
-.sec-title{font-family:'Noto Serif KR',serif;font-size:clamp(26px,3.5vw,42px);font-weight:300;line-height:1.4;margin-bottom:20px;}
-.sec-desc{font-size:14px;line-height:1.9;color:var(--gray);max-width:560px;margin-bottom:64px;}
-@media(max-width:768px){
-  .sec{padding:64px 0;}
-  .container{padding:0 20px;}
-}
-
-/* ══ NO.16 BANNER ══ */
+/* ══ BANNERS ══ */
 .banner-16{background:var(--yellow);}
 .banner-16-inner{max-width:1100px;margin:0 auto;padding:18px 56px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .banner-16-left{display:flex;align-items:center;gap:14px;min-width:0;flex:1;}
@@ -88,337 +74,256 @@ nav.scrolled{background:rgba(250,247,242,0.96);backdrop-filter:blur(16px);border
 .banner-16-btn{font-size:11px;letter-spacing:0.15em;background:var(--black);color:var(--yellow);padding:11px 20px;text-decoration:none;font-weight:500;white-space:nowrap;}
 .banner-16-btn:hover{background:#2a2826;}
 @media(max-width:768px){
-  .banner-16-inner{
-    padding:16px 20px;
-    display:grid;
-    grid-template-columns:1fr;
-    gap:12px;
-  }
-  .banner-16-left{
-    display:grid;
-    grid-template-columns:auto 1fr;
-    align-items:start;
-    gap:10px;
-  }
-  .banner-16-tag{align-self:center;}
-  .banner-16-text{font-size:14px;line-height:1.5;}
-  .banner-16-meta{font-size:11px;margin-top:3px;}
-  .banner-16-right{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    width:100%;
-  }
-  .banner-16-btn{padding:10px 20px;font-size:11px;}
+  .banner-16-inner{padding:14px 20px;display:grid;grid-template-columns:1fr;gap:12px;}
+  .banner-16-left{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:10px;}
+  .banner-16-right{display:flex;align-items:center;justify-content:space-between;width:100%;}
 }
 
-/* ══ PHILOSOPHY — DARK ══ */
-.sec-phil{background:var(--black);}
-.sec-phil .sec-label{color:#6a6560;}
-.sec-phil .sec-title{color:var(--white);}
-.sec-phil .sec-desc{color:#6a6560;}
+/* ══ SECTION COMMON ══ */
+.sec{padding:100px 0;}
+.container{max-width:1100px;margin:0 auto;padding:0 56px;}
+.sec-label{font-size:10px;letter-spacing:0.5em;color:var(--gray);margin-bottom:14px;}
+.sec-title{font-family:'Noto Serif KR',serif;font-size:clamp(24px,3.5vw,40px);font-weight:300;line-height:1.45;margin-bottom:16px;}
+.sec-desc{font-size:14px;line-height:1.9;color:var(--gray);max-width:560px;margin-bottom:56px;}
+@media(max-width:768px){.sec{padding:64px 0;} .container{padding:0 20px;}}
 
-.phil-core{border:1px solid rgba(255,224,51,0.2);padding:48px;margin-bottom:3px;position:relative;background:rgba(255,224,51,0.02);transition:border-color 0.3s;}
-.phil-core:hover{border-color:rgba(255,224,51,0.4);}
-.phil-core::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--yellow);}
-.phil-core-badge{font-size:9px;letter-spacing:0.45em;color:var(--yellow);margin-bottom:20px;}
-.phil-core-author{font-family:'Noto Serif KR',serif;font-size:13px;color:rgba(250,247,242,0.4);margin-bottom:12px;font-style:italic;}
-.phil-core-title{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:300;color:var(--white);margin-bottom:20px;line-height:1.5;}
-.phil-core-text{font-size:14px;line-height:1.9;color:#6a6560;margin-bottom:28px;}
-.phil-core-text strong{color:var(--white);font-weight:400;}
-.phil-core-apply{font-size:13px;color:var(--yellow);border-left:2px solid var(--yellow);padding-left:16px;line-height:1.8;}
+/* ══ QUESTIONS — "이런 분들 오세요" ══ */
+.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px;}
+.q-card{background:var(--off);padding:36px 32px;position:relative;cursor:default;}
+.q-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.q-card:nth-child(1)::before{background:var(--red);}
+.q-card:nth-child(2)::before{background:var(--blue);}
+.q-card:nth-child(3)::before{background:var(--green);}
+.q-card:nth-child(4)::before{background:var(--yellow);}
+.q-card:nth-child(5)::before{background:var(--red);}
+.q-card:nth-child(6)::before{background:var(--blue);}
+.q-num{font-size:11px;letter-spacing:0.3em;color:var(--light);margin-bottom:16px;display:block;}
+.q-text{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:300;color:var(--black);line-height:1.6;margin-bottom:12px;}
+.q-text em{font-style:normal;font-weight:400;}
+.q-sub{font-size:12px;color:var(--gray);line-height:1.7;}
+.q-footer{background:var(--black);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.q-footer p{font-family:'Noto Serif KR',serif;font-size:15px;color:rgba(250,247,242,0.7);font-weight:300;}
+.q-footer p em{color:var(--yellow);font-style:normal;}
+.q-footer a{font-size:11px;letter-spacing:0.2em;color:var(--black);background:var(--yellow);padding:12px 24px;text-decoration:none;white-space:nowrap;font-weight:500;}
+@media(max-width:768px){.q-grid{grid-template-columns:1fr;} .q-footer{flex-direction:column;align-items:flex-start;} .q-footer a{width:100%;text-align:center;}}
 
-.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px;}
-.phil-card{background:var(--dark);padding:40px 32px;position:relative;transition:background 0.3s;}
-.phil-card:hover{background:#1c1a17;}
-.phil-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
-.phil-card.red::before{background:var(--red);}
-.phil-card.blue::before{background:var(--blue);}
-.phil-card.green::before{background:var(--green);}
-.phil-card-badge{font-size:9px;letter-spacing:0.4em;margin-bottom:16px;}
-.phil-card.red .phil-card-badge{color:var(--red);}
-.phil-card.blue .phil-card-badge{color:var(--blue);}
-.phil-card.green .phil-card-badge{color:var(--green);}
-.phil-card-author{font-family:'Noto Serif KR',serif;font-size:12px;color:rgba(250,247,242,0.35);margin-bottom:10px;}
-.phil-card-title{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:300;color:var(--white);margin-bottom:16px;line-height:1.5;}
-.phil-card-text{font-size:13px;line-height:1.8;color:var(--dim);}
-.phil-card-apply{font-size:12px;margin-top:20px;}
-.phil-card.red .phil-card-apply{color:var(--red);}
-.phil-card.blue .phil-card-apply{color:var(--blue);}
-.phil-card.green .phil-card-apply{color:var(--green);}
+/* ══ BEFORE & AFTER ══ */
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:48px;}
+.ba-card{padding:40px 32px;position:relative;}
+.ba-card-before{background:var(--off);}
+.ba-card-after{background:var(--dark);}
+.ba-label{font-size:9px;letter-spacing:0.4em;margin-bottom:20px;display:block;}
+.ba-card-before .ba-label{color:var(--gray);}
+.ba-card-after .ba-label{color:var(--yellow);}
+.ba-quote{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:300;line-height:1.8;margin-bottom:16px;}
+.ba-card-before .ba-quote{color:var(--dim);}
+.ba-card-after .ba-quote{color:var(--white);}
+.ba-card-after .ba-quote em{color:var(--yellow);font-style:normal;}
+.ba-who{font-size:11px;color:var(--dim);}
+.ba-card-after .ba-who{color:#4a4540;}
+@media(max-width:768px){.ba-grid{grid-template-columns:1fr;}}
 
-.phil-sub{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:48px;}
-.phil-sub-card{background:#0e0d0b;padding:32px;border-left:2px solid rgba(255,224,51,0.15);}
-.phil-sub-card-title{font-family:'Noto Serif KR',serif;font-size:12px;color:rgba(250,247,242,0.3);margin-bottom:8px;}
-.phil-sub-card-text{font-size:13px;line-height:1.8;color:#4a4540;}
-
-.phil-position{border-top:1px solid rgba(255,255,255,0.06);padding-top:40px;display:flex;gap:32px;align-items:flex-start;}
-.phil-position-line{width:2px;background:rgba(255,224,51,0.25);flex-shrink:0;margin-top:4px;height:72px;}
-.phil-position-text{font-family:'Noto Serif KR',serif;font-size:15px;line-height:1.9;color:#6a6560;font-weight:300;}
-.phil-position-text em{font-style:normal;}
-.phil-position-text em.w{color:var(--white);}
-.phil-position-text em.y{color:var(--yellow);}
-
+/* ══ DIFFERENCE ══ */
+.diff-row{display:flex;gap:3px;margin-bottom:3px;}
+.diff-label-col{width:100px;background:var(--off);padding:18px 16px;font-size:10px;letter-spacing:0.2em;color:var(--gray);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5;flex-shrink:0;}
+.diff-before{flex:1;background:var(--white);padding:18px 20px;font-size:13px;color:var(--dim);line-height:1.7;text-decoration:line-through;border:1px solid var(--light);}
+.diff-after{flex:1;background:var(--black);padding:18px 20px;font-size:13px;color:rgba(250,247,242,0.7);line-height:1.7;}
+.diff-header{display:flex;gap:3px;margin-bottom:3px;}
+.diff-h-empty{width:100px;flex-shrink:0;}
+.diff-h-before{flex:1;background:#e8e4de;padding:10px 20px;font-size:9px;letter-spacing:0.3em;color:var(--gray);}
+.diff-h-after{flex:1;background:#1e1c18;padding:10px 20px;font-size:9px;letter-spacing:0.3em;color:var(--yellow);}
 @media(max-width:768px){
-  .phil-grid{grid-template-columns:1fr;}
-  .phil-sub{grid-template-columns:1fr;}
+  .diff-h-empty{display:none;}
+  .diff-label-col{display:none;}
+  .diff-before{border-radius:0;}
+  .diff-row{flex-direction:column;}
 }
 
-/* ══ AFTER — LIGHT ══ */
-.after-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;}
-.after-card{padding:40px 32px;background:var(--off);position:relative;overflow:hidden;}
-.after-card::before{content:'AFTER WORK+SHOP';position:absolute;top:20px;right:24px;font-size:9px;letter-spacing:0.3em;color:var(--light);}
-.after-card-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;line-height:1.5;margin-bottom:16px;color:var(--black);}
-.after-card-title em{color:var(--red);font-style:normal;}
-.after-card-text{font-size:13px;line-height:1.8;color:var(--gray);}
-@media(max-width:768px){.after-grid{grid-template-columns:1fr;}}
-
-/* ══ LIMITS ══ */
-.sec-limits{background:var(--off);}
-.limits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
-.limit-card{background:var(--white);padding:40px 32px;}
-.limit-num{font-size:11px;letter-spacing:0.3em;color:var(--light);margin-bottom:20px;display:block;}
-.limit-title{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:300;margin-bottom:16px;color:var(--black);}
-.limit-text{font-size:13px;line-height:1.8;color:var(--gray);margin-bottom:16px;}
-.limit-quote{font-size:13px;font-style:italic;color:var(--dim);border-left:2px solid var(--light);padding-left:14px;line-height:1.7;}
-@media(max-width:768px){.limits-grid{grid-template-columns:1fr;}}
-
-/* ══ METHOD ══ */
-.method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-bottom:48px;}
-.method-card{padding:40px;background:var(--off);}
-.method-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;margin-bottom:20px;}
-.method-card:nth-child(1) .method-num{background:var(--yellow);color:var(--black);}
-.method-card:nth-child(2) .method-num{background:var(--red);color:var(--white);}
-.method-card:nth-child(3) .method-num{background:var(--blue);color:var(--white);}
-.method-card:nth-child(4) .method-num{background:var(--green);color:var(--white);}
-.method-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;margin-bottom:14px;color:var(--black);}
-.method-text{font-size:13px;line-height:1.8;color:var(--gray);}
-@media(max-width:768px){.method-grid{grid-template-columns:1fr;}}
-
-/* ══ DIFFERENCE TABLE ══ */
-.diff-table{width:100%;border-collapse:collapse;font-size:13px;}
-.diff-table th{padding:16px 20px;text-align:left;font-size:10px;letter-spacing:0.3em;font-weight:400;border-bottom:1px solid var(--light);color:var(--gray);}
-.diff-table td{padding:20px;border-bottom:1px solid var(--off);line-height:1.7;vertical-align:top;color:var(--gray);}
-.diff-table td:first-child{color:var(--dim);font-size:12px;width:15%;}
-.diff-table td:nth-child(2){color:var(--dim);text-decoration:line-through;width:40%;}
-.diff-table td:nth-child(3){color:var(--black);width:45%;}
-.diff-table tr:hover td{background:var(--off);}
-
-.banner-personal{background:var(--off);border-top:1px solid var(--light);}
-.banner-personal-inner{max-width:1100px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;}
-.banner-personal-left{display:flex;align-items:center;gap:16px;}
-.banner-personal-tag{font-size:9px;letter-spacing:0.4em;background:var(--black);color:var(--white);padding:5px 12px;font-weight:500;white-space:nowrap;flex-shrink:0;}
-.banner-personal-text{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:400;color:var(--black);}
-.banner-personal-text em{font-style:normal;font-weight:600;}
-.banner-personal-meta{font-size:11px;color:var(--gray);margin-top:2px;}
-.banner-personal-btn{font-size:11px;letter-spacing:0.2em;color:var(--black);border:1px solid var(--black);padding:11px 24px;text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.banner-personal-btn:hover{background:var(--black);color:var(--white);}
-@media(max-width:768px){
-  .banner-personal-inner{padding:16px 24px;flex-direction:column;align-items:flex-start;gap:12px;}
-  .banner-personal-btn{width:100%;text-align:center;padding:12px;}
-}
-
-/* ══ SESSION SELECTOR ══ */
+/* ══ SERVICES ══ */
 .session-tabs{display:flex;gap:3px;margin-bottom:3px;}
-.session-tab{flex:1;padding:18px 20px;background:var(--off);border:none;border-bottom:3px solid transparent;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--gray);transition:all 0.2s;text-align:center;outline:none;-webkit-appearance:none;appearance:none;}
+.session-tab{flex:1;padding:18px 20px;background:var(--off);border:none;border-bottom:3px solid transparent;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--gray);transition:all 0.2s;text-align:center;outline:none;}
 .session-tab.active{background:var(--white);color:var(--black);border-bottom:3px solid var(--black);font-weight:500;}
 .session-tab:hover:not(.active){background:var(--white);color:var(--black);}
-
 .session-panel{display:none;}
 .session-panel.active{display:block;}
 
-/* 그룹 패널 */
-.group-panel-inner{background:var(--off);padding:56px;}
-.group-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:40px;}
+.group-panel-inner{background:var(--off);padding:48px;}
+.group-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:36px;}
 .group-panel-info{flex:1;}
 .group-panel-badge{font-size:9px;letter-spacing:0.4em;background:var(--yellow);color:var(--black);padding:5px 12px;display:inline-block;margin-bottom:16px;font-weight:500;}
-.group-panel-title{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:300;color:var(--black);margin-bottom:12px;line-height:1.4;}
+.group-panel-title{font-family:'Noto Serif KR',serif;font-size:26px;font-weight:300;color:var(--black);margin-bottom:12px;line-height:1.4;}
 .group-panel-title em{color:var(--red);font-style:normal;}
 .group-panel-desc{font-size:14px;line-height:1.9;color:var(--gray);}
-.group-panel-meta{flex-shrink:0;background:var(--white);padding:28px 32px;min-width:200px;}
-.group-panel-meta-row{margin-bottom:14px;}
-.group-panel-meta-row:last-child{margin-bottom:0;}
-.group-panel-meta-label{font-size:9px;letter-spacing:0.3em;color:var(--gray);margin-bottom:4px;}
-.group-panel-meta-value{font-size:14px;color:var(--black);font-weight:400;}
-.group-panel-meta-value strong{color:var(--red);}
-.group-panel-cta{margin-top:32px;display:flex;align-items:center;gap:20px;}
+.group-panel-meta{flex-shrink:0;background:var(--white);padding:24px 28px;min-width:190px;}
+.group-meta-row{margin-bottom:14px;}
+.group-meta-row:last-child{margin-bottom:0;}
+.group-meta-label{font-size:9px;letter-spacing:0.3em;color:var(--gray);margin-bottom:4px;}
+.group-meta-value{font-size:14px;color:var(--black);font-weight:400;}
+.group-meta-value strong{color:var(--red);}
+.group-panel-cta{display:flex;align-items:center;gap:24px;}
 .group-panel-quote{font-size:13px;font-style:italic;color:var(--dim);flex:1;}
-
-/* 개인 세션 패널 */
-.personal-intro{margin-bottom:32px;}
-.personal-intro p{font-size:14px;line-height:1.9;color:var(--gray);}
-.session-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px;}
-.session-card{background:var(--off);padding:32px 28px;cursor:pointer;transition:all 0.25s;position:relative;border:2px solid transparent;}
-.session-card:hover{background:var(--white);border-color:var(--black);}
-.session-card.selected{background:var(--black);border-color:var(--black);}
-.session-card-num{font-size:10px;letter-spacing:0.3em;color:var(--light);margin-bottom:12px;display:block;}
-.session-card.selected .session-card-num{color:rgba(250,247,242,0.3);}
-.session-card-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:var(--black);margin-bottom:6px;}
-.session-card.selected .session-card-title{color:var(--yellow);}
-.session-card-en{font-size:10px;letter-spacing:0.15em;color:var(--gray);margin-bottom:16px;}
-.session-card.selected .session-card-en{color:rgba(250,247,242,0.3);}
-.session-card-quote{font-size:12px;line-height:1.7;color:var(--dim);font-style:italic;}
-.session-card.selected .session-card-quote{color:rgba(250,247,242,0.5);}
-.session-card-check{position:absolute;top:16px;right:16px;width:20px;height:20px;border-radius:50%;background:var(--yellow);display:none;align-items:center;justify-content:center;font-size:10px;color:var(--black);font-weight:600;}
-.session-card.selected .session-card-check{display:flex;}
-
-/* Epilogue 카드 */
-.session-epilogue{background:var(--dark);padding:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:32px;}
-.session-epilogue-left p:first-child{font-size:9px;letter-spacing:0.4em;color:#4a4540;margin-bottom:8px;}
-.session-epilogue-left p:nth-child(2){font-family:'Noto Serif KR',serif;font-size:16px;color:var(--white);font-weight:300;}
-.session-epilogue-left p:last-child{font-size:12px;color:var(--dim);margin-top:6px;line-height:1.6;}
-
-/* 선택 요약 + CTA */
-.session-summary{background:var(--black);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;opacity:0;transition:opacity 0.3s;pointer-events:none;}
-.session-summary.visible{opacity:1;pointer-events:auto;}
-.session-summary-left p:first-child{font-size:10px;letter-spacing:0.3em;color:#4a4540;margin-bottom:6px;}
-.session-summary-left p:nth-child(2){font-family:'Noto Serif KR',serif;font-size:18px;color:var(--white);font-weight:300;}
-.session-summary-left p:nth-child(2) em{color:var(--yellow);font-style:normal;}
-.session-summary-left p:last-child{font-size:12px;color:var(--dim);margin-top:4px;}
-.session-summary-btns{display:flex;gap:12px;flex-shrink:0;}
-.btn-session-contact{font-size:11px;letter-spacing:0.2em;color:var(--black);background:var(--yellow);padding:14px 28px;text-decoration:none;transition:all 0.2s;font-weight:500;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;}
-.btn-session-contact:hover{background:var(--white);}
-.btn-session-reset{font-size:11px;letter-spacing:0.1em;color:var(--dim);background:transparent;padding:14px 20px;border:1px solid #2a2826;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all 0.2s;}
-.btn-session-reset:hover{color:var(--white);border-color:var(--gray);}
-
 @media(max-width:768px){
-  .session-tabs{flex-wrap:wrap;}
-  .session-tab{flex:1;min-width:120px;}
-  .session-grid{grid-template-columns:repeat(2,1fr);}
+  .group-panel-inner{padding:28px 20px;}
   .group-panel-head{flex-direction:column;}
   .group-panel-meta{width:100%;}
-  .group-panel-inner{padding:32px 24px;}
-  .session-epilogue{flex-direction:column;align-items:flex-start;}
+  .group-panel-cta{flex-direction:column;align-items:flex-start;}
+}
+
+.session-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px;}
+.session-card{background:var(--off);padding:28px 24px;cursor:pointer;transition:all 0.25s;position:relative;border:2px solid transparent;}
+.session-card:hover{background:var(--white);border-color:var(--black);}
+.session-card.selected{background:var(--black);border-color:var(--black);}
+.session-card-num{font-size:10px;letter-spacing:0.3em;color:var(--light);margin-bottom:10px;display:block;}
+.session-card.selected .session-card-num{color:rgba(250,247,242,0.25);}
+.session-card-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:var(--black);margin-bottom:6px;}
+.session-card.selected .session-card-title{color:var(--yellow);}
+.session-card-en{font-size:10px;letter-spacing:0.12em;color:var(--gray);margin-bottom:14px;}
+.session-card.selected .session-card-en{color:rgba(250,247,242,0.25);}
+.session-card-quote{font-size:12px;line-height:1.7;color:var(--dim);font-style:italic;}
+.session-card.selected .session-card-quote{color:rgba(250,247,242,0.45);}
+.session-card-check{position:absolute;top:14px;right:14px;width:20px;height:20px;border-radius:50%;background:var(--yellow);display:none;align-items:center;justify-content:center;font-size:10px;color:var(--black);font-weight:700;}
+.session-card.selected .session-card-check{display:flex;}
+.session-epilogue{background:var(--dark);padding:24px 28px;display:flex;align-items:center;gap:20px;margin-bottom:3px;}
+.session-epilogue p:first-child{font-size:9px;letter-spacing:0.4em;color:#4a4540;margin-bottom:6px;}
+.session-epilogue p:nth-child(2){font-family:'Noto Serif KR',serif;font-size:14px;color:var(--white);font-weight:300;}
+.session-epilogue p:last-child{font-size:12px;color:var(--dim);margin-top:4px;}
+.session-summary{background:var(--black);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.session-summary.visible{opacity:1;pointer-events:auto;}
+.session-summary-left p:first-child{font-size:9px;letter-spacing:0.3em;color:#4a4540;margin-bottom:6px;}
+.session-summary-left p:nth-child(2){font-family:'Noto Serif KR',serif;font-size:17px;color:var(--white);font-weight:300;}
+.session-summary-left p:nth-child(2) em{color:var(--yellow);font-style:normal;}
+.session-summary-left p:last-child{font-size:12px;color:var(--dim);margin-top:3px;}
+.session-summary-btns{display:flex;gap:10px;flex-shrink:0;}
+.btn-session-contact{font-size:11px;letter-spacing:0.2em;color:var(--black);background:var(--yellow);padding:13px 24px;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:500;transition:all 0.2s;}
+.btn-session-reset{font-size:11px;color:var(--dim);background:transparent;padding:13px 18px;border:1px solid #2a2826;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:all 0.2s;}
+@media(max-width:768px){
+  .session-grid{grid-template-columns:repeat(2,1fr);}
   .session-summary{flex-direction:column;align-items:flex-start;}
   .session-summary-btns{width:100%;}
   .btn-session-contact{flex:1;text-align:center;}
 }
 
-/* ══ SERVICES ══ */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
-.svc-card{padding:48px 36px;background:var(--off);position:relative;}
-.svc-badge{display:inline-block;font-size:9px;letter-spacing:0.4em;padding:6px 14px;margin-bottom:24px;font-weight:500;}
-.svc-card:nth-child(1) .svc-badge{background:var(--yellow);color:var(--black);}
-.svc-card:nth-child(2) .svc-badge{background:var(--red);color:var(--white);}
-.svc-card:nth-child(3) .svc-badge{background:var(--dark);color:var(--white);}
-.svc-title{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:300;margin-bottom:16px;color:var(--black);line-height:1.4;}
-.svc-text{font-size:13px;line-height:1.8;color:var(--gray);margin-bottom:28px;}
-.svc-meta{font-size:12px;color:var(--dim);line-height:2;margin-bottom:28px;}
-.svc-meta span{color:var(--black);font-weight:400;}
-.svc-quote{font-size:12px;font-style:italic;color:var(--dim);border-left:2px solid var(--light);padding-left:14px;line-height:1.7;margin-bottom:32px;}
-.svc-btn{display:inline-block;font-size:11px;letter-spacing:0.2em;color:var(--black);border:1px solid var(--black);padding:12px 28px;text-decoration:none;transition:all 0.2s;font-weight:400;}
-.svc-btn:hover{background:var(--black);color:var(--white);}
-@media(max-width:768px){.svc-grid{grid-template-columns:1fr;}}
-
-/* ══ VOICES ══ */
-.sec-voices{background:var(--dark);}
-.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
-.voice-card{padding:48px 36px;background:#111009;}
-.voice-quote{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:300;line-height:1.8;color:var(--white);margin-bottom:24px;}
-.voice-quote em{color:var(--yellow);font-style:normal;}
-.voice-who{font-size:11px;color:var(--dim);letter-spacing:0.1em;}
-@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+/* ══ VISIT SECTION ══ */
+.visit-row-label{font-size:10px;letter-spacing:0.4em;color:#4a4540;padding:14px 20px;background:#0e0d0b;margin-bottom:3px;}
+.visit-effect-row,.visit-ref-row{display:flex;flex-direction:column;gap:3px;}
+.visit-effect-item,.visit-ref-item{background:#111009;padding:18px 24px;display:flex;align-items:baseline;gap:16px;}
+.visit-effect-badge{font-size:10px;letter-spacing:0.3em;white-space:nowrap;flex-shrink:0;min-width:140px;}
+.visit-effect-text,.visit-ref-text{font-size:13px;color:#5a5550;line-height:1.8;}
+.visit-ref-label{font-size:9px;letter-spacing:0.35em;white-space:nowrap;flex-shrink:0;min-width:130px;}
+.visit-voices{display:flex;flex-direction:column;gap:12px;}
+.visit-voice{font-family:'Noto Serif KR',serif;font-size:14px;color:rgba(250,247,242,0.5);line-height:1.8;font-weight:300;padding-left:16px;border-left:1px solid #2a2826;}
+.visit-process{display:flex;align-items:flex-start;gap:0;margin-top:3px;}
+.visit-process-item{flex:1;background:#1c1a17;padding:22px 18px;}
+.visit-process-arrow{color:#2a2826;font-size:16px;padding:22px 6px;background:#161412;display:flex;align-items:center;}
+.visit-process-num{font-size:22px;font-weight:200;color:#2a2826;font-family:'Noto Serif KR',serif;margin-bottom:6px;}
+.visit-process-title{font-size:13px;color:var(--white);font-weight:400;margin-bottom:4px;}
+.visit-process-text{font-size:11px;color:#4a4540;line-height:1.7;}
+@media(max-width:768px){
+  .visit-effect-item,.visit-ref-item{flex-direction:column;gap:6px;}
+  .visit-effect-badge,.visit-ref-label{min-width:unset;}
+  .visit-process{flex-direction:column;}
+  .visit-process-arrow{display:none;}
+}
 
 /* ══ FOUNDERS ══ */
 .founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
-.founder-card{padding:56px 48px;background:var(--off);}
-.founder-badge{display:inline-flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
-.founder-badge span{font-size:9px;letter-spacing:0.3em;padding:5px 12px;background:var(--white);color:var(--dim);}
-.founder-name{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:300;margin-bottom:6px;color:var(--black);}
-.founder-role{font-size:12px;color:var(--gray);letter-spacing:0.15em;margin-bottom:8px;}
-.founder-edu{font-size:12px;color:var(--dim);margin-bottom:28px;line-height:1.7;}
-.founder-story{font-size:14px;line-height:1.9;color:var(--gray);}
+.founder-card{padding:48px 40px;background:var(--off);}
+.founder-badge{display:inline-flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
+.founder-badge span{font-size:8px;letter-spacing:0.3em;padding:4px 10px;background:var(--white);color:var(--dim);}
+.founder-name{font-family:'Noto Serif KR',serif;font-size:26px;font-weight:300;margin-bottom:4px;color:var(--black);}
+.founder-role{font-size:11px;color:var(--gray);letter-spacing:0.12em;margin-bottom:6px;}
+.founder-edu{font-size:12px;color:var(--dim);margin-bottom:24px;line-height:1.7;}
+.founder-story{font-size:14px;line-height:1.95;color:var(--gray);}
 .founder-story strong{color:var(--black);font-weight:400;}
 .founder-story em{color:var(--red);font-style:normal;}
 @media(max-width:768px){.founders-grid{grid-template-columns:1fr;}}
 
+/* ══ PHILOSOPHY ══ */
+.sec-phil{background:var(--black);}
+.sec-phil .sec-label{color:#4a4540;}
+.sec-phil .sec-title{color:var(--white);}
+.sec-phil .sec-desc{color:#5a5550;}
+.phil-core{border:1px solid rgba(255,224,51,0.15);padding:40px;margin-bottom:3px;position:relative;background:rgba(255,224,51,0.02);}
+.phil-core::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--yellow);}
+.phil-core-badge{font-size:9px;letter-spacing:0.45em;color:var(--yellow);margin-bottom:16px;}
+.phil-core-author{font-family:'Noto Serif KR',serif;font-size:12px;color:rgba(250,247,242,0.3);margin-bottom:10px;font-style:italic;}
+.phil-core-title{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:300;color:var(--white);margin-bottom:18px;line-height:1.5;}
+.phil-core-text{font-size:13px;line-height:1.9;color:#5a5550;margin-bottom:24px;}
+.phil-core-text strong{color:var(--white);font-weight:400;}
+.phil-core-apply{font-size:13px;color:var(--yellow);border-left:2px solid var(--yellow);padding-left:16px;line-height:1.8;}
+.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px;}
+.phil-card{background:var(--dark);padding:32px 28px;position:relative;}
+.phil-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.phil-card.red::before{background:var(--red);}
+.phil-card.blue::before{background:var(--blue);}
+.phil-card.green::before{background:var(--green);}
+.phil-card-badge{font-size:9px;letter-spacing:0.4em;margin-bottom:14px;}
+.phil-card.red .phil-card-badge{color:var(--red);}
+.phil-card.blue .phil-card-badge{color:var(--blue);}
+.phil-card.green .phil-card-badge{color:var(--green);}
+.phil-card-author{font-family:'Noto Serif KR',serif;font-size:12px;color:rgba(250,247,242,0.25);margin-bottom:8px;}
+.phil-card-title{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:300;color:var(--white);margin-bottom:12px;line-height:1.5;}
+.phil-card-text{font-size:12px;line-height:1.8;color:var(--dim);}
+.phil-card-apply{font-size:12px;margin-top:16px;}
+.phil-card.red .phil-card-apply{color:var(--red);}
+.phil-card.blue .phil-card-apply{color:var(--blue);}
+.phil-card.green .phil-card-apply{color:var(--green);}
+.phil-sub{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:40px;}
+.phil-sub-card{background:#0e0d0b;padding:28px;border-left:2px solid rgba(255,224,51,0.12);}
+.phil-sub-title{font-family:'Noto Serif KR',serif;font-size:12px;color:rgba(250,247,242,0.25);margin-bottom:8px;}
+.phil-sub-text{font-size:12px;line-height:1.8;color:#3a3835;}
+.phil-position{border-top:1px solid rgba(255,255,255,0.05);padding-top:36px;display:flex;gap:24px;align-items:flex-start;}
+.phil-position-line{width:2px;background:rgba(255,224,51,0.2);flex-shrink:0;margin-top:4px;height:64px;}
+.phil-position-text{font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.9;color:#5a5550;font-weight:300;}
+.phil-position-text .w{color:var(--white);}
+.phil-position-text .y{color:var(--yellow);}
+@media(max-width:768px){.phil-grid{grid-template-columns:1fr;} .phil-sub{grid-template-columns:1fr;}}
+
 /* ══ CONTACT ══ */
 .sec-contact{background:var(--black);}
 .sec-contact .sec-title{color:var(--white);}
-.sec-contact .sec-desc{color:#6a6560;}
-.contact-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start;}
-.contact-info{padding-top:8px;}
-.contact-item{margin-bottom:32px;}
-.contact-item-label{font-size:9px;letter-spacing:0.4em;color:var(--dim);margin-bottom:8px;}
-.contact-item-value{font-size:15px;color:var(--white);line-height:1.6;font-family:'Noto Serif KR',serif;font-weight:300;}
-.contact-item-value a{color:var(--white);text-decoration:none;}
-.contact-item-value a:hover{color:var(--yellow);}
-.contact-note{font-size:13px;color:var(--dim);line-height:1.8;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.06);}
-.contact-form{display:flex;flex-direction:column;gap:0;}
-.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:3px;}
+.sec-contact .sec-desc{color:#5a5550;}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:start;}
+.contact-item{margin-bottom:28px;}
+.contact-label{font-size:9px;letter-spacing:0.4em;color:var(--dim);margin-bottom:6px;}
+.contact-value{font-size:15px;color:var(--white);line-height:1.6;font-family:'Noto Serif KR',serif;font-weight:300;}
+.contact-value a{color:var(--white);text-decoration:none;}
+.contact-value a:hover{color:var(--yellow);}
+.contact-note{font-size:13px;color:var(--dim);line-height:1.8;margin-top:32px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.05);}
+.contact-form{display:flex;flex-direction:column;gap:3px;}
+.form-group{display:flex;flex-direction:column;gap:8px;}
 .form-label{font-size:10px;letter-spacing:0.3em;color:var(--dim);}
 .form-input,.form-select,.form-textarea{background:var(--dark);border:none;padding:16px 20px;font-size:14px;color:var(--white);font-family:'Noto Sans KR',sans-serif;font-weight:300;outline:none;transition:background 0.2s;width:100%;}
 .form-input:focus,.form-select:focus,.form-textarea:focus{background:#1e1c18;}
 .form-select{appearance:none;cursor:pointer;}
 .form-select option{background:var(--dark);}
-.form-textarea{resize:vertical;min-height:100px;}
+.form-textarea{resize:vertical;min-height:90px;}
 .form-submit{background:var(--yellow);color:var(--black);border:none;padding:18px;font-size:12px;letter-spacing:0.3em;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:500;transition:background 0.2s;margin-top:3px;}
 .form-submit:hover{background:var(--white);}
-.form-note{font-size:12px;color:var(--dim);line-height:1.7;margin-top:16px;text-align:center;}
+.form-note{font-size:12px;color:var(--dim);line-height:1.7;margin-top:14px;text-align:center;}
 @media(max-width:768px){.contact-wrap{grid-template-columns:1fr;}}
 
 /* ══ FOOTER ══ */
-footer{background:#080807;padding:48px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap;}
-.footer-logo{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:300;color:rgba(250,247,242,0.3);}
-.footer-logo em{color:rgba(250,247,242,0.3);font-style:normal;}
-.footer-copy{font-size:11px;color:#3a3835;letter-spacing:0.1em;}
-@media(max-width:768px){footer{padding:32px 24px;flex-direction:column;gap:16px;}}
+footer{background:#080807;padding:40px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:300;color:rgba(250,247,242,0.25);}
+.footer-copy{font-size:11px;color:#2a2826;letter-spacing:0.08em;}
+@media(max-width:768px){footer{padding:28px 20px;flex-direction:column;}}
 
-/* ══ VISIT SECTION ══ */
-.visit-row{display:flex;gap:3px;margin-bottom:3px;}
-.visit-half{flex:1;background:#1c1a17;padding:28px 24px;}
-.visit-badge{font-size:9px;letter-spacing:0.35em;margin-bottom:10px;}
-.visit-half-text{font-size:13px;color:#5a5550;line-height:1.8;}
-.visit-row-label{font-size:10px;letter-spacing:0.4em;color:#4a4540;padding:16px 24px;background:#0e0d0b;margin-bottom:3px;}
-.visit-effect-row{display:flex;flex-direction:column;gap:3px;}
-.visit-effect-item{background:#111009;padding:20px 24px;display:flex;align-items:baseline;gap:16px;}
-.visit-effect-badge{font-size:10px;letter-spacing:0.3em;white-space:nowrap;flex-shrink:0;min-width:140px;}
-.visit-effect-text{font-size:13px;color:#5a5550;line-height:1.8;}
-.visit-ref-row{display:flex;flex-direction:column;gap:3px;}
-.visit-ref-item{background:#111009;padding:20px 24px;display:flex;align-items:baseline;gap:16px;}
-.visit-ref-label{font-size:9px;letter-spacing:0.35em;white-space:nowrap;flex-shrink:0;min-width:130px;}
-.visit-ref-text{font-size:12px;color:#5a5550;line-height:1.8;}
-.visit-voices{display:flex;flex-direction:column;gap:14px;}
-.visit-voice{font-family:'Noto Serif KR',serif;font-size:14px;color:rgba(250,247,242,0.55);line-height:1.8;font-weight:300;padding-left:16px;border-left:1px solid #2a2826;}
-.visit-process{display:flex;align-items:flex-start;gap:0;margin-top:3px;}
-.visit-process-item{flex:1;background:#1c1a17;padding:24px 20px;}
-.visit-process-arrow{color:#2a2826;font-size:18px;padding:24px 8px;background:#161412;display:flex;align-items:center;}
-.visit-process-num{font-size:24px;font-weight:200;color:#2a2826;font-family:'Noto Serif KR',serif;margin-bottom:8px;}
-.visit-process-title{font-size:13px;color:var(--white);font-weight:400;margin-bottom:6px;}
-.visit-process-text{font-size:11px;color:#4a4540;line-height:1.7;}
-.visit-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-@media(max-width:768px){
-  .visit-row{flex-direction:column;}
-  .visit-effect-item{flex-direction:column;gap:6px;}
-  .visit-effect-badge{min-width:unset;}
-  .visit-ref-item{flex-direction:column;gap:6px;}
-  .visit-ref-label{min-width:unset;}
-  .visit-process{flex-direction:column;}
-  .visit-process-arrow{display:none;}
-  .visit-process-item{width:100%;}
-  .visit-cta{flex-direction:column;align-items:flex-start;}
-  .visit-cta a{width:100%;text-align:center;}
-}
-
-/* ══ SCROLL ANIMATION ══ */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+/* ══ REVEAL ══ */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
-@media(max-width:768px){
-  .ongoing-inner{padding:12px 20px !important;}
-}
 </style>
 </head>
 <body>
 
-<!-- 커서 -->
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
-<!-- ══ NAV ══ -->
+<!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo">마음<em>다움</em></a>
+  <a href="#" class="nav-logo">마음다움</a>
   <ul class="nav-links">
-    <li><a href="#limits">왜 다른가</a></li>
+    <li><a href="#questions">이런 분들</a></li>
     <li><a href="#services">서비스</a></li>
     <li><a href="#visit">출강</a></li>
     <li><a href="#founders">우리는</a></li>
@@ -427,7 +332,7 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
   <a href="#contact" class="nav-cta">문의하기</a>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-content">
     <p class="hero-label">MAUMDAUM · 마음다움</p>
@@ -437,11 +342,12 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
     </h1>
     <p class="hero-sub">
       마음을 고치지 않습니다. 마음을 마음답게 합니다.<br>
-      분석 없이, 평가 없이 — <strong style="color:rgba(250,247,242,0.85);">마음이 다시, 다채롭게 움직이는 예술치료 기반 심리 워크숍.</strong>
+      분석 없이, 평가 없이 —<br>
+      <strong>예술치료 기반 심리 워크숍.</strong>
     </p>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">워크숍 신청하기</a>
-      <a href="#limits" class="btn-ghost">어떤 곳인지 보기</a>
+      <a href="#questions" class="btn-ghost">어떤 곳인지 보기</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -450,7 +356,7 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
   </div>
 </section>
 
-<!-- ══ NO.16 BANNER ══ -->
+<!-- NO.16 BANNER -->
 <div class="banner-16">
   <div class="banner-16-inner">
     <div class="banner-16-left">
@@ -467,135 +373,165 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
   </div>
 </div>
 
-<!-- ══ ONGOING 배너 ══ -->
+<!-- ONGOING BANNER -->
 <div style="background:var(--off);border-top:1px solid var(--light);">
-  <div style="max-width:1100px;margin:0 auto;padding:12px 56px;display:flex;align-items:center;justify-content:space-between;gap:16px;" class="ongoing-inner">
+  <div class="ongoing-inner" style="max-width:1100px;margin:0 auto;padding:11px 56px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
     <div style="display:flex;align-items:flex-start;gap:12px;flex:1;min-width:0;">
       <span style="font-size:8px;letter-spacing:0.35em;background:var(--dim);color:var(--white);padding:5px 9px;font-weight:500;white-space:nowrap;flex-shrink:0;margin-top:1px;">ONGOING</span>
       <div>
         <p style="font-size:12px;color:var(--black);font-weight:500;">개인 세션 7가지 상시 운영 중</p>
-        <p style="font-size:11px;color:var(--gray);margin-top:3px;line-height:1.6;">#01 일상 · #02 자화상 · #03 나다움 · #04 사계<br>#05 길 · #06 행복 · #07 꿈</p>
+        <p style="font-size:11px;color:var(--gray);margin-top:2px;line-height:1.6;">#01 일상 · #02 자화상 · #03 나다움 · #04 사계 · #05 길 · #06 행복 · #07 꿈</p>
       </div>
     </div>
     <a href="#services" onclick="setTimeout(()=>switchTab('personal',document.querySelectorAll('.session-tab')[1]),300)" style="font-size:11px;letter-spacing:0.1em;color:var(--dim);text-decoration:none;white-space:nowrap;flex-shrink:0;border-bottom:1px solid var(--light);padding-bottom:1px;align-self:center;">세션 고르기 →</a>
   </div>
 </div>
 
-<!-- ══ HONEST ══ -->
-<section class="sec sec-limits" id="limits">
+<!-- ══ 01. 고객 질문 — "이런 분들 오세요" ══ -->
+<section class="sec" id="questions">
+  <div class="container">
+    <p class="sec-label">FOR YOU · 이런 분들 오세요</p>
+    <h2 class="sec-title">혹시 이런 생각,<br>해본 적 있으신가요?</h2>
+    <p class="sec-desc">마음다움을 찾는 분들이 가장 많이 하는 말들이에요.<br>하나라도 해당된다면 — 여기가 맞습니다.</p>
+
+    <div class="q-grid">
+      <div class="q-card reveal">
+        <span class="q-num">01</span>
+        <p class="q-text">"상담도 받아봤는데<br><em>여전히 안 풀리는 느낌이에요."</em></p>
+        <p class="q-sub">말로는 다 했는데, 집에 오면 또 똑같아요. 분석과 해석 말고 다른 방법이 필요한 거예요.</p>
+      </div>
+      <div class="q-card reveal">
+        <span class="q-num">02</span>
+        <p class="q-text">"그림 못 그리는데<br><em>예술치료 받을 수 있나요?"</em></p>
+        <p class="q-sub">잘 그릴 필요 없어요. 마음다움에서 하는 건 예술 작품 만들기가 아니에요. 지금 내가 느끼는 걸 손으로 꺼내는 거예요.</p>
+      </div>
+      <div class="q-card reveal">
+        <span class="q-num">03</span>
+        <p class="q-text">"요즘 나 자신이<br><em>낯설게 느껴져요."</em></p>
+        <p class="q-sub">좋아하던 것들이 예전만큼 즐겁지 않고, 뭔가 텅 빈 느낌. 이건 고장난 게 아니에요. 막혀있는 거예요.</p>
+      </div>
+      <div class="q-card reveal">
+        <span class="q-num">04</span>
+        <p class="q-text">"말하기 싫은데<br><em>뭔가 하고 싶어요."</em></p>
+        <p class="q-sub">또 말로 설명해야 한다는 게 부담스럽죠. 마음다움은 말 대신 손으로 먼저 가요.</p>
+      </div>
+      <div class="q-card reveal">
+        <span class="q-num">05</span>
+        <p class="q-text">"혼자 가도<br><em>괜찮을까요?"</em></p>
+        <p class="q-sub">집단 워크숍도, 개인 세션도 처음 오시는 분들이 대부분이에요. 아는 사람 한 명 없어도 괜찮아요.</p>
+      </div>
+      <div class="q-card reveal">
+        <span class="q-num">06</span>
+        <p class="q-text">"정말 효과가 있나요?<br><em>증거가 있나요?"</em></p>
+        <p class="q-sub">수치로 된 데이터는 없어요. 대신 16회 워크숍을 마친 참가자들이 직접 손으로 남긴 Work Memory가 있어요.</p>
+      </div>
+    </div>
+
+    <div class="q-footer reveal">
+      <p>아직 망설여진다면 — <em>부담 없이 먼저 물어봐요.</em></p>
+      <a href="#contact">서영에게 먼저 물어보기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02. 비포 & 애프터 ══ -->
+<section class="sec" id="after" style="background:var(--off);">
+  <div class="container">
+    <p class="sec-label">AFTER WORK+SHOP · 워크숍이 끝난 뒤</p>
+    <h2 class="sec-title">오기 전과<br>다녀온 후.</h2>
+    <p class="sec-desc">직접 경험한 분들의 말입니다.</p>
+
+    <div class="ba-grid">
+      <div class="ba-card ba-card-before reveal">
+        <span class="ba-label">BEFORE · 오기 전</span>
+        <p class="ba-quote">"말로는 다 했는데 여전히 내가 뭘 느끼는지 모르겠어요."</p>
+        <p class="ba-who">심리상담 3년차 · 30대 직장인</p>
+      </div>
+      <div class="ba-card ba-card-after reveal">
+        <span class="ba-label">AFTER · 다녀온 후</span>
+        <p class="ba-quote">"<em>처음으로 내가 뭘 느끼는지 알게 된 날</em>이었어요. 말 한마디 안 했는데 뭔가 다 꺼낸 느낌."</p>
+        <p class="ba-who">집단 워크숍 참가 후 · 동일 참가자</p>
+      </div>
+      <div class="ba-card ba-card-before reveal">
+        <span class="ba-label">BEFORE · 오기 전</span>
+        <p class="ba-quote">"또 전문가 앞에서 내 얘기 해야 하나요? 재단당하는 느낌이 싫어요."</p>
+        <p class="ba-who">첫 방문 전 DM · 40대 여성</p>
+      </div>
+      <div class="ba-card ba-card-after reveal">
+        <span class="ba-label">AFTER · 다녀온 후</span>
+        <p class="ba-quote">"<em>재단당하지 않은 처음</em>이었어요. 그냥 있는 그대로 있어도 됐어요."</p>
+        <p class="ba-who">개인 세션 참가 후 · 동일 참가자</p>
+      </div>
+      <div class="ba-card ba-card-before reveal">
+        <span class="ba-label">BEFORE · 오기 전</span>
+        <p class="ba-quote">"6시간이 너무 길 것 같아요. 버틸 수 있을까요?"</p>
+        <p class="ba-who">신청 전 문의 · 20대 대학원생</p>
+      </div>
+      <div class="ba-card ba-card-after reveal">
+        <span class="ba-label">AFTER · 다녀온 후</span>
+        <p class="ba-quote">"6시간이 <em>어떻게 갔는지 몰랐어요.</em> 오면서 긴장했는데 돌아갈 때 뭔가 가벼워진 느낌."</p>
+        <p class="ba-who">집단 워크숍 참가 후 · 동일 참가자</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03. 왜 다른가 ══ -->
+<section class="sec" id="difference">
   <div class="container">
     <p class="sec-label">HONEST · 솔직하게</p>
     <h2 class="sec-title">시도해봤는데<br>여전히 안 풀리는 이유가 있어요.</h2>
     <p class="sec-desc">잘못된 게 아니에요. 방법이 같았던 거예요.</p>
-    <div class="limits-grid">
-      <div class="limit-card reveal">
-        <span class="limit-num">01</span>
-        <h3 class="limit-title">심리상담</h3>
-        <p class="limit-text">말로는 다 했어요. 감정도 설명했고, 과거도 꺼냈어요. 상담사도 좋은 분이었어요.</p>
-        <p class="limit-quote">"근데 정작 내가 뭘 느끼는지는 여전히 모르겠어요."</p>
+
+    <!-- 3가지 한계 -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px;">
+      <div style="background:var(--off);padding:36px 28px;" class="reveal">
+        <span style="font-size:11px;letter-spacing:0.3em;color:var(--light);margin-bottom:16px;display:block;">01</span>
+        <h3 style="font-family:'Noto Serif KR',serif;font-size:17px;font-weight:300;margin-bottom:14px;color:var(--black);">심리상담</h3>
+        <p style="font-size:13px;line-height:1.8;color:var(--gray);margin-bottom:16px;">말로는 다 했어요. 감정도 설명했고, 과거도 꺼냈어요.</p>
+        <p style="font-size:13px;font-style:italic;color:var(--dim);border-left:2px solid var(--light);padding-left:14px;line-height:1.7;">"근데 정작 내가 뭘 느끼는지는 여전히 모르겠어요."</p>
       </div>
-      <div class="limit-card reveal">
-        <span class="limit-num">02</span>
-        <h3 class="limit-title">약물치료</h3>
-        <p class="limit-text">불안이 줄고 잠은 잘 잤어요. 증상은 나아졌는데 뭔가 감각이 사라진 느낌.</p>
-        <p class="limit-quote">"괜찮아졌는데, 내가 뭘 원하는지 모르겠어요."</p>
+      <div style="background:var(--off);padding:36px 28px;" class="reveal">
+        <span style="font-size:11px;letter-spacing:0.3em;color:var(--light);margin-bottom:16px;display:block;">02</span>
+        <h3 style="font-family:'Noto Serif KR',serif;font-size:17px;font-weight:300;margin-bottom:14px;color:var(--black);">약물치료</h3>
+        <p style="font-size:13px;line-height:1.8;color:var(--gray);margin-bottom:16px;">불안이 줄고 잠은 잘 잤어요. 근데 뭔가 감각이 사라진 느낌.</p>
+        <p style="font-size:13px;font-style:italic;color:var(--dim);border-left:2px solid var(--light);padding-left:14px;line-height:1.7;">"괜찮아졌는데, 내가 뭘 원하는지 모르겠어요."</p>
       </div>
-      <div class="limit-card reveal">
-        <span class="limit-num">03</span>
-        <h3 class="limit-title">자기계발 · 명상</h3>
-        <p class="limit-text">더 나아지려고 책 읽고, 명상하고, 운동도 해봤어요. 근데 해야 할 것만 늘어났어요.</p>
-        <p class="limit-quote">"노력하는데 왜 여전히 이런 느낌이지?"</p>
+      <div style="background:var(--off);padding:36px 28px;" class="reveal">
+        <span style="font-size:11px;letter-spacing:0.3em;color:var(--light);margin-bottom:16px;display:block;">03</span>
+        <h3 style="font-family:'Noto Serif KR',serif;font-size:17px;font-weight:300;margin-bottom:14px;color:var(--black);">자기계발 · 명상</h3>
+        <p style="font-size:13px;line-height:1.8;color:var(--gray);margin-bottom:16px;">더 나아지려고 책 읽고, 명상하고, 운동도 해봤어요.</p>
+        <p style="font-size:13px;font-style:italic;color:var(--dim);border-left:2px solid var(--light);padding-left:14px;line-height:1.7;">"노력하는데 왜 여전히 이런 느낌이지?"</p>
       </div>
     </div>
 
     <!-- 관통 문장 -->
-    <div style="background:var(--white);padding:36px 40px;margin-top:3px;border-left:3px solid var(--black);" class="reveal">
-      <p style="font-size:11px;letter-spacing:0.3em;color:var(--gray);margin-bottom:12px;">셋 다 결국 같은 방식으로 작동해요.</p>
+    <div style="background:var(--white);padding:32px 36px;margin-bottom:3px;border-left:3px solid var(--black);" class="reveal">
+      <p style="font-size:11px;letter-spacing:0.3em;color:var(--gray);margin-bottom:10px;">셋 다 결국 같은 방식으로 작동해요.</p>
       <p style="font-family:'Noto Serif KR',serif;font-size:20px;font-weight:300;color:var(--black);line-height:1.6;">고정된 이미지로 당신의 <em style="font-style:normal;border-bottom:2px solid var(--red);">상상력을 제한합니다.</em></p>
-      <p style="font-size:13px;color:var(--gray);margin-top:14px;line-height:1.8;">상담은 진단 언어로 당신을 고정시키고, 약은 감각을 눌러 이미지를 평탄하게 만들고,<br>자기계발은 '더 나은 나'라는 단 하나의 이미지만 허용해요.</p>
+      <p style="font-size:13px;color:var(--gray);margin-top:12px;line-height:1.8;">상담은 진단 언어로 당신을 고정시키고, 약은 감각을 눌러 이미지를 평탄하게 만들고,<br>자기계발은 '더 나은 나'라는 단 하나의 이미지만 허용해요.</p>
     </div>
 
     <!-- 차별점 테이블 -->
-    <div style="margin-top:3px;" class="reveal">
-      <div style="background:var(--black);padding:12px 40px;">
-        <p style="font-size:9px;letter-spacing:0.5em;color:var(--yellow);">THE MAUMDAUM DIFFERENCE</p>
+    <div class="reveal">
+      <div style="background:var(--black);padding:11px 20px;margin-bottom:3px;">
+        <p style="font-size:9px;letter-spacing:0.5em;color:var(--yellow);">THE MAUMDAUM DIFFERENCE · 마음다움이 다른 이유</p>
       </div>
-      <table style="width:100%;border-collapse:collapse;font-size:13px;">
-        <thead>
-          <tr style="background:#f4f0e8;">
-            <th style="padding:14px 20px;text-align:left;font-size:10px;letter-spacing:0.25em;font-weight:400;color:var(--gray);width:18%;border-bottom:1px solid var(--light);">구분</th>
-            <th style="padding:14px 20px;text-align:left;font-size:10px;letter-spacing:0.25em;font-weight:400;color:var(--gray);width:41%;border-bottom:1px solid var(--light);">기존 방법</th>
-            <th style="padding:14px 20px;text-align:left;font-size:10px;letter-spacing:0.25em;font-weight:400;color:var(--black);width:41%;border-bottom:1px solid var(--light);">마음다움</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--dim);font-size:12px;">이미지</td><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--dim);text-decoration:line-through;">고정시킨다 — 진단명, 목표, 처방</td><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--black);">새로 만들게 한다</td></tr>
-          <tr style="background:#faf7f2;"><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--dim);font-size:12px;">상상력</td><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--dim);text-decoration:line-through;">하나의 방향으로 좁힌다</td><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--black);">막힌 것을 다시 열어둔다</td></tr>
-          <tr><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--dim);font-size:12px;">언어</td><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--dim);text-decoration:line-through;">분석하고 평가한다</td><td style="padding:18px 20px;border-bottom:1px solid var(--off);color:var(--black);">탐험하고 발견한다</td></tr>
-          <tr style="background:#faf7f2;"><td style="padding:18px 20px;color:var(--dim);font-size:12px;">공간</td><td style="padding:18px 20px;color:var(--dim);text-decoration:line-through;">전문가 앞에 앉는다</td><td style="padding:18px 20px;color:var(--black);">있는 그대로 있어도 된다</td></tr>
-        </tbody>
-      </table>
+      <div class="diff-header">
+        <div class="diff-h-empty"></div>
+        <div class="diff-h-before">기존 방법</div>
+        <div class="diff-h-after">마음다움</div>
+      </div>
+      <div class="diff-row"><div class="diff-label-col">이미지</div><div class="diff-before">고정시킨다 — 진단명, 목표, 처방</div><div class="diff-after">새로 만들게 한다</div></div>
+      <div class="diff-row"><div class="diff-label-col">상상력</div><div class="diff-before">하나의 방향으로 좁힌다</div><div class="diff-after">막힌 것을 다시 열어둔다</div></div>
+      <div class="diff-row"><div class="diff-label-col">언어</div><div class="diff-before">분석하고 평가한다</div><div class="diff-after">탐험하고 발견한다</div></div>
+      <div class="diff-row"><div class="diff-label-col">시간</div><div class="diff-before">50분, 다음 사람이 기다린다</div><div class="diff-after">2~6시간, 오직 당신만</div></div>
+      <div class="diff-row"><div class="diff-label-col">공간</div><div class="diff-before">전문가 앞에 앉는다</div><div class="diff-after">있는 그대로 있어도 된다</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ AFTER WORK+SHOP ══ -->
-<section class="sec" id="after">
-  <div class="container">
-    <p class="sec-label">AFTER WORK+SHOP · 참가자들이 말했어요</p>
-    <h2 class="sec-title">워크숍이 끝난 뒤.</h2>
-    <div class="after-grid">
-      <div class="after-card reveal">
-        <h3 class="after-card-title">"아, 이게 내 <em>감각</em>이었구나"</h3>
-        <p class="after-card-text">말로 설명하지 않아도 손이 먼저 알아요. 6시간 동안 이미지로 꺼낸 것들이 지금 내가 뭘 느끼는지를 보여줬어요.</p>
-        <p style="font-size:11px;color:var(--gray);margin-top:16px;letter-spacing:0.05em;">3년간 상담을 받아온 30대 직장인</p>
-      </div>
-      <div class="after-card reveal">
-        <h3 class="after-card-title">"분석당하지 않은 <em>처음</em>이었어요"</h3>
-        <p class="after-card-text">억지로 말하지 않아도, 잘 그리지 않아도 괜찮았어요. 그냥 있는 그대로 있어도 된다는 걸 처음 경험했어요.</p>
-        <p style="font-size:11px;color:var(--gray);margin-top:16px;letter-spacing:0.05em;">약물치료 중인 40대 여성</p>
-      </div>
-      <div class="after-card reveal">
-        <h3 class="after-card-title">"따뜻해서 <em>감동이었어요</em>"</h3>
-        <p class="after-card-text">오면서 긴장했는데, 서영님이 맞아주시는 순간부터 달랐어요. 이렇게 진심으로 환대받은 적이 없었어요.</p>
-        <p style="font-size:11px;color:var(--gray);margin-top:16px;letter-spacing:0.05em;">명상·자기계발을 해온 20대 대학원생</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ METHOD ══ -->
-<section class="sec" id="method">
-  <div class="container">
-    <p class="sec-label">THE WAY · 우리의 방법</p>
-    <h2 class="sec-title">말로도 가요.<br>단, <em style="font-style:normal;color:var(--red);">다르게.</em></h2>
-    <p class="sec-desc">분석하는 말이 아니라 탐험하는 말로.<br>평가하는 말이 아니라 발견하는 말로. 그리고 이미지로, 함께.</p>
-    <div class="method-grid">
-      <div class="method-card reveal">
-        <div class="method-num">01</div>
-        <h3 class="method-title">탐험하는 언어</h3>
-        <p class="method-text">접수 면담도, 분석도, 진단도 없어요. "지금 뭐가 느껴지세요?"가 아니라 "지금 어떤 색이 끌리세요?"로 시작해요.</p>
-      </div>
-      <div class="method-card reveal">
-        <div class="method-num">02</div>
-        <h3 class="method-title">이미지로 먼저</h3>
-        <p class="method-text">감정은 언어보다 이미지가 먼저예요. 말하기 전에 손으로 꺼내면 — 말로는 닿지 못한 곳에 닿아요.</p>
-      </div>
-      <div class="method-card reveal">
-        <div class="method-num">03</div>
-        <h3 class="method-title">환대와 진심</h3>
-        <p class="method-text">서비스가 아니라 시간과 공간을 파는 곳이에요. 현우와 서영이 직접 만들고, 직접 맞이해요.</p>
-      </div>
-      <div class="method-card reveal">
-        <div class="method-num">04</div>
-        <h3 class="method-title">있는 그대로</h3>
-        <p class="method-text">잘 그려야 한다는 압박 없이. 맞는 말을 해야 한다는 부담 없이. 지금 이 순간의 나로 충분해요.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SERVICES ══ -->
+<!-- ══ 04. 서비스 ══ -->
 <section class="sec" id="services" style="background:var(--off);">
   <div class="container">
     <p class="sec-label">SERVICES · 서비스</p>
@@ -606,7 +542,7 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
       <button class="session-tab" onclick="switchTab('personal',this)">PERSONAL WORK+SHOP · 개인 세션</button>
     </div>
 
-    <!-- 집단 워크숍 -->
+    <!-- 집단 -->
     <div class="session-panel active" id="panel-group">
       <div class="group-panel-inner">
         <div class="group-panel-head">
@@ -616,22 +552,10 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
             <p class="group-panel-desc">소그룹이 함께 이미지로 먼저 만나요. 말하지 않아도 되는 시간.<br>이 계절의 감각을 함께 꺼내는 6시간.</p>
           </div>
           <div class="group-panel-meta">
-            <div class="group-panel-meta-row">
-              <p class="group-panel-meta-label">일정</p>
-              <p class="group-panel-meta-value">2026년 4월 11~12일</p>
-            </div>
-            <div class="group-panel-meta-row">
-              <p class="group-panel-meta-label">장소</p>
-              <p class="group-panel-meta-value">서울 은평구 (오프라인)</p>
-            </div>
-            <div class="group-panel-meta-row">
-              <p class="group-panel-meta-label">인원</p>
-              <p class="group-panel-meta-value">최대 8명 · 잔여 <strong>4석</strong></p>
-            </div>
-            <div class="group-panel-meta-row">
-              <p class="group-panel-meta-label">시간 · 비용</p>
-              <p class="group-panel-meta-value">6시간+ · 1인 10만원</p>
-            </div>
+            <div class="group-meta-row"><p class="group-meta-label">일정</p><p class="group-meta-value">2026년 4월 11~12일</p></div>
+            <div class="group-meta-row"><p class="group-meta-label">장소</p><p class="group-meta-value">서울 은평구 (오프라인)</p></div>
+            <div class="group-meta-row"><p class="group-meta-label">인원</p><p class="group-meta-value">최대 8명 · 잔여 <strong>4석</strong></p></div>
+            <div class="group-meta-row"><p class="group-meta-label">시간 · 비용</p><p class="group-meta-value">6시간+ · 1인 10만원</p></div>
           </div>
         </div>
         <div class="group-panel-cta">
@@ -641,78 +565,76 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
       </div>
     </div>
 
-    <!-- 개인 세션 -->
+    <!-- 개인 -->
     <div class="session-panel" id="panel-personal">
-      <div class="personal-intro">
-        <p style="font-size:13px;color:var(--gray);line-height:1.8;padding:20px 0 4px;">단둘이 만나요. 어떤 주제로 만날지 먼저 골라보세요 — 서영이 맞춤으로 준비할게요.</p>
-        <p style="font-size:12px;color:var(--dim);padding-bottom:24px;">2~3시간 · 1인 10~15만원 · 온/오프라인 선택 가능</p>
+      <div style="padding:20px 0 4px;">
+        <p style="font-size:13px;color:var(--gray);line-height:1.8;">단둘이 만나요. 어떤 주제로 만날지 먼저 골라보세요 — 서영이 맞춤으로 준비할게요.</p>
+        <p style="font-size:12px;color:var(--dim);margin-top:4px;">2~3시간 · 1인 10~15만원 · 온/오프라인</p>
       </div>
-      <div class="session-grid">
+      <div class="session-grid" style="margin-top:16px;">
         <div class="session-card reveal" onclick="selectSession(this,'#01. 일상','The Aesthetics of Everyday Life')">
           <div class="session-card-check">✓</div>
           <span class="session-card-num">#01</span>
           <h4 class="session-card-title">일상</h4>
           <p class="session-card-en">The Aesthetics of Everyday Life</p>
-          <p class="session-card-quote">"순간의 조각이 모여,<br>삶은 예술이 된다."</p>
+          <p class="session-card-quote">"순간의 조각이 모여, 삶은 예술이 된다."</p>
         </div>
         <div class="session-card reveal" onclick="selectSession(this,'#02. 자화상','The Integrated Self-Portraits')">
           <div class="session-card-check">✓</div>
           <span class="session-card-num">#02</span>
           <h4 class="session-card-title">자화상</h4>
           <p class="session-card-en">The Integrated Self-Portraits</p>
-          <p class="session-card-quote">"빛과 그림자의 교차점에서<br>피어난 나."</p>
+          <p class="session-card-quote">"빛과 그림자의 교차점에서 피어난 나."</p>
         </div>
         <div class="session-card reveal" onclick="selectSession(this,'#03. 나다움','The Layered Personality')">
           <div class="session-card-check">✓</div>
           <span class="session-card-num">#03</span>
           <h4 class="session-card-title">나다움</h4>
           <p class="session-card-en">The Layered Personality</p>
-          <p class="session-card-quote">"나는 존재하지 않는다,<br>다만 욕망 뿐."</p>
+          <p class="session-card-quote">"나는 존재하지 않는다, 다만 욕망 뿐."</p>
         </div>
         <div class="session-card reveal" onclick="selectSession(this,'#04. 사계','The Perceptual Four Seasons')">
           <div class="session-card-check">✓</div>
           <span class="session-card-num">#04</span>
           <h4 class="session-card-title">사계</h4>
           <p class="session-card-en">The Perceptual Four Seasons</p>
-          <p class="session-card-quote">"각자의 계절 따라<br>흘러가는 당신에게."</p>
+          <p class="session-card-quote">"각자의 계절 따라 흘러가는 당신에게."</p>
         </div>
         <div class="session-card reveal" onclick="selectSession(this,'#05. 길','The Road of Life')">
           <div class="session-card-check">✓</div>
           <span class="session-card-num">#05</span>
           <h4 class="session-card-title">길</h4>
           <p class="session-card-en">The Road of Life</p>
-          <p class="session-card-quote">"걸어왔고, 또 걸어갈<br>여정에 잠시 멈추어."</p>
+          <p class="session-card-quote">"걸어왔고, 또 걸어갈 여정에 잠시 멈추어."</p>
         </div>
         <div class="session-card reveal" onclick="selectSession(this,'#06. 행복','The Happiness')">
           <div class="session-card-check">✓</div>
           <span class="session-card-num">#06</span>
           <h4 class="session-card-title">행복</h4>
           <p class="session-card-en">The Happiness</p>
-          <p class="session-card-quote">"나침반이 있었다,<br>행복이란 이름의."</p>
+          <p class="session-card-quote">"나침반이 있었다, 행복이란 이름의."</p>
         </div>
         <div class="session-card reveal" onclick="selectSession(this,'#07. 꿈','The Dreams on Icons')">
           <div class="session-card-check">✓</div>
           <span class="session-card-num">#07</span>
           <h4 class="session-card-title">꿈</h4>
           <p class="session-card-en">The Dreams on Icons</p>
-          <p class="session-card-quote">"그려보지 않은 꿈은,<br>단지 신기루겠지."</p>
+          <p class="session-card-quote">"그려보지 않은 꿈은, 단지 신기루겠지."</p>
         </div>
         <div class="session-card reveal" style="background:#ece8e0;cursor:default;">
           <span class="session-card-num" style="color:var(--light);">잘 모르겠어요</span>
           <h4 class="session-card-title" style="font-size:15px;color:var(--dim);line-height:1.5;">뭐가 맞을지<br>모르겠어요</h4>
-          <p class="session-card-quote" style="margin-top:12px;">괜찮아요. 서영이 먼저 이야기 들어볼게요.</p>
-          <a href="#contact" class="svc-btn" style="margin-top:16px;display:inline-block;font-size:10px;padding:10px 18px;">편하게 문의하기</a>
+          <p class="session-card-quote" style="margin-top:10px;">괜찮아요. 서영이 먼저 이야기 들어볼게요.</p>
+          <a href="#contact" style="margin-top:14px;display:inline-block;font-size:10px;letter-spacing:0.15em;color:var(--black);border:1px solid var(--black);padding:9px 16px;text-decoration:none;">편하게 문의하기</a>
         </div>
       </div>
-
       <div class="session-epilogue reveal">
-        <div class="session-epilogue-left">
+        <div>
           <p>모든 세션의 공동 작업</p>
           <p>#. Epilogue — Work+Memory Drawing</p>
           <p>"신이 허락한 인간의 유일한 자유 의지" · 세션을 마치며 남기는 10×10 캔버스 드로잉. 모든 세션에 포함됩니다.</p>
         </div>
       </div>
-
       <div class="session-summary" id="sessionSummary">
         <div class="session-summary-left">
           <p>선택한 세션</p>
@@ -728,71 +650,34 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
   </div>
 </section>
 
-
-<!-- ══ 찾아가는 워크숍 ══ -->
+<!-- ══ 05. 찾아가는 워크숍 ══ -->
 <section class="sec" id="visit" style="background:var(--dark);">
   <div class="container">
     <p class="sec-label" style="color:#4a4540;">VISITING WORKSHOP · 찾아가는 워크숍</p>
-    <h2 class="sec-title" style="color:var(--white);">마음다움이<br><em style="font-style:normal;color:var(--yellow);">찾아갑니다.</em></h2>
-    <p class="sec-desc" style="color:#6a6560;max-width:600px;">학교, 기관, 기업의 특성과 목적에 맞게 설계하여 찾아가요.<br>평가 없이, 구조화된 예술 활동으로 — 자연스럽게 작동합니다.</p>
+    <h2 class="sec-title" style="color:var(--white);">마음다움이<br><span style="color:var(--yellow);">찾아갑니다.</span></h2>
+    <p class="sec-desc" style="color:#5a5550;">학교, 기관, 기업의 특성과 목적에 맞게 설계하여 찾아가요.<br>평가 없이, 구조화된 예술 활동으로 — 자연스럽게 작동합니다.</p>
 
-    <!-- 찾아오는 vs 찾아가는 -->
-    <div class="visit-row reveal" style="margin-bottom:3px;">
-      <div class="visit-half" style="border-top:2px solid var(--yellow);">
-        <p class="visit-badge" style="color:var(--yellow);">COMING TO US · 찾아오는 워크숍</p>
-        <p class="visit-half-text">개인이 마음다움 스튜디오로 옵니다.<br>집단 워크숍 · 개인 세션 7종</p>
-      </div>
-      <div class="visit-half" style="border-top:2px solid rgba(250,247,242,0.3);">
-        <p class="visit-badge" style="color:rgba(250,247,242,0.5);">GOING TO YOU · 찾아가는 워크숍</p>
-        <p class="visit-half-text">마음다움이 현장으로 찾아갑니다.<br>학교 · 기관 · 기업 · 대학 맞춤 설계</p>
-      </div>
-    </div>
-
-    <!-- 효과 — 행 구조 -->
     <div class="reveal" style="margin-bottom:3px;">
       <div class="visit-row-label">WHAT HAPPENS · 무엇이 달라지는가</div>
       <div class="visit-effect-row">
-        <div class="visit-effect-item">
-          <p class="visit-effect-badge" style="color:var(--red);">INDIVIDUAL · 개인</p>
-          <p class="visit-effect-text">스트레스 감소 · 자기 이해 증진 · 감정 표현 능력 · 창의적 사고 확장</p>
-        </div>
-        <div class="visit-effect-item">
-          <p class="visit-effect-badge" style="color:var(--blue);">GROUP · 집단</p>
-          <p class="visit-effect-text">타인 이해 · 사회적 기술 증진 · 팀 응집력 · 관계 회복</p>
-        </div>
-        <div class="visit-effect-item">
-          <p class="visit-effect-badge" style="color:var(--green);">DIFFERENCE · 기존과 다른 점</p>
-          <p class="visit-effect-text">평가·진단 없음 · 구조화된 예술 활동 · 자연스러운 참여 · 신선하다는 반응</p>
-        </div>
+        <div class="visit-effect-item"><p class="visit-effect-badge" style="color:var(--red);">INDIVIDUAL · 개인</p><p class="visit-effect-text">스트레스 감소 · 자기 이해 증진 · 감정 표현 능력 · 창의적 사고 확장</p></div>
+        <div class="visit-effect-item"><p class="visit-effect-badge" style="color:var(--blue);">GROUP · 집단</p><p class="visit-effect-text">타인 이해 · 사회적 기술 증진 · 팀 응집력 · 관계 회복</p></div>
+        <div class="visit-effect-item"><p class="visit-effect-badge" style="color:var(--green);">DIFFERENCE · 기존과 다른 점</p><p class="visit-effect-text">평가·진단 없음 · 구조화된 예술 활동 · 자연스러운 참여 · "신선하다"는 반응</p></div>
       </div>
     </div>
 
-    <!-- 레퍼런스 — 행 구조 -->
     <div class="reveal" style="margin-bottom:3px;">
       <div class="visit-row-label">REFERENCES · 함께한 곳들</div>
       <div class="visit-ref-row">
-        <div class="visit-ref-item">
-          <p class="visit-ref-label" style="color:var(--yellow);">SCHOOL · 학교</p>
-          <p class="visit-ref-text">경일초 · 동호초 · 응봉초 · 포곡초 · 마장중 · 세화여중 · 한대부중 · 금곡고 · 연수여고 · 한대부고</p>
-        </div>
-        <div class="visit-ref-item">
-          <p class="visit-ref-label" style="color:var(--red);">UNIVERSITY · 대학</p>
-          <p class="visit-ref-text">명지대학교 · 삼육대학교 · 성신여자대학교 · 한양대학교 ERICA <span style="color:#3a3835;">(5년 연속)</span></p>
-        </div>
-        <div class="visit-ref-item">
-          <p class="visit-ref-label" style="color:var(--blue);">WELFARE · 복지기관</p>
-          <p class="visit-ref-text">서울청년센터 강동·창동오랑 · 기흥장애인복지관 · 서울노인복지센터 · 서대문노인종합복지관 · 서초구·양천구 가족센터 · 성동구청소년상담복지센터 · 성동경찰서 · 은평구청소년문화의집 · 신나는에프터센터</p>
-        </div>
-        <div class="visit-ref-item">
-          <p class="visit-ref-label" style="color:var(--green);">ETC · 기타</p>
-          <p class="visit-ref-text">세광교회 · 창업가 특강 · 진로 특강</p>
-        </div>
+        <div class="visit-ref-item"><p class="visit-ref-label" style="color:var(--yellow);">SCHOOL · 학교</p><p class="visit-ref-text">경일초 · 동호초 · 응봉초 · 포곡초 · 마장중 · 세화여중 · 한대부중 · 금곡고 · 연수여고 · 한대부고</p></div>
+        <div class="visit-ref-item"><p class="visit-ref-label" style="color:var(--red);">UNIVERSITY · 대학</p><p class="visit-ref-text">명지대학교 · 삼육대학교 · 성신여자대학교 · 한양대학교 ERICA <span style="color:#3a3835;">(5년 연속)</span></p></div>
+        <div class="visit-ref-item"><p class="visit-ref-label" style="color:var(--blue);">WELFARE · 복지기관</p><p class="visit-ref-text">서울청년센터 강동·창동오랑 · 기흥장애인복지관 · 서울노인복지센터 · 서대문노인종합복지관 · 서초구·양천구 가족센터 · 성동구청소년상담복지센터 · 성동경찰서 · 은평구청소년문화의집 · 신나는에프터센터</p></div>
+        <div class="visit-ref-item"><p class="visit-ref-label" style="color:var(--green);">ETC · 기타</p><p class="visit-ref-text">세광교회 · 창업가 특강 · 진로 특강</p></div>
       </div>
     </div>
 
-    <!-- 담당자 목소리 -->
-    <div style="background:#111009;padding:32px;margin-bottom:3px;border-left:3px solid var(--yellow);" class="reveal">
-      <p class="visit-row-label" style="margin-bottom:20px;">WHAT THEY SAY · 담당자들의 말</p>
+    <div style="background:#111009;padding:28px;margin-bottom:3px;border-left:3px solid var(--yellow);" class="reveal">
+      <p class="visit-row-label" style="background:transparent;padding:0;margin-bottom:16px;">WHAT THEY SAY · 담당자들의 말</p>
       <div class="visit-voices">
         <p class="visit-voice">"신선하다. 기존 집단 상담과 확실히 달랐다."</p>
         <p class="visit-voice">"평가적이지 않아서 학생들이 부담 없이 참여했다."</p>
@@ -801,107 +686,66 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
       </div>
     </div>
 
-    <!-- 프로세스 — 행 구조 -->
-    <div class="reveal" style="margin-bottom:48px;">
+    <div class="reveal" style="margin-bottom:40px;">
       <div class="visit-row-label">PROCESS · 이렇게 진행돼요</div>
       <div class="visit-process">
-        <div class="visit-process-item">
-          <p class="visit-process-num">01</p>
-          <p class="visit-process-title">문의 · 상담</p>
-          <p class="visit-process-text">대상, 인원, 목적, 시간을 먼저 파악해요.</p>
-        </div>
+        <div class="visit-process-item"><p class="visit-process-num">01</p><p class="visit-process-title">문의 · 상담</p><p class="visit-process-text">대상, 인원, 목적, 시간을 먼저 파악해요.</p></div>
         <div class="visit-process-arrow">→</div>
-        <div class="visit-process-item">
-          <p class="visit-process-num">02</p>
-          <p class="visit-process-title">맞춤 설계</p>
-          <p class="visit-process-text">집단 특성에 맞는 프로그램을 설계해요.</p>
-        </div>
+        <div class="visit-process-item"><p class="visit-process-num">02</p><p class="visit-process-title">맞춤 설계</p><p class="visit-process-text">집단 특성에 맞는 프로그램을 설계해요.</p></div>
         <div class="visit-process-arrow">→</div>
-        <div class="visit-process-item">
-          <p class="visit-process-num">03</p>
-          <p class="visit-process-title">현장 진행</p>
-          <p class="visit-process-text">현우·서영이 직접 찾아가서 진행해요.</p>
-        </div>
+        <div class="visit-process-item"><p class="visit-process-num">03</p><p class="visit-process-title">현장 진행</p><p class="visit-process-text">현우·서영이 직접 찾아가서 진행해요.</p></div>
         <div class="visit-process-arrow">→</div>
-        <div class="visit-process-item">
-          <p class="visit-process-num">04</p>
-          <p class="visit-process-title">결과 공유</p>
-          <p class="visit-process-text">필요시 진행 결과와 참여자 반응을 정리해드려요.</p>
-        </div>
+        <div class="visit-process-item"><p class="visit-process-num">04</p><p class="visit-process-title">결과 공유</p><p class="visit-process-text">필요시 진행 결과와 참여자 반응을 정리해드려요.</p></div>
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="visit-cta reveal">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;" class="reveal">
       <div>
-        <p style="font-family:'Noto Serif KR',serif;font-size:18px;color:var(--white);font-weight:300;margin-bottom:8px;">출강 문의는 부담 없이 먼저 연락주세요.</p>
+        <p style="font-family:'Noto Serif KR',serif;font-size:17px;color:var(--white);font-weight:300;margin-bottom:6px;">출강 문의는 부담 없이 먼저 연락주세요.</p>
         <p style="font-size:13px;color:#4a4540;">기관명, 대상, 인원, 목적을 알려주시면 맞춤으로 안내드려요.</p>
       </div>
-      <a href="#contact" style="font-size:11px;letter-spacing:0.2em;color:var(--black);background:var(--yellow);padding:14px 32px;text-decoration:none;font-weight:500;white-space:nowrap;flex-shrink:0;">출강 문의하기 →</a>
+      <a href="#contact" style="font-size:11px;letter-spacing:0.2em;color:var(--black);background:var(--yellow);padding:14px 32px;text-decoration:none;font-weight:500;white-space:nowrap;">출강 문의하기 →</a>
     </div>
-
   </div>
 </section>
 
-<!-- ══ FOUNDERS ══ -->
+<!-- ══ 06. 창업자 ══ -->
 <section class="sec" id="founders">
   <div class="container">
     <p class="sec-label">OUR STORY · 우리 이야기</p>
     <h2 class="sec-title">완성된 치유자가 아니에요.<br>함께 길 위에 있는 사람이에요.</h2>
     <div class="founders-grid">
-
       <div class="founder-card reveal">
-        <div class="founder-badge">
-          <span>RESEARCH</span><span>PHILOSOPHY</span><span>BRAND</span>
-        </div>
+        <div class="founder-badge"><span>RESEARCH</span><span>PHILOSOPHY</span><span>BRAND</span></div>
         <h3 class="founder-name">조현우</h3>
         <p class="founder-role">예술치유전문가 · 통합예술심리상담사</p>
         <p class="founder-edu">한양대 상담심리대학원 예술치료교육 전공<br>건축 · 미술사 · 미디어 커뮤니케이션 · 예술치료</p>
-        <p class="founder-story">
-          건축에서 시작해 미술사, 미디어 커뮤니케이션을 거쳐 예술치료에 이르는 여정 — <strong>이미지가 인간을 어떻게 구성하는가</strong>라는 질문이 일관되게 있었어요.<br><br>
-          예술치료사 이전, 브랜드 컨설팅을 업으로 삼았어요. 브랜드가 어떻게 이미지를 통해 사람의 마음에 닿는지 — 그 작업이 이미지 심리학의 실전 훈련이었어요.<br><br>
-          <em>진단명이 사람을 규정할 때 무언가 중요한 게 사라진다는 걸, 가장 가까운 자리에서 봐왔어요.</em> 그게 마음다움을 시작한 이유예요.
-        </p>
+        <p class="founder-story">건축에서 시작해 미술사, 미디어 커뮤니케이션을 거쳐 예술치료에 이르는 여정 — <strong>이미지가 인간을 어떻게 구성하는가</strong>라는 질문이 일관되게 있었어요.<br><br>예술치료사 이전, 브랜드 컨설팅을 업으로 삼았어요. 브랜드가 어떻게 이미지를 통해 사람의 마음에 닿는지 — 그 작업이 이미지 심리학의 실전 훈련이었어요.<br><br><em>진단명이 사람을 규정할 때 무언가 중요한 게 사라진다는 걸, 가장 가까운 자리에서 봐왔어요.</em> 그게 마음다움을 시작한 이유예요.</p>
       </div>
-
       <div class="founder-card reveal">
-        <div class="founder-badge">
-          <span>HOSPITALITY</span><span>DESIGN</span><span>FASHION</span>
-        </div>
+        <div class="founder-badge"><span>HOSPITALITY</span><span>DESIGN</span><span>FASHION</span></div>
         <h3 class="founder-name">황서영</h3>
         <p class="founder-role">예술치유전문가 · 통합예술심리상담사</p>
         <p class="founder-edu">한양대 상담심리대학원 예술치료교육 전공<br>디자인 · 예술치료</p>
-        <p class="founder-story">
-          디자인을 전공하고, 예술치료사 이전 패션을 업으로 삼았어요. 옷과 스타일이 어떻게 사람의 자기 이미지를 구성하는지 — <strong>패션 현장이 이미지 심리학의 살아있는 교실</strong>이었어요.<br><br>
-          처음 오는 분들이 긴장하지 않도록, <em>문이 낮고 따뜻한 곳</em>이 되고 싶었어요.<br><br>
-          마음다움에서 만나는 모든 순간이 그 사람만의 자화상이 된다고 믿어요. <strong>저는 그 옆에서 함께 있는 사람이에요.</strong>
-        </p>
+        <p class="founder-story">디자인을 전공하고, 예술치료사 이전 패션을 업으로 삼았어요. 옷과 스타일이 어떻게 사람의 자기 이미지를 구성하는지 — <strong>패션 현장이 이미지 심리학의 살아있는 교실</strong>이었어요.<br><br>처음 오는 분들이 긴장하지 않도록, <em>문이 낮고 따뜻한 곳</em>이 되고 싶었어요.<br><br>마음다움에서 만나는 모든 순간이 그 사람만의 자화상이 된다고 믿어요. <strong>저는 그 옆에서 함께 있는 사람이에요.</strong></p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══ PHILOSOPHY ══ -->
+<!-- ══ 07. 철학 (맨 뒤) ══ -->
 <section class="sec sec-phil" id="philosophy">
   <div class="container">
     <p class="sec-label">WHY IT WORKS · 왜 작동하는가</p>
-    <h2 class="sec-title">
-      마음은 말로 풀리지 않아요.<br>
-      <span style="color:var(--yellow);">이미지로 먼저 가야 합니다.</span>
-    </h2>
+    <h2 class="sec-title">마음은 말로 풀리지 않아요.<br><span style="color:var(--yellow);">이미지로 먼저 가야 합니다.</span></h2>
     <p class="sec-desc">궁금하신 분들을 위해 — 마음다움이 왜 다르게 작동하는지 설명할게요.</p>
 
     <div class="phil-core reveal">
       <p class="phil-core-badge">CORE · 마음다움의 출발점</p>
       <p class="phil-core-author">기반: James Hillman의 이미지 심리학 · Re-Visioning Psychology</p>
       <h3 class="phil-core-title">마음은 이미지로 이루어져 있다</h3>
-      <p class="phil-core-text">
-        우리가 어떤 감정을 느끼기 전에, 마음은 먼저 <strong>하나의 이미지</strong>를 만들어요. 슬픔도, 불안도, 텅 빈 느낌도 — 전부 어떤 이미지로 먼저 존재하다가 그 다음에 말이 됩니다. 그래서 말로 아무리 설명해도 안 풀리는 것들이 있어요.
-      </p>
-      <p class="phil-core-apply">
-        마음다움의 적용: 그래서 우리는 그림을 그려요. 잘 그리려는 게 아니에요. 지금 내 마음이 어떤 이미지로 있는지 — 그걸 손으로 꺼내는 거예요.
-      </p>
+      <p class="phil-core-text">우리가 어떤 감정을 느끼기 전에, 마음은 먼저 <strong>하나의 이미지</strong>를 만들어요. 슬픔도, 불안도, 텅 빈 느낌도 — 전부 어떤 이미지로 먼저 존재하다가 그 다음에 말이 됩니다. 그래서 말로 아무리 설명해도 안 풀리는 것들이 있어요.</p>
+      <p class="phil-core-apply">마음다움의 적용: 그래서 우리는 그림을 그려요. 잘 그리려는 게 아니에요. 지금 내 마음이 어떤 이미지로 있는지 — 그걸 손으로 꺼내는 거예요.</p>
     </div>
 
     <div class="phil-grid">
@@ -930,53 +774,48 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
 
     <div class="phil-sub">
       <div class="phil-sub-card reveal">
-        <p class="phil-sub-card-title">우울은 고장이 아니에요</p>
-        <p class="phil-sub-card-text">앤 츠베트코비치의 공적 우울 개념에 따르면, 우울은 개인의 결함이 아니라 이 시대를 감각적으로 살아가는 사람들의 정직한 반응이에요.</p>
+        <p class="phil-sub-title">우울은 고장이 아니에요</p>
+        <p class="phil-sub-text">앤 츠베트코비치의 공적 우울 개념에 따르면, 우울은 개인의 결함이 아니라 이 시대를 감각적으로 살아가는 사람들의 정직한 반응이에요.</p>
       </div>
       <div class="phil-sub-card reveal">
-        <p class="phil-sub-card-title">상상력은 없어진 게 아니에요</p>
-        <p class="phil-sub-card-text">나카자와 신이치에 따르면, 인간은 본래 이미지·은유·상상으로 세계를 이해해요. 지금 그 능력이 굳어있을 뿐이에요.</p>
+        <p class="phil-sub-title">상상력은 없어진 게 아니에요</p>
+        <p class="phil-sub-text">나카자와 신이치에 따르면, 인간은 본래 이미지·은유·상상으로 세계를 이해해요. 지금 그 능력이 굳어있을 뿐이에요.</p>
       </div>
     </div>
 
     <div class="phil-position reveal">
       <div class="phil-position-line"></div>
-      <p class="phil-position-text">
-        마음다움은 마음을 <em class="w">고쳐야 할 것, 최적화해야 할 것</em>으로 보지 않아요.<br>
-        마음은 원래 움직이고 싶어하고, 만들고 싶어하고, 흐르고 싶어해요.<br>
-        그게 잠시 막혀있는 것 — <em class="y">마음다움은 그 흐름을 함께 다시 만들어가는 곳이에요.</em>
-      </p>
+      <p class="phil-position-text">마음다움은 마음을 <span class="w">고쳐야 할 것, 최적화해야 할 것</span>으로 보지 않아요.<br>마음은 원래 움직이고 싶어하고, 만들고 싶어하고, 흐르고 싶어해요.<br>그게 잠시 막혀있는 것 — <span class="y">마음다움은 그 흐름을 함께 다시 만들어가는 곳이에요.</span></p>
     </div>
   </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
+<!-- ══ 08. 문의 ══ -->
 <section class="sec sec-contact" id="contact">
   <div class="container">
     <p class="sec-label" style="color:#4a4540;">CONTACT · 문의 & 예약</p>
     <h2 class="sec-title">부담 없이<br>먼저 물어봐도 돼요.</h2>
     <p class="sec-desc">어떤 서비스인지, 나한테 맞는지,<br>아무것도 몰라도 괜찮아요.</p>
     <div class="contact-wrap">
-      <div class="contact-info">
+      <div>
         <div class="contact-item">
-          <p class="contact-item-label">전화 · 문자</p>
-          <p class="contact-item-value"><a href="tel:01055888415">010-5588-8415</a><br><span style="font-size:12px;color:var(--dim);">서영이 답할게요</span></p>
+          <p class="contact-label">전화 · 문자</p>
+          <p class="contact-value"><a href="tel:01055888415">010-5588-8415</a><br><span style="font-size:12px;color:var(--dim);">서영이 답할게요</span></p>
         </div>
         <div class="contact-item">
-          <p class="contact-item-label">인스타그램</p>
-          <p class="contact-item-value"><a href="https://instagram.com/maumdaum_official" target="_blank">@maumdaum_official</a></p>
+          <p class="contact-label">인스타그램</p>
+          <p class="contact-value"><a href="https://instagram.com/maumdaum_official" target="_blank">@maumdaum_official</a></p>
         </div>
         <div class="contact-item">
-          <p class="contact-item-label">장소</p>
-          <p class="contact-item-value">서울 은평구 (오프라인)<br>+ ZOOM (온라인)</p>
+          <p class="contact-label">장소</p>
+          <p class="contact-value">서울 은평구 (오프라인)<br>+ ZOOM (온라인)</p>
         </div>
         <div class="contact-item">
-          <p class="contact-item-label">운영</p>
-          <p class="contact-item-value">예약제 운영</p>
+          <p class="contact-label">운영</p>
+          <p class="contact-value">예약제 운영</p>
         </div>
         <p class="contact-note">문의 후 1~2일 내로 서영이 직접 연락드려요.<br>부담 없이 먼저 여쭤봐도 돼요.</p>
       </div>
-
       <form class="contact-form" action="https://formspree.io/f/kreatism@naver.com" method="POST" onsubmit="handleSubmit(event)">
         <div class="form-group">
           <label class="form-label">이름</label>
@@ -1003,6 +842,9 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
               <option>개인 세션 #07. 꿈</option>
               <option>개인 세션 — 상담 후 결정</option>
             </optgroup>
+            <optgroup label="찾아가는 워크숍">
+              <option>출강 문의 (학교·기관·기업)</option>
+            </optgroup>
             <optgroup label="기타">
               <option>기타 문의</option>
             </optgroup>
@@ -1019,10 +861,10 @@ footer{background:#080807;padding:48px 56px;display:flex;align-items:center;just
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">마음<em>다움</em></div>
-  <p class="footer-copy">© 2026 마음다움 · 조현우 황서영 · 막힌 상상력을 다시 흐르게 하는 예술 워크숍</p>
+  <div class="footer-logo">마음다움</div>
+  <p class="footer-copy">© 2026 마음다움 · 조현우 황서영 · 예술치료 기반 심리 워크숍</p>
 </footer>
 
 <script>
@@ -1037,26 +879,25 @@ document.addEventListener('mousemove',e=>{
   cur.style.background=colors[ci];
   ring.style.borderColor=colors[ci];
 });
-function animRing(){
-  rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-}
+function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
 animRing();
 
-/* 네비 스크롤 */
+/* 네비 */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+  const logo=document.querySelector('.nav-logo');
+  if(window.scrollY>60)logo.style.color='var(--black)';
+  else logo.style.color='var(--white)';
 });
 
-/* 서비스 탭 초기화 */
+/* 탭 초기화 */
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.session-panel').forEach(p=>p.style.display='none');
   const g=document.getElementById('panel-group');
   if(g)g.style.display='block';
 });
 
-/* 서비스 탭 전환 */
+/* 탭 전환 */
 function switchTab(panel,btn){
   document.querySelectorAll('.session-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.session-panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
@@ -1066,7 +907,7 @@ function switchTab(panel,btn){
   target.style.display='block';
 }
 
-/* 개인 세션 선택 */
+/* 세션 선택 */
 let selectedSession=null;
 function selectSession(card,title,desc){
   document.querySelectorAll('.session-card').forEach(c=>c.classList.remove('selected'));
@@ -1088,16 +929,14 @@ function goToContact(){
     const sel=document.querySelector('select[name="service"]');
     if(sel){
       for(let o of sel.options){
-        if(o.text.includes(selectedSession.title.replace('#','').trim().split('.')[1]?.trim()||'')){
-          sel.value=o.value;break;
-        }
+        if(o.text.includes(selectedSession.title.split('.')[1]?.trim()||'')){sel.value=o.value;break;}
       }
     }
   }
   document.getElementById('contact').scrollIntoView({behavior:'smooth'});
 }
 
-/* 폼 제출 */
+/* 폼 */
 function handleSubmit(e){
   e.preventDefault();
   const btn=e.target.querySelector('.form-submit');
@@ -1110,7 +949,7 @@ function handleSubmit(e){
 /* 스크롤 리빌 */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:0.08});
+},{threshold:0.07});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
