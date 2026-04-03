@@ -351,6 +351,7 @@
     gap: 0; margin: 2rem 0 3rem;
     background: var(--ink); border-radius: 2px;
     padding: 2.5rem 3rem; flex-wrap: wrap;
+    max-width: 560px;
   }
   .founders-banner-item {
     display: flex; align-items: center; gap: 1.2rem;
@@ -859,13 +860,8 @@
 
   <div class="founders-banner reveal">
     <div class="founders-banner-item">
-      <span class="founders-banner-num">2</span>
-      <span class="founders-banner-desc">예술치료사 부부<br><small>국내 흔치 않은 전문가 부부 팀</small></span>
-    </div>
-    <div class="founders-banner-divider"></div>
-    <div class="founders-banner-item">
       <span class="founders-banner-num">20<small style="font-size:1.4rem">년</small></span>
-      <span class="founders-banner-desc">도합 현장 경력<br><small>현우 9년 · 서영 11년 · 전 연령</small></span>
+      <span class="founders-banner-desc">도합 현장 경력<br><small>전 연령 (아동, 청소년, 성인, 노인)</small></span>
     </div>
     <div class="founders-banner-divider"></div>
     <div class="founders-banner-item">
@@ -887,11 +883,11 @@
         <h3 class="founder-name">조현우</h3>
         <span class="founder-ceo-badge">공동대표 CEO</span>
       </div>
-      <span class="founder-role">예술치유전문가 · 리서치 & 철학 담당</span>
+      <span class="founder-role">9년차 예술치료사 · 예술치유전문가</span>
       <div class="founder-credentials">
         <div class="credential-group">
           <span class="credential-label">학력</span>
-          <p class="credential-body">한양대학교 상담심리대학원<br>상담심리학 석사 (예술치료교육 및 상담 전공)</p>
+          <p class="credential-body">한양대학교 상담심리대학원<br>상담심리학 석사<br>(예술치료교육 및 상담 전공)</p>
         </div>
         <div class="credential-group">
           <span class="credential-label">자격</span>
@@ -917,11 +913,11 @@
         <h3 class="founder-name">황서영</h3>
         <span class="founder-ceo-badge">공동대표 CEO</span>
       </div>
-      <span class="founder-role">예술치유전문가 · 세션 진행 & 환대 담당</span>
+      <span class="founder-role">11년차 예술치료사 · 예술치유전문가</span>
       <div class="founder-credentials">
         <div class="credential-group">
           <span class="credential-label">학력</span>
-          <p class="credential-body">한양대학교 상담심리대학원<br>상담심리학 석사 (예술치료교육 및 상담 전공)</p>
+          <p class="credential-body">한양대학교 상담심리대학원<br>상담심리학 석사<br>(예술치료교육 및 상담 전공)</p>
         </div>
         <div class="credential-group">
           <span class="credential-label">자격</span>
@@ -1047,16 +1043,15 @@
 
 <!-- 완료 팝업 -->
 <div id="successOverlay" style="
-  display:none; position:fixed; inset:0; z-index:999;
+  display:none; position:fixed; inset:0; z-index:9999;
   background:rgba(26,23,20,0.75); backdrop-filter:blur(6px);
   align-items:center; justify-content:center;
 ">
   <div style="
     background:#fafaf8; max-width:420px; width:90%;
     padding:3rem 2.5rem; text-align:center; border-radius:2px;
-    position:relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   ">
-    <!-- 로고 심볼 -->
     <div style="display:flex;justify-content:center;gap:8px;margin-bottom:1.8rem;">
       <svg viewBox="0 0 68 10" xmlns="http://www.w3.org/2000/svg" style="height:10px;width:auto;">
         <rect x="0" y="0" width="10" height="10" fill="#2B5BA8"/>
@@ -1065,21 +1060,15 @@
         <circle cx="45" cy="5" r="5" fill="none" stroke="#C41230" stroke-width="1.8" stroke-dasharray="2.5 1.2"/>
       </svg>
     </div>
-    <p style="
-      font-family:'DM Serif Display','Noto Serif KR',serif;
-      font-size:1.4rem; color:#1a1714; line-height:1.4; margin-bottom:1rem;
-    ">문의가 전달되었습니다</p>
-    <p style="
-      font-family:'Noto Serif KR',serif; font-size:0.9rem;
-      color:#7a7268; line-height:1.9; margin-bottom:2rem;
-    ">
+    <p style="font-family:'DM Serif Display','Noto Serif KR',serif;font-size:1.4rem;color:#1a1714;line-height:1.4;margin-bottom:1rem;">문의가 전달되었습니다</p>
+    <p style="font-family:'Noto Serif KR',serif;font-size:0.9rem;color:#7a7268;line-height:1.9;margin-bottom:2rem;">
       마음이 가장 마음다워지는<br>한 걸음을 응원합니다.<br><br>
       1~2일 내로 서영이 직접 연락드릴게요.
     </p>
-    <button onclick="document.getElementById('successOverlay').style.display='none'" style="
-      font-family:'Noto Sans KR',sans-serif; font-size:0.82rem;
-      color:#fafaf8; background:#2B5BA8; border:none;
-      padding:0.8rem 2rem; border-radius:2px; cursor:pointer;
+    <button id="closePopup" style="
+      font-family:'Noto Sans KR',sans-serif;font-size:0.82rem;
+      color:#fafaf8;background:#2B5BA8;border:none;
+      padding:0.8rem 2rem;border-radius:2px;cursor:pointer;
       letter-spacing:0.05em;
     ">닫기</button>
   </div>
@@ -1113,6 +1102,23 @@
 
   // Formspree AJAX 제출 + 완료 팝업
   const form = document.getElementById('contactForm');
+  const overlay = document.getElementById('successOverlay');
+  const closeBtn = document.getElementById('closePopup');
+
+  function showPopup() {
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function hidePopup() {
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', hidePopup);
+  if (overlay) overlay.addEventListener('click', function(e) {
+    if (e.target === this) hidePopup();
+  });
+
   if (form) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -1129,10 +1135,14 @@
 
         if (res.ok) {
           form.reset();
-          const overlay = document.getElementById('successOverlay');
-          overlay.style.display = 'flex';
+          showPopup();
         } else {
-          alert('전송 중 오류가 발생했어요. 잠시 후 다시 시도해 주세요.');
+          const data = await res.json();
+          if (data.errors) {
+            alert(data.errors.map(e => e.message).join('\n'));
+          } else {
+            alert('전송 중 오류가 발생했어요. 잠시 후 다시 시도해 주세요.');
+          }
         }
       } catch (err) {
         alert('네트워크 오류가 발생했어요. 잠시 후 다시 시도해 주세요.');
@@ -1142,11 +1152,6 @@
       }
     });
   }
-
-  // 오버레이 바깥 클릭시 닫기
-  document.getElementById('successOverlay').addEventListener('click', function(e) {
-    if (e.target === this) this.style.display = 'none';
-  });
 </script>
 </body>
 </html>
