@@ -14,9 +14,9 @@
     --ink: #1a1714;
     --ink-soft: #3d3830;
     --ink-faint: #7a7268;
-    --paper: #f5f0e8;
-    --paper-warm: #ede7d9;
-    --paper-deep: #e0d8c8;
+    --paper: #fafaf8;
+    --paper-warm: #f4f4f2;
+    --paper-deep: #e8e8e6;
     --accent: #8b6f47;
     --accent-light: #c4a882;
     --accent-pale: #f0e8d8;
@@ -535,11 +535,16 @@
 <nav>
   <a href="#" class="nav-logo">
     <svg viewBox="0 0 148 16" xmlns="http://www.w3.org/2000/svg" style="height:16px;width:auto;display:block;">
-      <circle cx="8" cy="8" r="7" fill="#F5D800"/>
-      <circle cx="24" cy="8" r="6" fill="none" stroke="#C41230" stroke-width="2.2" stroke-dasharray="3 1.5"/>
-      <rect x="34" y="1" width="14" height="14" fill="#2B5BA8"/>
-      <path d="M55 1 L55 15 L69 15 L69 1" fill="none" stroke="#1E7A3C" stroke-width="2.5" stroke-linejoin="miter"/>
-      <text x="78" y="12" font-family="'Noto Serif KR', serif" font-size="11" fill="#1a1714" letter-spacing="1.5">마음다움</text>
+      <!-- 파랑 사각형 x=0, w=14 -->
+      <rect x="0" y="1" width="14" height="14" fill="#2B5BA8"/>
+      <!-- 노랑 원 cx=0+14+8+7=29 -->
+      <circle cx="29" cy="8" r="7" fill="#F5D800"/>
+      <!-- 초록 ㄷ x=29+7+8=44, w=14 -->
+      <path d="M44 1 L44 15 L58 15 L58 1" fill="none" stroke="#1E7A3C" stroke-width="2.5" stroke-linejoin="miter"/>
+      <!-- 빨강 점선 원 cx=44+14+8+7=73 -->
+      <circle cx="73" cy="8" r="7" fill="none" stroke="#C41230" stroke-width="2.2" stroke-dasharray="3 1.5"/>
+      <!-- 마음다움 x=73+7+10=90 -->
+      <text x="90" y="12" font-family="'Noto Serif KR', serif" font-size="11" fill="#1a1714" letter-spacing="1.5">마음다움</text>
     </svg>
   </a>
   <ul class="nav-links">
