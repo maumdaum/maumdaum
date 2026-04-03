@@ -21,6 +21,10 @@
     --accent-light: #c4a882;
     --accent-pale: #f0e8d8;
     --red: #9b3a2a;
+    --logo-yellow: #F5D800;
+    --logo-red:    #C41230;
+    --logo-blue:   #2B5BA8;
+    --logo-green:  #1E7A3C;
     --serif: 'DM Serif Display', 'Noto Serif KR', serif;
     --sans: 'Noto Sans KR', sans-serif;
     --body: 'Noto Serif KR', serif;
@@ -47,8 +51,13 @@
     border-bottom: 1px solid rgba(139,111,71,0.12);
   }
   .nav-logo {
-    font-family: var(--serif); font-size: 1.1rem;
-    color: var(--ink); text-decoration: none; letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 0.7rem;
+    text-decoration: none;
+  }
+  .nav-logo-svg { height: 36px; width: auto; flex-shrink: 0; }
+  .nav-logo-text {
+    font-family: var(--serif); font-size: 1.15rem;
+    color: var(--ink); letter-spacing: 0.04em; line-height: 1;
   }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
@@ -60,17 +69,17 @@
   /* ✏️ CTA 단 하나: 문의하기 */
   .nav-cta {
     font-family: var(--sans); font-size: 0.78rem; font-weight: 500;
-    color: var(--paper); background: var(--ink);
+    color: var(--paper); background: var(--logo-blue);
     padding: 0.55rem 1.3rem; border-radius: 2px;
     text-decoration: none; letter-spacing: 0.06em; transition: background 0.2s;
   }
-  .nav-cta:hover { background: var(--accent); }
+  .nav-cta:hover { background: #1e4a8f; }
 
   /* SECTION SCAFFOLD */
   section { padding: 6rem 3rem; }
   .section-label {
     font-family: var(--sans); font-size: 0.68rem;
-    letter-spacing: 0.2em; color: var(--accent);
+    letter-spacing: 0.2em; color: var(--logo-blue);
     text-transform: uppercase; margin-bottom: 1.2rem; display: block;
   }
   .section-title {
@@ -93,12 +102,12 @@
   .hero-bg {
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(196,168,130,0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(139,111,71,0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(43,91,168,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(30,122,60,0.05) 0%, transparent 60%);
   }
   .hero-label {
     font-family: var(--sans); font-size: 0.72rem; font-weight: 400;
-    letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase;
+    letter-spacing: 0.2em; color: var(--logo-blue); text-transform: uppercase;
     margin-bottom: 2rem;
     opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
   }
@@ -110,12 +119,12 @@
     max-width: 16ch; margin-bottom: 2rem;
     opacity: 0; animation: fadeUp 0.9s ease 0.35s forwards;
   }
-  .hero-headline em { font-style: italic; color: var(--accent); }
+  .hero-headline em { font-style: italic; color: var(--logo-yellow); text-shadow: 0 2px 12px rgba(245,216,0,0.18); }
   .hero-declaration {
     font-family: var(--body); font-size: clamp(1rem, 1.8vw, 1.15rem);
     font-weight: 300; color: var(--ink-soft);
     max-width: 40ch; line-height: 1.9; margin-bottom: 3rem;
-    border-left: 2px solid var(--accent-light); padding-left: 1.2rem;
+    border-left: 3px solid var(--logo-yellow); padding-left: 1.2rem;
     opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards;
   }
   /* ✏️ 수정 2/3: CTA 2개로 정리 (기존 페이지의 산발적 CTA 제거) */
@@ -125,20 +134,20 @@
   }
   .btn-primary {
     font-family: var(--sans); font-size: 0.85rem; font-weight: 500;
-    color: var(--paper); background: var(--ink);
+    color: var(--paper); background: var(--logo-blue);
     padding: 0.9rem 2rem; border-radius: 2px;
     text-decoration: none; letter-spacing: 0.05em;
     transition: background 0.25s, transform 0.2s;
   }
-  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-primary:hover { background: #1e4a8f; transform: translateY(-1px); }
   .btn-secondary {
     font-family: var(--sans); font-size: 0.85rem; font-weight: 400;
-    color: var(--ink-soft); border: 1px solid rgba(26,23,20,0.25);
+    color: var(--ink-soft); border: 1px solid var(--logo-green);
     padding: 0.9rem 2rem; border-radius: 2px;
     text-decoration: none; letter-spacing: 0.05em;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
   }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-secondary:hover { border-color: var(--logo-green); color: var(--logo-green); background: rgba(30,122,60,0.05); }
 
   .hero-notice {
     position: absolute; right: 3rem; bottom: 4rem; text-align: right;
@@ -146,15 +155,15 @@
   }
   .notice-tag {
     font-family: var(--sans); font-size: 0.65rem;
-    letter-spacing: 0.15em; color: var(--red);
+    letter-spacing: 0.15em; color: var(--logo-red);
     text-transform: uppercase; margin-bottom: 0.4rem;
   }
   .notice-title { font-family: var(--serif); font-size: 1rem; color: var(--ink); margin-bottom: 0.2rem; }
   .notice-sub { font-family: var(--sans); font-size: 0.72rem; color: var(--ink-faint); }
   .notice-seats {
     display: inline-block; font-family: var(--sans);
-    font-size: 0.72rem; font-weight: 500; color: var(--red);
-    border: 1px solid var(--red); padding: 0.2rem 0.6rem;
+    font-size: 0.72rem; font-weight: 500; color: var(--logo-red);
+    border: 1px solid var(--logo-red); padding: 0.2rem 0.6rem;
     border-radius: 20px; margin-top: 0.5rem;
   }
   .scroll-cue {
@@ -183,45 +192,45 @@
   .q-card:hover { border-color: var(--accent-light); transform: translateY(-2px); }
   .q-num {
     font-family: var(--sans); font-size: 0.65rem;
-    color: var(--accent); letter-spacing: 0.15em;
+    color: var(--logo-blue); letter-spacing: 0.15em;
     margin-bottom: 0.8rem; display: block;
   }
   .q-question {
     font-family: var(--serif); font-size: 1rem;
     line-height: 1.6; color: var(--ink); margin-bottom: 1rem;
   }
-  .q-question em { font-style: italic; color: var(--accent); }
+  .q-question em { font-style: italic; color: var(--logo-blue); }
   .q-answer { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-faint); line-height: 1.75; }
   /* ✏️ 수정 2/3: "서영에게 먼저 물어보기" CTA — 섹션마다 반복하지 않고 여기 한 번만 */
   .section-cta-wrap { margin-top: 2.5rem; }
 
   /* BEFORE/AFTER */
-  #proof { background: var(--ink); color: var(--paper); }
-  #proof .section-label { color: var(--accent-light); }
+  #proof { background: var(--logo-blue); color: var(--paper); }
+  #proof .section-label { color: var(--logo-yellow); }
   #proof .section-title { color: var(--paper); }
-  #proof .section-sub { color: rgba(245,240,232,0.6); }
+  #proof .section-sub { color: rgba(245,240,232,0.7); }
   .ba-pair {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 2px; margin-bottom: 2px;
   }
   .ba-card {
-    background: rgba(255,255,255,0.04); padding: 2.5rem;
-    border: 1px solid rgba(255,255,255,0.07); transition: background 0.3s;
+    background: rgba(255,255,255,0.07); padding: 2.5rem;
+    border: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;
   }
-  .ba-card:hover { background: rgba(255,255,255,0.07); }
+  .ba-card:hover { background: rgba(255,255,255,0.12); }
   .ba-tag {
     font-family: var(--sans); font-size: 0.65rem;
     letter-spacing: 0.15em; font-weight: 500;
     margin-bottom: 1rem; display: block;
   }
-  .ba-tag.before { color: rgba(245,240,232,0.35); }
-  .ba-tag.after { color: var(--accent-light); }
+  .ba-tag.before { color: rgba(245,240,232,0.4); }
+  .ba-tag.after { color: var(--logo-yellow); }
   .ba-quote {
     font-family: var(--serif); font-size: 1.05rem;
     line-height: 1.75; color: var(--paper); margin-bottom: 1rem;
   }
-  .ba-quote em { font-style: italic; color: var(--accent-light); }
-  .ba-source { font-family: var(--sans); font-size: 0.7rem; color: rgba(245,240,232,0.35); }
+  .ba-quote em { font-style: italic; color: var(--logo-yellow); }
+  .ba-source { font-family: var(--sans); font-size: 0.7rem; color: rgba(245,240,232,0.4); }
 
   /* HONEST / DIFFERENCE */
   #difference { background: var(--paper-warm); }
@@ -234,7 +243,7 @@
     padding: 1rem 1.5rem; text-align: left; border-bottom: 2px solid var(--ink);
   }
   .compare-table th:first-child { color: var(--ink-faint); }
-  .compare-table th:last-child { color: var(--accent); border-bottom-color: var(--accent); }
+  .compare-table th:last-child { color: var(--logo-green); border-bottom-color: var(--logo-green); }
   .compare-table td {
     padding: 1.1rem 1.5rem; font-size: 0.85rem;
     border-bottom: 1px solid var(--paper-deep);
@@ -260,12 +269,12 @@
   .service-block.featured { border-color: var(--accent); background: var(--accent-pale); }
   .service-tag {
     font-family: var(--sans); font-size: 0.65rem;
-    letter-spacing: 0.15em; color: var(--accent);
+    letter-spacing: 0.15em; color: var(--logo-blue);
     text-transform: uppercase; margin-bottom: 1rem;
     display: flex; gap: 0.5rem; align-items: center;
   }
   .tag-live {
-    background: var(--red); color: white;
+    background: var(--logo-red); color: white;
     padding: 0.1rem 0.4rem; border-radius: 2px;
     font-size: 0.6rem; letter-spacing: 0.1em;
   }
@@ -288,7 +297,7 @@
     display: block; margin-bottom: 0.2rem;
   }
   .meta-item span { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--ink); }
-  .meta-item span.seats { color: var(--red); }
+  .meta-item span.seats { color: var(--logo-red); }
 
   /* ✏️ 수정 3/3: 세션 부제 시적 문구 제거 — 이름만 남기고 짧은 설명 추가 */
   .session-list {
@@ -302,7 +311,7 @@
   .session-item:hover { background: var(--paper-deep); }
   .session-num {
     font-family: var(--sans); font-size: 0.6rem;
-    color: var(--accent); letter-spacing: 0.1em;
+    color: var(--logo-green); letter-spacing: 0.1em;
     display: block; margin-bottom: 0.2rem;
   }
   .session-name {
@@ -322,14 +331,14 @@
   .ref-group { margin-bottom: 2rem; }
   .ref-group-label {
     font-family: var(--sans); font-size: 0.65rem;
-    letter-spacing: 0.15em; color: var(--accent);
+    letter-spacing: 0.15em; color: var(--logo-green);
     text-transform: uppercase; margin-bottom: 0.6rem; display: block;
   }
   .ref-names { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-soft); line-height: 2; }
   .testimonials { display: flex; flex-direction: column; gap: 1.2rem; }
   .testimonial {
     padding: 1.5rem; background: var(--paper);
-    border-left: 3px solid var(--accent-light);
+    border-left: 3px solid var(--logo-yellow);
   }
   .testimonial p { font-family: var(--serif); font-size: 0.9rem; color: var(--ink-soft); line-height: 1.8; }
 
@@ -348,7 +357,7 @@
     padding: 0 2.5rem; flex: 1; min-width: 180px;
   }
   .founders-banner-num {
-    font-family: var(--serif); font-size: 3rem; color: var(--accent-light);
+    font-family: var(--serif); font-size: 3rem; color: var(--logo-yellow);
     line-height: 1; white-space: nowrap;
   }
   .founders-banner-desc {
@@ -357,7 +366,7 @@
   }
   .founders-banner-desc small { font-weight: 300; color: rgba(245,240,232,0.5); font-size: 0.72rem; }
   .founders-banner-divider {
-    width: 1px; height: 48px; background: rgba(255,255,255,0.12);
+    width: 1px; height: 48px; background: rgba(255,255,255,0.15);
     flex-shrink: 0;
   }
 
@@ -378,8 +387,8 @@
   .founder-name { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); }
   .founder-ceo-badge {
     font-family: var(--sans); font-size: 0.65rem; font-weight: 500;
-    letter-spacing: 0.08em; color: var(--accent);
-    border: 1px solid var(--accent); padding: 0.15rem 0.55rem;
+    letter-spacing: 0.08em; color: var(--logo-blue);
+    border: 1px solid var(--logo-blue); padding: 0.15rem 0.55rem;
     border-radius: 20px; white-space: nowrap;
   }
   .founder-role {
@@ -394,7 +403,7 @@
   .credential-group {}
   .credential-label {
     font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.12em;
-    color: var(--accent); text-transform: uppercase;
+    color: var(--logo-green); text-transform: uppercase;
     display: block; margin-bottom: 0.4rem;
   }
   .credential-body {
@@ -404,34 +413,35 @@
   .founder-story em { font-style: italic; color: var(--ink); }
 
   /* WHY */
-  #why { background: var(--ink); color: var(--paper); }
-  #why .section-label { color: var(--accent-light); }
+  #why { background: #0f2d1a; color: var(--paper); }
+  #why .section-label { color: var(--logo-yellow); }
   #why .section-title { color: var(--paper); }
   #why .section-sub { color: rgba(245,240,232,0.6); }
   .philosophy-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1px; margin-top: 3rem; background: rgba(255,255,255,0.06);
+    gap: 1px; margin-top: 3rem; background: rgba(255,255,255,0.08);
   }
   .phil-card {
-    background: var(--ink); padding: 2.5rem 2rem; transition: background 0.3s;
+    background: #0f2d1a; padding: 2.5rem 2rem; transition: background 0.3s;
   }
-  .phil-card:hover { background: rgba(255,255,255,0.04); }
-  .phil-source { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.12em; color: var(--accent-light); margin-bottom: 1rem; display: block; }
+  .phil-card:hover { background: rgba(255,255,255,0.06); }
+  .phil-source { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.12em; color: var(--logo-yellow); margin-bottom: 1rem; display: block; }
   .phil-claim { font-family: var(--serif); font-size: 1.1rem; color: var(--paper); line-height: 1.5; margin-bottom: 0.8rem; }
-  .phil-body { font-family: var(--sans); font-size: 0.8rem; color: rgba(245,240,232,0.5); line-height: 1.8; }
+  .phil-body { font-family: var(--sans); font-size: 0.8rem; color: rgba(245,240,232,0.55); line-height: 1.8; }
   .why-statement {
     margin-top: 4rem; padding: 3rem;
-    border: 1px solid rgba(255,255,255,0.1); max-width: 640px;
+    border: 1px solid rgba(255,255,255,0.12); max-width: 640px;
+    border-left: 3px solid var(--logo-green);
   }
   .why-statement p { font-family: var(--serif); font-size: 1.05rem; color: rgba(245,240,232,0.85); line-height: 2; margin-bottom: 1rem; }
-  .why-statement p:last-child { margin-bottom: 0; color: var(--accent-light); }
+  .why-statement p:last-child { margin-bottom: 0; color: var(--logo-yellow); }
 
   /* CONTACT */
   #contact {
     background: var(--ink); color: var(--paper);
     text-align: center; padding: 7rem 3rem;
   }
-  #contact .section-label { color: var(--accent-light); display: block; margin-bottom: 1rem; }
+  #contact .section-label { color: var(--logo-yellow); display: block; margin-bottom: 1rem; }
   #contact .section-title { color: var(--paper); margin-bottom: 0.8rem; }
   #contact .section-sub { color: rgba(245,240,232,0.55); margin: 0 auto 3rem; text-align: center; }
   .contact-options {
@@ -442,8 +452,8 @@
     padding: 2rem 2.5rem; border: 1px solid rgba(255,255,255,0.12);
     border-radius: 2px; min-width: 200px; transition: border-color 0.25s, background 0.25s;
   }
-  .contact-option:hover { border-color: var(--accent-light); background: rgba(255,255,255,0.04); }
-  .contact-option-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.15em; color: var(--accent-light); display: block; margin-bottom: 0.5rem; }
+  .contact-option:hover { border-color: var(--logo-yellow); background: rgba(255,255,255,0.04); }
+  .contact-option-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.15em; color: var(--logo-yellow); display: block; margin-bottom: 0.5rem; }
   .contact-option-value { font-family: var(--serif); font-size: 1rem; color: var(--paper); }
   .contact-option a { color: inherit; text-decoration: none; }
   .contact-form { max-width: 520px; margin: 0 auto; text-align: left; }
@@ -461,12 +471,12 @@
   .form-group select option { background: var(--ink); }
   .form-group textarea { resize: vertical; min-height: 100px; }
   .form-submit {
-    width: 100%; background: var(--accent); color: var(--paper);
+    width: 100%; background: var(--logo-blue); color: var(--paper);
     border: none; font-family: var(--sans); font-size: 0.85rem;
     font-weight: 500; letter-spacing: 0.08em; padding: 1rem;
     border-radius: 2px; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem;
   }
-  .form-submit:hover { background: var(--accent-light); }
+  .form-submit:hover { background: #1e4a8f; }
   .form-note { font-family: var(--sans); font-size: 0.72rem; color: rgba(245,240,232,0.35); text-align: center; margin-top: 1rem; }
 
   /* FOOTER */
@@ -523,7 +533,16 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">마음다움</a>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 124 16" xmlns="http://www.w3.org/2000/svg" style="height:16px;width:auto;display:block;">
+      <circle cx="8" cy="8" r="7" fill="#F5D800"/>
+      <circle cx="24" cy="8" r="6" fill="none" stroke="#C41230" stroke-width="2.2" stroke-dasharray="3 1.5"/>
+      <rect x="34" y="1" width="14" height="14" fill="#2B5BA8"/>
+      <path d="M55 1 L55 15 L69 15 L69 1" fill="none" stroke="#1E7A3C" stroke-width="2.5" stroke-linejoin="miter"/>
+      <line x1="80" y1="2" x2="76" y2="14" stroke="#c8c0b0" stroke-width="0.8"/>
+      <text x="83" y="12" font-family="'Noto Serif KR', serif" font-size="11" fill="#1a1714" letter-spacing="1.5">마음다움</text>
+    </svg>
+  </a>" alt="마음다움" style="height:44px;width:auto;"></a>
   <ul class="nav-links">
     <li><a href="#for-you">이런 분들</a></li>
     <li><a href="#services">서비스</a></li>
