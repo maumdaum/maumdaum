@@ -482,11 +482,11 @@
   /* FOOTER */
   footer {
     background: #111; padding: 2rem 3rem;
-    display: flex; align-items: center;
-    justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.5rem;
   }
   .footer-logo { font-family: var(--serif); font-size: 0.95rem; color: rgba(245,240,232,0.4); }
-  .footer-copy { font-family: var(--sans); font-size: 0.68rem; color: rgba(245,240,232,0.25); letter-spacing: 0.05em; }
+  .footer-copy { font-family: var(--sans); font-size: 0.68rem; color: rgba(245,240,232,0.25); letter-spacing: 0.05em; text-align: center; }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
@@ -996,45 +996,98 @@
   </div>
 
   <div class="contact-form">
-    <div class="form-row">
-      <div class="form-group">
-        <label>이름</label>
-        <input type="text" placeholder="홍길동">
+    <!-- Formspree: kreatism@naver.com + abigail_seo0@naver.com 동시 수신 -->
+    <!-- Formspree 대시보드에서 두 번째 이메일은 Extra Recipients에 추가 필요 -->
+    <form id="contactForm" action="https://formspree.io/f/xgonnzyd" method="POST">
+      <!-- 자동 응답 메일 수신자 설정 -->
+      <input type="hidden" name="_replyto" id="replyto">
+      <input type="hidden" name="_subject" value="[마음다움] 새로운 문의가 도착했습니다">
+      <input type="hidden" name="_next" value="">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>이름</label>
+          <input type="text" name="이름" placeholder="홍길동" required>
+        </div>
+        <div class="form-group">
+          <label>연락처</label>
+          <input type="tel" name="연락처" placeholder="010-0000-0000" required>
+        </div>
       </div>
       <div class="form-group">
-        <label>연락처</label>
-        <input type="tel" placeholder="010-0000-0000">
+        <label>이메일 (선택 — 답장 받으실 경우)</label>
+        <input type="email" name="이메일" placeholder="example@email.com" id="emailInput">
       </div>
-    </div>
-    <div class="form-group">
-      <label>관심 서비스</label>
-      <select>
-        <option value="" disabled selected>선택해주세요</option>
-        <option>집단 워크숍 No.16 — 우울을 바라, '봄' (4월)</option>
-        <option>개인 세션 #01. 일상</option>
-        <option>개인 세션 #02. 자화상</option>
-        <option>개인 세션 #03. 나다움</option>
-        <option>개인 세션 #04. 사계</option>
-        <option>개인 세션 #05. 길</option>
-        <option>개인 세션 #06. 행복</option>
-        <option>개인 세션 #07. 꿈</option>
-        <option>개인 세션 — 상담 후 결정</option>
-        <option>출강 문의 (학교·기관·기업)</option>
-        <option>기타 문의</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>전하고 싶은 말 (선택)</label>
-      <textarea placeholder="어떤 것이 궁금하신지, 어떤 상황인지 편하게 적어주세요."></textarea>
-    </div>
-    <button class="form-submit">문의 보내기</button>
-    <p class="form-note">문의 후 1~2일 내로 서영이 직접 연락드려요.</p>
+      <div class="form-group">
+        <label>관심 서비스</label>
+        <select name="관심 서비스" required>
+          <option value="" disabled selected>선택해주세요</option>
+          <option>집단 워크숍 No.16 — 우울을 바라, '봄' (4월)</option>
+          <option>개인 세션 #01. 일상</option>
+          <option>개인 세션 #02. 자화상</option>
+          <option>개인 세션 #03. 나다움</option>
+          <option>개인 세션 #04. 사계</option>
+          <option>개인 세션 #05. 길</option>
+          <option>개인 세션 #06. 행복</option>
+          <option>개인 세션 #07. 꿈</option>
+          <option>개인 세션 — 상담 후 결정</option>
+          <option>출강 문의 (학교·기관·기업)</option>
+          <option>기타 문의</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>전하고 싶은 말 (선택)</label>
+        <textarea name="전하고 싶은 말" placeholder="어떤 것이 궁금하신지, 어떤 상황인지 편하게 적어주세요."></textarea>
+      </div>
+      <button type="submit" class="form-submit">문의 보내기</button>
+      <p class="form-note">문의 후 1~2일 내로 서영이 직접 연락드려요.</p>
+    </form>
   </div>
 </section>
 
+<!-- 완료 팝업 -->
+<div id="successOverlay" style="
+  display:none; position:fixed; inset:0; z-index:999;
+  background:rgba(26,23,20,0.75); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center;
+">
+  <div style="
+    background:#fafaf8; max-width:420px; width:90%;
+    padding:3rem 2.5rem; text-align:center; border-radius:2px;
+    position:relative;
+  ">
+    <!-- 로고 심볼 -->
+    <div style="display:flex;justify-content:center;gap:8px;margin-bottom:1.8rem;">
+      <svg viewBox="0 0 68 10" xmlns="http://www.w3.org/2000/svg" style="height:10px;width:auto;">
+        <rect x="0" y="0" width="10" height="10" fill="#2B5BA8"/>
+        <circle cx="19" cy="5" r="5" fill="#F5D800"/>
+        <path d="M26 0 L26 10 L36 10 L36 0" fill="none" stroke="#1E7A3C" stroke-width="2" stroke-linejoin="miter"/>
+        <circle cx="45" cy="5" r="5" fill="none" stroke="#C41230" stroke-width="1.8" stroke-dasharray="2.5 1.2"/>
+      </svg>
+    </div>
+    <p style="
+      font-family:'DM Serif Display','Noto Serif KR',serif;
+      font-size:1.4rem; color:#1a1714; line-height:1.4; margin-bottom:1rem;
+    ">문의가 전달되었습니다</p>
+    <p style="
+      font-family:'Noto Serif KR',serif; font-size:0.9rem;
+      color:#7a7268; line-height:1.9; margin-bottom:2rem;
+    ">
+      마음이 가장 마음다워지는<br>한 걸음을 응원합니다.<br><br>
+      1~2일 내로 서영이 직접 연락드릴게요.
+    </p>
+    <button onclick="document.getElementById('successOverlay').style.display='none'" style="
+      font-family:'Noto Sans KR',sans-serif; font-size:0.82rem;
+      color:#fafaf8; background:#2B5BA8; border:none;
+      padding:0.8rem 2rem; border-radius:2px; cursor:pointer;
+      letter-spacing:0.05em;
+    ">닫기</button>
+  </div>
+</div>
+
 <footer>
-  <span class="footer-logo">마음다움</span>
-  <span class="footer-copy">© 2026 마음다움 · 조현우 황서영 · 예술치료 기반 심리 워크숍</span>
+  <span class="footer-copy">대표 조현우 · 황서영 · 예술치료 기반 심리 워크숍</span>
+  <span class="footer-copy">Copyright © 2026 마음다움 — Maumdaum. All rights reserved.</span>
 </footer>
 
 <script>
@@ -1048,6 +1101,51 @@
 
   document.querySelectorAll('.questions-grid .q-card, .philosophy-grid .phil-card, .testimonials .testimonial').forEach((el, i) => {
     el.style.transitionDelay = `${i * 0.08}s`;
+  });
+
+  // 이메일 입력값을 replyto에 연동
+  const emailInput = document.getElementById('emailInput');
+  if (emailInput) {
+    emailInput.addEventListener('input', function() {
+      document.getElementById('replyto').value = this.value;
+    });
+  }
+
+  // Formspree AJAX 제출 + 완료 팝업
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = '전송 중...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          const overlay = document.getElementById('successOverlay');
+          overlay.style.display = 'flex';
+        } else {
+          alert('전송 중 오류가 발생했어요. 잠시 후 다시 시도해 주세요.');
+        }
+      } catch (err) {
+        alert('네트워크 오류가 발생했어요. 잠시 후 다시 시도해 주세요.');
+      } finally {
+        btn.textContent = '문의 보내기';
+        btn.disabled = false;
+      }
+    });
+  }
+
+  // 오버레이 바깥 클릭시 닫기
+  document.getElementById('successOverlay').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
   });
 </script>
 </body>
