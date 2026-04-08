@@ -116,28 +116,28 @@ nav {
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
   text-align:center;
-  padding:5rem 3rem 4rem;
+  padding:4rem 4rem 3rem;
   max-width:100%;
 }
 .hero-eyebrow {
-  font-size:0.72rem; letter-spacing:0.18em;
+  font-size:0.75rem; letter-spacing:0.2em;
   color:var(--navy); font-weight:600; text-transform:uppercase;
-  margin-bottom:1.5rem;
-  line-height:1.8;
+  margin-bottom:2.5rem;
+  line-height:2;
   animation:fu .6s ease .1s both;
 }
 .hero-title {
   font-family:var(--serif);
-  font-size:clamp(2.2rem,4vw,3.8rem);
-  font-weight:400; line-height:1.18;
-  color:var(--dark); margin-bottom:1.4rem;
+  font-size:clamp(2.6rem,4.5vw,4.4rem);
+  font-weight:400; line-height:1.3;
+  color:var(--dark); margin-bottom:2rem;
   letter-spacing:-0.02em;
   animation:fu .6s ease .25s both;
 }
 .hero-title em { font-style:italic; color:var(--gold); font-weight:700; }
 .hero-sub {
-  font-size:0.95rem; color:var(--gray); font-weight:300;
-  line-height:1.7; margin-bottom:2.5rem;
+  font-size:1rem; color:var(--gray); font-weight:300;
+  line-height:1.7; margin-bottom:3rem;
   border-left:3px solid var(--gold); padding-left:1.2rem;
   text-align:left;
   animation:fu .6s ease .4s both;
@@ -463,7 +463,7 @@ footer p { font-size:0.75rem; }
 <!-- HERO -->
 <section class="hero">
   <p class="hero-eyebrow">마음다움<br>예술치유 및 심리/사회정서 워크숍 프로그램</p>
-  <h1 class="hero-title">마음다운 마음은<br><em>관계로부터</em></h1>
+  <h1 class="hero-title">마음다운 마음은<br><span style="color:var(--gold);">관계</span>로부터</h1>
   <p class="hero-sub">닫힌 마음, 예술로 다시 흐르게 합니다</p>
   <div class="hero-cta">
     <a href="#steps" class="btn-navy">마음다움 3Steps™</a>
@@ -475,7 +475,7 @@ footer p { font-size:0.75rem; }
 <section class="sec" id="steps" style="background:var(--bg2)">
   <div class="steps-header">
     <p class="sec-label">핵심 프로그램</p>
-    <h2 class="sec-title"><strong>마음다움 3Steps™</strong></h2>
+    <h2 class="sec-title"><strong>마음다움 <span style="color:var(--gold);">3</span>Steps™</strong></h2>
     <p class="steps-tm">MAUMDAUM INTEGRATED PROCESS</p>
     <p class="steps-desc">도합 20년 임상 및 교육 현장 경험 끝에 완성한<br>진짜 마음을 위한 독자적 통합 프로세스</p>
   </div>
@@ -485,17 +485,17 @@ footer p { font-size:0.75rem; }
     <!-- 1행: 자기다움 + 우리다움 + 세상다움 -->
     <div style="display:flex;align-items:flex-start;justify-content:center;gap:0.6rem;flex-wrap:nowrap;white-space:nowrap;">
       <div class="flow-item">
-        <span class="flow-name">자기다움</span>
+        <span class="flow-name"><span style="color:var(--blue);">자기</span>다움</span>
         <span class="flow-sub">나와의 관계</span>
       </div>
       <span class="flow-arrow" style="padding-top:0.15rem;">+</span>
       <div class="flow-item">
-        <span class="flow-name">우리다움</span>
+        <span class="flow-name"><span style="color:var(--green);">우리</span>다움</span>
         <span class="flow-sub">너와의 관계</span>
       </div>
       <span class="flow-arrow" style="padding-top:0.15rem;">+</span>
       <div class="flow-item">
-        <span class="flow-name">세상다움</span>
+        <span class="flow-name"><span style="color:var(--red);">세상</span>다움</span>
         <span class="flow-sub">세상과의 관계</span>
       </div>
     </div>
@@ -512,7 +512,7 @@ footer p { font-size:0.75rem; }
     <!-- Step 1 -->
     <div class="step-card">
       <p class="step-num">Step 01</p>
-      <h3 class="step-name">자기다움</h3>
+      <h3 class="step-name"><span style="color:var(--blue);">자기</span>다움</h3>
       <p class="step-sub">나와의 관계 · 수직 통합</p>
       <div class="step-qs">
         <p class="step-q">"내 감정인데 왜 내가 모를까"</p>
@@ -528,7 +528,7 @@ footer p { font-size:0.75rem; }
     <!-- Step 2 -->
     <div class="step-card">
       <p class="step-num">Step 02</p>
-      <h3 class="step-name">우리다움</h3>
+      <h3 class="step-name"><span style="color:var(--green);">우리</span>다움</h3>
       <p class="step-sub">너와의 관계 · 대인 통합</p>
       <div class="step-qs">
         <p class="step-q">"연결되고 싶은데 자꾸 닫힌다"</p>
@@ -544,7 +544,7 @@ footer p { font-size:0.75rem; }
     <!-- Step 3 -->
     <div class="step-card">
       <p class="step-num">Step 03</p>
-      <h3 class="step-name">세상다움</h3>
+      <h3 class="step-name"><span style="color:var(--red);">세상</span>다움</h3>
       <p class="step-sub">세상과의 관계 · 정체성 통합</p>
       <div class="step-qs">
         <p class="step-q">"열심히 사는데 왜 공허한지 모르겠다"</p>
