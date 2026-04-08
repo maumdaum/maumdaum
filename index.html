@@ -115,20 +115,21 @@ nav {
   min-height:100vh;
   display:flex; flex-direction:column;
   align-items:flex-start; justify-content:center;
-  padding:8rem 3rem 4rem;
+  padding:5rem 3rem 4rem;
   max-width:900px;
 }
 .hero-eyebrow {
-  font-size:0.75rem; letter-spacing:0.25em;
+  font-size:0.72rem; letter-spacing:0.18em;
   color:var(--navy); font-weight:600; text-transform:uppercase;
-  margin-bottom:2rem;
+  margin-bottom:1.5rem;
+  line-height:1.6;
   animation:fu .6s ease .1s both;
 }
 .hero-title {
   font-family:var(--serif);
-  font-size:clamp(2.8rem,6vw,5rem);
+  font-size:clamp(2rem,4.5vw,4rem);
   font-weight:400; line-height:1.15;
-  color:var(--dark); margin-bottom:1.5rem;
+  color:var(--dark); margin-bottom:1.4rem;
   letter-spacing:-0.02em;
   animation:fu .6s ease .25s both;
 }
@@ -351,8 +352,8 @@ nav {
 .fnd-cred { font-size:0.82rem; color:var(--gray); padding:0.35rem 0; border-bottom:1px solid var(--line); }
 .fnd-story { font-size:0.9rem; line-height:1.9; color:var(--gray); font-weight:300; margin-top:1.5rem; }
 .fnd-story em { font-style:italic; color:var(--dark); font-weight:500; }
-.fnd-quote { text-align:center; margin-top:3rem; padding:2.5rem; background:var(--navy); }
-.fnd-quote p { font-family:var(--serif); font-size:1.1rem; font-style:italic; color:white; line-height:1.7; font-weight:300; }
+.fnd-quote { text-align:center; margin-top:3rem; padding:2rem; background:var(--navy); }
+.fnd-quote p { font-family:var(--serif); font-size:0.95rem; font-style:italic; color:white; line-height:1.8; font-weight:300; }
 
 /* ── CONTACT ── */
 .contact-sec { background:var(--bg); text-align:center; }
@@ -401,7 +402,9 @@ footer {
 .ft-name { font-family:var(--serif); font-size:0.88rem; color:rgba(255,255,255,0.4); font-weight:600; }
 footer p { font-size:0.75rem; }
 
-@keyframes fu { from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)} }
+/* ── POPUP ── */
+#success-popup { display:none; }
+#success-popup.active { display:flex !important; }
 
 @media(max-width:768px) {
   nav { padding:0.8rem 1.2rem; }
@@ -450,7 +453,7 @@ footer p { font-size:0.75rem; }
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">MAUMDAUM · 예술치유 및 심리/사회정서 워크숍</p>
+  <p class="hero-eyebrow">마음다움<br>예술치유 및 심리/사회정서 워크숍 프로그램</p>
   <h1 class="hero-title">마음다운 마음은<br><em>관계로부터</em></h1>
   <p class="hero-sub">닫힌 마음, 예술로 다시 흐르게 합니다</p>
   <div class="hero-cta">
@@ -728,7 +731,7 @@ footer p { font-size:0.75rem; }
     <div style="background:white;padding:3rem 2.5rem;max-width:420px;width:90%;text-align:center;border-top:3px solid var(--gold);">
       <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:1rem;">문의가 전달되었습니다</p>
       <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem;">마음이 가장 마음다워지는<br>한 걸음을 응원합니다.<br><br>1~2일 내로 서영이 직접 연락드릴게요.</p>
-      <button onclick="document.getElementById('success-popup').style.display='none'" style="background:var(--navy);color:white;border:none;padding:0.7rem 2rem;font-size:0.88rem;cursor:pointer;font-family:var(--sans);border-radius:2px;">닫기</button>
+      <button onclick="closePopup()" style="background:var(--navy);color:white;border:none;padding:0.7rem 2rem;font-size:0.88rem;cursor:pointer;font-family:var(--sans);border-radius:2px;">닫기</button>
     </div>
   </div>
 
@@ -741,13 +744,16 @@ footer p { font-size:0.75rem; }
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       }).then(function(res) {
-        if (res.ok) {
-          form.reset();
-          var popup = document.getElementById('success-popup');
-          popup.style.display = 'flex';
-        }
+        form.reset();
+        document.getElementById('success-popup').classList.add('active');
+      }).catch(function() {
+        form.reset();
+        document.getElementById('success-popup').classList.add('active');
       });
     });
+    function closePopup() {
+      document.getElementById('success-popup').classList.remove('active');
+    }
   </script>
   <div class="ci-wrap">
     <div><p class="ci-label">전화·문자</p><p class="ci-val">010-5588-8415</p></div>
