@@ -305,41 +305,6 @@ footer p { font-size:0.75rem; }
   </div>
 </section>
 
-<!-- 마음다움의 정의 -->
-<section class="sec def-sec" id="about">
-  <div class="sec-inner">
-    <p class="def-label">마음다움이 정의하는 것들</p>
-    <h2 class="def-title">고쳐야 할 것이 아닙니다<br><strong style="color:var(--gold);">흐르게 해야 할 것입니다</strong></h2>
-    <div class="def-grid">
-      <div class="def-item">
-        <p class="def-item-label">마음이란</p>
-        <p class="def-item-word">이미지의 총합</p>
-        <p class="def-item-text">한 사람이 살아오며 쌓아온 모든 경험, 감정, 관계의 이미지. 마음은 수치가 아닙니다.</p>
-      </div>
-      <div class="def-item">
-        <p class="def-item-label">상상력이란</p>
-        <p class="def-item-word">막혀버린 본성</p>
-        <p class="def-item-text">인간은 본래 새로운 이미지를 만드는 존재입니다. 그것이 막히면 같은 패턴이 반복됩니다.</p>
-      </div>
-      <div class="def-item">
-        <p class="def-item-label">예술이란</p>
-        <p class="def-item-word">살아있음의 증거</p>
-        <p class="def-item-text">4만 년 전부터 인간은 재능이 있어서가 아니라 살아있기 때문에 만들었습니다.</p>
-      </div>
-      <div class="def-item">
-        <p class="def-item-label">건강이란</p>
-        <p class="def-item-word">흐름이 회복된 상태</p>
-        <p class="def-item-text">경직도 카오스도 아닌 — 그 사이를 자유롭게 흐르는 통합의 상태. Daniel Siegel의 IPNB.</p>
-      </div>
-    </div>
-    <div class="def-declaration">
-      <p>마음다움은 <strong>AI(Artificial Intelligence, 인공적 지능)</strong> 시대,<br>
-      <strong>AI(Artistic Imagination, 예술적 상상)</strong>를 제안합니다.<br>
-      이는 곧 인간 존엄과 본질을 지키는 일입니다.</p>
-    </div>
-  </div>
-</section>
-
 <!-- 3STEPS -->
 <section class="sec" id="steps" style="background:var(--bg2);">
   <div class="steps-header">
@@ -349,28 +314,53 @@ footer p { font-size:0.75rem; }
     <p class="steps-desc">도합 20년 임상 및 교육 현장 경험 끝에 완성한<br>진짜 마음을 위한 독자적 통합 프로세스</p>
   </div>
 
-  <div class="steps-flow-wrap">
-    <div class="steps-flow">
-      <div class="flow-item">
-        <span class="flow-name"><span style="color:var(--blue);">자기</span>다움</span>
-        <span class="flow-sub">나와의 관계</span>
-      </div>
-      <span class="flow-arrow" style="padding-top:0.15rem;">+</span>
-      <div class="flow-item">
-        <span class="flow-name"><span style="color:var(--green);">우리</span>다움</span>
-        <span class="flow-sub">너와의 관계</span>
-      </div>
-      <span class="flow-arrow" style="padding-top:0.15rem;">+</span>
-      <div class="flow-item">
-        <span class="flow-name"><span style="color:var(--red);">세상</span>다움</span>
-        <span class="flow-sub">세상과의 관계</span>
-      </div>
-    </div>
-    <div style="text-align:center;padding:0.5rem 0;font-size:1rem;color:#C8960C;line-height:1;">▼</div>
-    <div style="text-align:center;padding:0 0 0.2rem;">
-      <span class="flow-result-name">마음다움</span><br>
-      <span class="flow-result-sub">마음다운 마음</span>
-    </div>
+  <!-- 3Steps 도식 다이어그램 -->
+  <div style="max-width:700px;margin:0 auto 3rem;padding:0 1rem;">
+    <svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs>
+        <filter id="sh2"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(0,0,0,0.07)"/></filter>
+        <marker id="a1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2B4FA0"/></marker>
+        <marker id="a2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2E7D32"/></marker>
+        <marker id="a3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#C0392B"/></marker>
+      </defs>
+
+      <!-- 중앙 허브 -->
+      <circle cx="350" cy="250" r="90" fill="white" filter="url(#sh2)" stroke="#E8E4DC" stroke-width="1.5"/>
+      <circle cx="350" cy="250" r="74" fill="none" stroke="#C8960C" stroke-width="1.2" stroke-dasharray="5 3.5"/>
+      <text x="350" y="234" text-anchor="middle" font-family="'Noto Serif KR',serif" font-size="22" fill="#1a1a1a" font-weight="700">마음다움</text>
+      <text x="350" y="256" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="9.5" fill="#aaa" letter-spacing="1">마음다운 마음</text>
+      <line x1="300" y1="265" x2="400" y2="265" stroke="#E8E4DC" stroke-width="1"/>
+      <text x="350" y="281" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="9" fill="#C8960C" letter-spacing="1.5" font-weight="700">관계로부터</text>
+
+      <!-- Step1 자기다움 — 상단 → 허브로 수렴 -->
+      <line x1="350" y1="108" x2="350" y2="162" stroke="#2B4FA0" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a1)"/>
+      <rect x="210" y="18" width="280" height="90" rx="5" fill="white" filter="url(#sh2)" stroke="#E8E4DC" stroke-width="1"/>
+      <rect x="210" y="18" width="280" height="4" rx="2" fill="#2B4FA0"/>
+      <text x="228" y="42" font-family="'Noto Sans KR',sans-serif" font-size="8" fill="#aaa" letter-spacing="3" font-weight="700">STEP 01</text>
+      <text x="228" y="66" font-family="'Noto Serif KR',serif" font-size="19" fill="#1a1a1a" font-weight="700"><tspan fill="#2B4FA0">자기</tspan>다움</text>
+      <text x="228" y="82" font-family="'Noto Sans KR',sans-serif" font-size="9" fill="#999">나와의 관계 · 수직 통합</text>
+      <text x="228" y="98" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#bbb" font-style="italic">"내 감정인데 왜 내가 모를까"</text>
+
+      <!-- Step2 우리다움 — 우하단 → 허브로 수렴 -->
+      <line x1="494" y1="370" x2="438" y2="308" stroke="#2E7D32" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a2)"/>
+      <rect x="494" y="346" width="190" height="110" rx="5" fill="white" filter="url(#sh2)" stroke="#E8E4DC" stroke-width="1"/>
+      <rect x="494" y="346" width="190" height="4" rx="2" fill="#2E7D32"/>
+      <text x="510" y="368" font-family="'Noto Sans KR',sans-serif" font-size="8" fill="#aaa" letter-spacing="3" font-weight="700">STEP 02</text>
+      <text x="510" y="392" font-family="'Noto Serif KR',serif" font-size="19" fill="#1a1a1a" font-weight="700"><tspan fill="#2E7D32">우리</tspan>다움</text>
+      <text x="510" y="408" font-family="'Noto Sans KR',sans-serif" font-size="9" fill="#999">너와의 관계 · 대인 통합</text>
+      <text x="510" y="424" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#bbb" font-style="italic">"연결되고 싶은데 자꾸 닫힌다"</text>
+      <text x="510" y="440" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#bbb" font-style="italic">"말하면 꼭 싸움이 된다"</text>
+
+      <!-- Step3 세상다움 — 좌하단 → 허브로 수렴 -->
+      <line x1="206" y1="370" x2="262" y2="308" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a3)"/>
+      <rect x="16" y="346" width="190" height="110" rx="5" fill="white" filter="url(#sh2)" stroke="#E8E4DC" stroke-width="1"/>
+      <rect x="16" y="346" width="190" height="4" rx="2" fill="#C0392B"/>
+      <text x="32" y="368" font-family="'Noto Sans KR',sans-serif" font-size="8" fill="#aaa" letter-spacing="3" font-weight="700">STEP 03</text>
+      <text x="32" y="392" font-family="'Noto Serif KR',serif" font-size="19" fill="#1a1a1a" font-weight="700"><tspan fill="#C0392B">세상</tspan>다움</text>
+      <text x="32" y="408" font-family="'Noto Sans KR',sans-serif" font-size="9" fill="#999">세상과의 관계 · 정체성 통합</text>
+      <text x="32" y="424" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#bbb" font-style="italic">"열심히 사는데 왜 공허하죠"</text>
+      <text x="32" y="440" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#bbb" font-style="italic">"의미를 잃었다"</text>
+    </svg>
   </div>
 
   <div class="steps-grid">
@@ -459,6 +449,41 @@ footer p { font-size:0.75rem; }
       마음다움은 마음을 고쳐야 할 것, 최적화해야 할 것으로 보지 않아요.<br>
       마음은 원래 움직이고 싶어하고, 만들고 싶어하고, 흐르고 싶어해요.<br>
       <strong>그게 잠시 막혀있는 것 — 마음다움은 그 흐름을 함께 다시 만들어가는 곳이에요.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- 마음다움의 정의 -->
+<section class="sec def-sec" id="about">
+  <div class="sec-inner">
+    <p class="def-label">마음다움이 정의하는 것들</p>
+    <h2 class="def-title">고쳐야 할 것이 아닙니다<br><strong style="color:var(--gold);">흐르게 해야 할 것입니다</strong></h2>
+    <div class="def-grid">
+      <div class="def-item">
+        <p class="def-item-label">마음이란</p>
+        <p class="def-item-word">이미지의 총합</p>
+        <p class="def-item-text">한 사람이 살아오며 쌓아온 모든 경험, 감정, 관계의 이미지. 마음은 수치가 아닙니다.</p>
+      </div>
+      <div class="def-item">
+        <p class="def-item-label">상상력이란</p>
+        <p class="def-item-word">막혀버린 본성</p>
+        <p class="def-item-text">인간은 본래 새로운 이미지를 만드는 존재입니다. 그것이 막히면 같은 패턴이 반복됩니다.</p>
+      </div>
+      <div class="def-item">
+        <p class="def-item-label">예술이란</p>
+        <p class="def-item-word">살아있음의 증거</p>
+        <p class="def-item-text">4만 년 전부터 인간은 재능이 있어서가 아니라 살아있기 때문에 만들었습니다.</p>
+      </div>
+      <div class="def-item">
+        <p class="def-item-label">건강이란</p>
+        <p class="def-item-word">흐름이 회복된 상태</p>
+        <p class="def-item-text">경직도 카오스도 아닌 — 그 사이를 자유롭게 흐르는 통합의 상태. Daniel Siegel의 IPNB.</p>
+      </div>
+    </div>
+    <div class="def-declaration">
+      <p>마음다움은 <strong>AI(Artificial Intelligence, 인공적 지능)</strong> 시대,<br>
+      <strong>AI(Artistic Imagination, 예술적 상상)</strong>를 제안합니다.<br>
+      이는 곧 인간 존엄과 본질을 지키는 일입니다.</p>
     </div>
   </div>
 </section>
@@ -559,6 +584,27 @@ footer p { font-size:0.75rem; }
   </div>
 </section>
 
+<!-- WORK MEMORY -->
+<section class="sec wm-sec" id="workmemory">
+  <div class="sec-inner">
+    <p class="wm-label">Work Memory</p>
+    <h2 class="wm-title">워크숍이 끝나면<br><strong style="color:var(--gold);">10×10 캔버스에 남습니다</strong></h2>
+    <p class="wm-body">살아있었다는 증거. 그날의 감각, 그날의 감정, 그날의 나 — 말이 아닌 이미지로 남는 기억. 마음다움은 이것을 Work Memory라고 부릅니다.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;">
+      <div style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;">
+        <img src="wm_01_경고.png" alt="Work Memory #01 경고 — 마음이 알려주는 자기 단속 알람" style="width:100%;display:block;">
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;">
+        <img src="wm_02_임신.png" alt="Work Memory #02 임신 — 혼돈 와중 잉태된 새로운 질서 그리고 가능성" style="width:100%;display:block;">
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;">
+        <img src="wm_03_녹이다.png" alt="Work Memory #03 녹이다 — 차가운 현실을 녹이는 따스한 희망과 안도" style="width:100%;display:block;">
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:0.82rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">@maumdaum_work_memory · 계속 쌓이고 있습니다</p>
+  </div>
+</section>
+
 <!-- 우리 이야기 -->
 <section class="sec fnd-sec" id="founders">
   <div class="sec-inner">
@@ -593,27 +639,6 @@ footer p { font-size:0.75rem; }
     <div class="fnd-quote">
       <p>"마음은 관계 속에서 만들어집니다.<br>그리고 예술이 그 관계를 가장 먼저 움직입니다."</p>
     </div>
-  </div>
-</section>
-
-<!-- WORK MEMORY -->
-<section class="sec wm-sec" id="workmemory">
-  <div class="sec-inner">
-    <p class="wm-label">Work Memory</p>
-    <h2 class="wm-title">워크숍이 끝나면<br><strong style="color:var(--gold);">10×10 캔버스에 남습니다</strong></h2>
-    <p class="wm-body">살아있었다는 증거. 그날의 감각, 그날의 감정, 그날의 나 — 말이 아닌 이미지로 남는 기억. 마음다움은 이것을 Work Memory라고 부릅니다.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;">
-      <div style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;">
-        <img src="wm_01_경고.png" alt="Work Memory #01 경고 — 마음이 알려주는 자기 단속 알람" style="width:100%;display:block;">
-      </div>
-      <div style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;">
-        <img src="wm_02_임신.png" alt="Work Memory #02 임신 — 혼돈 와중 잉태된 새로운 질서 그리고 가능성" style="width:100%;display:block;">
-      </div>
-      <div style="background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;">
-        <img src="wm_03_녹이다.png" alt="Work Memory #03 녹이다 — 차가운 현실을 녹이는 따스한 희망과 안도" style="width:100%;display:block;">
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:2rem;font-size:0.82rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">@maumdaum_work_memory · 계속 쌓이고 있습니다</p>
   </div>
 </section>
 
