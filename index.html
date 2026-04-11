@@ -71,24 +71,8 @@ nav{
   overflow:hidden;
 }
 /* 배경 로고 컬러 점들 */
-.hero::before{
-  content:'';
-  position:absolute;top:15%;right:8%;
-  width:220px;height:220px;
-  background:var(--yellow);
-  border-radius:50%;
-  opacity:0.08;
-  pointer-events:none;
-}
-.hero::after{
-  content:'';
-  position:absolute;bottom:10%;left:6%;
-  width:160px;height:160px;
-  background:var(--blue);
-  border-radius:50%;
-  opacity:0.07;
-  pointer-events:none;
-}
+.hero::before{ display:none; }
+.hero::after{ display:none; }
 .hero-eyebrow{
   font-size:0.72rem;letter-spacing:0.22em;
   color:var(--blue);font-weight:700;
@@ -522,6 +506,8 @@ footer p{font-size:0.75rem;}
   .fnd-grid{grid-template-columns:1fr;}
   .resist-row{grid-template-columns:1fr 1fr;}
   .resist-item{border-right:none;border-bottom:1px solid var(--line);}
+  .howto-item{flex-direction:column!important;gap:1rem!important;}
+  .howto-inner{padding-left:0!important;border-left:none!important;border-top:1px solid var(--line);padding-top:1rem!important;}
 }
 </style>
 </head>
@@ -554,8 +540,10 @@ footer p{font-size:0.75rem;}
 </nav>
 
 <!-- ①  HERO -->
-<section class="hero">
-  <p class="hero-eyebrow">마음다움 · 예술치유 심리·사회정서 워크숍</p>
+<section class="hero" style="position:relative;overflow:hidden;">
+  <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;">
+  <p class="hero-eyebrow">마음다움 ｜ 예술치유 · 심리 · 사회정서 워크숍</p>
   <h1 class="hero-title">마음다운 마음은<br><span class="gold">관계</span>로부터</h1>
   <p class="hero-sub">닫힌 마음, 예술로 다시 흐르게 합니다</p>
   <p class="hero-declare">마음, 다시 움직이다</p>
@@ -563,7 +551,61 @@ footer p{font-size:0.75rem;}
     <a href="#steps" class="btn-blue">마음다움 3Steps™</a>
     <a href="#contact" class="btn-outline">문의하기</a>
   </div>
+  </div>
 </section>
+
+<script>
+(function(){
+  var canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var colors = ['#2B4FA0','#F5C800','#2E7D32','#C0392B'];
+  var balls = [];
+
+  function resize(){
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function initBalls(){
+    balls = colors.map(function(color){
+      var r = canvas.width < 600 ? 65 : 105;
+      return {
+        x: Math.random()*(canvas.width - r*2)+r,
+        y: Math.random()*(canvas.height - r*2)+r,
+        r: r,
+        vx: (Math.random()*0.35+0.12)*(Math.random()<0.5?1:-1),
+        vy: (Math.random()*0.35+0.12)*(Math.random()<0.5?1:-1),
+        color: color
+      };
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    balls.forEach(function(b){
+      b.x += b.vx;
+      b.y += b.vy;
+      if(b.x-b.r < 0){b.x=b.r; b.vx=Math.abs(b.vx);}
+      if(b.x+b.r > canvas.width){b.x=canvas.width-b.r; b.vx=-Math.abs(b.vx);}
+      if(b.y-b.r < 0){b.y=b.r; b.vy=Math.abs(b.vy);}
+      if(b.y+b.r > canvas.height){b.y=canvas.height-b.r; b.vy=-Math.abs(b.vy);}
+      ctx.beginPath();
+      ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+      ctx.fillStyle=b.color;
+      ctx.globalAlpha=0.09;
+      ctx.fill();
+      ctx.globalAlpha=1;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  initBalls();
+  draw();
+})();
+</script>
 
 <!-- ② 시대진단 -->
 <section class="sec era-sec" id="era">
@@ -734,6 +776,158 @@ footer p{font-size:0.75rem;}
     </div>
   </div>
 </section>
+
+<!-- ④-2 마음다움을 만나는 방법 -->
+<section class="sec" id="howto" style="background:var(--bg2);">
+  <div class="sec-inner">
+    <p class="sec-label">마음다움을 만나는 방법</p>
+    <h2 class="sec-title">찾아오세요.<br><strong>또는 찾아갑니다.</strong></h2>
+    <p style="font-size:0.95rem;color:var(--gray);line-height:1.85;font-weight:300;margin-bottom:3rem;">자기다움·우리다움·세상다움은 두 가지 방식으로 만날 수 있습니다.</p>
+
+    <!-- 탭 버튼 -->
+    <div style="display:flex;gap:0;margin-bottom:0;border:1px solid var(--line);border-bottom:none;width:fit-content;">
+      <button id="tab-come" onclick="switchTab('come')"
+        style="padding:0.8rem 2rem;font-size:0.88rem;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;background:var(--blue);color:white;letter-spacing:0.05em;transition:all .2s;">
+        찾아오세요
+      </button>
+      <button id="tab-go" onclick="switchTab('go')"
+        style="padding:0.8rem 2rem;font-size:0.88rem;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;background:white;color:var(--dim);letter-spacing:0.05em;border-left:1px solid var(--line);transition:all .2s;">
+        찾아갑니다
+      </button>
+    </div>
+
+    <!-- 찾아오세요 패널 -->
+    <div id="panel-come" style="border:1px solid var(--line);background:white;">
+
+      <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--line);background:var(--bg2);">
+        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">개인·부부·커플·소그룹이 마음다움 스튜디오로 오시거나, 온라인으로 만납니다.<br>자기다움·우리다움·세상다움 중 지금 필요한 것에서 시작합니다.</p>
+      </div>
+
+      <!-- 자기다움 -->
+      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--blue);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 01</p>
+          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--blue);">자기</span>다움</p>
+          <p style="font-size:0.78rem;color:var(--dim);">나와의 관계</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정이 왜 이러는지 모르겠을 때. 나를 잃어버린 느낌일 때. 반복되는 패턴에서 벗어나고 싶을 때.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 소그룹 · ±150분 · 대면·비대면</p>
+        </div>
+      </div>
+
+      <!-- 우리다움 -->
+      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--green);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 02</p>
+          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--green);">우리</span>다움</p>
+          <p style="font-size:0.78rem;color:var(--dim);">너와의 관계</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">말하면 싸움이 될 때. 연결되고 싶은데 자꾸 닫힐 때. 관계가 반복적으로 힘들 때.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 부부·커플·가족 소그룹 · ±150분 · 대면·비대면</p>
+        </div>
+      </div>
+
+      <!-- 세상다움 -->
+      <div style="display:flex;align-items:flex-start;gap:0;">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--red);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 03</p>
+          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--red);">세상</span>다움</p>
+          <p style="font-size:0.78rem;color:var(--dim);">세상과의 관계</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">열심히 사는데 공허할 때. 의미를 잃었을 때. AI 시대 나만의 자리가 궁금할 때.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 소그룹 · ±150분 · 대면·비대면</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 찾아갑니다 패널 -->
+    <div id="panel-go" style="display:none;border:1px solid var(--line);background:white;">
+
+      <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--line);background:var(--bg2);">
+        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">학교·기관·기업의 목적과 대상에 맞게 마음다움 3Steps™를 설계하여 찾아갑니다.<br>자기다움·우리다움·세상다움 모듈을 자유롭게 조합하고, 차시도 맞춤 구성합니다.</p>
+      </div>
+
+      <!-- 자기다움 -->
+      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--blue);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 01</p>
+          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--blue);">자기</span>다움</p>
+          <p style="font-size:0.78rem;color:var(--dim);">나와의 관계</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정 교육, 자기 이해, 번아웃 예방. 구성원이 자기 자신과 처음으로 만나는 시간.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">학교 감정교육 · 직장인 심리지원 · 복지기관 · 2~4차시</p>
+        </div>
+      </div>
+
+      <!-- 우리다움 -->
+      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--green);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 02</p>
+          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--green);">우리</span>다움</p>
+          <p style="font-size:0.78rem;color:var(--dim);">너와의 관계</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">소통·관계·공감 교육. 말 없이 연결되는 경험이 팀과 학급의 분위기를 바꿉니다.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">학교 관계교육 · 팀빌딩 · 가족센터 · 2~4차시</p>
+        </div>
+      </div>
+
+      <!-- 세상다움 -->
+      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--red);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 03</p>
+          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--red);">세상</span>다움</p>
+          <p style="font-size:0.78rem;color:var(--dim);">세상과의 관계</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">진로·의미·정체성 탐색. AI 시대 나만의 방향을 이미지로 처음 상상하는 시간.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">진로교육 · 청소년·대학 · 직장인 · 시니어 · 2~4차시</p>
+        </div>
+      </div>
+
+      <!-- 모듈 조합 -->
+      <div style="padding:1.5rem 2rem;background:var(--bg2);border-top:1px solid var(--line);">
+        <p style="font-size:0.8rem;color:var(--dim);line-height:1.8;">
+          <strong style="color:var(--dark);font-weight:600;">모듈 조합 예시</strong><br>
+          자기+우리 (4~8차시) · 자기+세상 (4~8차시) · 3Steps 풀코스 (8~12차시)<br>
+          전국 출강 가능 · 대상·목적·회기 맞춤 설계
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;text-align:center;">
+      <a href="#contact" style="display:inline-block;background:var(--blue);color:white;padding:0.9rem 2.5rem;font-size:0.9rem;font-weight:600;text-decoration:none;letter-spacing:0.05em;border-radius:2px;">어떤 방식이 맞는지 문의하기</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function switchTab(tab) {
+  var come = document.getElementById('panel-come');
+  var go = document.getElementById('panel-go');
+  var btnCome = document.getElementById('tab-come');
+  var btnGo = document.getElementById('tab-go');
+  if (tab === 'come') {
+    come.style.display = 'block';
+    go.style.display = 'none';
+    btnCome.style.background = 'var(--blue)';
+    btnCome.style.color = 'white';
+    btnGo.style.background = 'white';
+    btnGo.style.color = 'var(--dim)';
+  } else {
+    come.style.display = 'none';
+    go.style.display = 'block';
+    btnGo.style.background = 'var(--blue)';
+    btnGo.style.color = 'white';
+    btnCome.style.background = 'white';
+    btnCome.style.color = 'var(--dim)';
+  }
+}
+</script>
 
 <!-- ⑤ 철학적 기반 IPNB -->
 <section class="sec ipnb-sec" id="philosophy">
