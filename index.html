@@ -749,7 +749,8 @@ footer p{font-size:0.75rem;}
   </div>
 
   <!-- SVG 도식 -->
-  <div style="max-width:680px;margin:0 auto 3rem;padding:0 1rem;">
+  <div style="max-width:680px;margin:0 auto 3rem;padding:0 0.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+    <div style="min-width:320px;">
     <svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
       <defs>
         <filter id="sh2"><feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="rgba(0,0,0,0.07)"/></filter>
@@ -791,6 +792,7 @@ footer p{font-size:0.75rem;}
       <text x="32" y="426" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#ccc" font-style="italic">"열심히 사는데 왜 공허하죠"</text>
       <text x="32" y="442" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#ccc" font-style="italic">"의미를 잃었다"</text>
     </svg>
+    </div>
   </div>
 
   <!-- 3단 카드 -->
@@ -1047,27 +1049,36 @@ function switchTab(tab) {
   </div>
 </section>
 
-<!-- ⑦ 찾아가는 워크숍 -->
-<section class="sec" id="visiting">
+<!-- ⑦ 다음 워크숍 -->
+<section class="sec" id="workshop" style="background:var(--dark);">
   <div class="sec-inner">
-    <p class="sec-label">찾아가는 워크숍</p>
-    <h2 class="sec-title">찾아가는 <strong>워크숍 프로그램</strong></h2>
-    <p class="vis-body">학교·기관·기업의 특성과 목적에 맞게 마음다움 3Steps™를 설계하여 찾아갑니다.<br>자기다움·우리다움·세상다움 각 모듈은 2~4차시로 구성되며, 목적에 따라 자유롭게 조합 가능합니다.</p>
-    <div class="vis-box">마음다움 공동대표 및 심리·사회정서 분야 전문 인력이 직접 찾아갑니다. 대상·목적·회기에 맞게 맞춤 설계하여 운영합니다.</div>
-    <p class="ref-cat">초등학교</p>
-    <div class="ref-list"><span class="ref-tag">경일초</span><span class="ref-tag">동호초</span><span class="ref-tag">응봉초</span><span class="ref-tag">마장초</span><span class="ref-tag">사근초</span><span class="ref-tag">옥정초</span><span class="ref-tag">숭신초</span><span class="ref-tag">신현초</span><span class="ref-tag">갈현초</span><span class="ref-tag">포곡초</span></div>
-    <p class="ref-cat">중·고등학교</p>
-    <div class="ref-list"><span class="ref-tag">동마중</span><span class="ref-tag">성수중</span><span class="ref-tag">옥정중</span><span class="ref-tag">한대부중</span><span class="ref-tag">마장중</span><span class="ref-tag">성수고</span><span class="ref-tag">경일고</span><span class="ref-tag">태릉고</span><span class="ref-tag">한대부고</span><span class="ref-tag">연수여고</span><span class="ref-tag">금곡고</span><span class="ref-tag">경기자동차과학고</span></div>
-    <p class="ref-cat">대학교</p>
-    <div class="ref-list"><span class="ref-tag">한양대학교 ERICA</span><span class="ref-tag">한양대학교 (서울)</span><span class="ref-tag">명지대학교</span><span class="ref-tag">삼육대학교</span><span class="ref-tag">성신여자대학교</span><span class="ref-tag">한양 미술+디자인교육센터</span></div>
-    <p class="ref-cat">국공립기관</p>
-    <div class="ref-list"><span class="ref-tag">교육부</span><span class="ref-tag">공수처</span><span class="ref-tag">서울시</span><span class="ref-tag">세종특별자치시교육청</span><span class="ref-tag">한국청년기업가정신재단</span><span class="ref-tag">한국과학창의재단</span><span class="ref-tag">동대문 진로직업체험지원센터</span><span class="ref-tag">판교스타트업캠퍼스</span><span class="ref-tag">성동경찰서</span><span class="ref-tag">남북하나재단 마음소리공감 상담센터</span></div>
-    <p class="ref-cat">의료기관</p>
-    <div class="ref-list"><span class="ref-tag">한양대 의료원</span><span class="ref-tag">다나병원</span><span class="ref-tag">서울 역삼 메티스신경정신과</span><span class="ref-tag">해랑소아청소년연구소</span></div>
-    <p class="ref-cat">복지기관</p>
-    <div class="ref-list"><span class="ref-tag">서울청년센터 강동·창동오랑</span><span class="ref-tag">용인시기흥장애인복지관</span><span class="ref-tag">동대문장애인복지관</span><span class="ref-tag">서울노인복지센터</span><span class="ref-tag">서대문노인종합복지관</span><span class="ref-tag">서초구 가족센터</span><span class="ref-tag">양천구 가족센터</span><span class="ref-tag">하남시 가족센터</span><span class="ref-tag">성동구청소년상담복지센터</span><span class="ref-tag">은평구청소년문화의집</span><span class="ref-tag">신나는에프터센터</span><span class="ref-tag">중림사회복지관</span><span class="ref-tag">삼전복지관</span><span class="ref-tag">프레네스쿨 성장학교 별</span></div>
-    <p class="ref-cat">기업 · 기타</p>
-    <div class="ref-list"><span class="ref-tag">글로벌 K-POP 엔터테인먼트 (기밀)</span><span class="ref-tag">세광교회</span><span class="ref-tag">창업가 특강</span><span class="ref-tag">진로 특강</span></div>
+    <p style="font-size:0.7rem;letter-spacing:0.28em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;">
+      <span style="display:inline-block;width:20px;height:2px;background:var(--gold);flex-shrink:0;"></span>
+      다음 워크숍
+    </p>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
+      <div>
+        <h2 style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;color:white;line-height:1.3;margin-bottom:0.8rem;">
+          Workshop No.16<br><strong style="color:var(--yellow);">우울을 바라, '봄'</strong>
+        </h2>
+        <p style="font-size:0.95rem;color:rgba(255,255,255,0.5);line-height:1.8;font-weight:300;margin-bottom:1.5rem;">우울을 없애려 하지 않습니다.<br>우울을 바라보는 것 — 그것이 봄(春)이 되는 과정입니다.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
+          <div style="background:rgba(255,255,255,0.06);padding:0.8rem 1.2rem;border-left:2px solid var(--yellow);">
+            <p style="font-size:0.62rem;color:var(--gold);letter-spacing:0.15em;font-weight:700;margin-bottom:0.3rem;">DATE</p>
+            <p style="font-size:0.92rem;color:white;font-weight:600;">2026년 4월 18일 (토)</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);padding:0.8rem 1.2rem;border-left:2px solid var(--yellow);">
+            <p style="font-size:0.62rem;color:var(--gold);letter-spacing:0.15em;font-weight:700;margin-bottom:0.3rem;">인원</p>
+            <p style="font-size:0.92rem;color:white;font-weight:600;">최대 8인 소그룹</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);padding:0.8rem 1.2rem;border-left:2px solid var(--yellow);">
+            <p style="font-size:0.62rem;color:var(--gold);letter-spacing:0.15em;font-weight:700;margin-bottom:0.3rem;">장소</p>
+            <p style="font-size:0.92rem;color:white;font-weight:600;">서울 은평</p>
+          </div>
+        </div>
+        <a href="#contact" style="display:inline-block;background:var(--yellow);color:var(--dark);padding:0.85rem 2rem;font-size:0.9rem;font-weight:700;text-decoration:none;letter-spacing:0.05em;border-radius:2px;transition:opacity .2s;">참여 문의하기</a>
+      </div>
+    </div>
   </div>
 </section>
 
