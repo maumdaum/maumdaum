@@ -546,7 +546,7 @@ footer p{font-size:0.75rem;}
   <p class="hero-eyebrow">마음다움 ｜ 예술치유 · 심리 · 사회정서 워크숍</p>
   <h1 class="hero-title">마음다운 마음은<br><span class="gold">관계</span>로부터</h1>
   <p class="hero-sub">닫힌 마음, 예술로 다시 흐르게 합니다</p>
-  <p class="hero-declare">마음, 다시 움직이다</p>
+  <p class="hero-declare">마음, 다시 움직이다 — 마음다움</p>
   <div class="hero-cta">
     <a href="#steps" class="btn-blue">마음다움 3Steps™</a>
     <a href="#contact" class="btn-outline">문의하기</a>
@@ -559,51 +559,102 @@ footer p{font-size:0.75rem;}
   var canvas = document.getElementById('hero-canvas');
   if(!canvas) return;
   var ctx = canvas.getContext('2d');
-  var colors = ['#2B4FA0','#F5C800','#2E7D32','#C0392B'];
+
+  /* 브랜드 컬러 순서 */
+  var palette = [
+    [43,79,160],   /* 파랑 */
+    [245,200,0],   /* 노랑 */
+    [46,125,50],   /* 초록 */
+    [192,57,43]    /* 빨강 */
+  ];
+
   var balls = [];
+  var BASE_R;
 
   function resize(){
-    canvas.width = canvas.offsetWidth;
+    canvas.width  = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
+    BASE_R = canvas.width < 600 ? 70 : 115;
   }
 
   function initBalls(){
-    balls = colors.map(function(color){
-      var r = canvas.width < 600 ? 65 : 105;
+    balls = palette.map(function(rgb, i){
       return {
-        x: Math.random()*(canvas.width - r*2)+r,
-        y: Math.random()*(canvas.height - r*2)+r,
-        r: r,
-        vx: (Math.random()*0.35+0.12)*(Math.random()<0.5?1:-1),
-        vy: (Math.random()*0.35+0.12)*(Math.random()<0.5?1:-1),
-        color: color
+        x:  Math.random()*(canvas.width  - BASE_R*2) + BASE_R,
+        y:  Math.random()*(canvas.height - BASE_R*2) + BASE_R,
+        vx: (Math.random()*0.35+0.12) * (Math.random()<0.5?1:-1),
+        vy: (Math.random()*0.35+0.12) * (Math.random()<0.5?1:-1),
+        /* 각 공은 서로 다른 위상에서 시작 */
+        phase: (i / palette.length) * Math.PI * 2,
+        /* 색상 순환용 진행값 (각 공마다 다른 시작점) */
+        colorT: i / palette.length
       };
     });
   }
 
-  function draw(){
+  /* 두 색 사이 선형 보간 */
+  function lerpColor(a, b, t){
+    return [
+      Math.round(a[0] + (b[0]-a[0])*t),
+      Math.round(a[1] + (b[1]-a[1])*t),
+      Math.round(a[2] + (b[2]-a[2])*t)
+    ];
+  }
+
+  function getColor(t){
+    /* t: 0~1 순환 → palette 4색 순환 */
+    var n = palette.length;
+    var scaled = ((t % 1) + 1) % 1 * n;
+    var idx = Math.floor(scaled);
+    var frac = scaled - idx;
+    var from = palette[idx % n];
+    var to   = palette[(idx+1) % n];
+    var rgb  = lerpColor(from, to, frac);
+    return 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+',0.11)';
+  }
+
+  var then = null;
+  var COLOR_SPEED = 0.00008;  /* 색상 순환 속도 */
+  var PULSE_SPEED = 0.0008;   /* 크기 맥박 속도 */
+  var PULSE_AMP   = 0.28;     /* 크기 변화 폭 (±28%) */
+
+  function draw(now){
+    if(!then) then = now;
+    var dt = now - then;
+    then = now;
+
     ctx.clearRect(0,0,canvas.width,canvas.height);
+
     balls.forEach(function(b){
+      /* 이동 */
       b.x += b.vx;
       b.y += b.vy;
-      if(b.x-b.r < 0){b.x=b.r; b.vx=Math.abs(b.vx);}
-      if(b.x+b.r > canvas.width){b.x=canvas.width-b.r; b.vx=-Math.abs(b.vx);}
-      if(b.y-b.r < 0){b.y=b.r; b.vy=Math.abs(b.vy);}
-      if(b.y+b.r > canvas.height){b.y=canvas.height-b.r; b.vy=-Math.abs(b.vy);}
+      if(b.x - BASE_R < 0)            { b.x = BASE_R;              b.vx =  Math.abs(b.vx); }
+      if(b.x + BASE_R > canvas.width)  { b.x = canvas.width-BASE_R; b.vx = -Math.abs(b.vx); }
+      if(b.y - BASE_R < 0)             { b.y = BASE_R;              b.vy =  Math.abs(b.vy); }
+      if(b.y + BASE_R > canvas.height) { b.y = canvas.height-BASE_R;b.vy = -Math.abs(b.vy); }
+
+      /* 맥박 (sin 곡선으로 커졌다 작아짐) */
+      b.phase += PULSE_SPEED * dt;
+      var r = BASE_R * (1 + PULSE_AMP * Math.sin(b.phase));
+
+      /* 색상 순환 */
+      b.colorT += COLOR_SPEED * dt;
+      if(b.colorT > 1) b.colorT -= 1;
+
       ctx.beginPath();
-      ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
-      ctx.fillStyle=b.color;
-      ctx.globalAlpha=0.09;
+      ctx.arc(b.x, b.y, r, 0, Math.PI*2);
+      ctx.fillStyle = getColor(b.colorT);
       ctx.fill();
-      ctx.globalAlpha=1;
     });
+
     requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', function(){ resize(); });
   resize();
   initBalls();
-  draw();
+  requestAnimationFrame(draw);
 })();
 </script>
 
