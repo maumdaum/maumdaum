@@ -508,6 +508,8 @@ footer p{font-size:0.75rem;}
   .resist-item{border-right:none;border-bottom:1px solid var(--line);}
   .howto-item{flex-direction:column!important;gap:1rem!important;}
   .howto-inner{padding-left:0!important;border-left:none!important;border-top:1px solid var(--line);padding-top:1rem!important;}
+  #way .sec-inner > div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  #way .sec-inner > div[style*="grid-template-columns:repeat(3,1fr)"] > div{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.08);padding:1.5rem 0;}
 }
 </style>
 </head>
@@ -704,6 +706,12 @@ footer p{font-size:0.75rem;}
   <div class="sec-inner">
     <p class="sec-label">이런 분들 오세요</p>
     <h2 class="sec-title">혹시 이런 마음,<br><strong>드신 적 있으신가요</strong></h2>
+
+    <!-- 도입 문구 -->
+    <div style="margin-bottom:3rem;padding:2rem 2.5rem;border-left:3px solid var(--gold);background:white;box-shadow:0 1px 6px rgba(0,0,0,0.05);">
+      <p style="font-family:var(--serif);font-size:1.05rem;color:var(--dark);line-height:1.8;margin-bottom:0.8rem;font-weight:600;">마음다움이 조금 낯설게 느껴진다면,<br>제대로 찾아오신 것이 맞습니다.</p>
+      <p style="font-size:0.9rem;color:var(--gray);line-height:1.85;font-weight:300;">정답을 찾는 데 익숙해진 우리에게 '정답이 없다'는 말은 불안할 수 있습니다. 그런데 그 비어있는 공간이 — 비로소 나만의 답을 채울 자리가 됩니다.</p>
+    </div>
     <div class="fy-grid">
       <div class="fy-card">
         <p class="fy-num">01</p>
@@ -801,31 +809,115 @@ footer p{font-size:0.75rem;}
       <div class="step-accent" style="background:var(--blue);"></div>
       <p class="step-num">Step 01</p>
       <h3 class="step-name"><span style="color:var(--blue);">자기</span>다움</h3>
-      <p class="step-sub" style="color:var(--blue);">나와의 관계 · 수직 통합</p>
+      <p class="step-sub" style="color:var(--blue);">Self-Awareness & Management</p>
+      <p style="font-family:var(--serif);font-size:0.95rem;color:var(--dark);font-weight:600;margin-bottom:1.2rem;line-height:1.5;">"내 마음을 정확히 알고<br>돌보는 힘"</p>
       <p class="step-q">"내 감정인데 왜 내가 모를까"</p>
       <p class="step-q">"반복되는 패턴에서 벗어나고 싶다"</p>
       <p class="step-q">"나를 잃어버린 것 같다"</p>
-      <p class="step-meta">개인 1:1 · 집단 · 학교·기관 출강<br>대면 · 비대면</p>
+      <div style="margin:1.2rem 0;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.6rem;">프로그램</p>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.8;">
+          감정의 주인 되기<br>
+          마음 근육 기르기<br>
+          고유한 빛 찾기
+        </p>
+      </div>
+      <p style="font-size:0.72rem;color:var(--dim);margin-bottom:0.3rem;font-weight:600;">사회정서역량</p>
+      <p class="step-meta" style="margin-top:0;">자기감정 인식·관리 · 정신건강 인식·관리</p>
+      <p class="step-meta" style="margin-top:0.8rem;">개인 상담 · 정서 조절 프로그램<br>개인 1:1 · 집단 · 학교·기관 출강 · 대면·비대면</p>
     </div>
+
     <div class="step-card">
       <div class="step-accent" style="background:var(--green);"></div>
       <p class="step-num">Step 02</p>
       <h3 class="step-name"><span style="color:var(--green);">우리</span>다움</h3>
-      <p class="step-sub" style="color:var(--green);">너와의 관계 · 대인 통합</p>
+      <p class="step-sub" style="color:var(--green);">Relationship Skills</p>
+      <p style="font-family:var(--serif);font-size:0.95rem;color:var(--dark);font-weight:600;margin-bottom:1.2rem;line-height:1.5;">"너와 내가 연결되어<br>함께 성장하는 힘"</p>
       <p class="step-q">"연결되고 싶은데 자꾸 닫힌다"</p>
       <p class="step-q">"관계가 반복적으로 힘들다"</p>
       <p class="step-q">"말하면 꼭 싸움이 된다"</p>
-      <p class="step-meta">개인 1:1 · 부부·커플·가족 · 팀<br>대면 · 비대면</p>
+      <div style="margin:1.2rem 0;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.6rem;">프로그램</p>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.8;">
+          공감과 소통<br>
+          건강한 경계와 협력<br>
+          함께하는 즐거움
+        </p>
+      </div>
+      <p style="font-size:0.72rem;color:var(--dim);margin-bottom:0.3rem;font-weight:600;">사회정서역량</p>
+      <p class="step-meta" style="margin-top:0;">관계 인식·관리</p>
+      <p class="step-meta" style="margin-top:0.8rem;">그룹 테라피 · 관계 개선 워크숍<br>개인 1:1 · 부부·커플·가족·팀 · 대면·비대면</p>
     </div>
+
     <div class="step-card">
       <div class="step-accent" style="background:var(--red);"></div>
       <p class="step-num">Step 03</p>
       <h3 class="step-name"><span style="color:var(--red);">세상</span>다움</h3>
-      <p class="step-sub" style="color:var(--red);">세상과의 관계 · 정체성 통합</p>
+      <p class="step-sub" style="color:var(--red);">Social Responsibility & Values</p>
+      <p style="font-family:var(--serif);font-size:0.95rem;color:var(--dark);font-weight:600;margin-bottom:1.2rem;line-height:1.5;">"공동체의 가치를 품고<br>세상으로 나아가는 힘"</p>
       <p class="step-q">"열심히 사는데 왜 공허한지 모르겠다"</p>
       <p class="step-q">"의미를 잃었다"</p>
       <p class="step-q">"내가 왜 여기 있는지 모르겠다"</p>
-      <p class="step-meta">개인 1:1 · 진로·직장인·시니어<br>대면 · 비대면</p>
+      <div style="margin:1.2rem 0;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.6rem;">프로그램</p>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.8;">
+          책임 있는 시민 의식<br>
+          다양성 존중<br>
+          더 나은 세상 만들기
+        </p>
+      </div>
+      <p style="font-size:0.72rem;color:var(--dim);margin-bottom:0.3rem;font-weight:600;">사회정서역량</p>
+      <p class="step-meta" style="margin-top:0;">공동체 가치 인식·관리</p>
+      <p class="step-meta" style="margin-top:0.8rem;">인성 교육 · 사회 참여형 예술 활동<br>개인 1:1 · 진로·직장인·시니어 · 대면·비대면</p>
+    </div>
+  </div>
+</section>
+
+<!-- ④-1 마음다움의 방식 -->
+<section class="sec" id="way" style="background:var(--dark);">
+  <div class="sec-inner">
+    <p style="font-size:0.7rem;letter-spacing:0.28em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;">
+      <span style="display:inline-block;width:20px;height:2px;background:var(--gold);flex-shrink:0;"></span>
+      The Maumdaum Way
+    </p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;color:white;line-height:1.25;margin-bottom:1rem;">마음다움은<br><strong style="color:var(--yellow);">기술이 아닌 사고방식을</strong> 배우는 곳입니다.</h2>
+    <p style="font-size:0.95rem;color:rgba(255,255,255,0.45);line-height:1.9;font-weight:300;margin-bottom:3rem;max-width:580px;">기술은 잊혀지지만, 사고방식은 삶이 됩니다.<br>스스로 정답을 찾아가는 이 낯선 과정이 — 당신을 가장 '자기답게' 만듭니다.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.08);">
+
+      <div style="padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,0.08);">
+        <p style="font-size:0.68rem;letter-spacing:0.2em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:1rem;">No Answer</p>
+        <p style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:white;margin-bottom:1rem;line-height:1.4;">정답이<br>없습니다</p>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.8;">완성된 그림보다 중요한 것은 그 과정에서 만난 당신의 목소리입니다. 우리는 '맞는 답'을 가르치지 않고, 당신이 '자신만의 답'을 찾아낼 때까지 곁을 지킵니다.</p>
+      </div>
+
+      <div style="padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,0.08);">
+        <p style="font-size:0.68rem;letter-spacing:0.2em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:1rem;">Self-Leading</p>
+        <p style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:white;margin-bottom:1rem;line-height:1.4;">스스로<br>길을 찾습니다</p>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.8;">방법을 일일이 알려주는 친절함 대신, 스스로 시도하고 머뭇거려볼 수 있는 시간을 선물합니다. 진짜 배움은 스스로 손을 움직일 때 시작되기 때문입니다.</p>
+      </div>
+
+      <div style="padding:2.5rem 2rem;">
+        <p style="font-size:0.68rem;letter-spacing:0.2em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:1rem;">Process First</p>
+        <p style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:white;margin-bottom:1rem;line-height:1.4;">결과보다<br>과정이 중요합니다</p>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.8;">멋진 작품을 만드는 기술(Skill)을 연마하는 곳이 아닙니다. 과정을 통해 마음의 근육을 단련하는 사고방식(Mindset)을 익히는 곳입니다.</p>
+      </div>
+    </div>
+
+    <!-- 3Steps와 연결 -->
+    <div style="margin-top:2rem;padding:1.8rem 2rem;border:1px solid rgba(255,255,255,0.08);display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
+      <div style="padding:0 1.5rem;border-right:1px solid rgba(255,255,255,0.08);">
+        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">자기다움</p>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.7;">내면의 혼란 속에서 스스로 길을 찾는 사고방식</p>
+      </div>
+      <div style="padding:0 1.5rem;border-right:1px solid rgba(255,255,255,0.08);">
+        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">우리다움</p>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.7;">정답이 없는 관계 속에서 서로를 존중하는 태도</p>
+      </div>
+      <div style="padding:0 1.5rem;">
+        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">세상다움</p>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.7;">보이지 않는 공동체의 가치를 감각하는 마음</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1178,6 +1270,7 @@ function switchTab(tab) {
     </div>
     <div class="fnd-quote">
       <p>"마음은 관계 속에서 만들어집니다.<br>그리고 예술이 그 관계를 가장 먼저 움직입니다."</p>
+      <p style="margin-top:1.2rem;font-size:0.85rem;color:rgba(255,255,255,0.5);font-style:normal;font-weight:300;">기술은 잊혀지지만, 사고방식은 삶이 됩니다.</p>
     </div>
   </div>
 </section>
