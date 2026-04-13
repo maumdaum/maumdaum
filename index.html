@@ -923,29 +923,99 @@ footer p{font-size:0.75rem;}
 <section class="sec" id="howto" style="background:var(--bg2);">
   <div class="sec-inner">
     <p class="sec-label">마음다움을 만나는 방법</p>
-    <h2 class="sec-title">찾아오세요.<br><strong>또는 찾아갑니다.</strong></h2>
-    <p style="font-size:0.95rem;color:var(--gray);line-height:1.85;font-weight:300;margin-bottom:3rem;">자기다움·우리다움·세상다움은 두 가지 방식으로 만날 수 있습니다.</p>
+    <h2 class="sec-title">마음다움을 만나는<br><strong>3가지 방법</strong></h2>
+    <p style="font-size:0.95rem;color:var(--gray);line-height:1.85;font-weight:300;margin-bottom:3rem;">자기다움·우리다움·세상다움을 세 가지 방식으로 만날 수 있습니다.</p>
 
     <!-- 탭 버튼 -->
     <div style="display:flex;gap:0;margin-bottom:0;border:1px solid var(--line);border-bottom:none;width:fit-content;">
-      <button id="tab-come" onclick="switchTab('come')"
+      <button id="tab-go" onclick="switchTab('go')"
         style="padding:0.8rem 2rem;font-size:0.88rem;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;background:var(--blue);color:white;letter-spacing:0.05em;transition:all .2s;">
+        찾아갑니다
+      </button>
+      <button id="tab-come" onclick="switchTab('come')"
+        style="padding:0.8rem 2rem;font-size:0.88rem;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;background:white;color:var(--dim);letter-spacing:0.05em;border-left:1px solid var(--line);transition:all .2s;">
         찾아오세요
       </button>
-      <button id="tab-go" onclick="switchTab('go')"
+      <button id="tab-online" onclick="switchTab('online')"
         style="padding:0.8rem 2rem;font-size:0.88rem;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;background:white;color:var(--dim);letter-spacing:0.05em;border-left:1px solid var(--line);transition:all .2s;">
-        찾아갑니다
+        온라인
       </button>
     </div>
 
-    <!-- 찾아오세요 패널 -->
-    <div id="panel-come" style="border:1px solid var(--line);background:white;">
-
+    <!-- 찾아갑니다 패널 -->
+    <div id="panel-go" style="border:1px solid var(--line);background:white;">
       <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--line);background:var(--bg2);">
-        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">개인·부부·커플·소그룹이 마음다움 스튜디오로 오시거나, 온라인으로 만납니다.<br>자기다움·우리다움·세상다움 중 지금 필요한 것에서 시작합니다.</p>
+        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">학교·기관·기업의 목적과 대상에 맞게 마음다움 3Steps™를 설계하여 찾아갑니다.<br>자기다움·우리다움·세상다움 모듈을 자유롭게 조합하고, 차시도 맞춤 구성합니다.</p>
+        <div style="margin-top:1rem;padding:0.9rem 1.2rem;background:white;border-left:3px solid var(--blue);">
+          <p style="font-size:0.82rem;color:var(--dark);line-height:1.75;font-weight:500;">마음다움은 교육부·시도교육청이 지향하는 <strong>사회정서교육(SEL)</strong>의 핵심 역량을 기반으로 설계되었습니다.</p>
+          <p style="font-size:0.8rem;color:var(--gray);line-height:1.7;margin-top:0.4rem;">자기다움(자기감정 인식·관리) · 우리다움(관계 인식·관리) · 세상다움(공동체 가치 인식·관리) — 세 가지 층위의 사회정서역량을 체득합니다.</p>
+        </div>
       </div>
+      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--blue);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">자기다움 모듈</p>
+          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--blue);">감정</span>교육</p>
+          <p style="font-size:0.78rem;color:var(--dim);">2~4차시</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정 교육, 자기 이해, 번아웃 예방. 구성원이 자기 자신과 처음으로 만나는 시간.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">학교 감정교육 · 직장인 심리지원 · 복지기관</p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--green);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">우리다움 모듈</p>
+          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--green);">관계</span>교육</p>
+          <p style="font-size:0.78rem;color:var(--dim);">2~4차시</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">소통·관계·공감 교육. 말 없이 연결되는 경험이 팀과 학급의 분위기를 바꿉니다.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">학교 관계교육 · 팀빌딩 · 가족센터</p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--red);">
+          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">세상다움 모듈</p>
+          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--red);">진로</span>·인성교육</p>
+          <p style="font-size:0.78rem;color:var(--dim);">2~4차시</p>
+        </div>
+        <div style="flex:1;padding:1.8rem 2rem;">
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">진로·의미·정체성 탐색. AI 시대 나만의 방향을 이미지로 처음 상상하는 시간.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">진로교육 · 청소년·대학 · 직장인 · 시니어</p>
+        </div>
+      </div>
+      <div style="padding:1.5rem 2rem;background:var(--bg2);border-top:1px solid var(--line);">
+        <p style="font-size:0.8rem;color:var(--dim);line-height:1.8;">
+          <strong style="color:var(--dark);font-weight:600;">모듈 조합 예시</strong><br>
+          자기+우리 (4~8차시) · 자기+세상 (4~8차시) · 3Steps 풀코스 (8~12차시)<br>
+          전국 출강 가능 · 대상·목적·회기 맞춤 설계
+        </p>
+      </div>
+      <!-- 레퍼런스 -->
+      <div style="padding:1.5rem 2rem;border-top:1px solid var(--line);">
+        <p style="font-size:0.7rem;letter-spacing:0.2em;color:var(--navy);font-weight:700;text-transform:uppercase;margin-bottom:1rem;">함께한 학교·기관·기업</p>
+        <p class="ref-cat">초등학교</p>
+        <div class="ref-list"><span class="ref-tag">경일초</span><span class="ref-tag">동호초</span><span class="ref-tag">응봉초</span><span class="ref-tag">마장초</span><span class="ref-tag">사근초</span><span class="ref-tag">옥정초</span><span class="ref-tag">숭신초</span><span class="ref-tag">신현초</span><span class="ref-tag">갈현초</span><span class="ref-tag">포곡초</span><span class="ref-tag">서울개웅초</span></div>
+        <p class="ref-cat">중·고등학교</p>
+        <div class="ref-list"><span class="ref-tag">동마중</span><span class="ref-tag">성수중</span><span class="ref-tag">옥정중</span><span class="ref-tag">한대부중</span><span class="ref-tag">마장중</span><span class="ref-tag">성수고</span><span class="ref-tag">경일고</span><span class="ref-tag">태릉고</span><span class="ref-tag">한대부고</span><span class="ref-tag">연수여고</span><span class="ref-tag">금곡고</span><span class="ref-tag">경기자동차과학고</span><span class="ref-tag">의정부광동고</span><span class="ref-tag">송양중</span><span class="ref-tag">율전중</span><span class="ref-tag">시흥장현중</span><span class="ref-tag">서울공항고</span><span class="ref-tag">대안여중</span><span class="ref-tag">포천일고</span></div>
+        <p class="ref-cat">대학교</p>
+        <div class="ref-list"><span class="ref-tag">한양대학교 ERICA</span><span class="ref-tag">한양대학교 (서울)</span><span class="ref-tag">명지대학교</span><span class="ref-tag">삼육대학교</span><span class="ref-tag">성신여자대학교</span><span class="ref-tag">한양 미술+디자인교육센터</span></div>
+        <p class="ref-cat">국공립기관</p>
+        <div class="ref-list"><span class="ref-tag">교육부</span><span class="ref-tag">공수처</span><span class="ref-tag">서울시</span><span class="ref-tag">세종특별자치시교육청</span><span class="ref-tag">한국청년기업가정신재단</span><span class="ref-tag">한국과학창의재단</span><span class="ref-tag">동대문 진로직업체험지원센터</span><span class="ref-tag">판교스타트업캠퍼스</span><span class="ref-tag">성동경찰서</span><span class="ref-tag">남북하나재단 마음소리공감 상담센터</span></div>
+        <p class="ref-cat">의료기관</p>
+        <div class="ref-list"><span class="ref-tag">한양대 의료원</span><span class="ref-tag">다나병원</span><span class="ref-tag">서울 역삼 메티스신경정신과</span><span class="ref-tag">해랑소아청소년연구소</span></div>
+        <p class="ref-cat">복지기관</p>
+        <div class="ref-list"><span class="ref-tag">서울청년센터 강동·창동오랑</span><span class="ref-tag">용인시기흥장애인복지관</span><span class="ref-tag">동대문장애인복지관</span><span class="ref-tag">서울노인복지센터</span><span class="ref-tag">서대문노인종합복지관</span><span class="ref-tag">서초구 가족센터</span><span class="ref-tag">양천구 가족센터</span><span class="ref-tag">하남시 가족센터</span><span class="ref-tag">성동구청소년상담복지센터</span><span class="ref-tag">은평구청소년문화의집</span><span class="ref-tag">신나는에프터센터</span><span class="ref-tag">중림사회복지관</span><span class="ref-tag">삼전복지관</span><span class="ref-tag">프레네스쿨 성장학교 별</span></div>
+        <p class="ref-cat">기업 · 기타</p>
+        <div class="ref-list"><span class="ref-tag">글로벌 K-POP 엔터테인먼트 (기밀)</span><span class="ref-tag">세광교회</span><span class="ref-tag">창업가 특강</span><span class="ref-tag">진로 특강</span></div>
+      </div>
+    </div>
 
-      <!-- 자기다움 -->
+    <!-- 찾아오세요 패널 -->
+    <div id="panel-come" style="display:none;border:1px solid var(--line);background:white;">
+      <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--line);background:var(--bg2);">
+        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">개인·부부·커플·소그룹이 마음다움 스튜디오로 직접 오십니다.<br>자기다움·우리다움·세상다움 중 지금 필요한 것에서 시작합니다.</p>
+      </div>
       <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
         <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--blue);">
           <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 01</p>
@@ -954,11 +1024,9 @@ footer p{font-size:0.75rem;}
         </div>
         <div style="flex:1;padding:1.8rem 2rem;">
           <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정이 왜 이러는지 모르겠을 때. 나를 잃어버린 느낌일 때. 반복되는 패턴에서 벗어나고 싶을 때.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 소그룹 · ±150분 · 대면·비대면</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 소그룹 · ±150분 · 서울 은평</p>
         </div>
       </div>
-
-      <!-- 우리다움 -->
       <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
         <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--green);">
           <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 02</p>
@@ -967,11 +1035,9 @@ footer p{font-size:0.75rem;}
         </div>
         <div style="flex:1;padding:1.8rem 2rem;">
           <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">말하면 싸움이 될 때. 연결되고 싶은데 자꾸 닫힐 때. 관계가 반복적으로 힘들 때.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 부부·커플·가족 소그룹 · ±150분 · 대면·비대면</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 부부·커플·가족 소그룹 · ±150분 · 서울 은평</p>
         </div>
       </div>
-
-      <!-- 세상다움 -->
       <div style="display:flex;align-items:flex-start;gap:0;">
         <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--red);">
           <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 03</p>
@@ -979,24 +1045,17 @@ footer p{font-size:0.75rem;}
           <p style="font-size:0.78rem;color:var(--dim);">세상과의 관계</p>
         </div>
         <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">왜 사는지, 무엇을 위해 일하는지 모를 때. AI 시대 나만의 방향이 필요할 때. 진로·전환점에서 삶의 의미를 다시 찾고 싶을 때.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 소그룹 · ±150분 · 대면·비대면</p>
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">왜 사는지, 무엇을 위해 일하는지 모를 때. AI 시대 나만의 방향이 필요할 때.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 소그룹 · ±150분 · 서울 은평</p>
         </div>
       </div>
     </div>
 
-    <!-- 찾아갑니다 패널 -->
-    <div id="panel-go" style="display:none;border:1px solid var(--line);background:white;">
-
+    <!-- 온라인 패널 -->
+    <div id="panel-online" style="display:none;border:1px solid var(--line);background:white;">
       <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--line);background:var(--bg2);">
-        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">학교·기관·기업의 목적과 대상에 맞게 마음다움 3Steps™를 설계하여 찾아갑니다.<br>자기다움·우리다움·세상다움 모듈을 자유롭게 조합하고, 차시도 맞춤 구성합니다.</p>
-        <div style="margin-top:1rem;padding:0.9rem 1.2rem;background:white;border-left:3px solid var(--blue);">
-          <p style="font-size:0.82rem;color:var(--dark);line-height:1.75;font-weight:500;">마음다움은 교육부·시도교육청이 지향하는 <strong>사회정서교육(SEL)</strong>의 핵심 역량을 기반으로 설계되었습니다.</p>
-          <p style="font-size:0.8rem;color:var(--gray);line-height:1.7;margin-top:0.4rem;">자기다움(자기감정 인식·관리) · 우리다움(관계 인식·관리) · 세상다움(공동체 가치 인식·관리) — 세 가지 층위의 사회정서역량을 체득합니다.</p>
-        </div>
+        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">장소에 관계없이 ZOOM으로 만납니다. 지방·해외 거주자도 가능합니다.<br>자기다움·우리다움·세상다움 모두 온라인 세션으로 진행됩니다.</p>
       </div>
-
-      <!-- 자기다움 -->
       <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
         <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--blue);">
           <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 01</p>
@@ -1004,12 +1063,10 @@ footer p{font-size:0.75rem;}
           <p style="font-size:0.78rem;color:var(--dim);">나와의 관계</p>
         </div>
         <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정 교육, 자기 이해, 번아웃 예방. 구성원이 자기 자신과 처음으로 만나는 시간.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">학교 감정교육 · 직장인 심리지원 · 복지기관 · 2~4차시</p>
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정이 왜 이러는지 모르겠을 때. 나를 잃어버린 느낌일 때. 반복되는 패턴에서 벗어나고 싶을 때.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · ±150분 · ZOOM</p>
         </div>
       </div>
-
-      <!-- 우리다움 -->
       <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
         <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--green);">
           <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 02</p>
@@ -1017,31 +1074,20 @@ footer p{font-size:0.75rem;}
           <p style="font-size:0.78rem;color:var(--dim);">너와의 관계</p>
         </div>
         <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">소통·관계·공감 교육. 말 없이 연결되는 경험이 팀과 학급의 분위기를 바꿉니다.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">학교 관계교육 · 팀빌딩 · 가족센터 · 2~4차시</p>
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">말하면 싸움이 될 때. 멀리 있어도 함께 마음을 열고 싶을 때. 부부·커플 온라인 세션 가능.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 부부·커플 · ±150분 · ZOOM</p>
         </div>
       </div>
-
-      <!-- 세상다움 -->
-      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
+      <div style="display:flex;align-items:flex-start;gap:0;">
         <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--red);">
           <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 03</p>
           <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--red);">세상</span>다움</p>
           <p style="font-size:0.78rem;color:var(--dim);">세상과의 관계</p>
         </div>
         <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">진로·의미·정체성 탐색. AI 시대 나만의 방향을 이미지로 처음 상상하는 시간.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">진로교육 · 청소년·대학 · 직장인 · 시니어 · 2~4차시</p>
+          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">왜 사는지 모를 때. 진로·의미 탐색이 필요할 때. 장소 제약 없이 시작할 수 있습니다.</p>
+          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · ±150분 · ZOOM</p>
         </div>
-      </div>
-
-      <!-- 모듈 조합 -->
-      <div style="padding:1.5rem 2rem;background:var(--bg2);border-top:1px solid var(--line);">
-        <p style="font-size:0.8rem;color:var(--dim);line-height:1.8;">
-          <strong style="color:var(--dark);font-weight:600;">모듈 조합 예시</strong><br>
-          자기+우리 (4~8차시) · 자기+세상 (4~8차시) · 3Steps 풀코스 (8~12차시)<br>
-          전국 출강 가능 · 대상·목적·회기 맞춤 설계
-        </p>
       </div>
     </div>
 
@@ -1054,28 +1100,19 @@ footer p{font-size:0.75rem;}
 
 <script>
 function switchTab(tab) {
-  var come = document.getElementById('panel-come');
-  var go = document.getElementById('panel-go');
-  var btnCome = document.getElementById('tab-come');
-  var btnGo = document.getElementById('tab-go');
-  if (tab === 'come') {
-    come.style.display = 'block';
-    go.style.display = 'none';
-    btnCome.style.background = 'var(--blue)';
-    btnCome.style.color = 'white';
-    btnGo.style.background = 'white';
-    btnGo.style.color = 'var(--dim)';
-  } else {
-    come.style.display = 'none';
-    go.style.display = 'block';
-    btnGo.style.background = 'var(--blue)';
-    btnGo.style.color = 'white';
-    btnCome.style.background = 'white';
-    btnCome.style.color = 'var(--dim)';
-  }
+  var panels = ['go','come','online'];
+  var btns = ['tab-go','tab-come','tab-online'];
+  panels.forEach(function(p) {
+    document.getElementById('panel-'+p).style.display = (p===tab)?'block':'none';
+  });
+  btns.forEach(function(b) {
+    var btn = document.getElementById(b);
+    var isActive = b === 'tab-'+tab;
+    btn.style.background = isActive ? 'var(--blue)' : 'white';
+    btn.style.color = isActive ? 'white' : 'var(--dim)';
+  });
 }
 </script>
-
 <!-- ⑤ 철학적 기반 IPNB -->
 <section class="sec ipnb-sec" id="philosophy">
   <div class="sec-inner">
