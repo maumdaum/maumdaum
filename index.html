@@ -3,1448 +3,565 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>마음다움 — 마음다운 마음은 관계로부터</title>
+<title>마음다움 — 마음, 다시 움트다</title>
+<meta name="description" content="마음은 분석하는 것이 아니라, 짓는 것입니다. 예술치료사 부부가 함께 만드는 마음 스튜디오. 복잡한 서울을 벗어나, 파주 운정.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  /* 마음다움 브랜드 컬러 */
-  --blue:   #2B4FA0;
-  --yellow: #F5C800;
-  --green:  #2E7D32;
-  --red:    #C0392B;
-  --gold:   #C8960C;
+  :root{
+    --paper:#F2EDE4;        /* 베이지 · 서늘한 새벽 종이빛 */
+    --paper-deep:#E8E1D4;
+    --ink:#1C1815;          /* 먹 · 다크브라운 */
+    --ink-soft:#6B5F55;
+    --red:#B03A2E;          /* 깊은 레드 · 움트는 생명 */
+    --red-deep:#8E2C24;
+    --line:rgba(28,24,21,.14);
+    --serif:'Gowun Batang', serif;
+    --sans:'IBM Plex Sans KR', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .serif{font-family:var(--serif)}
 
-  /* 배경 팔레트 */
-  --bg:     #F5F2EC;
-  --bg2:    #EDEAE2;
-  --bg3:    #E4E0D6;
-  --dark:   #1a1a1a;
-  --navy:   #1C3270;
+  /* ── 공통 레이아웃 ── */
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  .narrow{max-width:720px;margin:0 auto;padding:0 32px}
+  section{position:relative}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:500;margin-bottom:2.4rem;
+  }
 
-  /* 텍스트 */
-  --gray:   #666;
-  --dim:    #999;
-  --line:   rgba(26,26,26,0.1);
+  /* ── 스크롤 등장 ── */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-  --serif: 'Noto Serif KR', serif;
-  --sans:  'Noto Sans KR', sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--bg);color:var(--dark);overflow-x:hidden;}
+  /* ── 네비 ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 32px;
+    color:var(--paper);
+    transition:padding .4s ease, color .4s ease, background .4s ease;
+  }
+  nav.scrolled{color:var(--ink);background:rgba(242,237,228,.9);backdrop-filter:blur(8px);padding:16px 32px}
+  nav .logo{font-family:var(--serif);font-size:1.15rem;letter-spacing:.05em;font-weight:700;display:flex;align-items:center}
+  nav .logo-text{transition:color .4s ease}
+  nav .mark-dark{fill:#F2EDE4;transition:fill .4s ease}
+  nav.scrolled .mark-dark{fill:#1C1815}
+  nav .links{display:flex;gap:30px;font-size:.82rem;letter-spacing:.04em}
+  nav a{color:inherit;text-decoration:none;opacity:.85;transition:opacity .3s}
+  nav a:hover{opacity:1}
+  @media(max-width:720px){nav .links{display:none}}
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 2.5rem;
-  background:var(--bg);
-  border-bottom:1px solid var(--line);
-}
-.nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none;}
-.logo-mark{display:flex;align-items:center;gap:5px;}
-.lm-sq{width:15px;height:15px;background:var(--blue);flex-shrink:0;}
-.lm-ci{width:15px;height:15px;background:var(--yellow);border-radius:50%;flex-shrink:0;}
-.logo-text{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--dark);letter-spacing:0.04em;}
-.nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{font-size:0.8rem;color:var(--gray);text-decoration:none;letter-spacing:0.08em;transition:color .2s;}
-.nav-links a:hover{color:var(--blue);}
-.nav-cta{
-  background:var(--blue);color:white;
-  padding:0.55rem 1.3rem;
-  font-size:0.82rem;font-weight:600;
-  text-decoration:none;letter-spacing:0.05em;
-  border-radius:2px;transition:background .2s;
-}
-.nav-cta:hover{background:var(--navy);}
+  /* ── HERO ── */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;
+    background:var(--ink);color:var(--paper);
+    padding:0 32px;position:relative;overflow:hidden;
+  }
+  .hero-dawn{
+    position:absolute;inset:0;
+    background:radial-gradient(120% 80% at 50% 122%, rgba(176,58,46,.6), transparent 58%),
+               radial-gradient(80% 50% at 50% 130%, rgba(176,58,46,.35), transparent 55%);
+    opacity:0;animation:dawn 3.4s 0.4s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes dawn{to{opacity:1}}
+  .hero-inner{position:relative;z-index:2}
+  .hero-logo{width:clamp(140px,26vw,200px);height:auto;margin-bottom:2.6rem;
+    opacity:0;animation:fadeUp 1.6s .6s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.9rem,8vw,5.6rem);line-height:1.18;
+    letter-spacing:.01em;
+  }
+  .hero h1 .sprout{position:relative;display:inline-block}
+  .hero h1 .accent{color:#D65543}
+  .hero h1 .sprout::after{
+    content:'';position:absolute;left:0;bottom:.06em;height:2px;width:0;
+    background:var(--red);animation:grow 1.6s 2.2s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes grow{to{width:100%}}
+  .hero .sub{
+    margin-top:2.6rem;font-size:clamp(1rem,2.4vw,1.18rem);
+    font-weight:300;letter-spacing:.02em;color:rgba(242,241,236,.82);
+    opacity:0;animation:fadeUp 1.4s 1.5s ease forwards;
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .scroll-cue{
+    position:absolute;bottom:38px;left:50%;transform:translateX(-50%);
+    font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+    color:rgba(242,241,236,.5);z-index:2;
+    opacity:0;animation:fadeUp 1.4s 2.8s ease forwards;
+  }
+  .scroll-cue::after{
+    content:'';display:block;width:1px;height:34px;margin:14px auto 0;
+    background:linear-gradient(rgba(242,241,236,.6),transparent);
+  }
 
-/* ── HERO ── */
-.hero{
-  min-height:85vh;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;
-  padding:4rem 3rem 2rem;
-  background:var(--bg);
-  position:relative;
-  overflow:hidden;
-}
-/* 배경 로고 컬러 점들 */
-.hero::before{ display:none; }
-.hero::after{ display:none; }
-.hero-eyebrow{
-  font-size:0.72rem;letter-spacing:0.22em;
-  color:var(--blue);font-weight:700;
-  text-transform:uppercase;
-  margin-bottom:2rem;
-  animation:fu .6s ease .05s both;
-}
-.hero-title{
-  font-family:var(--serif);
-  font-size:clamp(2.8rem,5vw,5rem);
-  font-weight:300;line-height:1.25;
-  color:var(--dark);
-  margin-bottom:1.5rem;
-  letter-spacing:-0.02em;
-  animation:fu .6s ease .2s both;
-}
-.hero-title .gold{color:var(--gold);font-weight:700;}
-.hero-sub{
-  font-size:1.05rem;color:var(--gray);
-  font-weight:300;line-height:1.7;
-  margin-bottom:0.6rem;
-  padding-left:1.2rem;
-  border-left:3px solid var(--gold);
-  text-align:left;
-  animation:fu .6s ease .35s both;
-}
-.hero-declare{
-  font-family:var(--serif);
-  font-size:0.88rem;color:var(--dim);
-  font-style:italic;
-  margin-bottom:3rem;
-  animation:fu .6s ease .45s both;
-}
-.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fu .6s ease .55s both;}
-.btn-blue{
-  background:var(--blue);color:white;
-  padding:0.9rem 2.2rem;font-size:0.9rem;font-weight:600;
-  text-decoration:none;letter-spacing:0.05em;
-  border-radius:2px;transition:background .2s;
-}
-.btn-blue:hover{background:var(--navy);}
-.btn-outline{
-  border:1.5px solid var(--dark);color:var(--dark);
-  padding:0.9rem 2.2rem;font-size:0.9rem;font-weight:500;
-  text-decoration:none;letter-spacing:0.05em;
-  border-radius:2px;transition:all .2s;
-}
-.btn-outline:hover{background:var(--dark);color:white;}
+  /* ── 페르소나 직격 ── */
+  .persona{padding:20vh 0 18vh;background:var(--paper)}
+  .persona .narrow{text-align:center}
+  .persona .line{
+    font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.3rem);
+    line-height:1.65;color:var(--ink);
+  }
+  .persona .line em{font-style:normal;color:var(--red)}
+  .persona .turn{
+    margin-top:3.2rem;font-size:1.02rem;color:var(--ink-soft);
+    font-weight:300;line-height:2;
+  }
 
-/* ── SECTIONS 공통 ── */
-.sec{padding:6rem 3rem;border-top:1px solid var(--line);}
-.sec-inner{max-width:960px;margin:0 auto;}
-.sec-label{
-  font-size:0.7rem;letter-spacing:0.28em;
-  color:var(--blue);font-weight:700;
-  text-transform:uppercase;margin-bottom:0.8rem;
-  display:flex;align-items:center;gap:0.6rem;
-}
-.sec-label::before{
-  content:'';display:inline-block;
-  width:20px;height:2px;background:var(--gold);flex-shrink:0;
-}
-.sec-title{
-  font-family:var(--serif);
-  font-size:clamp(1.8rem,3.5vw,2.8rem);
-  font-weight:400;color:var(--dark);
-  line-height:1.2;margin-bottom:1.5rem;
-}
-.sec-title strong{font-weight:700;}
+  /* ── 시대 진단 (딸깍) ── */
+  .era{padding:16vh 0;background:var(--ink);color:var(--paper)}
+  .era .eyebrow{color:rgba(242,241,236,.5)}
+  .era h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.8rem,4.6vw,2.9rem);line-height:1.5;
+    max-width:900px;
+  }
+  .era h2 b{font-weight:700;color:var(--red)}
+  .era .body{
+    margin-top:2.4rem;max-width:640px;font-size:1.02rem;
+    color:rgba(242,241,236,.72);line-height:2;
+  }
 
-/* ── 시대진단 ── */
-.era-sec{background:var(--dark);}
-.era-label{
-  font-size:0.7rem;letter-spacing:0.28em;
-  color:var(--gold);font-weight:700;
-  text-transform:uppercase;margin-bottom:0.8rem;
-  display:flex;align-items:center;gap:0.6rem;
-}
-.era-label::before{content:'';display:inline-block;width:20px;height:2px;background:var(--gold);flex-shrink:0;}
-.era-title{
-  font-family:var(--serif);
-  font-size:clamp(1.8rem,3.5vw,2.8rem);
-  font-weight:400;color:white;
-  line-height:1.25;margin-bottom:3rem;
-}
-.era-title strong{color:var(--yellow);font-weight:700;}
-.era-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:0;margin-bottom:3rem;
-  border:1px solid rgba(255,255,255,0.08);
-}
-.era-item{
-  padding:2.5rem 2rem;
-  border-right:1px solid rgba(255,255,255,0.08);
-}
-.era-item:last-child{border-right:none;}
-.era-num{
-  font-size:0.65rem;letter-spacing:0.25em;
-  color:var(--gold);font-weight:700;
-  text-transform:uppercase;margin-bottom:1.2rem;
-  display:flex;align-items:center;gap:0.5rem;
-}
-.era-num::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.1);}
-.era-keyword{
-  font-family:var(--serif);font-size:1.2rem;
-  font-weight:600;color:white;
-  margin-bottom:0.8rem;line-height:1.4;
-}
-.era-body{font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.8;font-weight:300;}
-.era-close{
-  border:1px solid rgba(255,255,255,0.1);
-  padding:2rem 2.5rem;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
-}
-.era-close-item{
-  padding:0 2rem;
-  border-right:1px solid rgba(255,255,255,0.08);
-}
-.era-close-item:first-child{padding-left:0;}
-.era-close-item:last-child{border-right:none;}
-.era-close-from{
-  font-size:0.8rem;color:rgba(255,255,255,0.3);
-  margin-bottom:0.4rem;text-decoration:line-through;
-}
-.era-close-to{
-  font-family:var(--serif);font-size:0.95rem;
-  color:var(--yellow);font-weight:600;
-}
+  /* ── 논리 사슬 (왜 예술인가) ── */
+  .chain{padding:18vh 0;background:var(--paper)}
+  .chain-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:4rem;border-top:1px solid var(--line)}
+  .cell{padding:3.4rem 2.6rem;border-bottom:1px solid var(--line)}
+  .cell:nth-child(odd){border-right:1px solid var(--line)}
+  .cell .verb{font-family:var(--serif);font-size:1.7rem;font-weight:700;margin-bottom:.5rem}
+  .cell.mind .verb{color:var(--red)}
+  .cell .who{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1.3rem}
+  .cell p{font-size:.98rem;color:var(--ink-soft);line-height:1.9}
+  .cell.mind{background:rgba(29,78,137,.05)}
+  .cell.mind p{color:var(--ink)}
+  @media(max-width:720px){
+    .chain-grid{grid-template-columns:1fr}
+    .cell:nth-child(odd){border-right:none}
+  }
 
-/* ── 이런 분들 오세요 ── */
-.foryou-sec{background:var(--bg2);}
-.fy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:3rem;}
-.fy-card{
-  background:white;padding:2rem;
-  border-radius:3px;
-  box-shadow:0 1px 8px rgba(0,0,0,0.05);
-  border-left:3px solid var(--gold);
-  transition:transform .2s,box-shadow .2s;
-}
-.fy-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.09);}
-.fy-num{font-size:0.62rem;letter-spacing:0.3em;color:var(--gold);font-weight:700;margin-bottom:0.7rem;}
-.fy-q{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--dark);line-height:1.45;margin-bottom:0.7rem;font-style:italic;}
-.fy-a{font-size:0.84rem;color:var(--gray);line-height:1.75;font-weight:300;}
+  /* ── 편집 은유 ── */
+  .edit{padding:20vh 0;background:var(--paper-deep);text-align:center}
+  .edit .narrow{max-width:760px}
+  .edit h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2rem,5vw,3.2rem);line-height:1.4;
+  }
+  .edit h2 span{color:var(--red)}
+  .edit .note{margin-top:2.6rem;font-size:1.02rem;color:var(--ink-soft);line-height:2}
 
-/* ── 3STEPS ── */
-.steps-sec{background:var(--bg);}
-.steps-header{text-align:center;max-width:680px;margin:0 auto 3rem;}
-.steps-tm{font-size:0.62rem;letter-spacing:0.28em;color:var(--dim);text-transform:uppercase;margin-top:0.5rem;margin-bottom:0.8rem;}
-.steps-desc{font-size:0.9rem;color:var(--gray);line-height:1.85;font-weight:300;}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:960px;margin:2.5rem auto 0;border:1px solid var(--line);}
-.step-card{
-  padding:2.5rem 2rem;
-  border-right:1px solid var(--line);
-  position:relative;overflow:hidden;
-  background:white;
-  transition:background .25s;
-}
-.step-card:last-child{border-right:none;}
-.step-card:hover{background:var(--bg2);}
-.step-accent{
-  position:absolute;top:0;left:0;right:0;
-  height:3px;
-}
-.step-num{font-size:0.62rem;letter-spacing:0.3em;color:var(--dim);text-transform:uppercase;margin-bottom:0.5rem;}
-.step-name{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--dark);margin-bottom:0.2rem;}
-.step-sub{font-size:0.75rem;letter-spacing:0.08em;font-weight:600;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid var(--line);}
-.step-q{font-size:0.86rem;color:var(--gray);line-height:1.75;padding:0.4rem 0;border-bottom:1px solid var(--line);font-style:italic;}
-.step-q:last-of-type{border-bottom:none;}
-.step-meta{margin-top:1.2rem;font-size:0.8rem;color:var(--dim);line-height:1.85;}
+  /* ── 학자 근거 ── */
+  .scholars{padding:16vh 0;background:var(--ink);color:var(--paper)}
+  .scholars .eyebrow{color:rgba(242,241,236,.5)}
+  .scholars h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.5;max-width:820px;margin-bottom:5rem}
+  .scholars h2 em{font-style:italic;color:var(--red)}
+  .sch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3.4rem 4rem}
+  .sch .name{font-family:var(--serif);font-size:1.02rem;color:var(--red);margin-bottom:.9rem;letter-spacing:.02em}
+  .sch .claim{font-family:var(--serif);font-size:1.28rem;line-height:1.5;margin-bottom:.9rem}
+  .sch p{font-size:.92rem;color:rgba(242,241,236,.66);line-height:1.85}
+  @media(max-width:720px){.sch-grid{grid-template-columns:1fr;gap:2.8rem}}
 
-/* ── IPNB ── */
-.ipnb-sec{background:var(--bg3);}
-.ipnb-body{font-size:0.95rem;line-height:2;color:var(--gray);font-weight:300;margin-bottom:3rem;max-width:620px;}
-.ipnb-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:0;border:1px solid var(--line);
-}
-.ipnb-item{
-  padding:2.5rem 2rem;background:white;
-  border-right:1px solid var(--line);
-  position:relative;
-}
-.ipnb-item:last-child{border-right:none;}
-.ipnb-bar{
-  position:absolute;top:0;left:0;right:0;
-  height:2px;
-}
-.ipnb-step{font-size:0.62rem;letter-spacing:0.22em;color:var(--blue);text-transform:uppercase;font-weight:700;margin-bottom:0.6rem;}
-.ipnb-name{font-family:var(--serif);font-size:1.15rem;color:var(--dark);font-weight:700;margin-bottom:0.6rem;}
-.ipnb-desc{font-size:0.84rem;color:var(--gray);line-height:1.75;}
+  /* ── 3Steps ── */
+  .steps{padding:18vh 0;background:var(--paper)}
+  .steps h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3rem);margin-bottom:1rem}
+  .steps .lead{font-size:1.02rem;color:var(--ink-soft);max-width:620px;margin-bottom:5rem;line-height:2}
+  .step{
+    display:grid;grid-template-columns:auto 1fr;gap:3rem;
+    padding:3.6rem 0;border-top:1px solid var(--line);align-items:start;
+  }
+  .step:last-child{border-bottom:1px solid var(--line)}
+  .step .idx{font-family:var(--serif);font-size:1.1rem;color:var(--ink-soft);letter-spacing:.1em;padding-top:.4rem}
+  .step .ko{font-family:var(--serif);font-size:1.9rem;margin-bottom:.3rem}
+  .step .en{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1.6rem}
+  .step .rel{display:inline-block;font-size:.82rem;color:#fff;padding:.28rem .9rem;border-radius:2px;margin-bottom:1.6rem}
+  .step.s1 .rel{background:var(--ink)}
+  .step.s2 .rel{background:var(--red-deep)}
+  .step.s3 .rel{background:var(--red)}
+  .step .qs{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+  .step .qs li{font-size:.98rem;color:var(--ink-soft);padding-left:1.2rem;position:relative}
+  .step .qs li::before{content:'—';position:absolute;left:0;color:var(--ink-soft);opacity:.5}
+  @media(max-width:720px){.step{grid-template-columns:1fr;gap:1rem}}
 
-/* ── 왜 예술인가 ── */
-.why-sec{background:var(--dark);}
-.why-eyebrow{
-  font-size:0.7rem;letter-spacing:0.28em;
-  color:var(--gold);font-weight:700;
-  text-transform:uppercase;margin-bottom:0.8rem;
-  display:flex;align-items:center;gap:0.6rem;
-}
-.why-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--gold);flex-shrink:0;}
-.why-title{
-  font-family:var(--serif);
-  font-size:clamp(1.8rem,3.5vw,2.9rem);
-  font-weight:300;color:white;
-  line-height:1.25;margin-bottom:1.2rem;
-}
-.why-title em{color:var(--yellow);font-style:normal;font-weight:700;}
-.why-title strong{color:var(--red);font-weight:700;}
-.why-lead{
-  font-size:0.95rem;color:rgba(255,255,255,0.45);
-  line-height:1.9;font-weight:300;
-  margin-bottom:3rem;max-width:580px;
-}
-.why-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:0;margin-bottom:3rem;
-  border:1px solid rgba(255,255,255,0.08);
-}
-.why-item{
-  padding:2rem 1.8rem;
-  border-right:1px solid rgba(255,255,255,0.08);
-}
-.why-item:last-child{border-right:none;}
-.why-source{
-  font-size:0.65rem;color:var(--gold);
-  letter-spacing:0.12em;margin-bottom:0.8rem;
-  font-weight:600;
-}
-.why-name{
-  font-family:var(--serif);font-size:0.98rem;
-  font-weight:600;color:white;
-  margin-bottom:0.6rem;line-height:1.45;
-}
-.why-body{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.75;}
-.why-declare{
-  border:1px solid rgba(255,255,255,0.1);
-  padding:2.5rem;text-align:center;
-  background:rgba(255,255,255,0.02);
-}
-.why-declare p{
-  font-family:var(--serif);font-size:1rem;
-  color:rgba(255,255,255,0.65);
-  line-height:2.1;font-style:italic;
-}
-.why-declare strong{color:var(--yellow);font-style:normal;font-weight:700;}
+  /* ── 저항 ── */
+  .resist{padding:16vh 0;background:var(--ink);color:var(--paper)}
+  .resist .eyebrow{color:rgba(242,241,236,.5)}
+  .resist h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4.4vw,2.6rem);margin-bottom:4rem}
+  .r-list{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(242,241,236,.16)}
+  .r-item{padding:2.6rem 2rem;border-bottom:1px solid rgba(242,241,236,.16)}
+  .r-item:nth-child(odd){border-right:1px solid rgba(242,241,236,.16)}
+  .r-item .no{font-size:.72rem;letter-spacing:.2em;color:var(--red);margin-bottom:1rem}
+  .r-item .what{font-family:var(--serif);font-size:1.2rem;margin-bottom:.7rem;color:rgba(242,241,236,.6);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:1px}
+  .r-item .instead{font-size:1rem;color:var(--paper)}
+  @media(max-width:720px){.r-list{grid-template-columns:1fr}.r-item:nth-child(odd){border-right:none}}
 
-/* ── 찾아가는 워크숍 ── */
-.vis-body{font-size:0.95rem;color:var(--gray);line-height:1.85;font-weight:300;margin-bottom:1.5rem;}
-.vis-box{
-  background:white;
-  border-left:3px solid var(--blue);
-  padding:1rem 1.5rem;margin-bottom:2.5rem;
-  font-size:0.88rem;color:var(--dark);line-height:1.7;
-  box-shadow:0 1px 4px rgba(0,0,0,0.05);
-}
-.ref-cat{
-  font-size:0.65rem;letter-spacing:0.2em;
-  text-transform:uppercase;color:var(--blue);
-  font-weight:700;margin-top:2rem;margin-bottom:0.7rem;
-}
-.ref-list{display:flex;flex-wrap:wrap;gap:0.4rem;}
-.ref-tag{
-  font-size:0.78rem;padding:0.3rem 0.8rem;
-  border:1px solid var(--line);color:var(--gray);
-  background:white;border-radius:2px;
-  transition:border-color .2s,color .2s;
-}
-.ref-tag:hover{border-color:var(--blue);color:var(--blue);}
+  /* ── 부부 ── */
+  .founders{padding:18vh 0;background:var(--paper)}
+  .founders .quote{
+    font-family:var(--serif);font-size:clamp(1.4rem,3.4vw,2rem);
+    line-height:1.7;max-width:840px;margin-bottom:5rem;
+  }
+  .founders .quote em{font-style:normal;color:var(--red)}
+  .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+  .f .fname{font-family:var(--serif);font-size:1.5rem;margin-bottom:.3rem}
+  .f .frole{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1.6rem}
+  .f .meta{font-size:.9rem;color:var(--ink-soft);line-height:1.8;margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid var(--line)}
+  .f .say{font-size:.96rem;color:var(--ink);line-height:1.95}
+  .f .say em{font-style:italic;color:var(--red)}
+  @media(max-width:720px){.f-grid{grid-template-columns:1fr;gap:3rem}}
 
-/* ── 소감 ── */
-.testi-sec{background:var(--bg2);}
-.testi-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:1rem;margin-top:2.5rem;
-}
-.testi-card{
-  background:white;padding:1.8rem;
-  box-shadow:0 1px 6px rgba(0,0,0,0.05);
-  border-top:2px solid var(--gold);
-}
-.testi-quote{
-  font-family:var(--serif);font-size:0.95rem;
-  color:var(--dark);line-height:1.85;
-  font-style:italic;margin-bottom:0.8rem;
-}
-.testi-source{font-size:0.75rem;color:var(--dim);}
+  /* ── 장소 / 파주 ── */
+  .place{padding:18vh 0;background:var(--ink);color:var(--paper);text-align:center}
+  .place .eyebrow{color:rgba(242,241,236,.5)}
+  .place h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.4}
+  .place h2 span{color:var(--red)}
+  .place .desc{margin-top:2.6rem;font-size:1.05rem;color:rgba(242,241,236,.74);max-width:560px;margin-left:auto;margin-right:auto;line-height:2}
 
-/* ── Work Memory ── */
-.wm-sec{background:var(--dark);}
-.wm-label{
-  font-size:0.7rem;letter-spacing:0.28em;
-  color:var(--gold);font-weight:700;
-  text-transform:uppercase;margin-bottom:0.8rem;
-  display:flex;align-items:center;gap:0.6rem;
-}
-.wm-label::before{content:'';display:inline-block;width:20px;height:2px;background:var(--gold);flex-shrink:0;}
-.wm-title{
-  font-family:var(--serif);
-  font-size:clamp(1.6rem,3vw,2.4rem);
-  font-weight:400;color:white;
-  line-height:1.3;margin-bottom:1rem;
-}
-.wm-body{
-  font-size:0.9rem;color:rgba(255,255,255,0.4);
-  line-height:1.9;font-weight:300;margin-bottom:2.5rem;
-}
+  /* ── CTA ── */
+  .cta{padding:20vh 0;background:var(--paper);text-align:center}
+  .cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin-bottom:1.6rem}
+  .cta p{font-size:1.02rem;color:var(--ink-soft);margin-bottom:3.4rem;line-height:2}
+  .btn{
+    display:inline-block;font-family:var(--sans);font-size:.95rem;letter-spacing:.04em;
+    color:var(--paper);background:var(--ink);padding:1.1rem 2.8rem;
+    text-decoration:none;border-radius:2px;transition:background .4s, transform .3s;
+  }
+  .btn:hover{background:var(--red);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);margin-left:1rem}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
 
-/* ── 우리 이야기 ── */
-.fnd-sec{background:var(--bg);}
-.fnd-pull{
-  font-family:var(--serif);font-size:1rem;
-  color:var(--dark);line-height:1.9;
-  border-left:3px solid var(--gold);
-  padding:1.5rem 2rem;
-  background:var(--bg2);
-  margin-bottom:3rem;font-style:italic;
-}
-.fnd-stats{
-  display:flex;gap:3rem;flex-wrap:wrap;
-  margin-bottom:3rem;padding-bottom:3rem;
-  border-bottom:1px solid var(--line);
-}
-.stat-n{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--dark);line-height:1;margin-bottom:0.3rem;}
-.stat-d{font-size:0.78rem;color:var(--dim);}
-.fnd-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;}
-.fnd-card{
-  background:white;padding:2.5rem;
-  box-shadow:0 2px 8px rgba(0,0,0,0.05);
-  border-top:2px solid var(--blue);
-}
-.fnd-name{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--dark);margin-bottom:0.25rem;}
-.fnd-role{
-  font-size:0.72rem;color:var(--blue);
-  letter-spacing:0.1em;text-transform:uppercase;
-  font-weight:700;margin-bottom:1.2rem;
-  padding-bottom:1.2rem;border-bottom:1px solid var(--line);
-}
-.fnd-cred{font-size:0.82rem;color:var(--gray);padding:0.3rem 0;border-bottom:1px solid var(--line);}
-.fnd-cred:last-of-type{border-bottom:none;}
-.fnd-story{font-size:0.88rem;line-height:1.9;color:var(--gray);font-weight:300;margin-top:1.2rem;}
-.fnd-story em{font-style:italic;color:var(--dark);font-weight:500;}
-
-/* 저항 */
-.resist-row{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:0;margin-bottom:3rem;
-  border:1px solid var(--line);
-}
-.resist-item{
-  padding:1.8rem 1.5rem;
-  border-right:1px solid var(--line);
-  position:relative;
-}
-.resist-item:last-child{border-right:none;}
-.resist-item::before{
-  content:'';
-  position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--red);
-}
-.resist-num{font-size:0.62rem;letter-spacing:0.25em;color:var(--red);font-weight:700;margin-bottom:0.6rem;}
-.resist-title{font-size:0.88rem;font-weight:600;color:var(--dark);margin-bottom:0.4rem;line-height:1.4;}
-.resist-desc{font-size:0.8rem;color:var(--gray);line-height:1.6;}
-.fnd-quote{
-  text-align:center;padding:2.5rem;
-  background:var(--blue);
-}
-.fnd-quote p{
-  font-family:var(--serif);font-size:1rem;
-  font-style:italic;color:white;
-  line-height:1.9;font-weight:300;
-}
-
-/* ── CONTACT ── */
-.contact-sec{background:var(--bg);text-align:center;}
-.contact-sub{font-size:0.95rem;color:var(--gray);margin-bottom:3rem;font-weight:300;line-height:1.7;}
-.contact-form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:0.8rem;}
-.contact-form input,.contact-form select,.contact-form textarea{
-  padding:0.9rem 1.2rem;border:1.5px solid var(--line);
-  background:white;color:var(--dark);
-  font-size:0.88rem;font-family:var(--sans);
-  outline:none;border-radius:2px;transition:border .2s;
-}
-.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--blue);}
-.contact-form textarea{min-height:90px;resize:vertical;}
-.btn-submit{
-  background:var(--blue);color:white;padding:1rem;
-  border:none;cursor:pointer;
-  font-size:0.88rem;font-weight:700;
-  letter-spacing:0.08em;font-family:var(--sans);
-  border-radius:2px;transition:background .2s;
-}
-.btn-submit:hover{background:var(--navy);}
-.ci-wrap{
-  display:flex;gap:2.5rem;justify-content:center;
-  flex-wrap:wrap;margin-top:3rem;padding-top:3rem;
-  border-top:1px solid var(--line);
-}
-.ci-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim);margin-bottom:0.3rem;font-weight:600;}
-.ci-val{font-size:0.9rem;color:var(--gray);}
-
-/* ── FOOTER ── */
-footer{
-  background:var(--dark);color:rgba(255,255,255,0.3);
-  padding:2rem 3rem;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;
-}
-.ft-name{font-family:var(--serif);font-size:0.88rem;color:rgba(255,255,255,0.4);font-weight:600;}
-footer p{font-size:0.75rem;}
-
-/* ── POPUP ── */
-#success-popup{display:none;}
-#success-popup.active{display:flex !important;}
-
-@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
-@media(max-width:768px){
-  nav{padding:0.8rem 1.2rem;}
-  .nav-links{display:none;}
-  .hero{padding:4rem 1.5rem 2rem;}
-  .sec{padding:4rem 1.5rem;}
-  .era-grid{grid-template-columns:1fr;}
-  .era-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);}
-  .era-close{grid-template-columns:1fr;}
-  .era-close-item{padding:0.8rem 0;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);}
-  .steps-grid{grid-template-columns:1fr;}
-  .step-card{border-right:none;border-bottom:1px solid var(--line);}
-  .ipnb-grid{grid-template-columns:1fr;}
-  .ipnb-item{border-right:none;border-bottom:1px solid var(--line);}
-  .why-grid{grid-template-columns:1fr 1fr;}
-  .why-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);}
-  .fnd-grid{grid-template-columns:1fr;}
-  .resist-row{grid-template-columns:1fr 1fr;}
-  .resist-item{border-right:none;border-bottom:1px solid var(--line);}
-  .howto-item{flex-direction:column!important;gap:1rem!important;}
-  .howto-inner{padding-left:0!important;border-left:none!important;border-top:1px solid var(--line);padding-top:1rem!important;}
-  #way .sec-inner > div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
-  #way .sec-inner > div[style*="grid-template-columns:repeat(3,1fr)"] > div{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.08);padding:1.5rem 0;}
-}
+  /* ── 푸터 ── */
+  footer{background:var(--ink);color:rgba(242,241,236,.6);padding:8vh 0 6vh;font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+  footer .fbrand{font-family:var(--serif);font-size:1.3rem;color:var(--paper);margin-bottom:.6rem}
+  footer .tag{color:rgba(242,241,236,.5)}
+  footer a{color:rgba(242,241,236,.7);text-decoration:none;transition:color .3s}
+  footer a:hover{color:var(--red)}
+  footer .fcol{display:flex;flex-direction:column;gap:.5rem}
+  .copyright{margin-top:4rem;font-size:.76rem;color:rgba(242,241,236,.35);letter-spacing:.04em}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
-    <div class="logo-mark">
-      <div class="lm-sq"></div>
-      <div class="lm-ci"></div>
-      <div style="position:relative;width:15px;height:15px;flex-shrink:0;">
-        <span style="position:absolute;top:0;left:0;right:0;height:2.5px;background:#2E7D32;display:block;"></span>
-        <span style="position:absolute;bottom:0;left:0;right:0;height:2.5px;background:#2E7D32;display:block;"></span>
-        <span style="position:absolute;top:0;bottom:0;left:0;width:2.5px;background:#2E7D32;display:block;"></span>
-      </div>
-      <svg width="15" height="15" viewBox="0 0 32 32" fill="none" style="flex-shrink:0;">
-        <circle cx="16" cy="16" r="13" stroke="#C0392B" stroke-width="4" stroke-dasharray="4.54 4.54" stroke-linecap="butt" fill="none"/>
-      </svg>
-    </div>
-    <span class="logo-text">마음다움</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#steps">3Steps™</a></li>
-    <li><a href="#visiting">출강</a></li>
-    <li><a href="#founders">우리는</a></li>
-    <li><a href="#contact">문의</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">문의하기</a>
+  <div class="logo">
+    <span class="logo-mark"><svg viewBox="0 0 1000 320" width="72" height="23" style="vertical-align:middle;margin-right:10px" xmlns="http://www.w3.org/2000/svg" aria-label="마음다움 심볼">
+      <defs><mask id="navcut"><rect x="0" y="0" width="1000" height="320" fill="white"/>
+        <path d="M582,130 L610,130 L604,150 L618,168 L602,186 L612,205 L582,205 Z" fill="black"/>
+        <path d="M600,175 Q660,168 705,175" fill="none" stroke="black" stroke-width="16" stroke-linecap="round"/>
+        <path d="M700,160 L735,155 L742,175 L728,196 L702,190 L710,175 Z" fill="black"/>
+      </mask></defs>
+      <rect class="mark-dark" x="120" y="110" width="130" height="130" fill="#F2EDE4"/>
+      <circle class="mark-dark" cx="363" cy="175" r="70" fill="#F2EDE4"/>
+      <g mask="url(#navcut)">
+        <rect x="476" y="110" width="130" height="130" fill="#B03A2E"/>
+        <circle cx="719" cy="175" r="70" fill="#B03A2E"/>
+      </g>
+    </svg></span><span class="logo-text">마음다움</span></div>
+  <div class="links">
+    <a href="#why">왜 예술인가</a>
+    <a href="#steps">3Steps</a>
+    <a href="#founders">우리는</a>
+    <a href="#place">공간</a>
+    <a href="#contact">문의</a>
+  </div>
 </nav>
 
-<!-- ①  HERO -->
-<section class="hero" style="position:relative;overflow:hidden;">
-  <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
-  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;">
-  <p class="hero-eyebrow">마음다움 ｜ 예술치유 · 심리상담 · 사회정서교육</p>
-  <h1 class="hero-title">마음다운 마음은<br><span class="gold">관계</span>로부터</h1>
-  <p class="hero-sub">닫힌 마음, 예술로 다시 흐르게 합니다</p>
-  <p class="hero-declare">마음, 다시 움직이다 — 마음다움</p>
-  <div class="hero-cta">
-    <a href="#steps" class="btn-blue">마음다움 3Steps™</a>
-  </div>
-  </div>
-</section>
-
-<script>
-(function(){
-  var canvas = document.getElementById('hero-canvas');
-  if(!canvas) return;
-  var ctx = canvas.getContext('2d');
-
-  /* 브랜드 컬러 순서 */
-  var palette = [
-    [43,79,160],   /* 파랑 */
-    [245,200,0],   /* 노랑 */
-    [46,125,50],   /* 초록 */
-    [192,57,43]    /* 빨강 */
-  ];
-
-  var balls = [];
-  var BASE_R;
-
-  function resize(){
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-    BASE_R = canvas.width < 600 ? 70 : 115;
-  }
-
-  function initBalls(){
-    balls = palette.map(function(rgb, i){
-      return {
-        x:  Math.random()*(canvas.width  - BASE_R*2) + BASE_R,
-        y:  Math.random()*(canvas.height - BASE_R*2) + BASE_R,
-        vx: (Math.random()*0.35+0.12) * (Math.random()<0.5?1:-1),
-        vy: (Math.random()*0.35+0.12) * (Math.random()<0.5?1:-1),
-        /* 각 공은 서로 다른 위상에서 시작 */
-        phase: (i / palette.length) * Math.PI * 2,
-        /* 색상 순환용 진행값 (각 공마다 다른 시작점) */
-        colorT: i / palette.length
-      };
-    });
-  }
-
-  /* 두 색 사이 선형 보간 */
-  function lerpColor(a, b, t){
-    return [
-      Math.round(a[0] + (b[0]-a[0])*t),
-      Math.round(a[1] + (b[1]-a[1])*t),
-      Math.round(a[2] + (b[2]-a[2])*t)
-    ];
-  }
-
-  function getColor(t){
-    /* t: 0~1 순환 → palette 4색 순환 */
-    var n = palette.length;
-    var scaled = ((t % 1) + 1) % 1 * n;
-    var idx = Math.floor(scaled);
-    var frac = scaled - idx;
-    var from = palette[idx % n];
-    var to   = palette[(idx+1) % n];
-    var rgb  = lerpColor(from, to, frac);
-    return 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+',0.11)';
-  }
-
-  var then = null;
-  var COLOR_SPEED = 0.00008;  /* 색상 순환 속도 */
-  var PULSE_SPEED = 0.0008;   /* 크기 맥박 속도 */
-  var PULSE_AMP   = 0.28;     /* 크기 변화 폭 (±28%) */
-
-  function draw(now){
-    if(!then) then = now;
-    var dt = now - then;
-    then = now;
-
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    balls.forEach(function(b){
-      /* 이동 */
-      b.x += b.vx;
-      b.y += b.vy;
-      if(b.x - BASE_R < 0)            { b.x = BASE_R;              b.vx =  Math.abs(b.vx); }
-      if(b.x + BASE_R > canvas.width)  { b.x = canvas.width-BASE_R; b.vx = -Math.abs(b.vx); }
-      if(b.y - BASE_R < 0)             { b.y = BASE_R;              b.vy =  Math.abs(b.vy); }
-      if(b.y + BASE_R > canvas.height) { b.y = canvas.height-BASE_R;b.vy = -Math.abs(b.vy); }
-
-      /* 맥박 (sin 곡선으로 커졌다 작아짐) */
-      b.phase += PULSE_SPEED * dt;
-      var r = BASE_R * (1 + PULSE_AMP * Math.sin(b.phase));
-
-      /* 색상 순환 */
-      b.colorT += COLOR_SPEED * dt;
-      if(b.colorT > 1) b.colorT -= 1;
-
-      ctx.beginPath();
-      ctx.arc(b.x, b.y, r, 0, Math.PI*2);
-      ctx.fillStyle = getColor(b.colorT);
-      ctx.fill();
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', function(){ resize(); });
-  resize();
-  initBalls();
-  requestAnimationFrame(draw);
-})();
-</script>
-
-<!-- 전문가 신뢰 바 -->
-<div style="background:var(--blue);padding:1rem 3rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;">
-  <div style="display:flex;align-items:center;gap:0.7rem;">
-    <span style="font-size:1.4rem;font-family:var(--serif);font-weight:700;color:white;">23년</span>
-    <span style="font-size:0.82rem;color:rgba(255,255,255,0.65);">도합 임상·교육 현장 경력</span>
-  </div>
-  <div style="width:1px;height:24px;background:rgba(255,255,255,0.2);"></div>
-  <div style="display:flex;align-items:center;gap:0.7rem;">
-    <span style="font-size:1.4rem;font-family:var(--serif);font-weight:700;color:white;">50+</span>
-    <span style="font-size:0.82rem;color:rgba(255,255,255,0.65);">출강 학교·기관·기업</span>
-  </div>
-  <div style="width:1px;height:24px;background:rgba(255,255,255,0.2);"></div>
-  <div style="display:flex;align-items:center;gap:0.7rem;">
-    <span style="font-size:1.4rem;font-family:var(--serif);font-weight:700;color:white;">전국</span>
-    <span style="font-size:0.82rem;color:rgba(255,255,255,0.65);">공동대표 직접 운영</span>
-  </div>
-</div>
-
-<!-- ② 시대진단 -->
-<section class="sec era-sec" id="era">
-  <div class="sec-inner">
-    <p class="era-label">마음다움이 보는 지금</p>
-    <h2 class="era-title">대한민국의 정신건강이<br><strong>무너지고 있습니다</strong></h2>
-
-    <!-- 신념 선언 -->
-    <div style="margin-bottom:3rem;padding:2rem 2.5rem;border-left:3px solid var(--gold);background:rgba(255,255,255,0.04);">
-      <p style="font-family:var(--serif);font-size:1rem;color:rgba(255,255,255,0.85);line-height:2;font-style:italic;">
-        마음다움은 20년 임상 현장에서 확신하게 된 철학으로 만들어졌습니다.<br>
-        수많은 정답 없는 마음들을 만나며 — <strong style="color:var(--yellow);font-style:normal;">우리가 믿는 것</strong>이 분명해졌습니다.
-      </p>
-    </div>
-
-    <div class="era-grid">
-      <div class="era-item">
-        <p class="era-num">문제</p>
-        <p class="era-keyword">아프고 나서야.<br>개인에게만.<br>말로만.</p>
-        <p class="era-body">정신의학과 심리상담은 사후 처리입니다. 개인의 마음에만 천착하고, 생물학적 경감에 쏠려있습니다. 이 방식으로는 부족합니다.</p>
-      </div>
-      <div class="era-item">
-        <p class="era-num">시대</p>
-        <p class="era-keyword">AI 시대,<br>시간이 없습니다.<br>규모도 다릅니다.</p>
-        <p class="era-body">AI가 대부분의 문제를 풀어줍니다. 그러나 사람과 사람이 만나는 경험, 신념을 가진 전문가와의 만남 — 이것은 AI가 대체할 수 없습니다.</p>
-      </div>
-      <div class="era-item">
-        <p class="era-num">신념</p>
-        <p class="era-keyword">예방을.<br>함께.<br>예술로.</p>
-        <p class="era-body">아프기 전에. 혼자가 아니라 같이. 말이 닿지 못하는 곳까지. 이것이 마음다움이 20년 현장 끝에 도달한 확신입니다.</p>
-      </div>
-    </div>
-
-    <div class="era-close">
-      <div class="era-close-item">
-        <p class="era-close-from">개인 치료</p>
-        <p class="era-close-to">→ 사회 예방으로</p>
-      </div>
-      <div class="era-close-item">
-        <p class="era-close-from">전문가 독점</p>
-        <p class="era-close-to">→ 모두의 운동으로</p>
-      </div>
-      <div class="era-close-item">
-        <p class="era-close-from">이성과 기술 중심</p>
-        <p class="era-close-to">→ 감성과 예술 중심으로</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ③ 이런 분들 오세요 -->
-<section class="sec foryou-sec" id="for-you">
-  <div class="sec-inner">
-    <p class="sec-label">이런 분들 오세요</p>
-    <h2 class="sec-title">혹시 이런 마음,<br><strong>드신 적 있으신가요</strong></h2>
-
-    <!-- 도입 문구 -->
-    <div style="margin-bottom:3rem;padding:2rem 2.5rem;border-left:3px solid var(--gold);background:white;box-shadow:0 1px 6px rgba(0,0,0,0.05);">
-      <p style="font-family:var(--serif);font-size:1.05rem;color:var(--dark);line-height:1.8;margin-bottom:0.8rem;font-weight:600;">마음다움이 조금 낯설게 느껴진다면,<br>제대로 찾아오신 것이 맞습니다.</p>
-      <p style="font-size:0.9rem;color:var(--gray);line-height:1.85;font-weight:300;">정답을 찾는 데 익숙해진 우리에게 '정답이 없다'는 말은 불안할 수 있습니다. 그런데 그 비어있는 공간이 — 비로소 나만의 답을 채울 자리가 됩니다.</p>
-    </div>
-    <div class="fy-grid">
-      <div class="fy-card">
-        <p class="fy-num">01</p>
-        <p class="fy-q">"상담도 받아봤는데 여전히 안 풀리는 느낌이에요."</p>
-        <p class="fy-a">말로는 다 했는데 집에 오면 또 똑같아요. 분석과 해석 말고 다른 방법이 필요한 거예요.</p>
-      </div>
-      <div class="fy-card">
-        <p class="fy-num">02</p>
-        <p class="fy-q">"그림 못 그리는데 예술치유 받을 수 있나요?"</p>
-        <p class="fy-a">잘 그릴 필요 없어요. 지금 내가 느끼는 걸 꺼내는 거예요. 작품 만들기가 아닙니다.</p>
-      </div>
-      <div class="fy-card">
-        <p class="fy-num">03</p>
-        <p class="fy-q">"요즘 나 자신이 낯설게 느껴져요."</p>
-        <p class="fy-a">좋아하던 것들이 예전만큼 즐겁지 않고, 텅 빈 느낌. 고장난 게 아니에요. 닫혀있는 거예요.</p>
-      </div>
-      <div class="fy-card">
-        <p class="fy-num">04</p>
-        <p class="fy-q">"말하기 싫은데 뭔가 하고 싶어요."</p>
-        <p class="fy-a">또 말로 설명해야 한다는 게 부담스럽죠. 마음다움은 말 대신 감각으로 먼저 갑니다.</p>
-      </div>
-      <div class="fy-card">
-        <p class="fy-num">05</p>
-        <p class="fy-q">"열심히 사는데 왜 이렇게 공허하죠."</p>
-        <p class="fy-a">의미가 사라진 느낌. 이건 게으름이 아닙니다. 삶의 흐름이 닫혀있는 겁니다.</p>
-      </div>
-      <div class="fy-card">
-        <p class="fy-num">06</p>
-        <p class="fy-q">"학교·기관에 심리정서 프로그램이 필요해요."</p>
-        <p class="fy-a">기존 집단상담과 다른 접근이 필요하다면 — 마음다움이 맞춤 설계해서 찾아갑니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ④ 3Steps™ -->
-<section class="sec steps-sec" id="steps">
-  <div class="steps-header">
-    <p class="sec-label">핵심 프로그램</p>
-    <h2 class="sec-title"><strong>마음다움 <span style="color:var(--gold);">3</span>Steps™</strong></h2>
-    <p class="steps-tm">MAUMDAUM INTEGRATED PROCESS</p>
-    <p class="steps-desc">도합 20년 임상 및 교육 현장 경험 끝에 완성한 독자적 통합 프로세스.<br>자기·우리·세상이 통합될 때 비로소 마음이 마음으로 기능합니다.</p>
-  </div>
-
-  <!-- SVG 도식 -->
-  <div style="max-width:680px;margin:0 auto 3rem;padding:0 0.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;">
-    <div style="min-width:320px;">
-    <svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-      <defs>
-        <filter id="sh2"><feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="rgba(0,0,0,0.07)"/></filter>
-        <marker id="a1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2B4FA0"/></marker>
-        <marker id="a2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2E7D32"/></marker>
-        <marker id="a3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#C0392B"/></marker>
-      </defs>
-      <!-- 허브 -->
-      <circle cx="350" cy="250" r="92" fill="white" filter="url(#sh2)" stroke="#E8E4DC" stroke-width="1.5"/>
-      <circle cx="350" cy="250" r="75" fill="none" stroke="#C8960C" stroke-width="1.3" stroke-dasharray="5 3.5"/>
-      <text x="350" y="233" text-anchor="middle" font-family="'Noto Serif KR',serif" font-size="22" fill="#1a1a1a" font-weight="700">마음다움</text>
-      <text x="350" y="256" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="9.5" fill="#aaa" letter-spacing="1">마음다운 마음</text>
-      <line x1="298" y1="266" x2="402" y2="266" stroke="#E8E4DC" stroke-width="1"/>
-      <text x="350" y="282" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="9" fill="#C8960C" letter-spacing="2" font-weight="700">관계로부터</text>
-      <!-- 자기다움 -->
-      <line x1="350" y1="108" x2="350" y2="160" stroke="#2B4FA0" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a1)"/>
-      <rect x="230" y="18" width="240" height="108" rx="4" fill="white" filter="url(#sh2)" stroke="#E8E4DC" stroke-width="1"/>
-      <rect x="230" y="18" width="240" height="4" rx="2" fill="#2B4FA0"/>
-      <text x="248" y="42" font-family="'Noto Sans KR',sans-serif" font-size="8" fill="#aaa" letter-spacing="3" font-weight="700">STEP 01</text>
-      <text x="248" y="67" font-family="'Noto Serif KR',serif" font-size="20" fill="#1a1a1a" font-weight="700"><tspan fill="#2B4FA0">자기</tspan>다움</text>
-      <text x="248" y="83" font-family="'Noto Sans KR',sans-serif" font-size="9" fill="#999">나와의 관계 · 수직 통합</text>
-      <text x="248" y="99" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#ccc" font-style="italic">"내 감정인데 왜 내가 모를까"</text>
-      <text x="248" y="115" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#ccc" font-style="italic">"구성원 정서역량을 키우고 싶다"</text>
-      <!-- 우리다움 -->
-      <line x1="496" y1="370" x2="438" y2="308" stroke="#2E7D32" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a2)"/>
-      <rect x="496" y="348" width="188" height="108" rx="4" fill="white" filter="url(#sh2)" stroke="#E8E4DC" stroke-width="1"/>
-      <rect x="496" y="348" width="188" height="4" rx="2" fill="#2E7D32"/>
-      <text x="512" y="370" font-family="'Noto Sans KR',sans-serif" font-size="8" fill="#aaa" letter-spacing="3" font-weight="700">STEP 02</text>
-      <text x="512" y="394" font-family="'Noto Serif KR',serif" font-size="20" fill="#1a1a1a" font-weight="700"><tspan fill="#2E7D32">우리</tspan>다움</text>
-      <text x="512" y="410" font-family="'Noto Sans KR',sans-serif" font-size="9" fill="#999">너와의 관계 · 대인 통합</text>
-      <text x="512" y="426" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#ccc" font-style="italic">"연결되고 싶은데 자꾸 닫힌다"</text>
-      <text x="512" y="442" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#ccc" font-style="italic">"팀·학급 관계문화를 바꾸고 싶다"</text>
-      <!-- 세상다움 -->
-      <line x1="204" y1="370" x2="262" y2="308" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a3)"/>
-      <rect x="16" y="348" width="188" height="108" rx="4" fill="white" filter="url(#sh2)" stroke="#E8E4DC" stroke-width="1"/>
-      <rect x="16" y="348" width="188" height="4" rx="2" fill="#C0392B"/>
-      <text x="32" y="370" font-family="'Noto Sans KR',sans-serif" font-size="8" fill="#aaa" letter-spacing="3" font-weight="700">STEP 03</text>
-      <text x="32" y="394" font-family="'Noto Serif KR',serif" font-size="20" fill="#1a1a1a" font-weight="700"><tspan fill="#C0392B">세상</tspan>다움</text>
-      <text x="32" y="410" font-family="'Noto Sans KR',sans-serif" font-size="9" fill="#999">세상과의 관계 · 정체성 통합</text>
-      <text x="32" y="426" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#ccc" font-style="italic">"나는 왜 사는지 모르겠다"</text>
-      <text x="32" y="442" font-family="'Noto Sans KR',sans-serif" font-size="8.5" fill="#ccc" font-style="italic">"진로·가치교육이 필요하다"</text>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-dawn"></div>
+  <div class="hero-inner">
+    <svg class="hero-logo" viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" aria-label="마음다움">
+      <defs><mask id="herocut"><rect x="0" y="0" width="1000" height="320" fill="white"/>
+        <path d="M582,128 L611,128 L603,150 L620,169 L601,188 L613,208 L582,208 Z" fill="black"/>
+        <path d="M598,175 Q662,166 706,176" fill="none" stroke="black" stroke-width="17" stroke-linecap="round"/>
+        <path d="M699,158 L737,153 L744,176 L729,199 L701,192 L711,175 Z" fill="black"/>
+        <circle cx="742" cy="162" r="3" fill="black"/><circle cx="748" cy="188" r="2.4" fill="black"/>
+      </mask></defs>
+      <rect x="120" y="110" width="130" height="130" fill="#F2EDE4"/>
+      <circle cx="363" cy="175" r="70" fill="#F2EDE4"/>
+      <g mask="url(#herocut)">
+        <rect x="476" y="110" width="130" height="130" fill="#B03A2E"/>
+        <circle cx="719" cy="175" r="70" fill="#B03A2E"/>
+      </g>
     </svg>
-    </div>
+    <h1>마음, <span class="sprout"><span class="accent">다</span>시 <span class="accent">움</span>트다</span></h1>
+    <p class="sub">마음은 분석하는 것이 아니라, 짓는 것입니다</p>
   </div>
+  <div class="scroll-cue">천천히 내려오세요</div>
+</header>
 
-  <!-- 3단 카드 -->
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-accent" style="background:var(--blue);"></div>
-      <p class="step-num">Step 01</p>
-      <h3 class="step-name"><span style="color:var(--blue);">자기</span>다움</h3>
-      <p class="step-sub" style="color:var(--blue);">Self-Awareness & Management</p>
-      <p style="font-family:var(--serif);font-size:0.95rem;color:var(--dark);font-weight:600;margin-bottom:1.2rem;line-height:1.5;">"내 마음을 정확히 알고<br>돌보는 힘"</p>
-      <p class="step-q">"내 감정인데 왜 내가 모를까"</p>
-      <p class="step-q">"반복되는 패턴에서 벗어나고 싶다"</p>
-      <p class="step-q">"구성원의 정서적 회복력을 키워주고 싶다"</p>
-      <p class="step-q">"감정교육·번아웃 예방 프로그램이 필요하다"</p>
-      <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line);">
-        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">사회정서역량</p>
-        <p class="step-meta" style="margin-top:0;color:var(--blue);">자기감정 인식·관리 · 정신건강 인식·관리</p>
-      </div>
-      <p class="step-meta" style="margin-top:0.8rem;">개인 1:1 · 집단 · 학교·기관 출강 · 대면·비대면</p>
-    </div>
-
-    <div class="step-card">
-      <div class="step-accent" style="background:var(--green);"></div>
-      <p class="step-num">Step 02</p>
-      <h3 class="step-name"><span style="color:var(--green);">우리</span>다움</h3>
-      <p class="step-sub" style="color:var(--green);">Relationship Skills</p>
-      <p style="font-family:var(--serif);font-size:0.95rem;color:var(--dark);font-weight:600;margin-bottom:1.2rem;line-height:1.5;">"너와 내가 연결되어<br>함께 성장하는 힘"</p>
-      <p class="step-q">"연결되고 싶은데 자꾸 닫힌다"</p>
-      <p class="step-q">"말하면 꼭 싸움이 된다"</p>
-      <p class="step-q">"팀·학급의 관계문화를 바꾸고 싶다"</p>
-      <p class="step-q">"소통·공감 역량 강화 프로그램이 필요하다"</p>
-      <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line);">
-        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">사회정서역량</p>
-        <p class="step-meta" style="margin-top:0;color:var(--green);">관계 인식·관리</p>
-      </div>
-      <p class="step-meta" style="margin-top:0.8rem;">개인 1:1 · 부부·커플·가족·팀 · 대면·비대면</p>
-    </div>
-
-    <div class="step-card">
-      <div class="step-accent" style="background:var(--red);"></div>
-      <p class="step-num">Step 03</p>
-      <h3 class="step-name"><span style="color:var(--red);">세상</span>다움</h3>
-      <p class="step-sub" style="color:var(--red);">Social Responsibility & Values</p>
-      <p style="font-family:var(--serif);font-size:0.95rem;color:var(--dark);font-weight:600;margin-bottom:1.2rem;line-height:1.5;">"공동체의 가치를 품고<br>세상으로 나아가는 힘"</p>
-      <p class="step-q">"나는 왜 사는지, 무엇을 위해 일하는지 모르겠다"</p>
-      <p class="step-q">"AI 시대 나만의 방향을 찾고 싶다"</p>
-      <p class="step-q">"진로·가치 교육 프로그램이 필요하다"</p>
-      <p class="step-q">"학생들에게 삶의 방향과 의미를 가르치고 싶다"</p>
-      <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line);">
-        <p style="font-size:0.68rem;letter-spacing:0.15em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.5rem;">사회정서역량</p>
-        <p class="step-meta" style="margin-top:0;color:var(--red);">공동체 가치 인식·관리</p>
-      </div>
-      <p class="step-meta" style="margin-top:0.8rem;">개인 1:1 · 진로·직장인·시니어 · 대면·비대면</p>
-    </div>
-  </div>
-</section>
-
-<!-- ⑤ 철학적 기반 IPNB -->
-<section class="sec ipnb-sec" id="philosophy">
-  <div class="sec-inner">
-    <p class="sec-label">철학적 기반</p>
-    <h2 class="sec-title">대인관계 신경생물학<br><strong>(IPNB, Interpersonal Neurobiology)</strong></h2>
-    <p class="ipnb-body">Daniel Siegel의 대인관계 신경생물학은 말합니다 — 마음은 뇌 혼자 만드는 것이 아닙니다. 관계 속에서 에너지와 정보가 흐를 때 비로소 마음이 통합됩니다. 건강한 마음은 경직과 카오스 사이를 자유롭게 흐르는 상태입니다.</p>
-    <div class="ipnb-grid">
-      <div class="ipnb-item">
-        <div class="ipnb-bar" style="background:var(--blue);"></div>
-        <p class="ipnb-step">Step 1 · 자기다움</p>
-        <p class="ipnb-name">수직 통합</p>
-        <p class="ipnb-desc">몸·감정·생각이 연결되는 것. 나를 나로서 온전히 인식하는 것.</p>
-      </div>
-      <div class="ipnb-item">
-        <div class="ipnb-bar" style="background:var(--green);"></div>
-        <p class="ipnb-step" style="color:var(--green);">Step 2 · 우리다움</p>
-        <p class="ipnb-name">대인 통합</p>
-        <p class="ipnb-desc">분화된 나와 타인이 연결되는 것. 공명과 공감의 신경생물학.</p>
-      </div>
-      <div class="ipnb-item">
-        <div class="ipnb-bar" style="background:var(--red);"></div>
-        <p class="ipnb-step" style="color:var(--red);">Step 3 · 세상다움</p>
-        <p class="ipnb-name">정체성·시간 통합</p>
-        <p class="ipnb-desc">과거·현재·미래가 하나의 서사로. 세상 속 나의 자리를 찾는 것.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ⑥ 왜 예술인가 -->
-<section class="sec why-sec" id="why">
-  <div class="sec-inner">
-    <p class="why-eyebrow">왜 예술인가</p>
-    <h2 class="why-title">마음은 <em>기술</em>로 풀리지 않아요.<br>마음은 <strong>예술</strong>로 만져야 합니다.</h2>
-    <p class="why-lead">감정은 말보다 먼저 옵니다. 분석하고 설명해도 안 풀리는 이유가 있어요. 마음은 언어 이전에 이미지로 존재하기 때문입니다. 예술은 그 이미지에 직접 닿는 언어입니다.</p>
-
-    <div class="why-grid">
-      <div class="why-item">
-        <p class="why-source">James Hillman</p>
-        <p class="why-name">마음은 이미지로<br>이루어져 있다</p>
-        <p class="why-body">감정은 말 이전에 이미지로 존재합니다. 예술이 그 이미지에 직접 닿습니다.</p>
-      </div>
-      <div class="why-item">
-        <p class="why-source">Antonio Damasio</p>
-        <p class="why-name">감각이<br>생각보다 먼저다</p>
-        <p class="why-body">뇌는 몸의 감각을 이미지로 먼저 처리합니다. 말로는 닿지 못하는 곳이 있어요.</p>
-      </div>
-      <div class="why-item">
-        <p class="why-source">Gerald Hüther</p>
-        <p class="why-name">새로운 이미지가<br>새로운 회로를 만든다</p>
-        <p class="why-body">반복 패턴은 굳어진 신경 회로입니다. 예술이 그 회로를 새롭게 엽니다.</p>
-      </div>
-      <div class="why-item">
-        <p class="why-source">Ellen Dissanayake</p>
-        <p class="why-name">만드는 것은<br>살아있음의 증거다</p>
-        <p class="why-body">재능이 있어서가 아닙니다. 4만 년 전부터 인간은 살아있기 때문에 만들었습니다.</p>
-      </div>
-    </div>
-
-    <div class="why-declare">
-      <p>마음다움은 <strong>AI(Artificial Intelligence, 인공적 지능)</strong> 시대,<br>
-      <strong>AI(Artistic Imagination, 예술적 상상)</strong>를 제안합니다.<br>
-      <span style="font-size:0.88rem;color:rgba(255,255,255,0.35);font-style:normal;">이는 곧 인간 존엄과 본질을 지키는 일입니다.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ④-1 마음다움의 방식 -->
-<section class="sec" id="way" style="background:var(--dark);">
-  <div class="sec-inner">
-    <p style="font-size:0.7rem;letter-spacing:0.28em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;">
-      <span style="display:inline-block;width:20px;height:2px;background:var(--gold);flex-shrink:0;"></span>
-      The Maumdaum Way
+<!-- 페르소나 직격 -->
+<section class="persona">
+  <div class="narrow reveal">
+    <p class="line">
+      병원에서 약을 받고,<br>상담에서 오래 이야기해 봤지만—<br><br>
+      약은 아픔을 <em>누를</em> 뿐,<br>말은 마음을 <em>설명할</em> 뿐이었다면.
     </p>
-    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;color:white;line-height:1.5;margin-bottom:1rem;">마음다움은<br><strong style="color:var(--yellow);">기술(Skill)</strong><strong style="color:white;font-weight:400;">이 아닌</strong><br><strong style="color:var(--red);">관점(Mindset)</strong><strong style="color:white;font-weight:400;">을</strong> 배우는 곳입니다.</h2>
-    <p style="font-size:0.95rem;color:rgba(255,255,255,0.45);line-height:1.9;font-weight:300;margin-bottom:3rem;max-width:580px;">기술은 잊혀지지만, 사고방식은 삶이 됩니다.<br>스스로 정답을 찾아가는 이 낯선 과정이 — 당신을 가장 '자기답게' 만듭니다.</p>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.08);">
-
-      <div style="padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,0.08);">
-        <p style="font-size:0.68rem;letter-spacing:0.2em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:1rem;">No Answer</p>
-        <p style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:white;margin-bottom:1rem;line-height:1.4;">정답이<br>없습니다</p>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.8;">완성된 그림보다 중요한 것은 그 과정에서 만난 당신의 목소리입니다. 우리는 '맞는 답'을 가르치지 않고, 당신이 '자신만의 답'을 찾아낼 때까지 곁을 지킵니다.</p>
-      </div>
-
-      <div style="padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,0.08);">
-        <p style="font-size:0.68rem;letter-spacing:0.2em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:1rem;">Self-Leading</p>
-        <p style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:white;margin-bottom:1rem;line-height:1.4;">스스로<br>길을 찾습니다</p>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.8;">방법을 일일이 알려주는 친절함 대신, 스스로 시도하고 머뭇거려볼 수 있는 시간을 선물합니다. 진짜 배움은 스스로 손을 움직일 때 시작되기 때문입니다.</p>
-      </div>
-
-      <div style="padding:2.5rem 2rem;">
-        <p style="font-size:0.68rem;letter-spacing:0.2em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:1rem;">Process First</p>
-        <p style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:white;margin-bottom:1rem;line-height:1.4;">결과보다<br>과정이 중요합니다</p>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.8;">멋진 작품을 만드는 기술(Skill)을 연마하는 곳이 아닙니다. 과정을 통해 마음의 근육을 단련하는 사고방식(Mindset)을 익히는 곳입니다.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ④-2 마음다움을 만나는 방법 -->
-<section class="sec" id="howto" style="background:var(--bg2);">
-  <div class="sec-inner">
-    <p class="sec-label">마음다움을 만나는 방법</p>
-    <h2 class="sec-title">마음다움을 만나는<br><strong>3가지 방법</strong></h2>
-    <p style="font-size:0.95rem;color:var(--gray);line-height:1.85;font-weight:300;margin-bottom:3rem;">자기다움·우리다움·세상다움을 세 가지 방식으로 만날 수 있습니다.</p>
-
-    <!-- 탭 버튼 -->
-    <div style="display:flex;gap:0;margin-bottom:0;border:1px solid var(--line);border-bottom:none;width:100%;max-width:400px;">
-      <button id="tab-go" onclick="switchTab('go')"
-        style="flex:1;padding:0.75rem 0.5rem;font-size:0.82rem;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;background:var(--blue);color:white;letter-spacing:0.03em;transition:all .2s;white-space:nowrap;">
-        찾아갑니다
-      </button>
-      <button id="tab-come" onclick="switchTab('come')"
-        style="flex:1;padding:0.75rem 0.5rem;font-size:0.82rem;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;background:white;color:var(--dim);letter-spacing:0.03em;border-left:1px solid var(--line);transition:all .2s;white-space:nowrap;">
-        찾아오세요
-      </button>
-      <button id="tab-online" onclick="switchTab('online')"
-        style="flex:1;padding:0.75rem 0.5rem;font-size:0.82rem;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;background:white;color:var(--dim);letter-spacing:0.03em;border-left:1px solid var(--line);transition:all .2s;white-space:nowrap;">
-        온라인
-      </button>
-    </div>
-
-    <!-- 찾아갑니다 패널 -->
-    <div id="panel-go" style="border:1px solid var(--line);background:white;">
-      <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--line);background:var(--bg2);">
-        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">학교·기관·기업의 목적과 대상에 맞게 마음다움 3Steps™를 설계하여 찾아갑니다.<br>자기다움·우리다움·세상다움 모듈을 자유롭게 조합하고, 차시도 맞춤 구성합니다.</p>
-        <div style="margin-top:1rem;padding:0.9rem 1.2rem;background:white;border-left:3px solid var(--blue);">
-          <p style="font-size:0.82rem;color:var(--dark);line-height:1.75;font-weight:500;">마음다움의 <strong>사회정서교육(SEL)</strong> 프로그램은 교육부·시도교육청이 지향하는 핵심 역량을 기반으로 설계되었습니다.</p>
-          <p style="font-size:0.8rem;color:var(--gray);line-height:1.7;margin-top:0.4rem;">자기다움(자기감정 인식·관리) · 우리다움(관계 인식·관리) · 세상다움(공동체 가치 인식·관리) — 세 가지 층위의 사회정서역량을 체득합니다.</p>
-        </div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--blue);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">자기다움 모듈</p>
-          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--blue);">감정</span>교육</p>
-          <p style="font-size:0.78rem;color:var(--dim);">2~4차시</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정 교육, 자기 이해, 번아웃 예방. 구성원이 자기 자신과 처음으로 만나는 시간.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">학교 감정교육 · 직장인 심리지원 · 복지기관</p>
-        </div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--green);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">우리다움 모듈</p>
-          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--green);">관계</span>교육</p>
-          <p style="font-size:0.78rem;color:var(--dim);">2~4차시</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">소통·관계·공감 교육. 말 없이 연결되는 경험이 팀과 학급의 분위기를 바꿉니다.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">학교 관계교육 · 팀빌딩 · 가족센터</p>
-        </div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--red);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">세상다움 모듈</p>
-          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--red);">진로</span>·인성교육</p>
-          <p style="font-size:0.78rem;color:var(--dim);">2~4차시</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">진로·의미·정체성 탐색. AI 시대 나만의 방향을 이미지로 처음 상상하는 시간.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">진로교육 · 청소년·대학 · 직장인 · 시니어</p>
-        </div>
-      </div>
-      <div style="padding:1.5rem 2rem;background:var(--bg2);border-top:1px solid var(--line);">
-        <p style="font-size:0.8rem;color:var(--dim);line-height:1.8;">
-          <strong style="color:var(--dark);font-weight:600;">모듈 조합 예시</strong><br>
-          자기+우리 (4~8차시) · 자기+세상 (4~8차시) · 3Steps 풀코스 (8~12차시)<br>
-          전국 출강 가능 · 대상·목적·회기 맞춤 설계
-        </p>
-      </div>
-      <!-- 레퍼런스 -->
-      <div style="padding:1.5rem 2rem;border-top:1px solid var(--line);">
-        <p style="font-size:0.7rem;letter-spacing:0.2em;color:var(--navy);font-weight:700;text-transform:uppercase;margin-bottom:1rem;">함께한 학교·기관·기업</p>
-        <p class="ref-cat">초등학교</p>
-        <div class="ref-list"><span class="ref-tag">경일초</span><span class="ref-tag">동호초</span><span class="ref-tag">응봉초</span><span class="ref-tag">마장초</span><span class="ref-tag">사근초</span><span class="ref-tag">옥정초</span><span class="ref-tag">숭신초</span><span class="ref-tag">신현초</span><span class="ref-tag">갈현초</span><span class="ref-tag">포곡초</span><span class="ref-tag">서울개웅초</span></div>
-        <p class="ref-cat">중·고등학교</p>
-        <div class="ref-list"><span class="ref-tag">동마중</span><span class="ref-tag">성수중</span><span class="ref-tag">옥정중</span><span class="ref-tag">한대부중</span><span class="ref-tag">마장중</span><span class="ref-tag">성수고</span><span class="ref-tag">경일고</span><span class="ref-tag">태릉고</span><span class="ref-tag">한대부고</span><span class="ref-tag">연수여고</span><span class="ref-tag">금곡고</span><span class="ref-tag">경기자동차과학고</span><span class="ref-tag">의정부광동고</span><span class="ref-tag">송양중</span><span class="ref-tag">율전중</span><span class="ref-tag">시흥장현중</span><span class="ref-tag">서울공항고</span><span class="ref-tag">대안여중</span><span class="ref-tag">포천일고</span></div>
-        <p class="ref-cat">대학교</p>
-        <div class="ref-list"><span class="ref-tag">한양대학교 ERICA</span><span class="ref-tag">한양대학교 (서울)</span><span class="ref-tag">명지대학교</span><span class="ref-tag">삼육대학교</span><span class="ref-tag">성신여자대학교</span><span class="ref-tag">한양 미술+디자인교육센터</span></div>
-        <p class="ref-cat">국공립기관</p>
-        <div class="ref-list"><span class="ref-tag">교육부</span><span class="ref-tag">공수처</span><span class="ref-tag">서울시</span><span class="ref-tag">세종특별자치시교육청</span><span class="ref-tag">한국청년기업가정신재단</span><span class="ref-tag">한국과학창의재단</span><span class="ref-tag">동대문 진로직업체험지원센터</span><span class="ref-tag">판교스타트업캠퍼스</span><span class="ref-tag">성동경찰서</span><span class="ref-tag">남북하나재단 마음소리공감 상담센터</span></div>
-        <p class="ref-cat">의료기관</p>
-        <div class="ref-list"><span class="ref-tag">한양대 의료원</span><span class="ref-tag">다나병원</span><span class="ref-tag">서울 역삼 메티스신경정신과</span><span class="ref-tag">해랑소아청소년연구소</span></div>
-        <p class="ref-cat">복지기관</p>
-        <div class="ref-list"><span class="ref-tag">서울청년센터 강동·창동오랑</span><span class="ref-tag">용인시기흥장애인복지관</span><span class="ref-tag">동대문장애인복지관</span><span class="ref-tag">서울노인복지센터</span><span class="ref-tag">서대문노인종합복지관</span><span class="ref-tag">서초구 가족센터</span><span class="ref-tag">양천구 가족센터</span><span class="ref-tag">하남시 가족센터</span><span class="ref-tag">성동구청소년상담복지센터</span><span class="ref-tag">은평구청소년문화의집</span><span class="ref-tag">신나는에프터센터</span><span class="ref-tag">중림사회복지관</span><span class="ref-tag">삼전복지관</span><span class="ref-tag">프레네스쿨 성장학교 별</span></div>
-        <p class="ref-cat">기업 · 기타</p>
-        <div class="ref-list"><span class="ref-tag">글로벌 K-POP 엔터테인먼트 (기밀)</span><span class="ref-tag">세광교회</span><span class="ref-tag">창업가 특강</span><span class="ref-tag">진로 특강</span></div>
-      </div>
-    </div>
-
-    <!-- 찾아오세요 패널 -->
-    <div id="panel-come" style="display:none;border:1px solid var(--line);background:white;">
-      <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--line);background:var(--bg2);">
-        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">개인·부부·커플·소그룹이 마음다움 스튜디오로 직접 오십니다.<br>자기다움·우리다움·세상다움 중 지금 필요한 것에서 시작합니다.</p>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--blue);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 01</p>
-          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--blue);">자기</span>다움</p>
-          <p style="font-size:0.78rem;color:var(--dim);">나와의 관계</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정이 왜 이러는지 모르겠을 때. 나를 잃어버린 느낌일 때. 반복되는 패턴에서 벗어나고 싶을 때.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 소그룹 · ±150분 · 서울 은평</p>
-        </div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--green);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 02</p>
-          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--green);">우리</span>다움</p>
-          <p style="font-size:0.78rem;color:var(--dim);">너와의 관계</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">말하면 싸움이 될 때. 연결되고 싶은데 자꾸 닫힐 때. 관계가 반복적으로 힘들 때.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 부부·커플·가족 소그룹 · ±150분 · 서울 은평</p>
-        </div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--red);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 03</p>
-          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--red);">세상</span>다움</p>
-          <p style="font-size:0.78rem;color:var(--dim);">세상과의 관계</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">왜 사는지, 무엇을 위해 일하는지 모를 때. AI 시대 나만의 방향이 필요할 때.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 소그룹 · ±150분 · 서울 은평</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 온라인 패널 -->
-    <div id="panel-online" style="display:none;border:1px solid var(--line);background:white;">
-      <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--line);background:var(--bg2);">
-        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7;">장소에 관계없이 ZOOM으로 만납니다. 지방·해외 거주자도 가능합니다.<br>자기다움·우리다움·세상다움 모두 온라인 세션으로 진행됩니다.</p>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--blue);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 01</p>
-          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--blue);">자기</span>다움</p>
-          <p style="font-size:0.78rem;color:var(--dim);">나와의 관계</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">감정이 왜 이러는지 모르겠을 때. 나를 잃어버린 느낌일 때. 반복되는 패턴에서 벗어나고 싶을 때.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · ±150분 · ZOOM</p>
-        </div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid var(--line);">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--green);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 02</p>
-          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--green);">우리</span>다움</p>
-          <p style="font-size:0.78rem;color:var(--dim);">너와의 관계</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">말하면 싸움이 될 때. 멀리 있어도 함께 마음을 열고 싶을 때. 부부·커플 온라인 세션 가능.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · 부부·커플 · ±150분 · ZOOM</p>
-        </div>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:0;">
-        <div style="width:180px;flex-shrink:0;padding:1.8rem 1.5rem;border-right:1px solid var(--line);border-left:3px solid var(--red);">
-          <p style="font-size:0.62rem;letter-spacing:0.2em;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:0.4rem;">Step 03</p>
-          <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><span style="color:var(--red);">세상</span>다움</p>
-          <p style="font-size:0.78rem;color:var(--dim);">세상과의 관계</p>
-        </div>
-        <div style="flex:1;padding:1.8rem 2rem;">
-          <p style="font-size:0.9rem;color:var(--gray);line-height:1.8;margin-bottom:0.6rem;">왜 사는지 모를 때. 진로·의미 탐색이 필요할 때. 장소 제약 없이 시작할 수 있습니다.</p>
-          <p style="font-size:0.8rem;color:var(--dim);">1:1 개인 세션 · ±150분 · ZOOM</p>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="#contact" style="display:inline-block;background:var(--blue);color:white;padding:0.9rem 2.5rem;font-size:0.9rem;font-weight:600;text-decoration:none;letter-spacing:0.05em;border-radius:2px;">어떤 방식이 맞는지 문의하기</a>
-      <a href="maumdaum_brochure.pdf" download style="display:inline-block;border:1.5px solid var(--blue);color:var(--blue);padding:0.9rem 2.5rem;font-size:0.9rem;font-weight:600;text-decoration:none;letter-spacing:0.05em;border-radius:2px;background:white;">📄 소개서 다운로드 (PDF)</a>
-    </div>
-  </div>
-</section>
-
-<script>
-function switchTab(tab) {
-  var panels = ['go','come','online'];
-  var btns = ['tab-go','tab-come','tab-online'];
-  panels.forEach(function(p) {
-    document.getElementById('panel-'+p).style.display = (p===tab)?'block':'none';
-  });
-  btns.forEach(function(b) {
-    var btn = document.getElementById(b);
-    var isActive = b === 'tab-'+tab;
-    btn.style.background = isActive ? 'var(--blue)' : 'white';
-    btn.style.color = isActive ? 'white' : 'var(--dim)';
-  });
-}
-</script>
-<!-- ⑨ Work Memory -->
-<section class="sec wm-sec" id="workmemory">
-  <div class="sec-inner">
-    <p class="wm-label">Work Memory</p>
-    <h2 class="wm-title">워크숍이 끝나면<br><strong style="color:var(--gold);">10×10 캔버스에 남습니다</strong></h2>
-    <p class="wm-body">살아있었다는 증거. 그날의 감각, 그날의 감정, 그날의 나 — 말이 아닌 이미지로 남는 기억.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
-      <div style="border-radius:3px;overflow:hidden;border-top:3px solid var(--red);">
-        <img src="wm_01_경고.png" alt="Work Memory #01 경고" style="width:100%;display:block;">
-      </div>
-      <div style="border-radius:3px;overflow:hidden;border-top:3px solid var(--yellow);">
-        <img src="wm_02_임신.png" alt="Work Memory #02 임신" style="width:100%;display:block;">
-      </div>
-      <div style="border-radius:3px;overflow:hidden;border-top:3px solid var(--green);">
-        <img src="wm_03_녹이다.png" alt="Work Memory #03 녹이다" style="width:100%;display:block;">
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:2rem;font-size:0.8rem;color:rgba(255,255,255,0.25);letter-spacing:0.12em;">@maumdaum_work_memory · 계속 쌓이고 있습니다</p>
-  </div>
-</section>
-
-<!-- ⑧ 소감 -->
-<section class="sec testi-sec">
-  <div class="sec-inner">
-    <p class="sec-label">기관 소감</p>
-    <h2 class="sec-title">직접 경험한<br><strong>기관의 말입니다</strong></h2>
-    <div class="testi-grid">
-      <div class="testi-card"><p class="testi-quote">"신선하다. 기존 집단 상담과 확실히 달랐다."</p><p class="testi-source">갈현초등학교, 담당 선생님</p></div>
-      <div class="testi-card"><p class="testi-quote">"평가적이지 않아서 학생들이 부담 없이 참여했다."</p><p class="testi-source">성수중학교, 담당 선생님</p></div>
-      <div class="testi-card"><p class="testi-quote">"집단 상담에서 보기 힘든 자발적 참여가 일어났다."</p><p class="testi-source">한양대학교 ERICA, 담당 교수</p></div>
-      <div class="testi-card"><p class="testi-quote">"학생들이 너무 재밌어했다. 다음에도 꼭 오셨으면 한다."</p><p class="testi-source">서울시, 담당자</p></div>
-      <div class="testi-card"><p class="testi-quote">"참여자들이 스스로 열리는 과정이 인상적이었다."</p><p class="testi-source">양천구 가족센터, 담당자</p></div>
-      <div class="testi-card"><p class="testi-quote">"언어로 접근하기 어려운 부분을 예술로 풀어내는 방식이 인상 깊었다."</p><p class="testi-source">한양대학교 의료원, 담당자</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ⑦ 다음 워크숍 -->
-<section class="sec" id="workshop" style="background:var(--dark);">
-  <div class="sec-inner">
-    <p style="font-size:0.7rem;letter-spacing:0.28em;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;">
-      <span style="display:inline-block;width:20px;height:2px;background:var(--gold);flex-shrink:0;"></span>
-      다음 워크숍
+    <p class="turn">
+      어쩌면 마음은,<br>
+      설명하거나 눌러야 하는 것이 아니라<br>
+      다시 지어야 하는 것은 아닐까요.
     </p>
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
+  </div>
+</section>
+
+<!-- 시대 진단 -->
+<section class="era">
+  <div class="wrap reveal">
+    <p class="eyebrow">The Age of Clicking</p>
+    <h2>무언가 궁금하면 딸깍, 답이 나옵니다.<br>슬픔에도 이름표가 붙고,<br><b>마음마저 분석의 대상이 됩니다.</b></h2>
+    <p class="body">
+      우리는 점점 더 많은 것을 머리 바깥에 맡기고, 정작 내 마음이 지금 어떤지는 가장 나중에, 가장 서툴게 알아차립니다. 우리는 이 시대를 탓하지 않습니다. 다만, 다르게 살아 보기로 했습니다.
+    </p>
+  </div>
+</section>
+
+<!-- 논리: 세 언어 -->
+<section class="chain" id="why">
+  <div class="wrap reveal">
+    <p class="eyebrow">Three Languages</p>
+    <h2 class="serif" style="font-weight:400;font-size:clamp(1.8rem,4.6vw,2.8rem);line-height:1.5;max-width:760px">
+      마음은 <span style="color:var(--red)">기술</span>로 풀리지 않습니다.<br>마음은 <span style="color:var(--red)">예술</span>로 만져야 합니다.
+    </h2>
+    <div class="chain-grid">
+      <div class="cell">
+        <div class="verb">누르다</div>
+        <div class="who">정신의학 · 증상의 언어</div>
+        <p>증상에 이름을 붙여 눌러 줍니다. 필요하고, 때로 도움이 됩니다. 그러나 마음을 다시 세워 주진 않습니다.</p>
+      </div>
+      <div class="cell">
+        <div class="verb">설명하다</div>
+        <div class="who">상담 · 기능의 언어</div>
+        <p>원인을 찾아 말로 풀어냅니다. 그러나 말이 되지 않는 그 마음은, 설명 뒤에도 여전히 남아 있습니다.</p>
+      </div>
+      <div class="cell mind" style="grid-column:1 / -1;border-right:none">
+        <div class="verb">짓다</div>
+        <div class="who">마음다움 · 존재의 언어</div>
+        <p>시와 이미지는 설명하지 않고 닿습니다. 논리로 풀리지 않는 것을 은유와 상(像)으로 만집니다. 말이 닿지 못하는 층에, 예술만이 닿습니다. 그리고 우리는 그곳에서 마음을 다시 짓습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 편집 은유 -->
+<section class="edit">
+  <div class="narrow reveal">
+    <p class="eyebrow" style="text-align:center">Editing the Film of You</p>
+    <h2>찍힌 필름은 지울 수 없지만,<br><span>다시 편집할 수는 있습니다.</span></h2>
+    <p class="note">
+      마음은 이미지의 흐름입니다. 굳어 버린 하나의 상을 조심스레 해체하고, 점을 찍고 선을 긋고 색을 얹어 전혀 다른 이미지를 자아낼 때—마음은 실제로 다시 움직이기 시작합니다. 우리가 하는 일은, 당신의 손으로 매일 <b>나라는 영화를 다시 편집</b>하는 것입니다.
+    </p>
+  </div>
+</section>
+
+<!-- 학자 근거 -->
+<section class="scholars">
+  <div class="wrap reveal">
+    <p class="eyebrow">The Ground We Stand On</p>
+    <h2>이것은 감상이 아닙니다.<br>인간이 <em>이미지로 지어진 존재</em>라는,<br>오래된 앎에 뿌리를 둡니다.</h2>
+    <div class="sch-grid">
+      <div class="sch">
+        <div class="name">Antonio Damasio</div>
+        <p class="claim serif">마음은 이미지의 흐름이다</p>
+        <p>느끼고 생각하는 모든 것은 마음 안에 떠오르는 상들의 움직임입니다. 감각은 생각보다 먼저 옵니다.</p>
+      </div>
+      <div class="sch">
+        <div class="name">James Hillman</div>
+        <p class="claim serif">영혼의 언어는 이미지다</p>
+        <p>마음은 개념이 아니라 이미지로 이루어져 있습니다. 예술이 그 이미지에 직접 닿습니다.</p>
+      </div>
+      <div class="sch">
+        <div class="name">Gerald Hüther</div>
+        <p class="claim serif">새 이미지가 새 회로를 연다</p>
+        <p>반복되는 패턴은 굳어진 신경 회로입니다. 예술이 그 회로를 새롭게 엽니다.</p>
+      </div>
+      <div class="sch">
+        <div class="name">Ellen Dissanayake</div>
+        <p class="claim serif">만듦은 살아있음의 증거다</p>
+        <p>재능이 있어서가 아닙니다. 4만 년 전부터, 인간은 살아있기 때문에 만들었습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3Steps -->
+<section class="steps" id="steps">
+  <div class="wrap reveal">
+    <p class="eyebrow">Maumdaum Integrated Process</p>
+    <h2>마음다움 <span style="color:var(--red)">3</span>Steps™</h2>
+    <p class="lead">자기·우리·세상이 통합될 때, 비로소 마음이 마음으로 기능합니다. 개인 세션과 집단·기관 세션 모두 세 단계에서 만날 수 있습니다.</p>
+
+    <div class="step s1">
+      <div class="idx">STEP 01</div>
       <div>
-        <h2 style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;color:white;line-height:1.3;margin-bottom:0.8rem;">
-          Workshop No.16<br><strong style="color:var(--yellow);">우울을 바라, '봄'</strong>
-        </h2>
-        <p style="font-size:0.95rem;color:rgba(255,255,255,0.5);line-height:1.8;font-weight:300;margin-bottom:1.5rem;">우울을 없애려 하지 않습니다.<br>우울을 바라보는 것 — 그것이 봄(春)이 되는 과정입니다.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
-          <div style="background:rgba(255,255,255,0.06);padding:0.8rem 1.2rem;border-left:2px solid var(--yellow);">
-            <p style="font-size:0.62rem;color:var(--gold);letter-spacing:0.15em;font-weight:700;margin-bottom:0.3rem;">DATE</p>
-            <p style="font-size:0.92rem;color:white;font-weight:600;">2026년 4월 18일 (토)</p>
-          </div>
-          <div style="background:rgba(255,255,255,0.06);padding:0.8rem 1.2rem;border-left:2px solid var(--yellow);">
-            <p style="font-size:0.62rem;color:var(--gold);letter-spacing:0.15em;font-weight:700;margin-bottom:0.3rem;">인원</p>
-            <p style="font-size:0.92rem;color:white;font-weight:600;">최대 8인 소그룹</p>
-          </div>
-          <div style="background:rgba(255,255,255,0.06);padding:0.8rem 1.2rem;border-left:2px solid var(--yellow);">
-            <p style="font-size:0.62rem;color:var(--gold);letter-spacing:0.15em;font-weight:700;margin-bottom:0.3rem;">장소</p>
-            <p style="font-size:0.92rem;color:white;font-weight:600;">서울 은평</p>
-          </div>
+        <div class="ko serif">자기다움</div>
+        <div class="en">Self · 나와의 관계</div>
+        <span class="rel">수직 통합</span>
+        <ul class="qs">
+          <li>내 감정인데, 왜 내가 모를까</li>
+          <li>반복되는 패턴에서 벗어나고 싶다</li>
+          <li>구성원의 정서적 회복력을 키우고 싶다</li>
+        </ul>
+      </div>
+    </div>
+    <div class="step s2">
+      <div class="idx">STEP 02</div>
+      <div>
+        <div class="ko serif">우리다움</div>
+        <div class="en">Relationship · 너와의 관계</div>
+        <span class="rel">대인 통합</span>
+        <ul class="qs">
+          <li>연결되고 싶은데 자꾸 닫힌다</li>
+          <li>말하면 꼭 싸움이 된다</li>
+          <li>팀·학급의 관계 문화를 바꾸고 싶다</li>
+        </ul>
+      </div>
+    </div>
+    <div class="step s3">
+      <div class="idx">STEP 03</div>
+      <div>
+        <div class="ko serif">세상다움</div>
+        <div class="en">Society · 세상과의 관계</div>
+        <span class="rel">정체성 통합</span>
+        <ul class="qs">
+          <li>나는 왜 사는지, 무엇을 위해 일하는지 모르겠다</li>
+          <li>AI 시대, 나만의 방향을 찾고 싶다</li>
+          <li>진로·가치 교육이 필요하다</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 저항 -->
+<section class="resist">
+  <div class="wrap reveal">
+    <p class="eyebrow">What We Resist</p>
+    <h2>마음다움이 <span style="color:var(--red)">저항</span>하는 것</h2>
+    <div class="r-list">
+      <div class="r-item">
+        <div class="no">01</div>
+        <div class="what">마음을 진단명으로 가두는 것</div>
+        <div class="instead">진단 대신, 탐색합니다.</div>
+      </div>
+      <div class="r-item">
+        <div class="no">02</div>
+        <div class="what">마음을 최적화하려는 것</div>
+        <div class="instead">마음은 흐르는 것입니다.</div>
+      </div>
+      <div class="r-item">
+        <div class="no">03</div>
+        <div class="what">예술을 재능의 것으로 보는 것</div>
+        <div class="instead">살아있기 때문에 만듭니다.</div>
+      </div>
+      <div class="r-item">
+        <div class="no">04</div>
+        <div class="what">사람을 수치와 서열로 보는 것</div>
+        <div class="instead">그 자리에서, 우리는 저항합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 부부 -->
+<section class="founders" id="founders">
+  <div class="wrap reveal">
+    <p class="eyebrow">The Two of Us</p>
+    <p class="quote">
+      "마음이 얼어버린 사람들을 만납니다. 나쁜 게 아니에요. 타인이 나와 같은 무게를 가진 존재라는 걸 경험해본 적 없는 것뿐이에요. 우리는 <em>그 경험을 짓는 일</em>을 합니다."
+    </p>
+    <div class="f-grid">
+      <div class="f">
+        <div class="fname serif">조현우</div>
+        <div class="frole">공동대표 · 예술치유전문가</div>
+        <div class="meta">
+          한양대 상담심리대학원 석사 (예술치료교육 및 상담)<br>
+          9년차 예술치료사<br>
+          건축 · 미술사 · 미디어커뮤니케이션 · 브랜드컨설팅
         </div>
-        <a href="#contact" style="display:inline-block;background:var(--yellow);color:var(--dark);padding:0.85rem 2rem;font-size:0.9rem;font-weight:700;text-decoration:none;letter-spacing:0.05em;border-radius:2px;transition:opacity .2s;">참여 문의하기</a>
+        <p class="say">건축에서 시작해 미술사, 미디어를 거쳐 예술치료에 이르는 여정 — <em>이미지가 인간을 어떻게 구성하는가</em>라는 질문이 늘 있었어요. 진단명이 사람을 규정할 때 무언가 중요한 게 사라진다는 걸, 가장 가까운 자리에서 봐왔어요.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ⑩ 우리 이야기 -->
-<section class="sec fnd-sec" id="founders">
-  <div class="sec-inner">
-    <p class="sec-label">우리 이야기</p>
-    <h2 class="sec-title">예술치료사 부부가<br><strong>함께 만들고, 함께 운영합니다</strong></h2>
-    <div class="fnd-pull">
-      "마음이 얼어버린 아이들을 만납니다. 수업 시간에 스마트폰을 보고, 옆에 앉은 사람을 감각하지 못하는 아이들. 나쁜 게 아니에요. 타인이 자신과 같은 무게를 가진 존재라는 것을 경험해본 적 없는 거예요. 마음다움은 그 경험을 만드는 일을 합니다. <em style="color:var(--gold);">마음, 다시 움직이다.</em>"
-    </div>
-    <div class="fnd-stats">
-      <div><p class="stat-n">20년</p><p class="stat-d">도합 현장 경력 · 전 연령</p></div>
-      <div><p class="stat-n">전국</p><p class="stat-d">학교·병원·국공립기관·기업</p></div>
-    </div>
-
-    <!-- 저항 선언 -->
-    <p class="sec-label" style="margin-bottom:1rem;">마음다움이 저항하는 것</p>
-    <div class="resist-row">
-      <div class="resist-item">
-        <p class="resist-num">01</p>
-        <p class="resist-title">마음을 진단명으로 가두는 것</p>
-        <p class="resist-desc">진단 대신 탐색합니다.</p>
-      </div>
-      <div class="resist-item">
-        <p class="resist-num">02</p>
-        <p class="resist-title">마음을 최적화하려는 것</p>
-        <p class="resist-desc">마음은 흐르는 것입니다.</p>
-      </div>
-      <div class="resist-item">
-        <p class="resist-num">03</p>
-        <p class="resist-title">예술을 재능의 것으로 보는 것</p>
-        <p class="resist-desc">살아있기 때문에 만듭니다.</p>
-      </div>
-      <div class="resist-item">
-        <p class="resist-num">04</p>
-        <p class="resist-title">사람을 수치와 서열로 보는 것</p>
-        <p class="resist-desc">마음다움은 그 자리에서 저항합니다.</p>
-      </div>
-    </div>
-
-    <!-- 창업자 카드 -->
-    <div class="fnd-grid">
-      <div class="fnd-card">
-        <h3 class="fnd-name">조현우</h3>
-        <p class="fnd-role">공동대표 · 예술치유전문가</p>
-        <p class="fnd-cred">한양대학교 상담심리대학원 상담심리학 석사<br><span style="font-size:0.78rem;color:var(--dim);">(예술치료교육 및 상담 전공)</span></p>
-        <p class="fnd-cred">9년차 예술치료사<br><span style="font-size:0.78rem;color:var(--dim);">(통합예술심리상담사 외 유관 자격 보유)</span></p>
-        <p class="fnd-cred">건축 · 미술사 · 미디어커뮤니케이션 · 브랜드컨설팅 배경</p>
-        <p class="fnd-story">건축에서 시작해 미술사, 미디어를 거쳐 예술치료에 이르는 여정 — <em>이미지가 인간을 어떻게 구성하는가</em>라는 질문이 일관되게 있었어요. 진단명이 사람을 규정할 때 무언가 중요한 게 사라진다는 걸, 가장 가까운 자리에서 봐왔어요.</p>
-      </div>
-      <div class="fnd-card">
-        <h3 class="fnd-name">황서영</h3>
-        <p class="fnd-role">공동대표 · 예술치유전문가</p>
-        <p class="fnd-cred">한양대학교 상담심리대학원 상담심리학 석사<br><span style="font-size:0.78rem;color:var(--dim);">(예술치료교육 및 상담 전공)</span></p>
-        <p class="fnd-cred">14년차 예술치료사<br><span style="font-size:0.78rem;color:var(--dim);">(통합예술심리상담사 외 유관 자격 다수 보유)</span></p>
-        <p class="fnd-cred">디자인 · 패션 · 예술치료 배경</p>
-        <p class="fnd-story">디자인을 전공하고, 예술치료사 이전 패션을 업으로 삼았어요. <em>패션 현장이 이미지 심리학의 살아있는 교실</em>이었어요. 14년 동안 병원과 현장에서 수많은 마음들을 만나며 깨달은 것은 — 마음은 고치는 것이 아니라 흐르게 하는 것이라는 점이었습니다. 상담심리학 기반의 전문성에 예술의 상상력을 더해 당신의 곁을 지킵니다.</p>
-      </div>
-    </div>
-    <div class="fnd-quote">
-      <p>"마음은 관계 속에서 만들어집니다.<br>그리고 예술이 그 관계를 가장 먼저 움직입니다."</p>
-      <p style="margin-top:1.2rem;font-size:0.85rem;color:rgba(255,255,255,0.5);font-style:normal;font-weight:300;">기술은 잊혀지지만, 사고방식은 삶이 됩니다.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ⑪ 문의 -->
-<section class="sec contact-sec" id="contact">
-  <p class="sec-label" style="justify-content:center;">문의 및 예약</p>
-  <h2 class="sec-title" style="text-align:center;">마음다운 마음을 향한<br><strong>첫 걸음</strong></h2>
-  <p class="contact-sub">어떤 서비스인지, 나한테 맞는지 — 부담 없이 먼저 물어봐도 돼요.<br>문의 후 1~2일 내로 서영이 직접 연락드려요.</p>
-  <form class="contact-form" id="contact-form" action="https://formspree.io/f/xgonnzyd" method="POST">
-    <input type="text" name="이름" placeholder="이름">
-    <input type="tel" name="연락처" placeholder="연락처">
-    <input type="email" name="이메일" placeholder="이메일 (선택)">
-    <select name="관심 서비스">
-      <option value="">관심 서비스 선택</option>
-      <option>자기다움 — 개인 세션</option>
-      <option>자기다움 — 집단·기관 세션</option>
-      <option>우리다움 — 개인 세션</option>
-      <option>우리다움 — 집단·기관 세션</option>
-      <option>세상다움 — 개인 세션</option>
-      <option>세상다움 — 집단·기관 세션</option>
-      <option>기타 문의</option>
-    </select>
-    <textarea name="전하고 싶은 말" placeholder="전하고 싶은 말 (선택)"></textarea>
-    <button type="submit" class="btn-submit">문의 보내기</button>
-  </form>
-  <div class="ci-wrap">
-    <div><p class="ci-label">전화·문자</p><p class="ci-val">010-5588-8415</p></div>
-    <div><p class="ci-label">이메일</p><p class="ci-val">kreatism@naver.com</p></div>
-    <div><p class="ci-label">인스타그램</p><p class="ci-val">@maumdaum_official</p></div>
-    <div><p class="ci-label">네이버 블로그</p><p class="ci-val"><a href="http://blog.naver.com/maumdaum_official" target="_blank" style="color:var(--gray);text-decoration:none;">blog.naver.com/maumdaum_official</a></p></div>
-    <div><p class="ci-label">장소</p><p class="ci-val">서울 은평 · ZOOM</p></div>
-  </div>
-</section>
-
-<!-- 팝업 -->
-<div id="success-popup" style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;">
-  <div style="background:white;padding:2.5rem;max-width:420px;width:90%;text-align:center;border-top:3px solid var(--gold);">
-    <div style="display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-bottom:1.8rem;">
-      <div style="display:flex;align-items:center;gap:5px;">
-        <div style="width:13px;height:13px;background:var(--blue);flex-shrink:0;"></div>
-        <div style="width:13px;height:13px;background:var(--yellow);border-radius:50%;flex-shrink:0;"></div>
-        <div style="position:relative;width:13px;height:13px;flex-shrink:0;">
-          <span style="position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--green);display:block;"></span>
-          <span style="position:absolute;bottom:0;left:0;right:0;height:2.5px;background:var(--green);display:block;"></span>
-          <span style="position:absolute;top:0;bottom:0;left:0;width:2.5px;background:var(--green);display:block;"></span>
+      <div class="f">
+        <div class="fname serif">황서영</div>
+        <div class="frole">공동대표 · 예술치유전문가</div>
+        <div class="meta">
+          한양대 상담심리대학원 석사 (예술치료교육 및 상담)<br>
+          14년차 예술치료사<br>
+          디자인 · 패션 · 예술치료
         </div>
-        <svg width="13" height="13" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="13" stroke="#C0392B" stroke-width="4" stroke-dasharray="4.54 4.54" stroke-linecap="butt" fill="none"/>
-        </svg>
+        <p class="say">디자인을 전공하고, 예술치료 이전엔 패션을 업으로 삼았어요. <em>패션 현장이 이미지 심리학의 살아있는 교실</em>이었어요. 14년간 병원과 현장에서 수많은 마음을 만나며 깨달은 것은 — 마음은 고치는 게 아니라 흐르게 하는 것이라는 점이었습니다.</p>
       </div>
-      <span style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--dark);">마음다움</span>
     </div>
-    <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:1rem;">문의가 전달되었습니다</p>
-    <p style="font-size:0.88rem;color:var(--gray);line-height:1.9;margin-bottom:1.8rem;">마음이 가장 마음다워지는<br>한 걸음을 응원합니다.<br><br>1~2일 내로 서영이 직접 연락드릴게요.</p>
-    <button onclick="closePopup()" style="background:var(--blue);color:white;border:none;padding:0.7rem 2rem;font-size:0.88rem;cursor:pointer;font-family:var(--sans);border-radius:2px;">닫기</button>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
+<!-- 장소 -->
+<section class="place" id="place">
+  <div class="wrap reveal">
+    <p class="eyebrow">Where We Are</p>
+    <h2>복잡한 서울의 문법을 벗어나,<br>조금 더 <span>조용</span>하고, <span>트인 곳</span>으로.</h2>
+    <p class="desc">
+      과열된 중심에서 한 걸음 물러난 자리. 빠르게 데워진 마음을 잠시 식히고,<br><br>
+      천천히 다시 짓기 좋은 온도의 자리입니다.<br><br>
+      올가을, 파주 운정에 마음다움의 집이 열립니다.
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="narrow reveal">
+    <h2>마음, 다시 움트다</h2>
+    <p>어떤 방식이 맞는지, 부담 없이 먼저 물어봐도 괜찮아요.<br>문의 후 1~2일 내로 서영이 직접 연락드립니다.</p>
+    <a href="mailto:kreatism@naver.com" class="btn">문의 보내기</a>
+    <a href="https://maumdaum.com/maumdaum_brochure.pdf" class="btn ghost">소개서 (PDF)</a>
+  </div>
+</section>
+
 <footer>
-  <div style="display:flex;align-items:center;gap:0.8rem;">
-    <div style="display:flex;align-items:center;gap:5px;opacity:0.5;">
-      <div style="width:11px;height:11px;background:var(--blue);flex-shrink:0;"></div>
-      <div style="width:11px;height:11px;background:var(--yellow);border-radius:50%;flex-shrink:0;"></div>
-      <div style="position:relative;width:11px;height:11px;flex-shrink:0;">
-        <span style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);display:block;"></span>
-        <span style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--green);display:block;"></span>
-        <span style="position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--green);display:block;"></span>
-      </div>
-      <svg width="11" height="11" viewBox="0 0 32 32" fill="none" style="flex-shrink:0;">
-        <circle cx="16" cy="16" r="13" stroke="#C0392B" stroke-width="4" stroke-dasharray="4.54 4.54" stroke-linecap="butt" fill="none"/>
-      </svg>
+  <div class="wrap">
+    <div>
+      <div class="fbrand">마음다움</div>
+      <div class="tag">마음을, 마음답게</div>
+      <div class="copyright">© 2026 마음다움. All rights reserved.</div>
     </div>
-    <span class="ft-name">마음다움 maumdaum</span>
+    <div class="fcol">
+      <a href="https://instagram.com/maumdaum_official" target="_blank">Instagram</a>
+      <a href="http://blog.naver.com/maumdaum_official" target="_blank">네이버 블로그</a>
+      <a href="mailto:kreatism@naver.com">kreatism@naver.com</a>
+      <a href="tel:01055888415">010-5588-8415</a>
+    </div>
   </div>
-  <p>마음다운 마음은 관계로부터</p>
-  <p>© 2026 마음다움. All rights reserved.</p>
 </footer>
 
 <script>
-document.getElementById('contact-form').addEventListener('submit',function(e){
-  e.preventDefault();
-  var form=this;
-  fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-  .then(function(){form.reset();document.getElementById('success-popup').classList.add('active');})
-  .catch(function(){form.reset();document.getElementById('success-popup').classList.add('active');});
-});
-function closePopup(){document.getElementById('success-popup').classList.remove('active');}
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // nav 색상 전환: 히어로 벗어나면 밝은 배경 모드
+  const navEl=document.querySelector('nav');
+  const heroEl=document.querySelector('.hero');
+  const navObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ navEl.classList.toggle('scrolled', !e.isIntersecting); });
+  },{threshold:.1});
+  navObserver.observe(heroEl);
 </script>
-<!-- 플로팅 문의 버튼 (모바일 하단 고정) -->
-<style>
-.float-btn {
-  display:flex;align-items:center;gap:0.5rem;
-  padding:0.55rem 1rem;
-  font-size:0.75rem;font-weight:600;font-family:var(--sans);
-  text-decoration:none;letter-spacing:0.04em;
-  border-radius:2rem;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-  white-space:nowrap;
-  width:130px;
-  min-width:unset;
-  justify-content:flex-start;
-}
-</style>
-<div id="floating-cta" style="position:fixed;bottom:1.5rem;right:1.2rem;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
-  <a href="http://blog.naver.com/maumdaum_official" target="_blank" class="float-btn" style="background:white;color:var(--dark);border:1px solid var(--line);">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
-      <rect width="24" height="24" rx="4" fill="#03C75A"/>
-      <path d="M13.3 12.2L10.3 8H7v8h3.7v-4.2L13.7 16H17V8h-3.7v4.2z" fill="white"/>
-    </svg>
-    네이버 블로그
-  </a>
-  <a href="https://instagram.com/maumdaum_official" target="_blank" class="float-btn" style="background:white;color:var(--dark);border:1px solid var(--line);">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
-      <defs>
-        <linearGradient id="ig" x1="0" y1="24" x2="24" y2="0">
-          <stop offset="0%" stop-color="#f09433"/>
-          <stop offset="50%" stop-color="#dc2743"/>
-          <stop offset="100%" stop-color="#bc1888"/>
-        </linearGradient>
-      </defs>
-      <rect width="24" height="24" rx="6" fill="url(#ig)"/>
-      <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.8" fill="none"/>
-      <circle cx="17.5" cy="6.5" r="1" fill="white"/>
-    </svg>
-    인스타그램
-  </a>
-  <a href="#contact" class="float-btn" style="background:var(--blue);color:white;box-shadow:0 4px 16px rgba(43,79,160,0.35);">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
-      <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="white"/>
-    </svg>
-    서영에게 문의
-  </a>
-</div>
 
 </body>
 </html>
