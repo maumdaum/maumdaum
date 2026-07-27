@@ -124,6 +124,19 @@
     font-weight:300;line-height:2;
   }
 
+  /* ── 진단명 확장 ── */
+  .beyond{padding:16vh 0;background:var(--paper-deep);text-align:center}
+  .beyond .narrow{max-width:720px}
+  .beyond-line{
+    font-family:var(--serif);font-size:clamp(1.7rem,4.4vw,2.6rem);
+    line-height:1.6;color:var(--ink);
+  }
+  .beyond-line .only{color:var(--red);font-weight:700}
+  .beyond-note{
+    margin-top:2.8rem;font-size:1rem;color:var(--ink-soft);
+    font-weight:300;line-height:2;
+  }
+
   /* ── 시대 진단 (딸깍) ── */
   .era{padding:16vh 0;background:var(--ink);color:var(--paper)}
   .era .eyebrow{color:rgba(242,241,236,.5)}
@@ -164,11 +177,21 @@
   .edit h2 span{color:var(--red)}
   .edit .note{margin-top:2.6rem;font-size:1.02rem;color:var(--ink-soft);line-height:2}
 
+  /* ── 마인드 디렉터 ── */
+  .director{padding:18vh 0;background:var(--paper)}
+  .director h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4.6vw,2.8rem);line-height:1.5;max-width:800px;margin-bottom:2.4rem}
+  .director-body{max-width:680px;font-size:1.05rem;color:var(--ink-soft);line-height:2.1}
+  .director-body b{color:var(--ink);font-weight:500}
+
   /* ── 학자 근거 ── */
   .scholars{padding:16vh 0;background:var(--ink);color:var(--paper)}
   .scholars .eyebrow{color:rgba(242,241,236,.5)}
   .scholars h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.5;max-width:820px;margin-bottom:5rem}
   .scholars h2 em{font-style:italic;color:var(--red)}
+  .sutra{margin:5rem auto;max-width:600px;text-align:center;border:none}
+  .sutra-han{font-family:var(--serif);font-size:clamp(1.4rem,3.6vw,2rem);color:var(--red);letter-spacing:.08em;margin-bottom:1.4rem}
+  .sutra-ko{font-family:var(--serif);font-size:1.1rem;line-height:1.7;color:rgba(242,237,228,.9)}
+  .sutra-src{margin-top:1.2rem;font-size:.85rem;color:rgba(242,237,228,.5);letter-spacing:.05em}
   .sch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3.4rem 4rem}
   .sch .name{font-family:var(--serif);font-size:1.02rem;color:var(--red);margin-bottom:.9rem;letter-spacing:.02em}
   .sch .claim{font-family:var(--serif);font-size:1.28rem;line-height:1.5;margin-bottom:.9rem}
@@ -209,6 +232,18 @@
   @media(max-width:720px){.r-list{grid-template-columns:1fr}.r-item:nth-child(odd){border-right:none}}
 
   /* ── 부부 ── */
+  /* ── 미학적 균열 ── */
+  .crack{padding:18vh 0;background:var(--ink);color:var(--paper);text-align:center;position:relative;overflow:hidden}
+  .crack::after{content:'';position:absolute;top:0;bottom:0;left:50%;width:1px;
+    background:linear-gradient(180deg,transparent,rgba(176,58,46,.4) 45%,rgba(176,58,46,.4) 55%,transparent);
+    transform:translateX(-50%)}
+  .crack .narrow{position:relative;z-index:2;max-width:680px}
+  .crack .eyebrow{color:rgba(242,237,228,.5)}
+  .crack h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,4.4vw,2.6rem);line-height:1.5;margin-bottom:2.4rem}
+  .crack-body{font-size:1.05rem;color:rgba(242,237,228,.78);line-height:2.1;margin-bottom:2.8rem}
+  .crack-body b{color:var(--red);font-weight:500}
+  .crack-close{font-family:var(--serif);font-size:1.2rem;color:rgba(242,237,228,.92);line-height:1.7}
+
   .founders{padding:18vh 0;background:var(--paper)}
   .founders .quote{
     font-family:var(--serif);font-size:clamp(1.4rem,3.4vw,2rem);
@@ -319,6 +354,22 @@
   </div>
 </section>
 
+<!-- 진단명 확장 -->
+<section class="beyond">
+  <div class="narrow reveal">
+    <p class="eyebrow">You Are More</p>
+    <p class="beyond-line">
+      당신은 우울증<span class="only">'만'</span>이 아닙니다.<br>
+      당신은 ADHD<span class="only">'만'</span>이 아닙니다.
+    </p>
+    <p class="beyond-note">
+      당신은 어떤 이름표보다, 언제나 더 큰 존재입니다.<br>
+      진단이 필요할 때가 있습니다. 우리는 그것을 부정하지 않습니다.<br>
+      다만, 이름표 하나가 한 사람을 다 설명할 수는 없습니다.
+    </p>
+  </div>
+</section>
+
 <!-- 시대 진단 -->
 <section class="era">
   <div class="wrap reveal">
@@ -368,11 +419,27 @@
   </div>
 </section>
 
+<!-- 마인드 디렉터 -->
+<section class="director">
+  <div class="wrap reveal">
+    <p class="eyebrow">You, the Director</p>
+    <h2>우리는 당신을<br><span style="color:var(--red)">고쳐야 할 사람으로<br>규정하지 않습니다.</span></h2>
+    <p class="director-body">
+      당신은 자기 삶의 이미지 조각을 모아 평생 하나의 작품을 지어가는 <b>감독</b>입니다. 그리고 동시에, 그 영화 그 자체입니다. 우리는 건축을 대하듯 당신을 봅니다 — 당신만의 역사와 구조, 당신만의 결을. <b>한 사람 한 사람이, 그 자체로 하나의 건축입니다.</b>
+    </p>
+  </div>
+</section>
+
 <!-- 학자 근거 -->
 <section class="scholars">
   <div class="wrap reveal">
     <p class="eyebrow">The Ground We Stand On</p>
-    <h2>이것은 감상이 아닙니다.<br>인간이 <em>이미지로 지어진 존재</em>라는,<br>오래된 앎에 뿌리를 둡니다.</h2>
+    <h2>이것은 감상이 아닙니다.<br>인간이 <em>이미지로 지어진 존재</em>라는,<br>동서고금이 함께 가리키는 자리입니다.</h2>
+    <blockquote class="sutra">
+      <p class="sutra-han">心如工畫師 能畫諸世間</p>
+      <p class="sutra-ko">마음은 그림을 그리는 화가와 같아,<br>능히 모든 세상을 다 그려낸다.</p>
+      <p class="sutra-src">— 화엄경</p>
+    </blockquote>
     <div class="sch-grid">
       <div class="sch">
         <div class="name">Antonio Damasio</div>
@@ -477,12 +544,26 @@
   </div>
 </section>
 
+<!-- 미학적 균열 -->
+<section class="crack">
+  <div class="narrow reveal">
+    <p class="eyebrow">A Quiet Crack</p>
+    <h2>잘났다고 유난 떨지 않습니다.<br>다만 묵묵히, 조용히.</h2>
+    <p class="crack-body">
+      세상에 작은 <b>미학적 균열</b>을 냅니다.<br>전체로 보면 가느다란 실금이겠지만,<br><br>
+      그 실금으로부터 거대한 균열이 시작됩니다.<br><br>
+      한 사람의 작은, 마음다운 변화로부터.
+    </p>
+    <p class="crack-close">아름다움은 결국, 세상 만물의 <span style="color:var(--red)">'다움'</span>에서 옵니다.</p>
+  </div>
+</section>
+
 <!-- 부부 -->
 <section class="founders" id="founders">
   <div class="wrap reveal">
     <p class="eyebrow">The Two of Us</p>
     <p class="quote">
-      "마음이 얼어버린 사람들을 만납니다. 나쁜 게 아니에요. 타인이 나와 같은 무게를 가진 존재라는 걸 경험해본 적 없는 것뿐이에요. 우리는 <em>그 경험을 짓는 일</em>을 합니다."
+      "솔직히, 오래 답답했어요. 무언가 터뜨리고 싶은데 그게 뭔지 모른 채 관성에 쫓기던 시간. 지금 마음을 다루는 방식이, 그 속도가 정말 마음을 위한 길일까—묻고 또 물었죠. 이제 <em>마흔에 이르러, 비로소 목소리를 낼 때</em>가 되었다고 믿어요."
     </p>
     <div class="f-grid">
       <div class="f">
