@@ -176,6 +176,9 @@
   }
   .edit h2 span{color:var(--red)}
   .edit .note{margin-top:2.6rem;font-size:1.02rem;color:var(--ink-soft);line-height:2}
+  .edit .note b{color:var(--ink);font-weight:500}
+  .edit .note-turn{margin-top:1.8rem}
+  .edit .edit-han{font-family:var(--serif);color:var(--red);font-weight:700;letter-spacing:.08em;white-space:nowrap}
 
   /* ── 마인드 디렉터 ── */
   .director{padding:18vh 0;background:var(--paper)}
@@ -245,11 +248,14 @@
   .crack-close{font-family:var(--serif);font-size:1.2rem;color:rgba(242,237,228,.92);line-height:1.7}
 
   .founders{padding:18vh 0;background:var(--paper)}
+  .founders .f-head{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,4.4vw,2.6rem);line-height:1.5;margin-bottom:2.8rem;max-width:760px}
+  .founders .f-head span{color:var(--red)}
   .founders .quote{
-    font-family:var(--serif);font-size:clamp(1.4rem,3.4vw,2rem);
-    line-height:1.7;max-width:840px;margin-bottom:5rem;
+    font-family:var(--serif);font-size:clamp(1.2rem,2.8vw,1.6rem);
+    line-height:1.8;max-width:840px;margin-bottom:5rem;color:var(--ink-soft);
   }
   .founders .quote em{font-style:normal;color:var(--red)}
+  .f .fname .jin{font-family:var(--sans);font-size:.7rem;letter-spacing:.14em;color:var(--ink-soft);vertical-align:middle;margin-left:.5rem;font-weight:400}
   .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
   .f .fname{font-family:var(--serif);font-size:1.5rem;margin-bottom:.3rem}
   .f .frole{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1.6rem}
@@ -269,6 +275,9 @@
   .cta{padding:20vh 0;background:var(--paper);text-align:center}
   .cta h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);margin-bottom:1.6rem}
   .cta p{font-size:1.02rem;color:var(--ink-soft);margin-bottom:3.4rem;line-height:2}
+  .cta .cta-more{margin-top:3rem;margin-bottom:0;font-size:.9rem}
+  .cta .cta-more a{color:var(--ink-soft);text-decoration:none;letter-spacing:.02em;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .3s,border-color .3s}
+  .cta .cta-more a:hover{color:var(--red);border-color:var(--red)}
   .btn{
     display:inline-block;font-family:var(--sans);font-size:.95rem;letter-spacing:.04em;
     color:var(--paper);background:var(--ink);padding:1.1rem 2.8rem;
@@ -308,7 +317,7 @@
     <a href="#why">왜 예술인가</a>
     <a href="#steps">3Steps</a>
     <a href="#founders">우리는</a>
-    <a href="#place">공간</a>
+    <a href="philosophy.html" class="deep-link">더 깊이</a>
     <a href="#contact">문의</a>
   </div>
 </nav>
@@ -329,7 +338,7 @@
       </g>
     </svg>
     <h1>마음, <span class="sprout"><span class="accent">다</span>시 <span class="accent">움</span>트다</span></h1>
-    <p class="sub">마음은 분석하는 것이 아니라, 짓는 것입니다</p>
+    <p class="sub">마음을 마음답게, 이미지로 짓다</p>
   </div>
   <div class="scroll-cue">천천히 내려오세요</div>
 </header>
@@ -345,33 +354,6 @@
       어쩌면 마음은,<br>
       설명하거나 눌러야 하는 것이 아니라<br>
       다시 지어야 하는 것은 아닐까요.
-    </p>
-  </div>
-</section>
-
-<!-- 진단명 확장 -->
-<section class="beyond">
-  <div class="narrow reveal">
-    <p class="eyebrow">You Are More</p>
-    <p class="beyond-line">
-      당신은 우울증<span class="only">'만'</span>이 아닙니다.<br>
-      당신은 ADHD<span class="only">'만'</span>이 아닙니다.
-    </p>
-    <p class="beyond-note">
-      당신은 어떤 이름표보다, 언제나 더 큰 존재입니다.<br>
-      진단이 필요할 때가 있습니다. 우리는 그것을 부정하지 않습니다.<br>
-      다만, 이름표 하나가 한 사람을 다 설명할 수는 없습니다.
-    </p>
-  </div>
-</section>
-
-<!-- 시대 진단 -->
-<section class="era">
-  <div class="wrap reveal">
-    <p class="eyebrow">The Age of Clicking</p>
-    <h2>무언가 궁금하면 딸깍, 답이 나옵니다.<br>슬픔에도 이름표가 붙고,<br><b>마음마저 분석의 대상이 됩니다.</b></h2>
-    <p class="body">
-      우리는 점점 더 많은 것을 머리 바깥에 맡기고, 정작 내 마음이 지금 어떤지는 가장 나중에, 가장 서툴게 알아차립니다. 우리는 이 시대를 탓하지 않습니다. 다만, 다르게 살아 보기로 했습니다.
     </p>
   </div>
 </section>
@@ -406,57 +388,14 @@
 <!-- 편집 은유 -->
 <section class="edit">
   <div class="narrow reveal">
-    <p class="eyebrow" style="text-align:center">Editing the Film of You</p>
-    <h2>찍힌 필름은 지울 수 없지만,<br><span>다시 편집할 수는 있습니다.</span></h2>
+    <p class="eyebrow" style="text-align:center">Mind as Image</p>
+    <h2>마음은 원래,<br><span>이미지입니다.</span></h2>
     <p class="note">
-      마음은 이미지의 흐름입니다. 굳어 버린 하나의 상을 조심스레 해체하고, 점을 찍고 선을 긋고 색을 얹어 전혀 다른 이미지를 자아낼 때—마음은 실제로 다시 움직이기 시작합니다. 우리가 하는 일은, 당신의 손으로 매일 <b>나라는 영화를 다시 편집</b>하는 것입니다.
+      느끼고 생각하는 모든 것은, 마음 안에 떠오르는 상(像)들의 움직임입니다. 오래전 한 경전이 <span class="edit-han">心如工畫師</span> — “마음은 그림 그리는 화가와 같다”고 말한 자리를, 오늘의 뇌과학도 함께 가리킵니다.
     </p>
-  </div>
-</section>
-
-<!-- 마인드 디렉터 -->
-<section class="director">
-  <div class="wrap reveal">
-    <p class="eyebrow">You, the Director</p>
-    <h2>우리는 당신을<br><span style="color:var(--red)">고쳐야 할 사람으로<br>규정하지 않습니다.</span></h2>
-    <p class="director-body">
-      당신은 자기 삶의 이미지 조각을 모아 평생 하나의 작품을 지어가는 <b>감독</b>입니다. 그리고 동시에, 그 영화 그 자체입니다. 우리는 건축을 대하듯 당신을 봅니다 — 당신만의 역사와 구조, 당신만의 결을. <b>한 사람 한 사람이, 그 자체로 하나의 건축입니다.</b>
+    <p class="note note-turn">
+      딸깍이면 답이 나오는 시대. 우리는 점점 더 많은 것을 머리 바깥에 맡깁니다. 그러나 굳어 버린 하나의 상은, 머리가 아니라 <b>손으로</b> 다시 짓습니다. 점을 찍고, 선을 긋고, 색을 얹어—전혀 다른 이미지를 자아낼 때, 마음은 실제로 다시 움직이기 시작합니다. 당신의 손으로 매일, <b>나라는 영화를 다시 편집</b>하는 것. 그것이 우리가 하는 일입니다.
     </p>
-  </div>
-</section>
-
-<!-- 학자 근거 -->
-<section class="scholars">
-  <div class="wrap reveal">
-    <p class="eyebrow">The Ground We Stand On</p>
-    <h2>이것은 감상이 아닙니다.<br>인간이 <em>이미지로 지어진 존재</em>라는,<br>동서고금이 함께 가리키는 자리입니다.</h2>
-    <blockquote class="sutra">
-      <p class="sutra-han">心如工畫師 能畫諸世間</p>
-      <p class="sutra-ko">마음은 그림을 그리는 화가와 같아,<br>능히 모든 세상을 다 그려낸다.</p>
-      <p class="sutra-src">— 화엄경</p>
-    </blockquote>
-    <div class="sch-grid">
-      <div class="sch">
-        <div class="name">Antonio Damasio</div>
-        <p class="claim serif">마음은 이미지의 흐름이다</p>
-        <p>느끼고 생각하는 모든 것은 마음 안에 떠오르는 상들의 움직임입니다. 감각은 생각보다 먼저 옵니다.</p>
-      </div>
-      <div class="sch">
-        <div class="name">James Hillman</div>
-        <p class="claim serif">영혼의 언어는 이미지다</p>
-        <p>마음은 개념이 아니라 이미지로 이루어져 있습니다. 예술이 그 이미지에 직접 닿습니다.</p>
-      </div>
-      <div class="sch">
-        <div class="name">Gerald Hüther</div>
-        <p class="claim serif">새 이미지가 새 회로를 연다</p>
-        <p>반복되는 패턴은 굳어진 신경 회로입니다. 예술이 그 회로를 새롭게 엽니다.</p>
-      </div>
-      <div class="sch">
-        <div class="name">Ellen Dissanayake</div>
-        <p class="claim serif">만듦은 살아있음의 증거다</p>
-        <p>재능이 있어서가 아닙니다. 4만 년 전부터, 인간은 살아있기 때문에 만들었습니다.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -509,77 +448,24 @@
   </div>
 </section>
 
-<!-- 저항 -->
-<section class="resist">
-  <div class="wrap reveal">
-    <p class="eyebrow">What We Resist</p>
-    <h2>마음다움이 <span style="color:var(--red)">저항</span>하는 것</h2>
-    <div class="r-list">
-      <div class="r-item">
-        <div class="no">01</div>
-        <div class="what">마음을 진단명으로 가두는 것</div>
-        <div class="instead">진단 대신, 탐색합니다.</div>
-      </div>
-      <div class="r-item">
-        <div class="no">02</div>
-        <div class="what">마음을 최적화하려는 것</div>
-        <div class="instead">마음은 흐르는 것입니다.</div>
-      </div>
-      <div class="r-item">
-        <div class="no">03</div>
-        <div class="what">예술을 재능의 것으로 보는 것</div>
-        <div class="instead">살아있기 때문에 만듭니다.</div>
-      </div>
-      <div class="r-item">
-        <div class="no">04</div>
-        <div class="what">사람을 수치와 서열로 보는 것</div>
-        <div class="instead">그 자리에서, 우리는 저항합니다.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 미학적 균열 -->
-<section class="crack">
-  <div class="narrow reveal">
-    <p class="eyebrow">A Quiet Crack</p>
-    <h2>잘났다고 유난 떨지 않습니다.<br>다만 묵묵히, 조용히.</h2>
-    <p class="crack-body">
-      세상에 작은 <b>미학적 균열</b>을 냅니다.<br>전체로 보면 가느다란 실금이겠지만,<br><br>
-      그 실금으로부터 거대한 균열이 시작됩니다.<br><br>
-      한 사람의 작은, 마음다운 변화로부터.
-    </p>
-    <p class="crack-close">아름다움은 결국, 세상 만물의 <span style="color:var(--red)">'다움'</span>에서 옵니다.</p>
-  </div>
-</section>
-
 <!-- 부부 -->
 <section class="founders" id="founders">
   <div class="wrap reveal">
-    <p class="eyebrow">The Two of Us</p>
+    <p class="eyebrow">Two Directors</p>
+    <h2 class="f-head serif">우리는 둘 다,<br>평생 <span>이미지</span>를 다루며 살아왔습니다.</h2>
     <p class="quote">
-      "솔직히, 오래 답답했어요. 무언가 터뜨리고 싶은데 그게 뭔지 모른 채 관성에 쫓기던 시간. 지금 마음을 다루는 방식이, 그 속도가 정말 마음을 위한 길일까—묻고 또 물었죠. 이제 <em>마흔에 이르러, 비로소 목소리를 낼 때</em>가 되었다고 믿어요."
+      "한 사람은 건축과 미술사와 미디어에서, 한 사람은 디자인과 패션에서 — 우리는 서로 다른 자리에서 줄곧 <em>이미지가 사람을 어떻게 짓는가</em>를 물어왔어요. 그 질문이 우리를 예술치료로, 그리고 서로에게 데려왔습니다."
     </p>
     <div class="f-grid">
       <div class="f">
-        <div class="fname serif">조현우</div>
-        <div class="frole">공동대표 · 예술치유전문가</div>
-        <div class="meta">
-          한양대 상담심리대학원 석사 (예술치료교육 및 상담)<br>
-          9년차 예술치료사<br>
-          건축 · 미술사 · 미디어커뮤니케이션 · 브랜드컨설팅
-        </div>
-        <p class="say">건축에서 시작해 미술사, 미디어를 거쳐 예술치료에 이르는 여정 — <em>이미지가 인간을 어떻게 구성하는가</em>라는 질문이 늘 있었어요. 진단명이 사람을 규정할 때 무언가 중요한 게 사라진다는 걸, 가장 가까운 자리에서 봐왔어요.</p>
+        <div class="fname serif">조현우 <span class="jin">진설</span></div>
+        <div class="frole">공동대표 · 예술치료사 · 9년차</div>
+        <p class="say">건축에서 미술사로, 미디어에서 다시 사람의 마음으로. <em>이미지가 인간을 어떻게 구성하는가</em>를 오래 좇았습니다. 지금은 제 삶의 이미지를 스스로 짓는 한 사람의 디렉터로 살며, 같은 자리로 당신을 초대합니다.</p>
       </div>
       <div class="f">
         <div class="fname serif">황서영</div>
-        <div class="frole">공동대표 · 예술치유전문가</div>
-        <div class="meta">
-          한양대 상담심리대학원 석사 (예술치료교육 및 상담)<br>
-          14년차 예술치료사<br>
-          디자인 · 패션 · 예술치료
-        </div>
-        <p class="say">디자인을 전공하고, 예술치료 이전엔 패션을 업으로 삼았어요. <em>패션 현장이 이미지 심리학의 살아있는 교실</em>이었어요. 14년간 병원과 현장에서 수많은 마음을 만나며 깨달은 것은 — 마음은 고치는 게 아니라 흐르게 하는 것이라는 점이었습니다.</p>
+        <div class="frole">공동대표 · 예술치료사 · 14년차</div>
+        <p class="say">디자인을 전공하고 패션을 업으로 삼았던 시간이, <em>이미지 심리학의 살아있는 교실</em>이었습니다. 14년간 수많은 마음을 만나며 배운 것 — 마음은 고치는 게 아니라, 손으로 다시 짓고 흐르게 하는 것입니다.</p>
       </div>
     </div>
   </div>
@@ -605,6 +491,7 @@
     <p>어떤 방식이 맞는지, 부담 없이 먼저 물어봐도 괜찮아요.<br>문의 후 1~2일 내로 서영이 직접 연락드립니다.</p>
     <a href="mailto:kreatism@naver.com" class="btn">문의 보내기</a>
     <a href="https://maumdaum.com/maumdaum_brochure.pdf" class="btn ghost">소개서 (PDF)</a>
+    <p class="cta-more"><a href="philosophy.html">우리가 선 자리를, 조금 더 깊이 읽어보기 →</a></p>
   </div>
 </section>
 
@@ -612,7 +499,7 @@
   <div class="wrap">
     <div>
       <div class="fbrand">마음다움</div>
-      <div class="tag">마음을, 마음답게</div>
+      <div class="tag">마음을 마음답게, 이미지로 짓다</div>
       <div class="copyright">© 2026 마음다움. All rights reserved.</div>
     </div>
     <div class="fcol">
