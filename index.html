@@ -87,8 +87,13 @@
     font-size:clamp(2.9rem,8vw,5.6rem);line-height:1.18;
     letter-spacing:.01em;
   }
+  .hero h1.hero-hook{line-height:1.32;font-size:clamp(2.4rem,6.6vw,4.8rem)}
   .hero h1 .sprout{position:relative;display:inline-block}
-  .hero h1 .accent{color:#D65543}
+  .hero h1 .accent{color:#D65543;position:relative;display:inline-block}
+  .hero h1.hero-hook .accent::after{
+    content:'';position:absolute;left:0;bottom:.02em;height:2px;width:0;
+    background:var(--red);animation:grow 1.4s 1.8s cubic-bezier(.2,.7,.2,1) forwards;
+  }
   .hero h1 .sprout::after{
     content:'';position:absolute;left:0;bottom:.06em;height:2px;width:0;
     background:var(--red);animation:grow 1.6s 2.2s cubic-bezier(.2,.7,.2,1) forwards;
@@ -111,16 +116,23 @@
     background:linear-gradient(rgba(242,241,236,.6),transparent);
   }
 
+  /* ── 짓다 진입 (의식주) ── */
+  .build{padding:22vh 0 20vh;background:var(--paper);text-align:center}
+  .build .narrow{max-width:680px}
+  .build-line{font-family:var(--serif);font-size:clamp(1.8rem,5vw,3rem);line-height:1.7;color:var(--ink-soft);font-weight:400}
+  .build-turn{margin-top:3.2rem;font-family:var(--serif);font-size:clamp(1.8rem,5vw,3rem);line-height:1.7;color:var(--ink);font-weight:400}
+  .build-turn span{color:var(--red)}
+
   /* ── 페르소나 직격 ── */
-  .persona{padding:20vh 0 18vh;background:var(--paper)}
+  .persona{padding:20vh 0 18vh;background:var(--ink);color:var(--paper)}
   .persona .narrow{text-align:center}
   .persona .line{
     font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.3rem);
-    line-height:1.65;color:var(--ink);
+    line-height:1.65;color:var(--paper);
   }
-  .persona .line em{font-style:normal;color:var(--red)}
+  .persona .line em{font-style:normal;color:#D65543}
   .persona .turn{
-    margin-top:3.2rem;font-size:1.02rem;color:var(--ink-soft);
+    margin-top:3.2rem;font-size:1.02rem;color:rgba(242,237,228,.68);
     font-weight:300;line-height:2;
   }
 
@@ -247,6 +259,13 @@
   .crack-body b{color:var(--red);font-weight:500}
   .crack-close{font-family:var(--serif);font-size:1.2rem;color:rgba(242,237,228,.92);line-height:1.7}
 
+  /* ── 미션/비전 ── */
+  .vision{padding:22vh 0;background:var(--ink);color:var(--paper);text-align:center}
+  .vision .eyebrow{color:rgba(242,241,236,.5)}
+  .vision-line{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6.4vw,4rem);line-height:1.3;letter-spacing:.01em;margin-bottom:3.2rem}
+  .vision-line .accent{color:#D65543}
+  .vision-body{font-size:clamp(1rem,2.2vw,1.12rem);color:rgba(242,241,236,.72);font-weight:300;line-height:2.1;max-width:600px;margin:0 auto}
+
   .founders{padding:18vh 0;background:var(--paper)}
   .founders .f-head{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,4.4vw,2.6rem);line-height:1.5;margin-bottom:2.8rem;max-width:760px}
   .founders .f-head span{color:var(--red)}
@@ -337,11 +356,18 @@
         <circle cx="719" cy="175" r="70" fill="#B03A2E"/>
       </g>
     </svg>
-    <h1>마음, <span class="sprout"><span class="accent">다</span>시 <span class="accent">움</span>트다</span></h1>
-    <p class="sub">마음을 마음답게, 이미지로 짓다</p>
+    <h1 class="hero-hook">마음을 마음답게,<br><span class="accent">이미지</span>로 짓다</h1>
   </div>
   <div class="scroll-cue">천천히 내려오세요</div>
 </header>
+
+<!-- 짓다 진입 (의식주) -->
+<section class="build">
+  <div class="narrow reveal">
+    <p class="build-line">밥을 짓고,<br>옷을 짓고,<br>집을 짓지만—</p>
+    <p class="build-turn">우리는 <span>마음을 짓는 것</span>에는,<br>너무 소홀했습니다.</p>
+  </div>
+</section>
 
 <!-- 페르소나 직격 -->
 <section class="persona">
@@ -448,6 +474,21 @@
   </div>
 </section>
 
+<!-- 미션/비전 -->
+<section class="vision">
+  <div class="narrow reveal">
+    <p class="eyebrow">Our Vision</p>
+    <h2 class="vision-line">마음, <span class="accent">다</span>시 <span class="accent">움</span>트다</h2>
+    <p class="vision-body">
+      눌러 둔 마음도, 설명하다 만 마음도 아닌 —<br>
+      스스로의 손으로 다시 지어 올린 마음은,<br>
+      누가 시키지 않아도 저절로 움트기 시작합니다.<br><br>
+      우리는 그 움틈을 믿습니다.<br>
+      한 사람의 작은 움틈이 모여, 조금 더 마음다운 세상이 되기를.
+    </p>
+  </div>
+</section>
+
 <!-- 부부 -->
 <section class="founders" id="founders">
   <div class="wrap reveal">
@@ -487,7 +528,7 @@
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="narrow reveal">
-    <h2>마음, 다시 움트다</h2>
+    <h2>식히러 오세요.<br>그리고, 손으로 지어 보세요.</h2>
     <p>어떤 방식이 맞는지, 부담 없이 먼저 물어봐도 괜찮아요.<br>문의 후 1~2일 내로 서영이 직접 연락드립니다.</p>
     <a href="mailto:kreatism@naver.com" class="btn">문의 보내기</a>
     <a href="https://maumdaum.com/maumdaum_brochure.pdf" class="btn ghost">소개서 (PDF)</a>
