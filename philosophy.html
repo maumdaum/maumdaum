@@ -94,6 +94,71 @@
   .philo-close h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4.6vw,2.6rem);line-height:1.5;margin-bottom:2.4rem}
   .philo-close .btn{display:inline-block;margin-top:1rem;padding:16px 40px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:.92rem;letter-spacing:.04em;border-radius:2px;transition:background .3s}
   .philo-close .btn:hover{background:var(--red)}
+
+  /* ===== 시계열: 상의 계보 ===== */
+400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  
+  *{margin:0;padding:0;box-sizing:border-box}
+  
+
+  .tl-section{background:var(--ink);color:var(--paper);padding:16vh 6vw}
+  .tl-inner{max-width:1100px;margin:0 auto}
+  .tl-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,237,228,.5);text-align:center;margin-bottom:1.6rem}
+  .tl-title{font-family:'Gowun Batang', serif;font-weight:400;font-size:clamp(1.9rem,5vw,3rem);line-height:1.45;text-align:center;margin-bottom:1.4rem}
+  .tl-title span{color:#D65543}
+  .tl-intro{max-width:600px;margin:0 auto 8vh;text-align:center;font-weight:300;color:rgba(242,237,228,.72);font-size:clamp(1rem,2.3vw,1.15rem);line-height:2}
+
+  /* 타임라인 */
+  .tl-track{position:relative;padding-left:0}
+  .tl-track::before{
+    content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
+    background:linear-gradient(rgba(200,191,178,0),rgba(200,191,178,.45) 8%,rgba(200,191,178,.45) 92%,rgba(200,191,178,0));
+    transform:translateX(-50%);
+  }
+  @media(max-width:720px){
+    .tl-track::before{left:22px}
+  }
+
+  .tl-node{position:relative;margin-bottom:9vh;opacity:0;transform:translateY(30px);
+    transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .tl-node.in{opacity:1;transform:translateY(0)}
+  .tl-node:last-child{margin-bottom:0}
+
+  /* 좌우 교차 */
+  .tl-row{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;gap:0}
+  .tl-card{padding:2rem 2.2rem}
+  .tl-card.left{grid-column:1;text-align:right}
+  .tl-card.right{grid-column:3;text-align:left}
+  .tl-dot-wrap{grid-column:2;display:flex;justify-content:center}
+
+  .tl-era{font-family:'Gowun Batang', serif;font-size:.78rem;letter-spacing:.12em;color:#D65543;margin-bottom:.7rem;font-weight:600}
+  .tl-head{font-family:'Gowun Batang', serif;font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:400;line-height:1.5;margin-bottom:.9rem;color:var(--paper)}
+  .tl-
+  .tl-quote{margin-top:1rem;font-family:'Gowun Batang', serif;font-style:normal;font-size:.9rem;color:rgba(242,237,228,.82);line-height:1.7;
+    padding-top:.9rem;border-top:1px solid rgba(200,191,178,.2)}
+  .tl-han{font-family:'Gowun Batang', serif;color:#D65543;font-weight:600;letter-spacing:.06em}
+  .tl-src{display:block;margin-top:.6rem;font-size:.74rem;color:rgba(242,237,228,.42);letter-spacing:.03em}
+
+  /* 점 (도형 = 마음다움 심볼 언어) */
+  .tl-dot{width:18px;height:18px;position:relative;z-index:2}
+  .tl-dot.square{background:var(--paper)}
+  .tl-dot.circle{background:var(--paper);border-radius:50%}
+  .tl-dot.square-red{background:var(--red)}
+  .tl-dot.circle-red{background:var(--red);border-radius:50%}
+  .tl-dot.bloom{background:var(--red);border-radius:50%;box-shadow:0 0 0 4px rgba(176,58,46,.18)}
+
+  @media(max-width:720px){
+    .tl-row{grid-template-columns:44px 1fr;gap:0}
+    .tl-dot-wrap{grid-column:1;justify-content:flex-start}
+    .tl-card.left,.tl-card.right{grid-column:2;text-align:left;padding:.2rem 0 .2rem 1rem}
+  }
+
+  /* 마무리 */
+  .tl-coda{margin-top:12vh;text-align:center}
+  .tl-coda-line{font-family:'Gowun Batang', serif;font-size:clamp(1.4rem,3.4vw,2.1rem);line-height:1.6;font-weight:400}
+  .tl-coda-line span{color:#D65543}
+  .tl-coda-sub{margin-top:1.6rem;font-weight:300;color:rgba(242,237,228,.6);font-size:.95rem;line-height:1.9}
+
 </style>
 </head>
 <body>
@@ -134,40 +199,139 @@
   </div>
 </section>
 
-<!-- 학자 근거 -->
-<section class="scholars">
-  <div class="wrap reveal">
-    <p class="eyebrow">The Ground We Stand On</p>
-    <h2>이것은 감상이 아닙니다.<br>인간이 <em>이미지로 지어진 존재</em>라는,<br>동서고금이 함께 가리키는 자리입니다.</h2>
-    <blockquote class="sutra">
-      <p class="sutra-han">心如工畫師 能畫諸世間</p>
-      <p class="sutra-ko">마음은 그림을 그리는 화가와 같아,<br>능히 모든 세상을 다 그려낸다.</p>
-      <p class="sutra-src">— 화엄경</p>
-    </blockquote>
-    <div class="sch-grid">
-      <div class="sch">
-        <div class="name">Antonio Damasio</div>
-        <p class="claim serif">마음은 이미지의 흐름이다</p>
-        <p>느끼고 생각하는 모든 것은 마음 안에 떠오르는 상들의 움직임입니다. 감각은 생각보다 먼저 옵니다.</p>
-      </div>
-      <div class="sch">
-        <div class="name">James Hillman</div>
-        <p class="claim serif">영혼의 언어는 이미지다</p>
-        <p>마음은 개념이 아니라 이미지로 이루어져 있습니다. 예술이 그 이미지에 직접 닿습니다.</p>
-      </div>
-      <div class="sch">
-        <div class="name">Gerald Hüther</div>
-        <p class="claim serif">새 이미지가 새 회로를 연다</p>
-        <p>반복되는 패턴은 굳어진 신경 회로입니다. 예술이 그 회로를 새롭게 엽니다.</p>
-      </div>
-      <div class="sch">
-        <div class="name">Ellen Dissanayake</div>
-        <p class="claim serif">만듦은 살아있음의 증거다</p>
-        <p>재능이 있어서가 아닙니다. 4만 년 전부터, 인간은 살아있기 때문에 만들었습니다.</p>
+<!-- 상(像)의 계보 (시계열) -->
+<section class="tl-section">
+  <div class="tl-inner">
+  <p class="tl-eyebrow">The Lineage of Image · 상(像)의 계보</p>
+  <h2 class="tl-title">인간은 언제나,<br><span>상(像)</span>을 지어 왔습니다.</h2>
+  <p class="tl-intro">
+    마음이 이미지로 이루어져 있다는 것은 새로운 주장이 아닙니다.
+    20만 년 전 인류가 처음 상상하기 시작한 순간부터, 오늘의 뇌과학까지 —
+    서로 다른 시대가 한 곳을 가리킵니다.
+  </p>
+
+  <div class="tl-track">
+
+    <!-- 1. 인지 혁명 -->
+    <div class="tl-node">
+      <div class="tl-row">
+        <div class="tl-card left">
+          <div class="tl-era">약 20–30만 년 전</div>
+          <div class="tl-head">인간, 상상하는 존재가 되다</div>
+          <div class="tl-body">
+            호모 사피엔스의 마음에 '유동적 지성'이 열립니다.<br>
+            서로 나뉘어 있던 지능의 영역들이 이어지며,<br>
+            눈앞에 없는 것을 떠올리는 힘<br>— 상상이 태어납니다.
+          </div>
+          <div class="tl-quote">
+            서로 다른 앎이 이어질 때, 인간은 비로소 은유하고 상상하기 시작했다.
+            <span class="tl-src">— 스티븐 미슨, 『마음의 선사시대』 (인지적 유동성)</span>
+          </div>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot square"></div></div>
       </div>
     </div>
+
+    <!-- 2. 동굴 벽화 -->
+    <div class="tl-node">
+      <div class="tl-row">
+        <div class="tl-dot-wrap"><div class="tl-dot circle"></div></div>
+        <div class="tl-card right">
+          <div class="tl-era">약 3–4만 년 전</div>
+          <div class="tl-head">손이, 마음을 벽에 새기다</div>
+          <div class="tl-body">
+            쇼베·라스코의 동굴 벽에 짐승과 사람이 그려집니다.<br>
+            사자의 몸에 사람의 머리를 얹은 '사자인간상' —<br>
+            현실에 없는 것을 손으로 지어낸, 인류 최초의 상(像)입니다.
+          </div>
+          <div class="tl-quote">
+            상아에 새겨진 사자인간은, 눈에 보이게 된 상상력 그 자체다.
+            <span class="tl-src">— 홀렌슈타인슈타델 사자인간상, 약 3.2만 년 전</span>
+          </div>
+          <div class="tl-quote">
+            재능이 있어서가 아니다. 인간은 살아있기에 만들어 왔다.
+            <span class="tl-src">— 엘렌 디사나야케, 예술 인류학</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 화엄경 -->
+    <div class="tl-node">
+      <div class="tl-row">
+        <div class="tl-card left">
+          <div class="tl-era">약 1,600년 전</div>
+          <div class="tl-head">마음은 화가와 같다</div>
+          <div class="tl-body">
+            동아시아의 경전이 마음의 본질을 한 구절로 새깁니다.<br>
+            마음은 세상을 그려내는 화가이며,<br>
+            짓지 않는 것이 없다고.
+          </div>
+          <div class="tl-quote">
+            <span class="tl-han">心如工畫師 能畫諸世間</span><br>
+            마음은 화가와 같아, 능히 모든 세상을 그려낸다.
+            <span class="tl-src">— 『화엄경』 야마궁중게찬품</span>
+          </div>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot square-red"></div></div>
+      </div>
+    </div>
+
+    <!-- 4. 하이데거 -->
+    <div class="tl-node">
+      <div class="tl-row">
+        <div class="tl-dot-wrap"><div class="tl-dot circle-red"></div></div>
+        <div class="tl-card right">
+          <div class="tl-era">1935년</div>
+          <div class="tl-head">예술은, 진리가 열리는 자리</div>
+          <div class="tl-body">
+            하이데거는 예술을 '재현'이 아니라 '드러남(비은폐)'으로 봅니다.<br>
+            작품은 무언가를 베끼는 것이 아니라,<br>
+            숨어 있던 것이 처음으로 나타나는 열림의 사건입니다.
+          </div>
+          <div class="tl-quote">
+            예술 작품 속에서, 존재의 진리가 스스로를 작품으로 지어 세운다.
+            <span class="tl-src">— 마르틴 하이데거, 『예술작품의 근원』</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 현대 뇌과학·심리학 -->
+    <div class="tl-node">
+      <div class="tl-row">
+        <div class="tl-card left">
+          <div class="tl-era">오늘</div>
+          <div class="tl-head">이미지는, 마음의 통화(通貨)다</div>
+          <div class="tl-body">
+            뇌과학과 심리학이 오래된 직관을 확증합니다.<br>
+            마음은 이미지의 끊임없는 흐름이며,<br>
+            이미지는 우리가 보는 '것'이 아니라 보는 '방식'입니다.
+          </div>
+          <div class="tl-quote">
+            뇌가 지도를 만들 때 이미지도 함께 창조된다 — 이미지는 마음의 주된 통화다.
+            <span class="tl-src">— 안토니오 다마지오, 『자아가 마음이 될 때』</span>
+          </div>
+          <div class="tl-quote">
+            이미지는 영혼의 모국어다. 우리가 보는 것이 아니라, 보는 방식이다.
+            <span class="tl-src">— 제임스 힐먼, 원형심리학</span>
+          </div>
+        </div>
+        <div class="tl-dot-wrap"><div class="tl-dot bloom"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tl-coda">
+    <p class="tl-coda-line">그래서 마음다움은,<br><span>이미지로 마음과 소통합니다.</span></p>
+    <p class="tl-coda-sub">
+      20만 년을 이어온 인간의 문법으로,<br>말이 닿지 못하는 마음의 층에 닿습니다.
+    </p>
+  </div>
   </div>
 </section>
+
 
 <!-- 저항 -->
 <section class="resist">
@@ -226,6 +390,11 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
 },{threshold:.16});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const tlIo = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); tlIo.unobserve(e.target);} });
+},{threshold:.15});
+document.querySelectorAll('.tl-node').forEach(el=>tlIo.observe(el));
 </script>
 </body>
 </html>
